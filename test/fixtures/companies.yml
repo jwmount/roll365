@@ -5,17 +5,17 @@ one:
   credit_terms: 1
   PO_required: false
   active: false
-  bookkeeping_number: MyString
+  bookkeeping_number: 1
   line_of_business: MyString
   url: MyString
-  license: false
+  licensee: MyString
 
 two:
   name: MyString
   credit_terms: 1
   PO_required: false
   active: false
-  bookkeeping_number: MyString
+  bookkeeping_number: 1
   line_of_business: MyString
   url: MyString
-  license: false
+  licensee: MyString

@@ -5,10 +5,10 @@ class CreateCompanies < ActiveRecord::Migration[5.2]
       t.integer :credit_terms
       t.boolean :PO_required
       t.boolean :active
-      t.string :bookkeeping_number
+      t.integer :bookkeeping_number
       t.string :line_of_business
       t.string :url
-      t.boolean :license
+      t.string :licensee
 
       t.timestamps
     end

@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @company.name %>
+</p>
+
+<p>
+  <strong>Credit terms:</strong>
+  <%= @company.credit_terms %>
+</p>
+
+<p>
+  <strong>Po required:</strong>
+  <%= @company.PO_required %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @company.active %>
+</p>
+
+<p>
+  <strong>Bookkeeping number:</strong>
+  <%= @company.bookkeeping_number %>
+</p>
+
+<p>
+  <strong>Line of business:</strong>
+  <%= @company.line_of_business %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @company.url %>
+</p>
+
+<p>
+  <strong>Licensee:</strong>
+  <%= @company.licensee %>
+</p>
+
+<%= link_to 'Edit', edit_company_path(@company) %> |
+<%= link_to 'Back', companies_path %>
