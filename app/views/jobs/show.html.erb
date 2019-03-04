@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Solution:</strong>
+  <%= @job.solution_id %>
+</p>
+
+<p>
+  <strong>Start on:</strong>
+  <%= @job.start_on %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @job.time %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @job.name %>
+</p>
+
+<p>
+  <strong>Finished on:</strong>
+  <%= @job.finished_on %>
+</p>
+
+<p>
+  <strong>Purchase order:</strong>
+  <%= @job.purchase_order %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @job.active %>
+</p>
+
+<p>
+  <strong>Complete:</strong>
+  <%= @job.complete %>
+</p>
+
+<%= link_to 'Edit', edit_job_path(@job) %> |
+<%= link_to 'Back', jobs_path %>
