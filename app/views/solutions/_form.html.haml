@@ -1,0 +1,103 @@
+= form_for @solution do |f|
+  - if @solution.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@solution.errors.count, "error")} prohibited this solution from being saved:"
+      %ul
+        - @solution.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :approved
+    = f.check_box :approved
+  .field
+    = f.label :client_approved
+    = f.check_box :client_approved
+  .field
+    = f.label :drive_time_from_load_to_tip
+    = f.number_field :drive_time_from_load_to_tip
+  .field
+    = f.label :drive_time_into_site
+    = f.number_field :drive_time_into_site
+  .field
+    = f.label :drive_time_into_tip
+    = f.number_field :drive_time_into_tip
+  .field
+    = f.label :drive_time_out_of_site
+    = f.number_field :drive_time_out_of_site
+  .field
+    = f.label :drive_time_out_of_tip_site
+    = f.number_field :drive_time_out_of_tip_site
+  .field
+    = f.label :drive_time_tip_to_load
+    = f.number_field :drive_time_tip_to_load
+  .field
+    = f.label :equipment_name
+    = f.text_field :equipment_name
+  .field
+    = f.label :equipment_dollars_per_day
+    = f.text_field :equipment_dollars_per_day
+  .field
+    = f.label :equipment_units_required_per_day
+    = f.number_field :equipment_units_required_per_day
+  .field
+    = f.label :hourly_hire_rate
+    = f.text_field :hourly_hire_rate
+  .field
+    = f.label :invoice_load_client
+    = f.text_field :invoice_load_client
+  .field
+    = f.label :invoice_tip_client
+    = f.text_field :invoice_tip_client
+  .field
+    = f.label :kms_one_way
+    = f.number_field :kms_one_way
+  .field
+    = f.label :load_time
+    = f.number_field :load_time
+  .field
+    = f.label :loads_per_day
+    = f.number_field :loads_per_day
+  .field
+    = f.label :material_id
+    = f.number_field :material_id
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :pay_equipment_per_unit
+    = f.text_field :pay_equipment_per_unit
+  .field
+    = f.label :pay_load_client
+    = f.text_field :pay_load_client
+  .field
+    = f.label :pay_tip_client
+    = f.text_field :pay_tip_client
+  .field
+    = f.label :pay_tip
+    = f.text_field :pay_tip
+  .field
+    = f.label :pay_tolls
+    = f.text_field :pay_tolls
+  .field
+    = f.label :purchase_order_required
+    = f.check_box :purchase_order_required
+  .field
+    = f.label :quote_id
+    = f.number_field :quote_id
+  .field
+    = f.label :solution_type
+    = f.text_field :solution_type
+  .field
+    = f.label :semis_permitted
+    = f.check_box :semis_permitted
+  .field
+    = f.label :total_material
+    = f.number_field :total_material
+  .field
+    = f.label :unit_of_material
+    = f.text_field :unit_of_material
+  .field
+    = f.label :unload_time
+    = f.number_field :unload_time
+  .actions
+    = f.submit 'Save'

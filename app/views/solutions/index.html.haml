@@ -1,0 +1,81 @@
+%h1 Listing solutions
+
+%table
+  %thead
+    %tr
+      %th Approved
+      %th Client approved
+      %th Drive time from load to tip
+      %th Drive time into site
+      %th Drive time into tip
+      %th Drive time out of site
+      %th Drive time out of tip site
+      %th Drive time tip to load
+      %th Equipment name
+      %th Equipment dollars per day
+      %th Equipment units required per day
+      %th Hourly hire rate
+      %th Invoice load client
+      %th Invoice tip client
+      %th Kms one way
+      %th Load time
+      %th Loads per day
+      %th Material
+      %th Name
+      %th Pay equipment per unit
+      %th Pay load client
+      %th Pay tip client
+      %th Pay tip
+      %th Pay tolls
+      %th Purchase order required
+      %th Quote
+      %th Solution type
+      %th Semis permitted
+      %th Total material
+      %th Unit of material
+      %th Unload time
+      %th
+      %th
+      %th
+
+  %tbody
+    - @solutions.each do |solution|
+      %tr
+        %td= solution.approved
+        %td= solution.client_approved
+        %td= solution.drive_time_from_load_to_tip
+        %td= solution.drive_time_into_site
+        %td= solution.drive_time_into_tip
+        %td= solution.drive_time_out_of_site
+        %td= solution.drive_time_out_of_tip_site
+        %td= solution.drive_time_tip_to_load
+        %td= solution.equipment_name
+        %td= solution.equipment_dollars_per_day
+        %td= solution.equipment_units_required_per_day
+        %td= solution.hourly_hire_rate
+        %td= solution.invoice_load_client
+        %td= solution.invoice_tip_client
+        %td= solution.kms_one_way
+        %td= solution.load_time
+        %td= solution.loads_per_day
+        %td= solution.material_id
+        %td= solution.name
+        %td= solution.pay_equipment_per_unit
+        %td= solution.pay_load_client
+        %td= solution.pay_tip_client
+        %td= solution.pay_tip
+        %td= solution.pay_tolls
+        %td= solution.purchase_order_required
+        %td= solution.quote_id
+        %td= solution.solution_type
+        %td= solution.semis_permitted
+        %td= solution.total_material
+        %td= solution.unit_of_material
+        %td= solution.unload_time
+        %td= link_to 'Show', solution
+        %td= link_to 'Edit', edit_solution_path(solution)
+        %td= link_to 'Destroy', solution, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Solution', new_solution_path
