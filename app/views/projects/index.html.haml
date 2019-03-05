@@ -1,0 +1,35 @@
+%h1 Listing projects
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Company
+      %th Rep
+      %th Project start on
+      %th Description
+      %th Active
+      %th Intends to bid
+      %th Submitted bid
+      %th
+      %th
+      %th
+
+  %tbody
+    - @projects.each do |project|
+      %tr
+        %td= project.name
+        %td= project.company_id
+        %td= project.rep_id
+        %td= project.project_start_on
+        %td= project.description
+        %td= project.active
+        %td= project.intends_to_bid
+        %td= project.submitted_bid
+        %td= link_to 'Show', project
+        %td= link_to 'Edit', edit_project_path(project)
+        %td= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Project', new_project_path

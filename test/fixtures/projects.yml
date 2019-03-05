@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  company_id: 1
+  rep_id: 1
+  project_start_on: 2019-03-04 19:24:22
+  description: MyString
+  active: false
+  intends_to_bid: 1
+  submitted_bid: 1
+
+two:
+  name: MyString
+  company_id: 1
+  rep_id: 1
+  project_start_on: 2019-03-04 19:24:22
+  description: MyString
+  active: false
+  intends_to_bid: 1
+  submitted_bid: 1
