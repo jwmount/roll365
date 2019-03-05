@@ -1,0 +1,23 @@
+%h1 Listing solution_tips
+
+%table
+  %thead
+    %tr
+      %th Solution
+      %th Tip
+      %th
+      %th
+      %th
+
+  %tbody
+    - @solution_tips.each do |solution_tip|
+      %tr
+        %td= solution_tip.solution_id
+        %td= solution_tip.tip_id
+        %td= link_to 'Show', solution_tip
+        %td= link_to 'Edit', edit_solution_tip_path(solution_tip)
+        %td= link_to 'Destroy', solution_tip, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Solution tip', new_solution_tip_path

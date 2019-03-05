@@ -1,0 +1,31 @@
+= form_for @condition do |f|
+  - if @condition.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@condition.errors.count, "error")} prohibited this condition from being saved:"
+      %ul
+        - @condition.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :verbiage
+    = f.text_area :verbiage
+  .field
+    = f.label :indication
+    = f.text_field :indication
+  .field
+    = f.label :status
+    = f.check_box :status
+  .field
+    = f.label :approved
+    = f.check_box :approved
+  .field
+    = f.label :change_approved_by
+    = f.text_field :change_approved_by
+  .field
+    = f.label :change_approved_at
+    = f.datetime_select :change_approved_at
+  .actions
+    = f.submit 'Save'

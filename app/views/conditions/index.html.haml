@@ -1,0 +1,33 @@
+%h1 Listing conditions
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Verbiage
+      %th Indication
+      %th Status
+      %th Approved
+      %th Change approved by
+      %th Change approved at
+      %th
+      %th
+      %th
+
+  %tbody
+    - @conditions.each do |condition|
+      %tr
+        %td= condition.name
+        %td= condition.verbiage
+        %td= condition.indication
+        %td= condition.status
+        %td= condition.approved
+        %td= condition.change_approved_by
+        %td= condition.change_approved_at
+        %td= link_to 'Show', condition
+        %td= link_to 'Edit', edit_condition_path(condition)
+        %td= link_to 'Destroy', condition, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Condition', new_condition_path

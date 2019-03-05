@@ -1,0 +1,40 @@
+= form_for @engagement do |f|
+  - if @engagement.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@engagement.errors.count, "error")} prohibited this engagement from being saved:"
+      %ul
+        - @engagement.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :schedule_id
+    = f.number_field :schedule_id
+  .field
+    = f.label :person_id
+    = f.number_field :person_id
+  .field
+    = f.label :docket_id
+    = f.number_field :docket_id
+  .field
+    = f.label :docket_number
+    = f.text_field :docket_number
+  .field
+    = f.label :onsite_now
+    = f.check_box :onsite_now
+  .field
+    = f.label :onsite_at
+    = f.check_box :onsite_at
+  .field
+    = f.label :breakdown
+    = f.check_box :breakdown
+  .field
+    = f.label :no_show
+    = f.check_box :no_show
+  .field
+    = f.label :OK_tomorrow
+    = f.number_field :OK_tomorrow
+  .field
+    = f.label :engagement_declined
+    = f.check_box :engagement_declined
+  .actions
+    = f.submit 'Save'

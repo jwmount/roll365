@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @condition.name
+%p
+  %b Verbiage:
+  = @condition.verbiage
+%p
+  %b Indication:
+  = @condition.indication
+%p
+  %b Status:
+  = @condition.status
+%p
+  %b Approved:
+  = @condition.approved
+%p
+  %b Change approved by:
+  = @condition.change_approved_by
+%p
+  %b Change approved at:
+  = @condition.change_approved_at
+
+= link_to 'Edit', edit_condition_path(@condition)
+\|
+= link_to 'Back', conditions_path

@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Person:
+  = @people_schedule.person_id
+%p
+  %b Schedule:
+  = @people_schedule.schedule_id
+
+= link_to 'Edit', edit_people_schedule_path(@people_schedule)
+\|
+= link_to 'Back', people_schedules_path

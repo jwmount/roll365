@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Company:
+  = @address.company
+%p
+  %b Street{30}:
+  = @address.street{30}
+%p
+  %b City{30}:
+  = @address.city{30}
+%p
+  %b State{2}:
+  = @address.state{2}
+%p
+  %b Post code{10}:
+  = @address.post_code{10}
+%p
+  %b Map reference:
+  = @address.map_reference
+%p
+  %b Latitude:
+  = @address.latitude
+%p
+  %b Longitude:
+  = @address.longitude
+
+= link_to 'Edit', edit_address_path(@address)
+\|
+= link_to 'Back', addresses_path

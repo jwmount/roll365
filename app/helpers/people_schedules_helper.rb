@@ -1,0 +1,2 @@
+module PeopleSchedulesHelper
+end

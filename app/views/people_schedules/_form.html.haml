@@ -1,0 +1,16 @@
+= form_for @people_schedule do |f|
+  - if @people_schedule.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@people_schedule.errors.count, "error")} prohibited this people_schedule from being saved:"
+      %ul
+        - @people_schedule.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :person_id
+    = f.number_field :person_id
+  .field
+    = f.label :schedule_id
+    = f.number_field :schedule_id
+  .actions
+    = f.submit 'Save'

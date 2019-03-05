@@ -1,0 +1,47 @@
+%h1 Listing dockets
+
+%table
+  %thead
+    %tr
+      %th Engagement
+      %th Person
+      %th Number
+      %th Date worked
+      %th Dated
+      %th Received on
+      %th Operator signed
+      %th Client signed
+      %th Approved
+      %th Approved on
+      %th Approved by
+      %th A inv pay
+      %th B inv pay
+      %th Supplier inv pay
+      %th
+      %th
+      %th
+
+  %tbody
+    - @dockets.each do |docket|
+      %tr
+        %td= docket.engagement_id
+        %td= docket.person_id
+        %td= docket.number
+        %td= docket.date_worked
+        %td= docket.dated
+        %td= docket.received_on
+        %td= docket.operator_signed
+        %td= docket.client_signed
+        %td= docket.approved
+        %td= docket.approved_on
+        %td= docket.approved_by
+        %td= docket.a_inv_pay
+        %td= docket.b_inv_pay
+        %td= docket.supplier_inv_pay
+        %td= link_to 'Show', docket
+        %td= link_to 'Edit', edit_docket_path(docket)
+        %td= link_to 'Destroy', docket, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Docket', new_docket_path

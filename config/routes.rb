@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  resources :certs
+  resources :engagements
+  resources :solution_tips
+  resources :people_schedules
+  resources :schedules
+  resources :dockets
+  resources :conditions
+  resources :certificates
+  resources :requirements
+  resources :materials
+  resources :tips
+  resources :identifiers
+  resources :addresses
+  resources :reservations
   resources :solutions
   resources :quotes
   resources :projects

@@ -1,0 +1,25 @@
+%h1 Listing schedules
+
+%table
+  %thead
+    %tr
+      %th Day
+      %th Job
+      %th Equipment units today
+      %th
+      %th
+      %th
+
+  %tbody
+    - @schedules.each do |schedule|
+      %tr
+        %td= schedule.day
+        %td= schedule.job_id
+        %td= schedule.equipment_units_today
+        %td= link_to 'Show', schedule
+        %td= link_to 'Edit', edit_schedule_path(schedule)
+        %td= link_to 'Destroy', schedule, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Schedule', new_schedule_path

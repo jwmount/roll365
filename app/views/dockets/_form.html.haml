@@ -1,0 +1,52 @@
+= form_for @docket do |f|
+  - if @docket.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@docket.errors.count, "error")} prohibited this docket from being saved:"
+      %ul
+        - @docket.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :engagement_id
+    = f.number_field :engagement_id
+  .field
+    = f.label :person_id
+    = f.number_field :person_id
+  .field
+    = f.label :number
+    = f.text_field :number
+  .field
+    = f.label :date_worked
+    = f.datetime_select :date_worked
+  .field
+    = f.label :dated
+    = f.datetime_select :dated
+  .field
+    = f.label :received_on
+    = f.datetime_select :received_on
+  .field
+    = f.label :operator_signed
+    = f.check_box :operator_signed
+  .field
+    = f.label :client_signed
+    = f.check_box :client_signed
+  .field
+    = f.label :approved
+    = f.check_box :approved
+  .field
+    = f.label :approved_on
+    = f.datetime_select :approved_on
+  .field
+    = f.label :approved_by
+    = f.text_field :approved_by
+  .field
+    = f.label :a_inv_pay
+    = f.text_field :a_inv_pay
+  .field
+    = f.label :b_inv_pay
+    = f.text_field :b_inv_pay
+  .field
+    = f.label :supplier_inv_pay
+    = f.text_field :supplier_inv_pay
+  .actions
+    = f.submit 'Save'

@@ -1,0 +1,29 @@
+%h1 Listing identifiers
+
+%table
+  %thead
+    %tr
+      %th Company
+      %th Person
+      %th Name{30}
+      %th Value{30}
+      %th Rank
+      %th
+      %th
+      %th
+
+  %tbody
+    - @identifiers.each do |identifier|
+      %tr
+        %td= identifier.company
+        %td= identifier.person
+        %td= identifier.name{30}
+        %td= identifier.value{30}
+        %td= identifier.rank
+        %td= link_to 'Show', identifier
+        %td= link_to 'Edit', edit_identifier_path(identifier)
+        %td= link_to 'Destroy', identifier, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Identifier', new_identifier_path

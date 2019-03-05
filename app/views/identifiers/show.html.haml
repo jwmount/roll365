@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Company:
+  = @identifier.company
+%p
+  %b Person:
+  = @identifier.person
+%p
+  %b Name{30}:
+  = @identifier.name{30}
+%p
+  %b Value{30}:
+  = @identifier.value{30}
+%p
+  %b Rank:
+  = @identifier.rank
+
+= link_to 'Edit', edit_identifier_path(@identifier)
+\|
+= link_to 'Back', identifiers_path

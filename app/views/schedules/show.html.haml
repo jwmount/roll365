@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Day:
+  = @schedule.day
+%p
+  %b Job:
+  = @schedule.job_id
+%p
+  %b Equipment units today:
+  = @schedule.equipment_units_today
+
+= link_to 'Edit', edit_schedule_path(@schedule)
+\|
+= link_to 'Back', schedules_path

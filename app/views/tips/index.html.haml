@@ -1,0 +1,27 @@
+%h1 Listing tips
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Company
+      %th Fee
+      %th Fire ant risk level
+      %th
+      %th
+      %th
+
+  %tbody
+    - @tips.each do |tip|
+      %tr
+        %td= tip.name
+        %td= tip.company_id
+        %td= tip.fee
+        %td= tip.fire_ant_risk_level
+        %td= link_to 'Show', tip
+        %td= link_to 'Edit', edit_tip_path(tip)
+        %td= link_to 'Destroy', tip, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Tip', new_tip_path

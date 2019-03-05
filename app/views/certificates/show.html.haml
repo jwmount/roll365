@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @certificate.name
+%p
+  %b Description:
+  = @certificate.description
+%p
+  %b For person:
+  = @certificate.for_person
+%p
+  %b For company:
+  = @certificate.for_company
+%p
+  %b For equipment:
+  = @certificate.for_equipment
+%p
+  %b For location:
+  = @certificate.for_location
+%p
+  %b Active:
+  = @certificate.active
+
+= link_to 'Edit', edit_certificate_path(@certificate)
+\|
+= link_to 'Back', certificates_path

@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @tip.name
+%p
+  %b Company:
+  = @tip.company_id
+%p
+  %b Fee:
+  = @tip.fee
+%p
+  %b Fire ant risk level:
+  = @tip.fire_ant_risk_level
+
+= link_to 'Edit', edit_tip_path(@tip)
+\|
+= link_to 'Back', tips_path

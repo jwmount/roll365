@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Require:
+  = @cert.require
+%p
+  %b Certifiable:
+  = @cert.certifiable_id
+%p
+  %b Expires on:
+  = @cert.expires_on
+%p
+  %b Serial number:
+  = @cert.serial_number
+%p
+  %b Permanent:
+  = @cert.permanent
+%p
+  %b Active:
+  = @cert.active
+
+= link_to 'Edit', edit_cert_path(@cert)
+\|
+= link_to 'Back', certs_path
