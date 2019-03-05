@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_05_032422) do
+ActiveRecord::Schema.define(version: 2019_03_05_033641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,21 @@ ActiveRecord::Schema.define(version: 2019_03_05_032422) do
     t.boolean "active"
     t.integer "intends_to_bid"
     t.integer "submitted_bid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "quotes", force: :cascade do |t|
+    t.integer "project_id"
+    t.integer "quote_to_id"
+    t.integer "rep_id"
+    t.string "name"
+    t.boolean "fire_ants"
+    t.string "fire_ants_verified_by"
+    t.text "inclusions"
+    t.datetime "expected_start"
+    t.integer "duration"
+    t.string "council"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

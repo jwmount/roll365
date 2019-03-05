@@ -1,0 +1,36 @@
+%p#notice= notice
+
+%p
+  %b Project:
+  = @quote.project_id
+%p
+  %b Quote to:
+  = @quote.quote_to_id
+%p
+  %b Rep:
+  = @quote.rep_id
+%p
+  %b Name{30}:
+  = @quote.name{30}
+%p
+  %b Fire ants:
+  = @quote.fire_ants
+%p
+  %b Fire ants verified by:
+  = @quote.fire_ants_verified_by
+%p
+  %b Inclusions:
+  = @quote.inclusions
+%p
+  %b Expected start:
+  = @quote.expected_start
+%p
+  %b Duration:
+  = @quote.duration
+%p
+  %b Council:
+  = @quote.council
+
+= link_to 'Edit', edit_quote_path(@quote)
+\|
+= link_to 'Back', quotes_path
