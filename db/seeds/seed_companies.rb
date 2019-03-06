@@ -169,19 +169,19 @@
 
   
   @company_list.each do |model| 
-    byebug
+ byebug
     @company = Company.find_or_create_by( model["company"] )
-    @company.addresses.find_or_create_by( model["address"] )
+ #   @company.addresses.find_or_create_by( model["address"] )
 
     #Person is Rep (make a method for this [TODO])
-    model["person"]["title"] = "Rep" if @company.licensee
-    @company.people.find_or_create_by( model["person"] )
+#    model["person"]["title"] = "Rep" if @company.licensee
+#    @company.people.find_or_create_by( model["person"] )
     
     #Identifiers
-    @company.identifiers.find_or_create_by( model["identifier"] )
+#    @company.identifiers.find_or_create_by( model["identifier"] )
     
     #Tips
-    @company.tips.find_or_create_by( model["tip"] ) unless model["tip"].nil?
+#    @company.tips.find_or_create_by( model["tip"] ) unless model["tip"].nil?
   end
 
   p "#{Company.count} Companies loaded."

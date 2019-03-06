@@ -1,6 +1,7 @@
 ActiveAdmin.register Company do
 
-
+filter :name
+=begin
 #
 # I N D E X / L I S T  C O N T E X T
 #
@@ -23,15 +24,15 @@ ActiveAdmin.register Company do
       li link_to "Dashboard", admin_dashboard_path
   end
 
-=begin [TODO]
+# =begin [TODO]
   index do
 
     selectable_column
 
     column "Name (click for details)", :sortable => 'name' do |company|
       render company
-      render company.identifiers unless company.identifiers.empty?
-      render company.addresses unless company.addresses.empty?
+  #    render company.identifiers unless company.identifiers.empty?
+  #    render company.addresses unless company.addresses.empty?
     end
 
     column :projects do |company|
@@ -66,7 +67,7 @@ ActiveAdmin.register Company do
       company.credit_terms
     end
 
-    column "PO required" do |company|
+    column "PO".upper + " required" do |company|
       status_tag (company.PO_required ? "YES" : "No"), (company.PO_required ? :ok : :error)
     end      
     column :active do |company|
@@ -74,6 +75,7 @@ ActiveAdmin.register Company do
     end      
   end
   
+=begin
   form do |f|
     f.semantic_errors *f.object.errors.keys
     error_panel f
