@@ -1,7 +1,13 @@
 ActiveAdmin.register Company do
 
+# 
+# F I L T E R S    F I L T E R S    F I L T E R S    F I L T E R S   
+# Sideware limited to named filter, otherwise all fields of model.
+# All fields has its merits, e.g. find by date range
+#
 filter :name
-=begin
+
+
 #
 # I N D E X / L I S T  C O N T E X T
 #
@@ -24,7 +30,7 @@ filter :name
       li link_to "Dashboard", admin_dashboard_path
   end
 
-# =begin [TODO]
+=begin [TODO]
   index do
 
     selectable_column
