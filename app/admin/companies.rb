@@ -5,7 +5,8 @@ ActiveAdmin.register Company do
 # Sideware limited to named filter, otherwise all fields of model.
 # All fields has its merits, e.g. find by date range
 #
-filter :name
+# filter works, but why limit query components?
+# filter :name
 
 
 #
@@ -20,25 +21,31 @@ filter :name
   sidebar "Company Details", only: [:show, :edit] do 
     ul
       status_tag('Now you can:')
- #     li link_to 'Do Projects', admin_company_projects_path( company )           
+
+    # li link_to 'Do Projects', admin_company_projects_path( company )           
       hr
       status_tag('Work on Company Details:')
-  #    li link_to( "Equipment", admin_company_equipment_index_path( company ) )
-  #    li link_to( "People", admin_company_people_path( company ) )
-#      li link_to( "Projects", admin_company_projects_path( company ) )
+     # li link_to( "Equipment", admin_company_equipment_index_path( company ) )
+      #li link_to( "People", admin_company_people_path( company ) )
+      #li link_to( "Projects", admin_company_projects_path( company ) )
       hr
       li link_to "Dashboard", admin_dashboard_path
   end
 
+
 =begin [TODO]
+*
+* Partials do NOT APPEAR TO WORK in rails 5.2.2
+* generates:  Missing partial admin/companies/_company...
+#
   index do
 
     selectable_column
 
     column "Name (click for details)", :sortable => 'name' do |company|
-      render company
-  #    render company.identifiers unless company.identifiers.empty?
-  #    render company.addresses unless company.addresses.empty?
+      render partial: 'company'
+      #render company.identifiers unless company.identifiers.empty?
+      #render company.addresses unless company.addresses.empty?
     end
 
     column :projects do |company|
@@ -79,13 +86,15 @@ filter :name
     column :active do |company|
       status_tag (company.active ? "YES" : "No"), (company.active ? :ok : :error)
     end      
-  end
   
-=begin
+  end
+=end 
+
   form do |f|
     f.semantic_errors *f.object.errors.keys
-    error_panel f
-
+    #error_panel f
+    f.semantic_errors *f.object.errors.keys
+    
     f.inputs "Company Details" do
 
       f.input :name, 
@@ -100,7 +109,7 @@ filter :name
               :placeholder  => AdminConstants::ADMIN_COMPANY_URL_PLACEHOLDER,
               :hint         => AdminConstants::ADMIN_COMPANY_URL_HINT
 
-      f.input :bookeeping_number,  
+      f.input :bookkeeping_number,  
               :as          => :string, 
               :hint        => AdminConstants::ADMIN_COMPANY_BOOKEEPING_NO_HINT,
               :placeholder => AdminConstants::ADMIN_COMPANY_BOOKEEPING_NO_DEFAULT
@@ -117,7 +126,7 @@ filter :name
       f.input :active, 
               :as => :radio
     end
-
+=begin
     f.inputs "Addresses" do
       f.has_many :addresses do |a|
           a.input :street_address
@@ -171,7 +180,9 @@ filter :name
     end
     f.actions
   end
-    
+
+=end    
+end
   show :title => :display_name do
     attributes_table do
       row :name
@@ -211,7 +222,7 @@ filter :name
     flash[:notice] = AdminConstants::ADMIN_COMPANY_ACTIVE
     redirect_to admin_company_path( company )
   end
-=end
+
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #

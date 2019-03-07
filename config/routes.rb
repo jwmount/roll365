@@ -21,6 +21,18 @@ Rails.application.routes.draw do
   resources :equipment
   resources :jobs
   resources :people
-  resources :companies
+  resources :company
+
+
+#resources :companies
+
+namespace :admin do
+  resources :companies do
+      resources :equipment
+      resources :people
+      resources :projects
+      resources :dashboard
+  end
+end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
