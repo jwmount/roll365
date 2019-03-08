@@ -16,6 +16,7 @@ ActiveAdmin.register Company do
     ul
       li link_to "Dashboard", admin_dashboard_path
       li link_to "People", admin_people_path
+      
   end
 
   sidebar "Company Details", only: [:show, :edit] do 

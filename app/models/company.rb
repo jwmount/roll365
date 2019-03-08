@@ -59,6 +59,7 @@ class Company < ApplicationRecord
     end
   end
   
+  
   def is_bookkeeping_number?
     !self.bookkeeping_number.blank?
   end

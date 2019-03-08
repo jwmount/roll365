@@ -10,7 +10,6 @@ puts "Companies:    \t#{Company.count.to_s}"
 puts "Conditions:   \t#{Condition.count.to_s}"
 puts "Dockets:      \t#{Docket.count.to_s}"
 puts "Engagements:  \t#{Engagement.count.to_s}"
-byebug
 puts "Equipment:    \t#{Equipment.count.to_s}"
 puts "Identifiers:  \t#{Identifier.count.to_s}"
 puts "Jobs:         \t#{Job.count.to_s}"
