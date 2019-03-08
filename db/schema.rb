@@ -69,8 +69,7 @@ ActiveRecord::Schema.define(version: 2019_03_05_164450) do
   end
 
   create_table "certs", force: :cascade do |t|
-    t.string "require_type"
-    t.bigint "require_id"
+    t.string "certifiable_type"
     t.integer "certifiable_id"
     t.datetime "expires_on"
     t.string "serial_number"

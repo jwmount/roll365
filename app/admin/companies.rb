@@ -34,18 +34,19 @@ ActiveAdmin.register Company do
 
 
 =begin [TODO]
-*
-* Partials do NOT APPEAR TO WORK in rails 5.2.2
-* generates:  Missing partial admin/companies/_company...
 #
+# Partials do NOT APPEAR TO WORK in rails 5.2.2
+# generates:  Missing partial admin/companies/_company...
+#
+
   index do
 
     selectable_column
 
     column "Name (click for details)", :sortable => 'name' do |company|
-      render partial: 'company'
-      #render company.identifiers unless company.identifiers.empty?
-      #render company.addresses unless company.addresses.empty?
+      render 'company'
+      render company.identifiers unless company.identifiers.empty?
+      render company.addresses unless company.addresses.empty?
     end
 
     column :projects do |company|
@@ -86,14 +87,13 @@ ActiveAdmin.register Company do
     column :active do |company|
       status_tag (company.active ? "YES" : "No"), (company.active ? :ok : :error)
     end      
-  
   end
-=end 
+=end   
 
   form do |f|
     f.semantic_errors *f.object.errors.keys
     #error_panel f
-    f.semantic_errors *f.object.errors.keys
+  
     
     f.inputs "Company Details" do
 
@@ -226,6 +226,6 @@ end
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-  permit_params :name, :credit_terms, :PO_required, :active, :bookkeeping_number, :line_of_business, :url
+  permit_params :name, :credit_terms, :PO_required, :active, :bookkeeping_number, :line_of_business, :url, :licensee
 
 end
