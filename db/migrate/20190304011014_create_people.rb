@@ -5,6 +5,7 @@ class CreatePeople < ActiveRecord::Migration[5.2]
       t.string :first_name
       t.string :last_name
       t.string :title
+      t.string :role
       t.boolean :available
       t.datetime :available_on
       t.boolean :OK_to_contact

@@ -21,15 +21,15 @@ Rails.application.routes.draw do
   resources :equipment
   resources :jobs
   resources :people
-  resources :company
+  resources :companies
 
 
 #resources :companies
 
-namespace :admin do
+ namespace :admin do
+  resources :people
   resources :companies do
       resources :equipment
-      resources :people
       resources :projects
       resources :dashboard
   end

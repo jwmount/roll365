@@ -169,8 +169,8 @@
 
   
   @company_list.each do |model| 
- byebug
     @company = Company.find_or_create_by( model["company"] )
+    @company.save
  #   @company.addresses.find_or_create_by( model["address"] )
 
     #Person is Rep (make a method for this [TODO])

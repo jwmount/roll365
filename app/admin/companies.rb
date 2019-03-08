@@ -35,8 +35,9 @@ ActiveAdmin.register Company do
 
 =begin [TODO]
 #
-# Partials do NOT APPEAR TO WORK in rails 5.2.2
-# generates:  Missing partial admin/companies/_company...
+# Partials do APPEAR TO NOT WORK in rails 5.2.2
+# generates:  Missing partial admin/companies/_company.html.haml
+# but path should be admin/app/views/companies/_company.html.haml
 #
 
   index do
@@ -74,7 +75,7 @@ ActiveAdmin.register Company do
     end
     
     column "Bookkeeping No." do |company|
-      company.bookeeping_number
+      company.bookkeeping_number
     end
 
     column "Credit Terms" do |company|
@@ -192,7 +193,7 @@ end
       row :credit_terms
       row("PO_required") { status_tag (company.PO_required ? "YES" : "No"), (company.PO_required ? :ok : :error) }        
       row("active") { status_tag (company.active ? "YES" : "No"), (company.active ? :ok : :error) }
-      row :bookeeping_number
+      row :bookkeeping_number
       row ("People") {render company.people}
       row ("Projects") { render company.projects}
       row ("Equipment") { render company.equipment}

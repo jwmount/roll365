@@ -34,18 +34,18 @@ class Company < ApplicationRecord
 #
 # V A L I D A T I O N S
 #
-  validates_presence_of :name
-  validates_uniqueness_of :name
+  # validates_presence_of :name
+  # validates_uniqueness_of :name
 
-  # conditional validations -- bookeeping_number
+  # conditional validations -- bookkeeping_number
   # note that :if clause is a hash and NOT a comparison
-  # bookeeping_number number must be unique 5 digits if given, otherwise may be blank.
-  with_options :if => :is_bookeeping_number? do |c|
-     c.validates_presence_of :bookeeping_number, 
+  # bookkeeping_number number must be unique 5 digits if given, otherwise may be blank.
+  with_options :if => :is_bookkeeping_number? do |c|
+     c.validates_presence_of :bookkeeping_number, 
      :numericality => { :only_integer => true, 
-                        :greater_than_or_equal_to => AdminConstants::ADMIN_COMPANY_BOOKEEPING_NO_BASE,
-                        :less_than_or_equal_to => AdminConstants::ADMIN_COMPANY_BOOKEEPING_NO_MAX,
-                        :equal_to => AdminConstants::ADMIN_COMPANY_BOOKEEPING_NO_DEFAULT
+                        :greater_than_or_equal_to => AdminConstants::ADMIN_COMPANY_BOOKKEEPING_NO_BASE,
+                        :less_than_or_equal_to => AdminConstants::ADMIN_COMPANY_BOOKKEEPING_NO_MAX,
+                        :equal_to => AdminConstants::ADMIN_COMPANY_BOOKKEEPING_NO_DEFAULT
                       }
   end
 
@@ -59,8 +59,8 @@ class Company < ApplicationRecord
     end
   end
   
-  def is_bookeeping_number?
-    !self.bookeeping_number.blank?
+  def is_bookkeeping_number?
+    !self.bookkeeping_number.blank?
   end
   
   def display_name

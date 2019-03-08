@@ -30,8 +30,8 @@ class Project < ApplicationRecord
 #
 # V A L I D A T I O N S
 #
-  validates_presence_of :name
-  validates_presence_of :company_id
+# validates_presence_of :name
+# validates_presence_of :company_id
 #
 # C A L L B A C K S     C A L L B A C K S     C A L L B A C K S     C A L L B A C K S     
 #

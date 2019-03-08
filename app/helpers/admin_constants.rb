@@ -24,10 +24,10 @@ module AdminConstants
   ADMIN_COMPANY_URL_PLACEHOLDER          = "www.company_name.com"
   ADMIN_COMPANY_URL_HINT                 = "Web site, URL."
 
-  ADMIN_COMPANY_BOOKEEPING_NO_BASE       = '10000'
-  ADMIN_COMPANY_BOOKEEPING_NO_MAX        = '99999'
-  ADMIN_COMPANY_BOOKEEPING_NO_DEFAULT    = '00000'
-  ADMIN_COMPANY_BOOKEEPING_NO_HINT       = "Bookeeping account number for this company; unique, five digits."
+  ADMIN_COMPANY_BOOKKEEPING_NO_BASE       = '10000'
+  ADMIN_COMPANY_BOOKKEEPING_NO_MAX        = '99999'
+  ADMIN_COMPANY_BOOKKEEPING_NO_DEFAULT    = '00000'
+  ADMIN_COMPANY_BOOKKEEPING_NO_HINT       = "Bookeeping account number for this company; unique, five digits."
 
   ADMIN_COMPANY_CREDIT_TERMS_DEFAULT     = 30
   ADMIN_C0MPANY_CREDIT_TERMS_LABEL       = "Credit Terms (Days)", 

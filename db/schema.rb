@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_05_164450) do
+ActiveRecord::Schema.define(version: 2019_03_08_174652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(version: 2019_03_05_164450) do
   end
 
   create_table "addresses", force: :cascade do |t|
-    t.string "company_type"
-    t.bigint "company_id"
-    t.string "street"
+    t.string "addressable_type"
+    t.bigint "addressable_id"
+    t.string "street_address"
     t.string "city"
     t.string "state"
     t.string "post_code"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2019_03_05_164450) do
     t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["company_type", "company_id"], name: "index_addresses_on_company_type_and_company_id"
+    t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
   end
 
   create_table "admin_users", force: :cascade do |t|
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2019_03_05_164450) do
     t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["require_type", "require_id"], name: "index_certs_on_require_type_and_require_id"
+    t.index ["certifiable_type", "certifiable_id"], name: "index_certs_on_certifiable_type_and_certifiable_id"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -147,17 +147,14 @@ ActiveRecord::Schema.define(version: 2019_03_05_164450) do
   end
 
   create_table "identifiers", force: :cascade do |t|
-    t.string "company_type"
-    t.bigint "company_id"
-    t.string "person_type"
-    t.bigint "person_id"
+    t.string "identifiable_type"
+    t.bigint "identifiable_id"
     t.string "name"
     t.string "value"
     t.integer "rank"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["company_type", "company_id"], name: "index_identifiers_on_company_type_and_company_id"
-    t.index ["person_type", "person_id"], name: "index_identifiers_on_person_type_and_person_id"
+    t.index ["identifiable_type", "identifiable_id"], name: "index_identifiers_on_identifiable_type_and_identifiable_id"
   end
 
   create_table "jobs", force: :cascade do |t|
@@ -185,6 +182,7 @@ ActiveRecord::Schema.define(version: 2019_03_05_164450) do
     t.string "first_name"
     t.string "last_name"
     t.string "title"
+    t.string "role"
     t.boolean "available"
     t.datetime "available_on"
     t.boolean "OK_to_contact"
@@ -246,6 +244,13 @@ ActiveRecord::Schema.define(version: 2019_03_05_164450) do
     t.integer "schedule_id"
     t.integer "equipment_id"
     t.integer "number_requested"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

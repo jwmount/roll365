@@ -39,17 +39,26 @@ class Person < ApplicationRecord
   
   # Update scopes for rails 5.2.2
   # scope :alphabetically, -> { order: ("last_name DESC") }
-  # scope :post_code,      -> { where(certifiable_type: "Person")}
+  scope :post_code,      -> { where(certifiable_type: "Person")}
   
   delegate :post_code, :to => :address
 
 #
 # V A L I D A T I O N S
 #
-  validates_presence_of :last_name
+#  validates_presence_of :last_name
 
 #
 # D E F A U L T S
+#
+
+#
+# Roles people can be in
+#
+  roles_list = %w[ admin bookkeeper driver management operations sales superadmin visitor]
+
+#
+# Validations
 #
   after_initialize :defaults
   def defaults
@@ -62,7 +71,9 @@ class Person < ApplicationRecord
     end
   end
 
-
+#
+# class methods
+#
   def display_name
     full_name
   end
@@ -70,7 +81,10 @@ class Person < ApplicationRecord
   def full_name
     [self.first_name, self.last_name].compact.join ' '
   end
-    
+ 
+ #
+ # Address(es)
+ #   
   def address
     @address = Address.where("addressable_id = ? AND addressable_type = ?", self.id, 'Company').limit(1)
     unless @address.blank?
