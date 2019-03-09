@@ -1,40 +1,8 @@
 ActiveAdmin.register Certificate do
 
-  permit_params :description, :for_person, :for_company, :for_equipment, :for_location, :active,
-                :list, :of, :attributes, :on, :model
-
   menu parent: "Compliance"
 
-=begin
-  scope :all, -> { where(default: true) }
-  scope :active, -> { where(active: true ) }
-  scope :inactive, -> { where(active: false) }
-  scope :people, -> { where(for_person: true) }
-  scope :companies, -> { where(for_company: true) }
-  scope :equipment, -> { where(for_equipment: true) }
-  scope :location, -> { where(forelocation: true) }
-
-  Rails 3.x remove 
-  scope :all, :default => true 
-  scope :active do |certificates|
-    certificates.where ({active: true})
-  end
-  scope :inactive do |certificates|
-    certificates.where ({active: false})
-  end
-  scope :people do |certificates|
-    certificates.where ({for_person: true})
-  end
-  scope :companies do |certificates|
-    certificates.where ({for_company: true})
-  end
-  scope :equipment do |certificates|
-    certificates.where ({for_equipment: true})
-  end   
-  scope :location do |certificates|
-    certificates.where ({for_location: true})
-  end
-=end
+  
   index do
     column :name , :sortable => 'name' do |certificate|
       link_to certificate.name, admin_certificate_path(certificate)
@@ -99,30 +67,11 @@ ActiveAdmin.register Certificate do
 #
 # W H I T E  L I S T  M A N A G E M E N T
 #
-controller do
+# This arrangement works too, but not for what we might want, for exampple allowing you to enter a name and 
+# description pand the for_ values later.   We can work this out so it's not possible to go forward without a 
+# valid, at least complete, required document.  See the Rails Guide.
+# 
+  permit_params :name, :description, :for_person, :for_company, :for_equipment, :for_location, :active
 
-    def create
-      params.permit!
-      super
-    end
-
-    def update
-      params.permit!
-      super
-    end
-
-    def certificate_params
-      params.require(:certificate).permit( :id,
-                                           :name,
-                                           :description,
-                                           :for_person,
-                                           :for_company,
-                                           :for_equipment,
-                                           :for_location,
-                                           :active,
-                                           :updated_on
-                                         )
-    end
-  end
 
 end
