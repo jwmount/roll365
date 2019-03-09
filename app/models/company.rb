@@ -1,30 +1,42 @@
 class Company < ApplicationRecord
 
-  has_many :people, 
-           :dependent => :destroy
-  has_many :equipment, 
-           :dependent => :destroy
-  has_many :projects, 
-           :dependent => :destroy
+#
+# A S S O C I A T I O N S    A S S O C I A T I O N S    A S S O C I A T I O N S   
+#
+  has_many :people, :dependent => :destroy
+  validates_associated :people
+
+  has_many :equipment, :dependent => :destroy
+  validates_associated :equipment
+           
+  has_many :projects, :dependent => :destroy
+  validates_associated :projects
+
   has_many :reservations
+  validates_associated :reservations
+
   # We do not use :dependent => :destroy as tips survive company owners.  OK?
   has_many :tips
+  validates_associated :tips
 
   # polymorphs
   has_many  :addresses, 
             :as        => :addressable, 
             :autosave  => true, 
             :dependent => :destroy
+  validates_associated :addresses            
 
   has_many :certs, 
            :as        => :certifiable, 
            :autosave  => true, 
            :dependent => :destroy
+  validates_associated :certs
 
   has_many :identifiers, 
            :as        => :identifiable, 
            :autosave  => true, 
            :dependent => :destroy
+  validates_associated :identifiers
 
   accepts_nested_attributes_for :addresses
   accepts_nested_attributes_for :certs

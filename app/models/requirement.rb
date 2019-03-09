@@ -1,3 +1,5 @@
 class Requirement < ApplicationRecord
-  belongs_to :require, polymorphic: true
+  
+  belongs_to :certificate, polymorphic: true
+
 end

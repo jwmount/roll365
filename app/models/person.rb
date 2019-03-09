@@ -8,11 +8,16 @@ class Person < ApplicationRecord
   # end # the configuration block is optional
 
   belongs_to :company
-  
+
   has_many :dockets, :dependent => :destroy
+  validates_associated :dockets
+
   has_many :engagements, :dependent => :destroy
+  validates_associated :engagements
+
   #has_many :reservations, :dependent => :destroy
   has_and_belongs_to_many :schedules
+  validates_associated :schedules
   
   #
   # P O L Y M O R P H I C  A S S O C I A T I O N S
@@ -21,16 +26,19 @@ class Person < ApplicationRecord
             :as           => :addressable, 
             :autosave     => true, 
             :dependent    => :destroy
+  validates_associated :addresses
 
   has_many :certs, 
            :as            => :certifiable, 
            :autosave      => true, 
            :dependent     => :destroy
+  validates_associated :certs
 
   has_many :identifiers, 
            :as            => :identifiable, 
            :autosave      => true, 
            :dependent     => :destroy
+  validates_associated :identifiers
 
   # NESTING           
   accepts_nested_attributes_for :addresses

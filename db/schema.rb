@@ -142,7 +142,7 @@ ActiveRecord::Schema.define(version: 2019_03_08_174652) do
   create_table "equipment", force: :cascade do |t|
     t.string "name", limit: 60
     t.integer "company_id"
-    t.string "Description"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

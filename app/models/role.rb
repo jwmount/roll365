@@ -1,6 +1,8 @@
 class Role < ApplicationRecord
   
   has_many :admin_users
+  validates_associated :admin_users
+  
   #has_and_belongs_to_many :adminUsers
   
     # scope :alphabetically, order("name ASC")
