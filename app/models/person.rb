@@ -1,12 +1,6 @@
 class Person < ApplicationRecord
 
 
-  # audited, not on Rails 4 yet
-
-  # acts_as_authentic do |c|
-  #   c.logged_in_timeout = 20.minutes # default is 10.minutes
-  # end # the configuration block is optional
-
   belongs_to :company
 
   has_many :dockets, :dependent => :destroy

@@ -26,9 +26,9 @@ ActiveAdmin.register Company do
     # li link_to 'Do Projects', admin_company_projects_path( company )           
       hr
       status_tag('Work on Company Details:')
-     # li link_to( "Equipment", admin_company_equipment_index_path( company ) )
-      #li link_to( "People", admin_company_people_path( company ) )
-      #li link_to( "Projects", admin_company_projects_path( company ) )
+       li link_to( "Equipment", admin_company_equipment_index_path( company ) )
+       li link_to( "People", admin_company_people_path( company ) )
+       li link_to( "Projects", admin_company_projects_path( company ) )
       hr
       li link_to "Dashboard", admin_dashboard_path
   end
@@ -113,8 +113,8 @@ ActiveAdmin.register Company do
 
       f.input :bookkeeping_number,  
               :as          => :string, 
-              :hint        => AdminConstants::ADMIN_COMPANY_BOOKEEPING_NO_HINT,
-              :placeholder => AdminConstants::ADMIN_COMPANY_BOOKEEPING_NO_DEFAULT
+              :hint        => AdminConstants::ADMIN_COMPANY_BOOKKEEPING_NO_HINT,
+              :placeholder => AdminConstants::ADMIN_COMPANY_BOOKKEEPING_NO_DEFAULT
 
       f.input :PO_required,  
               :as          => :radio, 
@@ -195,10 +195,10 @@ end
       row("PO_required") { status_tag (company.PO_required ? "YES" : "No"), (company.PO_required ? :ok : :error) }        
       row("active") { status_tag (company.active ? "YES" : "No"), (company.active ? :ok : :error) }
       row :bookkeeping_number
-      row ("People") {render company.people}
-      row ("Projects") { render company.projects}
-      row ("Equipment") { render company.equipment}
-      row ("Address") { render company.addresses}
+      row ("People") {admin_people_path (company)}
+      row ("Projects") {admin_company_projects_path (company) }
+      # row ("Equipment") {admin_company_equipment_index_path }
+      # row ("Address")  {admin_company_addresses_path}
       row ("Certifications") { render company.certs}
     end
 
@@ -225,8 +225,8 @@ end
     redirect_to admin_company_path( company )
   end
 
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
+# 
+# W H I T E  L I S T.  W H I T E  L I S T.  W H I T E  L I S T.  W H I T E  L I S T.  W H I T E  L I S T. 
 #
   permit_params :name, :credit_terms, :PO_required, :active, :bookkeeping_number, :line_of_business, :url, :licensee
 

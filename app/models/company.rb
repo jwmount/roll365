@@ -44,10 +44,10 @@ class Company < ApplicationRecord
 
 
 #
-# V A L I D A T I O N S
+# V A L I D A T I O N S   O N  C L A S S  O B J E C T   V A L I D A T I O N S   O N  C L A S S  O B J E C T. 
 #
-  # validates_presence_of :name
-  # validates_uniqueness_of :name
+  validates_presence_of :name
+  validates_uniqueness_of :name
 
   # conditional validations -- bookkeeping_number
   # note that :if clause is a hash and NOT a comparison

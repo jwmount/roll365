@@ -37,12 +37,16 @@ Rails.application.routes.draw do
   
   #resources :companies
 
- namespace :admin do
-   resources :people
-   resources :companies do
-      resources :equipment
-      resources :projects
+   namespace :admin do
+    
+     resources :companies do
+        resources :address
+        resources :certs
+        resources :people
+        resources :equipment
+        resources :projects
+     end
+     
   end
-end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

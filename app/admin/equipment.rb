@@ -29,8 +29,7 @@ ActiveAdmin.register Equipment do
 
 
   form do |f|
-    error_panel f
-
+ 
     f.inputs "Equipment for #{self.company.name}" do
 
       f.input :name,
@@ -86,10 +85,10 @@ ActiveAdmin.register Equipment do
     active_admin_comments
   end          
 
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
+# 
+# W H I T E L I S T.  W H I T E L I S T.  W H I T E L I S T.  W H I T E L I S T.  
 #
-  permit_params :name
+  permit_params :name, :description
 
 
 end
