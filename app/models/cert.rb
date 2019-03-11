@@ -19,8 +19,6 @@ class Cert < ApplicationRecord
   belongs_to :requirements, polymorphic: true
   
 
-  # audited, not on Rails 4 yet
-
 #
 # D E F A U L T S
 #

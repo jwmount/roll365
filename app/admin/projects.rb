@@ -1,6 +1,6 @@
 ActiveAdmin.register Project do
 
-#  menu label: "Projects"
+  menu label: "Projects"
   
   # NOT OPTIONAL, effect is to scope projects to companies.
   belongs_to :company

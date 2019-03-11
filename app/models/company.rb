@@ -41,8 +41,7 @@ class Company < ApplicationRecord
   accepts_nested_attributes_for :addresses
   accepts_nested_attributes_for :certs
   accepts_nested_attributes_for :identifiers
-
-
+  
 #
 # V A L I D A T I O N S   O N  C L A S S  O B J E C T   V A L I D A T I O N S   O N  C L A S S  O B J E C T. 
 #

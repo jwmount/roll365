@@ -45,9 +45,10 @@ ActiveAdmin.register Company do
     selectable_column
 
     column "Name (click for details)", :sortable => 'name' do |company|
-      company.display_name
-      company.identifiers unless company.identifiers.empty?
-      company.address unless company.address.empty?
+      company
+      # company.identifiers.map(&:name).join(',') unless company.identifiers.empty?
+      # company.addresses.map(&:street_address).join(',') unless company.address.empty?
+
     end
 
     column :projects do |company|
@@ -87,7 +88,7 @@ ActiveAdmin.register Company do
     end      
     column :active do |company|
       status_tag (company.active ? "YES" : "No"), (company.active ? :ok : :error)
-    end      
+      end      
   end
 
 
@@ -163,7 +164,7 @@ ActiveAdmin.register Company do
       f.has_many :certs do |f|
 
         f.input :certificate,
-                :collection => Certificate.where({:for_company => true}),
+                :collection => Certs.where({:for_company => true}),
                 :include_blank => false
 
         f.input :active
@@ -193,11 +194,11 @@ ActiveAdmin.register Company do
       row("PO_required") { status_tag (company.PO_required ? "YES" : "No"), (company.PO_required ? :ok : :error) }        
       row("active") { status_tag (company.active ? "YES" : "No"), (company.active ? :ok : :error) }
       row :bookkeeping_number
-      row ("People") {company.people}
-      row ("Projects") {company.projects}
-      row ("Equipment") {company.equipment}
-      row ("Address")  {company.addresses}
-      row ("Certifications") {company.certs}
+    #  row ("People") {company.people}
+    #  row ("Projects") {company.projects}
+    #  row ("Equipment") {company.equipment}
+    #  row ("Address")  {company.addresses}
+    #  row ("Certifications") {company.certs}
     end
 
     active_admin_comments
