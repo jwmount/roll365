@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 2019_03_12_022341) do
   end
 
   create_table "addresses", force: :cascade do |t|
+    t.integer "addressable_id"
+    t.string "addressable_type"
     t.string "street_address"
     t.string "city"
     t.string "state"
@@ -101,8 +103,20 @@ ActiveRecord::Schema.define(version: 2019_03_12_022341) do
     t.string "line_of_business"
     t.string "url"
     t.string "licensee"
+    t.string "address_type"
+    t.bigint "address_id"
+    t.string "identifier_type"
+    t.bigint "identifier_id"
+    t.string "cert_type"
+    t.bigint "cert_id"
+    t.string "requirement_type"
+    t.bigint "requirement_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["address_type", "address_id"], name: "index_companies_on_address_type_and_address_id"
+    t.index ["cert_type", "cert_id"], name: "index_companies_on_cert_type_and_cert_id"
+    t.index ["identifier_type", "identifier_id"], name: "index_companies_on_identifier_type_and_identifier_id"
+    t.index ["requirement_type", "requirement_id"], name: "index_companies_on_requirement_type_and_requirement_id"
   end
 
   create_table "conditions", force: :cascade do |t|
@@ -209,14 +223,6 @@ ActiveRecord::Schema.define(version: 2019_03_12_022341) do
     t.integer "schedule_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "products", force: :cascade do |t|
-    t.string "supplier_type"
-    t.bigint "supplier_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["supplier_type", "supplier_id"], name: "index_products_on_supplier_type_and_supplier_id"
   end
 
   create_table "projects", force: :cascade do |t|

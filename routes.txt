@@ -442,14 +442,14 @@ batch_action_admin_company_equipment_index POST       /admin/companies/:company_
                                            PATCH      /admin/companies/:id(.:format)                                                           admin/companies#update
                                            PUT        /admin/companies/:id(.:format)                                                           admin/companies#update
                                            DELETE     /admin/companies/:id(.:format)                                                           admin/companies#destroy
-                       admin_company_certs GET        /admin/companies/:company_id/certs(.:format)                                             admin/certs#index
-                                           POST       /admin/companies/:company_id/certs(.:format)                                             admin/certs#create
-                    new_admin_company_cert GET        /admin/companies/:company_id/certs/new(.:format)                                         admin/certs#new
-                                           GET        /admin/certs/:id/edit(.:format)                                                          admin/certs#edit
-                                           GET        /admin/certs/:id(.:format)                                                               admin/certs#show
-                                           PATCH      /admin/certs/:id(.:format)                                                               admin/certs#update
-                                           PUT        /admin/certs/:id(.:format)                                                               admin/certs#update
-                                           DELETE     /admin/certs/:id(.:format)                                                               admin/certs#destroy
+                admin_company_certificates GET        /admin/companies/:company_id/certificates(.:format)                                      admin/certificates#index
+                                           POST       /admin/companies/:company_id/certificates(.:format)                                      admin/certificates#create
+             new_admin_company_certificate GET        /admin/companies/:company_id/certificates/new(.:format)                                  admin/certificates#new
+                                           GET        /admin/certificates/:id/edit(.:format)                                                   admin/certificates#edit
+                                           GET        /admin/certificates/:id(.:format)                                                        admin/certificates#show
+                                           PATCH      /admin/certificates/:id(.:format)                                                        admin/certificates#update
+                                           PUT        /admin/certificates/:id(.:format)                                                        admin/certificates#update
+                                           DELETE     /admin/certificates/:id(.:format)                                                        admin/certificates#destroy
                                            GET        /admin/companies(.:format)                                                               admin/companies#index
                                            POST       /admin/companies(.:format)                                                               admin/companies#create
                                            GET        /admin/companies/new(.:format)                                                           admin/companies#new
@@ -458,6 +458,22 @@ batch_action_admin_company_equipment_index POST       /admin/companies/:company_
                                            PATCH      /admin/companies/:id(.:format)                                                           admin/companies#update
                                            PUT        /admin/companies/:id(.:format)                                                           admin/companies#update
                                            DELETE     /admin/companies/:id(.:format)                                                           admin/companies#destroy
+                   admin_certificate_certs GET        /admin/certificates/:certificate_id/certs(.:format)                                      admin/certs#index
+                                           POST       /admin/certificates/:certificate_id/certs(.:format)                                      admin/certs#create
+                new_admin_certificate_cert GET        /admin/certificates/:certificate_id/certs/new(.:format)                                  admin/certs#new
+                                           GET        /admin/certs/:id/edit(.:format)                                                          admin/certs#edit
+                                           GET        /admin/certs/:id(.:format)                                                               admin/certs#show
+                                           PATCH      /admin/certs/:id(.:format)                                                               admin/certs#update
+                                           PUT        /admin/certs/:id(.:format)                                                               admin/certs#update
+                                           DELETE     /admin/certs/:id(.:format)                                                               admin/certs#destroy
+                                           GET        /admin/certificates(.:format)                                                            admin/certificates#index
+                                           POST       /admin/certificates(.:format)                                                            admin/certificates#create
+                                           GET        /admin/certificates/new(.:format)                                                        admin/certificates#new
+                                           GET        /admin/certificates/:id/edit(.:format)                                                   admin/certificates#edit
+                                           GET        /admin/certificates/:id(.:format)                                                        admin/certificates#show
+                                           PATCH      /admin/certificates/:id(.:format)                                                        admin/certificates#update
+                                           PUT        /admin/certificates/:id(.:format)                                                        admin/certificates#update
+                                           DELETE     /admin/certificates/:id(.:format)                                                        admin/certificates#destroy
                  admin_company_identifiers GET        /admin/companies/:company_id/identifiers(.:format)                                       admin/identifiers#index
                                            POST       /admin/companies/:company_id/identifiers(.:format)                                       admin/identifiers#create
               new_admin_company_identifier GET        /admin/companies/:company_id/identifiers/new(.:format)                                   admin/identifiers#new

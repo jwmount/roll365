@@ -88,7 +88,7 @@ ActiveAdmin.register Project do
   end
   
   form do |f|
-    error_panel f
+
     
     f.inputs "#{company.name}" do
 

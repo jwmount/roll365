@@ -40,10 +40,16 @@ Rails.application.routes.draw do
 
     shallow do
       resources :companies do
-        resources :certs
+        resources :certificates
       end
     end
 
+    shallow do
+      resources :certificates do
+        resources :certs
+      end
+    end
+    
     shallow do
       resources :companies do
         resources :identifiers
