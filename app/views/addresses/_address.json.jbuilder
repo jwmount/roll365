@@ -1,2 +1,2 @@
-json.extract! address, :id, :company_id, :company_type, :street{30}, :city{30}, :state{2}, :post_code{10}, :map_reference, :latitude, :longitude, :created_at, :updated_at
+json.extract! address, :id, :street_address,, :city,, :state,, :po_box, :map_reference, :longitude, :latitude, :company_id, :company_type, :person_id, :person_type, :identifier_id, :identifier_type, :cert_id, :cert_type, :requirement_id, :requirement_type, :created_at, :updated_at
 json.url address_url(address, format: :json)

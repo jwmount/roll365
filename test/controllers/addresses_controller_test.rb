@@ -17,7 +17,7 @@ class AddressesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create address" do
     assert_difference('Address.count') do
-      post addresses_url, params: { address: { city{30}: @address.city{30}, company_id: @address.company_id, company_type: @address.company_type, latitude: @address.latitude, longitude: @address.longitude, map_reference: @address.map_reference, post_code{10}: @address.post_code{10}, state{2}: @address.state{2}, street{30}: @address.street{30} } }
+      post addresses_url, params: { address: { cert_id: @address.cert_id, cert_type: @address.cert_type, city,: @address.city,, company_id: @address.company_id, company_type: @address.company_type, identifier_id: @address.identifier_id, identifier_type: @address.identifier_type, latitude: @address.latitude, longitude: @address.longitude, map_reference: @address.map_reference, person_id: @address.person_id, person_type: @address.person_type, po_box: @address.po_box, requirement_id: @address.requirement_id, requirement_type: @address.requirement_type, state,: @address.state,, street_address,: @address.street_address, } }
     end
 
     assert_redirected_to address_url(Address.last)
@@ -34,7 +34,7 @@ class AddressesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update address" do
-    patch address_url(@address), params: { address: { city{30}: @address.city{30}, company_id: @address.company_id, company_type: @address.company_type, latitude: @address.latitude, longitude: @address.longitude, map_reference: @address.map_reference, post_code{10}: @address.post_code{10}, state{2}: @address.state{2}, street{30}: @address.street{30} } }
+    patch address_url(@address), params: { address: { cert_id: @address.cert_id, cert_type: @address.cert_type, city,: @address.city,, company_id: @address.company_id, company_type: @address.company_type, identifier_id: @address.identifier_id, identifier_type: @address.identifier_type, latitude: @address.latitude, longitude: @address.longitude, map_reference: @address.map_reference, person_id: @address.person_id, person_type: @address.person_type, po_box: @address.po_box, requirement_id: @address.requirement_id, requirement_type: @address.requirement_type, state,: @address.state,, street_address,: @address.street_address, } }
     assert_redirected_to address_url(@address)
   end
 

@@ -164,7 +164,7 @@ ActiveAdmin.register_page "Dashboard" do
     h2 section "15 Most Recently Contacted People" do
       h3 ul do
         Person.order("updated_at DESC").select(:id, :company_id, :first_name, :last_name).limit(15).collect do |person|
-          li link_to(person.display_name + ' -- '+"#{person.company.name}", admin_company_person_path(person.company, person))
+          li link_to(person.display_name + ' -- '+"#{person.company.name}", admin_company_path(person.company_id))
         end
       end
     end

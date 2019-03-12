@@ -1,23 +1,39 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  street_address,: MyString
+  city,: MyString
+  state,: MyString
+  po_box: MyString
+  map_reference: MyString
+  longitude: 1.5
+  latitude: 1.5
   company: one
   company_type: Company
-  street{30}: MyString
-  city{30}: MyString
-  state{2}: MyString
-  post_code{10}: MyString
-  map_reference: MyString
-  latitude: 1.5
-  longitude: 1.5
+  person: one
+  person_type: Person
+  identifier: one
+  identifier_type: Identifier
+  cert: one
+  cert_type: Cert
+  requirement: one
+  requirement_type: Requirement
 
 two:
+  street_address,: MyString
+  city,: MyString
+  state,: MyString
+  po_box: MyString
+  map_reference: MyString
+  longitude: 1.5
+  latitude: 1.5
   company: two
   company_type: Company
-  street{30}: MyString
-  city{30}: MyString
-  state{2}: MyString
-  post_code{10}: MyString
-  map_reference: MyString
-  latitude: 1.5
-  longitude: 1.5
+  person: two
+  person_type: Person
+  identifier: two
+  identifier_type: Identifier
+  cert: two
+  cert_type: Cert
+  requirement: two
+  requirement_type: Requirement

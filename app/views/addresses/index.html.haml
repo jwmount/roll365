@@ -3,14 +3,18 @@
 %table
   %thead
     %tr
-      %th Company
-      %th Street{30}
-      %th City{30}
-      %th State{2}
-      %th Post code{10}
+      %th Street address,
+      %th City,
+      %th State,
+      %th Po box
       %th Map reference
-      %th Latitude
       %th Longitude
+      %th Latitude
+      %th Company
+      %th Person
+      %th Identifier
+      %th Cert
+      %th Requirement
       %th
       %th
       %th
@@ -18,14 +22,18 @@
   %tbody
     - @addresses.each do |address|
       %tr
-        %td= address.company
-        %td= address.street{30}
-        %td= address.city{30}
-        %td= address.state{2}
-        %td= address.post_code{10}
+        %td= address.street_address,
+        %td= address.city,
+        %td= address.state,
+        %td= address.po_box
         %td= address.map_reference
-        %td= address.latitude
         %td= address.longitude
+        %td= address.latitude
+        %td= address.company
+        %td= address.person
+        %td= address.identifier
+        %td= address.cert
+        %td= address.requirement
         %td= link_to 'Show', address
         %td= link_to 'Edit', edit_address_path(address)
         %td= link_to 'Destroy', address, method: :delete, data: { confirm: 'Are you sure?' }

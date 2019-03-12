@@ -172,13 +172,13 @@ companies_list = [
 # Create Rep once licensee company exists
 #
 companies_list.each do |model| 
-  puts
-  @company = Company.create!( model["company"] )
-  @company.addresses.create!( model["address"] )
+  byebug
+  @company = Company.find_or_create_by( model["company"] )
+  @company.addresses.find_or_create_by( model["address"] )
   model["person"]["title"] = "Rep" if @company.licensee
-  @company.people.create!( model["person"] )
+  @company.people.find_or_create_by( model["person"] )
 #  @company.identifiers.create!( model["identifier"] )
-  @company.tips.create!( model["tip"] ) unless model["tip"].nil?
+  @company.tips.find_or_create_by( model["tip"] ) unless model["tip"].nil?
  puts "#{model} -- CREATED"
 end
 
@@ -187,7 +187,7 @@ end
 #
 
 #
-# D E M O  P R O J E C T  A N D  D E P E N D E N T S
+# D E M O  P R O J E C T  A N D  D E P E N D E N T S -- MODIFY TO ONE DEEP RELATIONSHIPS
 #
 #  company
 #    project

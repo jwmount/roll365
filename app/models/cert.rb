@@ -16,7 +16,7 @@ class Cert < ApplicationRecord
 
 
   belongs_to :certificate
-  belongs_to :requirements, polymorphic: true
+  belongs_to :requirement, polymorphic: true
   
 
 #

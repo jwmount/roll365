@@ -10,6 +10,12 @@ class CreateCompanies < ActiveRecord::Migration[5.2]
       t.string :url
       t.string :licensee
 
+      t.references :address, polymorphic: true
+      t.references :identifier, polymorphic: true
+      t.references :cert, polymorphic: true
+      t.references :requirement, polymorphic: true
+
+
       t.timestamps
     end
   end

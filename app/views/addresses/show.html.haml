@@ -1,29 +1,41 @@
 %p#notice= notice
 
 %p
-  %b Company:
-  = @address.company
+  %b Street address,:
+  = @address.street_address,
 %p
-  %b Street{30}:
-  = @address.street{30}
+  %b City,:
+  = @address.city,
 %p
-  %b City{30}:
-  = @address.city{30}
+  %b State,:
+  = @address.state,
 %p
-  %b State{2}:
-  = @address.state{2}
-%p
-  %b Post code{10}:
-  = @address.post_code{10}
+  %b Po box:
+  = @address.po_box
 %p
   %b Map reference:
   = @address.map_reference
 %p
+  %b Longitude:
+  = @address.longitude
+%p
   %b Latitude:
   = @address.latitude
 %p
-  %b Longitude:
-  = @address.longitude
+  %b Company:
+  = @address.company
+%p
+  %b Person:
+  = @address.person
+%p
+  %b Identifier:
+  = @address.identifier
+%p
+  %b Cert:
+  = @address.cert
+%p
+  %b Requirement:
+  = @address.requirement
 
 = link_to 'Edit', edit_address_path(@address)
 \|
