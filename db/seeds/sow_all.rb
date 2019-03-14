@@ -218,7 +218,7 @@ demo_list.each do |model|
   @company = Company.find_or_create_by( model["company"] )
   @company.addresses.find_or_create_by( model["address"] )
   @company.people.find_or_create_by( model["person"] )
-#  @company.equipment.create!( model["equipment"])
+  @company.equipment.find_or_create_by( model["equipment"])
 
   @project = @company.projects.new( model["project"])
   @project.rep_id = 1
@@ -234,12 +234,12 @@ demo_list.each do |model|
   @quote.fire_ants_verified_by = 1
   @quote.save! 
 
-# [TODO]
-  #@solution = @quote.solutions.new( model ["solution"] )
-  #@solution.material_id = 1
-  #@solution.equipment_name = "Truck"
-  #@solution.save!
+  @solution = @quote.solutions.new( model ["solution"] )
+  @solution.material_id = 1
+  @solution.equipment_name = "Truck"
+  @solution.save!
 
+# [TODO]
   #@job = @solution.jobs.create!( model ["job"] )
   #@schedule = @job.schedules.create!( model ["schedule"] )
 
@@ -648,7 +648,7 @@ end
 #
 # Certificate(s)
 #
-@certificates [
+[
   [ "Birth Certificate",                  # name
     "Birth Certificate original or what?",# description
     true,                                 # for_person
