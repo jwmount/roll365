@@ -6,8 +6,9 @@ require 'active_support/core_ext/integer/inflections.rb'
 ActiveAdmin.register Identifier do
 
   menu label: "Rollodex", parent: "Admin"
+  #menu label: "Rollodex", parent: "Companies"
   
-  actions :all, :except => :new
+  #actions :all, :except => :new
 
 =begin
   scope :all, :default => true
@@ -68,6 +69,9 @@ ActiveAdmin.register Identifier do
     end
   end
 
-  permit_params :name, :value, :rank, :list, :of, :attributes, :on, :model
+#
+# W H I T E  L I S T
+#
+  permit_params :name, :value, :rank
     
 end

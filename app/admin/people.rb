@@ -1,6 +1,6 @@
 ActiveAdmin.register Person do
 
-#  menu :parent => "Company"
+  menu :parent => "Companies"
 
 # Update scopes for rails 5.2.2
 

@@ -4,7 +4,7 @@ class Company < ApplicationRecord
 # A S S O C I A T I O N S    A S S O C I A T I O N S    A S S O C I A T I O N S   
 #
   has_many :people, :dependent => :destroy
-#  validates_associated :people
+  validates_associated :people
 
   has_many :equipment, :dependent => :destroy
   #validates_associated :equipment

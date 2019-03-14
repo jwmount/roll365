@@ -17,8 +17,8 @@ class Cert < ApplicationRecord
 #   Equipment may require Certs, e.g. 'Covered Payload'
 
 
-  belongs_to :certificate
-  belongs_to :requirement, polymorphic: true
+  belongs_to :certifiable, polymorphic: true
+  #belongs_to :requirement, polymorphic: true
   
 
 #

@@ -194,11 +194,11 @@ ActiveAdmin.register Company do
       row("PO_required") { status_tag (company.PO_required ? "YES" : "No"), (company.PO_required ? :ok : :error) }        
       row("active") { status_tag (company.active ? "YES" : "No"), (company.active ? :ok : :error) }
       row :bookkeeping_number
-      # row ("People") { render: company.people}
+      row ("People") {company.people}
       row ("Projects") {company.projects}
-    #  row ("Equipment") {company.equipment}
-    #  row ("Address")  {company.addresses}
-    #  row ("Certifications") {company.certs}
+      row ("Equipment") {company.equipment}
+      row ("Address")  {company.addresses}
+      row ("Certifications") {company.certs}
     end
 
     active_admin_comments

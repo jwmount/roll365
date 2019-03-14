@@ -6,7 +6,7 @@ ActiveAdmin.register Cert do
   #  !Certificate.all.empty?
   #}
   
-  actions :all, :except => :new
+  #actions :all, :except => :new
   
   index do
     selectable_column
@@ -37,10 +37,10 @@ ActiveAdmin.register Cert do
   end 
 
   form do |f|
-    error_panel f
+    #error_panel f
 
     f.inputs "Details" do
-      if Certificate.alphabetically.all.empty?
+      unless Certificate.all.empty?
         'No certificates have been added yet.'
       else
         f.input :certificate, :as => :select, 
@@ -77,6 +77,7 @@ ActiveAdmin.register Cert do
   end #show
 
 
-  permit_params :expires_on, :serial_number, :permanent, :active
+  permit_params :certificate, :expires_on, :serial_number, :permanent, :active
+  
 
 end
