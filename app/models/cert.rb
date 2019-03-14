@@ -13,6 +13,8 @@ class Cert < ApplicationRecord
 #  Requirements
 #   Solutions may require Certs, e.g. 'must have automatic tarpolin covers'
 #   Companies may require Certs, e.g. 'must be military veteran'
+#   People may require Certs, e.g. 'Military Veteran'
+#   Equipment may require Certs, e.g. 'Covered Payload'
 
 
   belongs_to :certificate
