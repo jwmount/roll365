@@ -263,7 +263,7 @@ ActiveRecord::Schema.define(version: 2019_03_14_163227) do
 
   create_table "roles", force: :cascade do |t|
     t.string "name"
-    t.string "email"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -648,6 +648,16 @@ end
 end
 
 #
+# R O L E S
+# [TODO] Add description attribute
+[
+  ["Admin", "People who run the application"],
+  ["Driver", "Operates OTR equipment"]
+].each do |role|
+  Role.find_or_create_by( :name=>role[0], :description=>role[1])
+end
+
+#
 # Certificate(s)
 #
 [
