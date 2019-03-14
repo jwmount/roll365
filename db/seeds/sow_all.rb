@@ -645,5 +645,22 @@ end
   Condition.create!(:name => condition[0], :verbiage => condition[1], :indication => condition[2], change_approved_at: Date.today)
 end
 
+#
+# Certificate(s)
+#
+@certificates [
+  [ "Birth Certificate",                  # name
+    "Birth Certificate original or what?",# description
+    true,                                 # for_person
+    false,                                # for company
+    false,                                # for equipment
+    false,                                # for location
+    true                                  # active
+  ]
+].each do |certificate|
+  Certificate.find_or_create_by( :name => certificate[0], :description => certificate[1], :for_person => certificate[2], :for_company => certificate[3], 
+    :for_equipment => certificate[4], :for_location => certificate[5], :active => certificate[6] ) 
+end 
+
 
 puts "--sow_all Done"
