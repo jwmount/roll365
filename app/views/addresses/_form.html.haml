@@ -7,16 +7,19 @@
           %li= message
 
   .field
-    = f.label :street_address,
-    = f.text_field :street_address,
+    = f.label :addressable
+    = f.text_field :addressable
   .field
-    = f.label :city,
-    = f.text_field :city,
+    = f.label :street_address
+    = f.text_field :street_address
   .field
-    = f.label :state,
-    = f.text_field :state,
+    = f.label :city
+    = f.text_field :city
   .field
-    = f.label :po_box
+    = f.label :state
+    = f.text_field :state
+  .field
+    = f.label :post_code
     = f.text_field :po_box
   .field
     = f.label :map_reference
@@ -27,20 +30,5 @@
   .field
     = f.label :latitude
     = f.text_field :latitude
-  .field
-    = f.label :company
-    = f.text_field :company
-  .field
-    = f.label :person
-    = f.text_field :person
-  .field
-    = f.label :identifier
-    = f.text_field :identifier
-  .field
-    = f.label :cert
-    = f.text_field :cert
-  .field
-    = f.label :requirement
-    = f.text_field :requirement
   .actions
     = f.submit 'Save'

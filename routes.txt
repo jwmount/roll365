@@ -26,6 +26,15 @@
                                            PATCH      /admin/jobs/:job_id/schedules/:id(.:format)                                              admin/schedules#update
                                            PUT        /admin/jobs/:job_id/schedules/:id(.:format)                                              admin/schedules#update
                                            DELETE     /admin/jobs/:job_id/schedules/:id(.:format)                                              admin/schedules#destroy
+              batch_action_admin_addresses POST       /admin/addresses/batch_action(.:format)                                                  admin/addresses#batch_action
+                           admin_addresses GET        /admin/addresses(.:format)                                                               admin/addresses#index
+                                           POST       /admin/addresses(.:format)                                                               admin/addresses#create
+                         new_admin_address GET        /admin/addresses/new(.:format)                                                           admin/addresses#new
+                        edit_admin_address GET        /admin/addresses/:id/edit(.:format)                                                      admin/addresses#edit
+                             admin_address GET        /admin/addresses/:id(.:format)                                                           admin/addresses#show
+                                           PATCH      /admin/addresses/:id(.:format)                                                           admin/addresses#update
+                                           PUT        /admin/addresses/:id(.:format)                                                           admin/addresses#update
+                                           DELETE     /admin/addresses/:id(.:format)                                                           admin/addresses#destroy
                  batch_action_admin_quotes POST       /admin/quotes/batch_action(.:format)                                                     admin/quotes#batch_action
                               admin_quotes GET        /admin/quotes(.:format)                                                                  admin/quotes#index
                                            POST       /admin/quotes(.:format)                                                                  admin/quotes#create
@@ -413,8 +422,8 @@ batch_action_admin_company_equipment_index POST       /admin/companies/:company_
                    admin_company_addresses GET        /admin/companies/:company_id/addresses(.:format)                                         admin/addresses#index
                                            POST       /admin/companies/:company_id/addresses(.:format)                                         admin/addresses#create
                  new_admin_company_address GET        /admin/companies/:company_id/addresses/new(.:format)                                     admin/addresses#new
-                        edit_admin_address GET        /admin/addresses/:id/edit(.:format)                                                      admin/addresses#edit
-                             admin_address GET        /admin/addresses/:id(.:format)                                                           admin/addresses#show
+                                           GET        /admin/addresses/:id/edit(.:format)                                                      admin/addresses#edit
+                                           GET        /admin/addresses/:id(.:format)                                                           admin/addresses#show
                                            PATCH      /admin/addresses/:id(.:format)                                                           admin/addresses#update
                                            PUT        /admin/addresses/:id(.:format)                                                           admin/addresses#update
                                            DELETE     /admin/addresses/:id(.:format)                                                           admin/addresses#destroy
@@ -490,6 +499,22 @@ batch_action_admin_company_equipment_index POST       /admin/companies/:company_
                                            PATCH      /admin/companies/:id(.:format)                                                           admin/companies#update
                                            PUT        /admin/companies/:id(.:format)                                                           admin/companies#update
                                            DELETE     /admin/companies/:id(.:format)                                                           admin/companies#destroy
+                     admin_quote_solutions GET        /admin/quotes/:quote_id/solutions(.:format)                                              admin/solutions#index
+                                           POST       /admin/quotes/:quote_id/solutions(.:format)                                              admin/solutions#create
+                  new_admin_quote_solution GET        /admin/quotes/:quote_id/solutions/new(.:format)                                          admin/solutions#new
+                                           GET        /admin/solutions/:id/edit(.:format)                                                      admin/solutions#edit
+                                           GET        /admin/solutions/:id(.:format)                                                           admin/solutions#show
+                                           PATCH      /admin/solutions/:id(.:format)                                                           admin/solutions#update
+                                           PUT        /admin/solutions/:id(.:format)                                                           admin/solutions#update
+                                           DELETE     /admin/solutions/:id(.:format)                                                           admin/solutions#destroy
+                                           GET        /admin/quotes(.:format)                                                                  admin/quotes#index
+                                           POST       /admin/quotes(.:format)                                                                  admin/quotes#create
+                                           GET        /admin/quotes/new(.:format)                                                              admin/quotes#new
+                                           GET        /admin/quotes/:id/edit(.:format)                                                         admin/quotes#edit
+                                           GET        /admin/quotes/:id(.:format)                                                              admin/quotes#show
+                                           PATCH      /admin/quotes/:id(.:format)                                                              admin/quotes#update
+                                           PUT        /admin/quotes/:id(.:format)                                                              admin/quotes#update
+                                           DELETE     /admin/quotes/:id(.:format)                                                              admin/quotes#destroy
                         rails_service_blob GET        /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
                  rails_blob_representation GET        /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show
                         rails_disk_service GET        /rails/active_storage/disk/:encoded_key/*filename(.:format)                              active_storage/disk#show

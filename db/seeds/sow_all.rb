@@ -190,6 +190,8 @@ end
 # D E M O  P R O J E C T  A N D  D E P E N D E N T S -- MODIFY TO ONE DEEP RELATIONSHIPS
 #
 #  company
+#    addresses
+
 #    project
 #      quote
 #        solutions
