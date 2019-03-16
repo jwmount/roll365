@@ -16,9 +16,9 @@ class Cert < ApplicationRecord
 #   People may require Certs, e.g. 'Military Veteran'
 #   Equipment may require Certs, e.g. 'Covered Payload'
 
-
+  
   belongs_to :certifiable, polymorphic: true
-  #belongs_to :requirement, polymorphic: true
+  belongs_to :requireable, polymorphic: true
   
 
 #

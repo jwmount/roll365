@@ -2,11 +2,10 @@ ActiveAdmin.register Equipment do
 
 
 
-  #menu parent: "Company"
+  menu parent: "Company"
   belongs_to :company
   
-  filter :name
-  
+    
   sidebar "Equipment Context", only: [:show, :edit] do 
     ul do
       li link_to "Dashboard", admin_dashboard_path

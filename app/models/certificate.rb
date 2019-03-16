@@ -1,7 +1,9 @@
 class Certificate < ApplicationRecord
 
  
-  has_many :certs, dependent: :destroy
+  has_many :certs,
+           as: :certifiable,
+           dependent: :destroy
 
     
   validates :name,          :presence => true

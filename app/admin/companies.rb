@@ -23,7 +23,7 @@ ActiveAdmin.register Company do
     ul
       status_tag('Now you can:')
 
-    # li link_to 'Do Projects', admin_company_projects_path( company )           
+      li link_to 'Do Projects', admin_company_projects_path( company )           
       hr
       status_tag('Work on Company Details:')
        li link_to( "Equipment", admin_company_equipment_index_path( company ) )
@@ -40,15 +40,12 @@ ActiveAdmin.register Company do
 # but path should be admin/app/views/companies/_company.html.haml
 #
 
-  index do
-
-    selectable_column
-
+  index do |company|
+    
     column "Name (click for details)", :sortable => 'name' do |company|
-      company
-      # company.identifiers.map(&:name).join(',') unless company.identifiers.empty?
-      # company.addresses.map(&:street_address).join(',') unless company.address.empty?
-
+      link_to company.name, admin_company_path(company)
+      #company.identifiers.map(&:name).join(',') unless company.identifiers.empty? 
+      #company.addresses.map(&:street_address).join(',') unless company.address.empty? 
     end
 
     column :projects do |company|
@@ -159,36 +156,42 @@ ActiveAdmin.register Company do
                   :placeholder => AdminConstants::ADMIN_IDENTIFIER_RANK_PLACEHOLDER
       end
     end
-    
+
+end
+
+=begin
+this approach to Certs is Broken  
+
     f.inputs do
-      f.has_many :certs do |f|
+      
+        f.has_many :certs do |f|
 
-        f.input :certificate,
-                :collection => Certs.where({:for_company => true}),
-                :include_blank => false
+          f.input :certificate,
+                  :collection => Certs.where({:for_company => true}),
+                  :include_blank => false
+        
+          f.input :active
 
-        f.input :active
+          f.input :expires_on, 
+                  :as => :date_picker,
+                  :hint => AdminConstants::ADMIN_CERT_EXPIRES_ON_HINT
 
-        f.input :expires_on, 
-                :as => :date_picker,
-                :hint => AdminConstants::ADMIN_CERT_EXPIRES_ON_HINT
+          f.input :permanent
 
-        f.input :permanent
-
-        f.input :serial_number, 
-                :hint => AdminConstants::ADMIN_CERT_SERIAL_NUMBER_HINT
-
-      end
+          f.input :serial_number, 
+                  :hint => AdminConstants::ADMIN_CERT_SERIAL_NUMBER_HINT
+        end
+      
     end
-    f.actions
+      f.actions
   end
-
+=end
 
   show :title => :display_name do
     attributes_table do
       row :name
       row :line_of_business
-      row ("Rollodex") { render company.identifiers}
+      row ("Rollodex") {company.identifiers}
       row ("Web Site") { link_to "#{company.url}", href="http://#{company.url}", target: '_blank' }
       row :credit_terms
       row("PO_required") { status_tag (company.PO_required ? "YES" : "No"), (company.PO_required ? :ok : :error) }        

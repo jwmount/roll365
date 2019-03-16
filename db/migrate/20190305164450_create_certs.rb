@@ -1,8 +1,9 @@
 class CreateCerts < ActiveRecord::Migration[5.2]
   def change
     create_table :certs do |t|
+      
       t.references :certifiable, polymorphic: true, index: true
-      t.integer :certifiable_id
+       
       t.datetime :expires_on
       t.string :serial_number
       t.boolean :permanent

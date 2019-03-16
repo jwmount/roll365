@@ -20,13 +20,12 @@ class Company < ApplicationRecord
   #validates_associated :tips
 
   # polymorphs
-  has_many  :addresses, 
-            :as        => :addressable, 
-            :autosave  => true, 
+  has_many  :addresses,
+            :as        => :addressable,
+            :autosave  => true,
             :dependent => :destroy
-  validates_associated :addresses            
 
-  has_many :certs, 
+    has_many :certs,
            :as        => :certifiable, 
            :autosave  => true, 
            :dependent => :destroy

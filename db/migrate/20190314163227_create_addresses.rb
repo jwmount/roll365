@@ -1,7 +1,7 @@
 class CreateAddresses < ActiveRecord::Migration[5.2]
   def change
     create_table :addresses do |t|
-      t.references :addressable, polymorphic: true
+      t.references :addressable, polymorphic: true, index: true
       t.string :street_address
       t.string :city
       t.string :state

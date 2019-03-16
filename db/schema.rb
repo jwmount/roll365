@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2019_03_14_163227) do
 
   create_table "certs", force: :cascade do |t|
     t.string "certifiable_type"
-    t.integer "certifiable_id"
+    t.bigint "certifiable_id"
     t.datetime "expires_on"
     t.string "serial_number"
     t.boolean "permanent"
@@ -89,20 +89,8 @@ ActiveRecord::Schema.define(version: 2019_03_14_163227) do
     t.string "line_of_business"
     t.string "url"
     t.string "licensee"
-    t.string "address_type"
-    t.bigint "address_id"
-    t.string "identifier_type"
-    t.bigint "identifier_id"
-    t.string "cert_type"
-    t.bigint "cert_id"
-    t.string "requirement_type"
-    t.bigint "requirement_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["address_type", "address_id"], name: "index_companies_on_address_type_and_address_id"
-    t.index ["cert_type", "cert_id"], name: "index_companies_on_cert_type_and_cert_id"
-    t.index ["identifier_type", "identifier_id"], name: "index_companies_on_identifier_type_and_identifier_id"
-    t.index ["requirement_type", "requirement_id"], name: "index_companies_on_requirement_type_and_requirement_id"
   end
 
   create_table "conditions", force: :cascade do |t|
@@ -240,8 +228,8 @@ ActiveRecord::Schema.define(version: 2019_03_14_163227) do
   end
 
   create_table "requirements", force: :cascade do |t|
-    t.string "require_type"
-    t.bigint "require_id"
+    t.string "requireable_type"
+    t.bigint "requireable_id"
     t.integer "certificate_id"
     t.boolean "for_person"
     t.boolean "for_company"
@@ -250,7 +238,7 @@ ActiveRecord::Schema.define(version: 2019_03_14_163227) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["require_type", "require_id"], name: "index_requirements_on_require_type_and_require_id"
+    t.index ["requireable_type", "requireable_id"], name: "index_requirements_on_requireable_type_and_requireable_id"
   end
 
   create_table "reservations", force: :cascade do |t|
