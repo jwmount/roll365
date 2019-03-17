@@ -1,6 +1,6 @@
   ActiveAdmin.register Address do
 
-  menu parent: "Companies"
+  menu parent: "Admin"
 
 
     def address_params

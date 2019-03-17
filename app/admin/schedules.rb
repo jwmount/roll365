@@ -229,7 +229,7 @@ ActiveAdmin.register Schedule do
       :popup => ['Place a reservation','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes']
   end
 
-  permit_params :day, :job_id, :equipment_units_today, :list, :of, :attributes, :on, :model
+  permit_params :day, :job_id, :equipment_units_today
 
 end
 
