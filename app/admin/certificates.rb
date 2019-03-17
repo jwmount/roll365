@@ -41,6 +41,18 @@ ActiveAdmin.register Certificate do
       f.input :for_equipment
       f.input :for_person
       f.input :for_location
+      f.input :name,
+              :hint        => AdminConstants::ADMIN_CERTIFICATE_NAME_HINT
+      f.input :jurisdiction,
+              :collection  => %w[Federal State Local Association],
+              :label       => AdminConstants::ADMIN_CERTIFICATE_JURISDICTION_LABEL,
+              :hint        => AdminConstants::ADMIN_CERTIFICATE_JURISDICTION_HINT,
+              :placeholder  => AdminConstants::ADMIN_CERTIFICATE_JURISDICTION_PLACEHOLDER
+  
+      f.input :jurisdiction
+      f.input :basis
+      f.input :issued_on
+      f.input :expires_on
 
     end
     #f.buttons
@@ -58,6 +70,10 @@ ActiveAdmin.register Certificate do
         row("For Equipment") { status_tag (certificate.for_equipment ? "YES" : "No"), (certificate.for_equipment ? :ok : :error) }
         row("For Location") { status_tag (certificate.for_location ? "YES" : "No"), (certificate.for_location ? :ok : :error) }
         row("For Person") { status_tag (certificate.for_person ? "YES" : "No"), (certificate.for_person ? :ok : :error) }
+        row("Jurisdiction") { certificate.jurisdiction }
+        row("Basis") { certificate.basis }
+        row("Date of Issue") { certificate.issued_on }
+        row("Date document expires") { certificate.expires_on }
       end
     end
     active_admin_comments
@@ -70,7 +86,8 @@ ActiveAdmin.register Certificate do
 # description pand the for_ values later.   We can work this out so it's not possible to go forward without a 
 # valid, at least complete, required document.  See the Rails Guide.
 # 
-  permit_params :name, :description, :for_person, :for_company, :for_equipment, :for_location, :active
+  permit_params :name, :description, :for_person, :for_company, :for_equipment, :for_location, :active,
+                :jurisdiction, :basis, :issued_on, :expires_on
 
 
 end

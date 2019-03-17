@@ -43,6 +43,15 @@ module AdminConstants
   ADMIN_CERT_SERIAL_NUMBER_HINT          = "Value that makes the certificate unique.  For example, License Number, Rego, etc."
 
 #
+# Certificat4s
+#
+  ADMIN_CERTIFICATE_NAME_HINT                = "What the certificate is called, e.g. Hazardous Waste Permit"
+  
+  ADMIN_CERTIFICATE_JURISDICTION_LABEL       = "Jurisdiction or Issuer"
+  ADMIN_CERTIFICATE_JURISDICTION_HINT        = "Agency or organization Issuer of certificate"
+  ADMIN_CERTIFICATE_JURISDICTION_PLACEHOLDER = "US DOT"
+  
+#
 # Conditions
 #
   ADMIN_CONDITIONS_NAME_PLACEHOLDER        = "Our name for this contract provision."

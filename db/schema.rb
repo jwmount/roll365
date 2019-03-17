@@ -64,6 +64,10 @@ ActiveRecord::Schema.define(version: 2019_03_14_163227) do
     t.boolean "for_equipment"
     t.boolean "for_location"
     t.boolean "active"
+    t.string  "jurisdiction"
+    t.string  "basis"
+    t.datetime "issued_on"
+    t.datetime "expires_on"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

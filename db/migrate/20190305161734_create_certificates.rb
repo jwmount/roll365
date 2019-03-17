@@ -8,6 +8,10 @@ class CreateCertificates < ActiveRecord::Migration[5.2]
       t.boolean :for_equipment
       t.boolean :for_location
       t.boolean :active
+      t.string  "issued_by"
+      t.datetime "issued_on"
+      t.datetime "expires_on"
+      t.string   "basis"
 
       t.timestamps
     end

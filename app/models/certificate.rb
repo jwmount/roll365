@@ -1,11 +1,11 @@
 class Certificate < ApplicationRecord
 
  
-  has_many :certs,
-           :as        => :certifiable, 
-           :autosave  => true, 
-           :dependent => :destroy
-  validates_associated :certs  
+#  has_many :certs,
+#           :as        => :certifiable, 
+#           :autosave  => true, 
+#           :dependent => :destroy
+#  validates_associated :certs  
   
   validates :name,          :presence => true
   validates :active,        :presence => true
