@@ -27,7 +27,7 @@ ActiveAdmin.register Person do
     ul
       status_tag('Now you can:')
       hr
-      li link_to "Manage people for #{person.company.name}", admin_company_people_path( company )     
+    # li link_to "Manage people for #{person.company.name}", admin_company_people_path( company )     
       hr
       status_tag('Other things you can do:')
       hr
@@ -129,7 +129,7 @@ ActiveAdmin.register Person do
                 :placeholder => AdminConstants::ADMIN_IDENTIFIER_RANK_PLACEHOLDER 
       end
     end
-
+=begin
     f.inputs do
       f.has_many :certs, :heading => 'Certifications' do |cf|
         
@@ -149,7 +149,9 @@ ActiveAdmin.register Person do
         cf.input :active
       end
     end
+=end
     f.actions
+
   end
 
 

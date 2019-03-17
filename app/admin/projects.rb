@@ -1,6 +1,6 @@
 ActiveAdmin.register Project do
 
-  menu label: "Projects"
+  menu label: "Projects", parent: "Person"
   
   # NOT OPTIONAL, effect is to scope projects to companies.
   belongs_to :company
@@ -21,6 +21,9 @@ ActiveAdmin.register Project do
     projects.where ({submitted_bid: true})
   end
 =end
+
+  scope :intends_to_bid, -> (projects){ where(intends_to_bid: true) }  
+  
 
   filter :name
   filter :description
@@ -111,7 +114,7 @@ ActiveAdmin.register Project do
               :hint           => AdminConstants::ADMIN_PROJECT_START_ON_HINT
 
       f.input :description
-      f.input :intend_to_bid
+      f.input :intends_to_bid
       f.input :submitted_bid
       f.input :active
 
@@ -140,7 +143,7 @@ ActiveAdmin.register Project do
                 :hint             => AdminConstants::ADMIN_SOLUTION_EQUIPMENT_CERTIFICATE_HINT
       end
     end
-=end
+
 
     # NOTE:  Project OWNER expresses requirements, e.g. 'CA Drivers License', and 'Legal Resident'
     # for_*, * = [people, companies, locations, equipment]
@@ -160,7 +163,7 @@ ActiveAdmin.register Project do
         f.input :description
       end
     end
-    
+=end    
     f.actions
   end
   
@@ -224,14 +227,7 @@ ActiveAdmin.register Project do
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
   permit_params :name, :company_id, :rep_id, :project_start_on, :description, :active, 
-  :intend_to_bid, :submitted_bid, :list, :of, :attributes, :on, :model
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if params[:action] == 'create' && current_user.admin?
-#   permitted
-# end
+  :intend_to_bid, :submitted_bid
+
 
 end
