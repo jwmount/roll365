@@ -25,7 +25,7 @@ class Company < ApplicationRecord
             :autosave  => true,
             :dependent => :destroy
 
-    has_many :certs,
+  has_many :certs,
            :as        => :certifiable, 
            :autosave  => true, 
            :dependent => :destroy

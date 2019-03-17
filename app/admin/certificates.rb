@@ -28,8 +28,7 @@ ActiveAdmin.register Certificate do
   end
   
   form do |f|
-    
-
+   
     f.inputs "Certificate" do
       f.input :name,          
               :required => true,

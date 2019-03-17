@@ -42,6 +42,8 @@ ActiveAdmin.register Company do
 
   index do |company|
     
+    selectable_column
+
     column "Name (click for details)", :sortable => 'name' do |company|
       link_to company.name, admin_company_path(company)
       #company.identifiers.map(&:name).join(',') unless company.identifiers.empty? 
@@ -91,8 +93,7 @@ ActiveAdmin.register Company do
 
   form do |f|
     f.semantic_errors *f.object.errors.keys
-    #error_panel f
-  
+    
     
     f.inputs "Company Details" do
 
@@ -156,12 +157,12 @@ ActiveAdmin.register Company do
                   :placeholder => AdminConstants::ADMIN_IDENTIFIER_RANK_PLACEHOLDER
       end
     end
-
-end
-
+    f.actions
 =begin
-this approach to Certs is Broken  
-
+Re think this, for now keep shallow on certs as dependents on certificates
+this is the Admin interface, this level of relationship may belong in the UI.
+  
+end
     f.inputs do
       
         f.has_many :certs do |f|
@@ -181,11 +182,11 @@ this approach to Certs is Broken
           f.input :serial_number, 
                   :hint => AdminConstants::ADMIN_CERT_SERIAL_NUMBER_HINT
         end
-      
+  
     end
       f.actions
-  end
 =end
+  end
 
   show :title => :display_name do
     attributes_table do
@@ -201,7 +202,6 @@ this approach to Certs is Broken
       row ("Projects") {company.projects}
       row ("Equipment") {company.equipment}
       row ("Address")  {company.addresses}
-      row ("Certifications") {company.certs}
     end
 
     active_admin_comments
