@@ -1,29 +1,15 @@
 ActiveAdmin.register Project do
 
-  menu label: "Projects", parent: "Person"
+  menu label: "Projects", parent: "Company"
   
   # NOT OPTIONAL, effect is to scope projects to companies.
   belongs_to :company
 
-=begin
-  scope :all, :default => true 
 
-  scope :active do |projects|
-    projects.where ({active: true})
-  end
-  scope :in_active do |projects|
-    projects.where ({active: false})
-  end
-  scope :intend_to_bid do |projects|
-    projects.where ({intend_to_bid: true})
-  end
-  scope :submitted_bid do |projects| 
-    projects.where ({submitted_bid: true})
-  end
-=end
-
+  scope :active, -> (projects) { where( active: true)}
+  scope :in_active, -> (projects) { where(active: false)}
   scope :intends_to_bid, -> (projects){ where(intends_to_bid: true) }  
-  
+  scope :submitted_bid, -> (projects){ where(submitted_bid: true)}
 
   filter :name
   filter :description

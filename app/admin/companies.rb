@@ -1,12 +1,14 @@
 ActiveAdmin.register Company do
-
-# 
-# F I L T E R S    F I L T E R S    F I L T E R S    F I L T E R S   
-# Sideware limited to named filter, otherwise all fields of model.
-# All fields has its merits, e.g. find by date range
-#
-# filter works, but why limit query components?
-# filter :name
+# Nested attributes reference, https://stackoverflow.com/questions/21410005/nested-form-in-activeadmin-not-saving-updates
+  permit_params :name, :credit_terms, :PO_required, :active, :bookkeeping_number, :line_of_business, :url, :licensee,
+                
+                addresses_attributes: [ :id, :addressable_id, :addressable_type, :street_address, :city, :state, :post_code, :map_reference, :longitude, :latitude],
+                
+                identifiers_attributes: [:id, :identifiable_id, :identifiable_type, :name, :value, :rank],
+                
+                permits_attributes: [:id, :permitable_id, :permitable_type, :name, :description, :issuer, :jurisdiction, 
+                          :basis, :required, :for_person, :for_company, :for_equipment, :for_location, :permanent,
+                          :valid_from, :valid_to]
 
 
 #
@@ -32,6 +34,7 @@ ActiveAdmin.register Company do
       hr
       li link_to "Dashboard", admin_dashboard_path
   end
+
 
 
 #
@@ -125,67 +128,54 @@ ActiveAdmin.register Company do
 
       f.input :active, 
               :as => :radio
-    end
-
-    f.inputs "Addresses" do
-      f.has_many :addresses do |a|
-          a.input :street_address
-          a.input :city
-          a.input :state
-          a.input :post_code
-          a.input :map_reference
-      end
-    end
     
-    f.inputs "Rollodex Items for Company" do
-      f.has_many :identifiers do |f|
 
-          f.input :name, 
+      f.inputs "Addresses" do
+        f.has_many :addresses, heading: false, allow_destroy: true do |a|
+            a.input :street_address
+            a.input :city
+            a.input :state
+            a.input :post_code
+            a.input :map_reference
+        end
+      end
+    
+
+      f.inputs "Rollodex Items for Company" do
+        f.has_many :identifiers, heading: false, allow_destroy: true do |i|
+
+            i.input :name, 
                   :collection  => %w[Mobile Office Truck Pager FAX Email Skype SMS Twitter URL],
                   :label       => AdminConstants::ADMIN_IDENTIFIER_NAME_LABEL,
                   :hint        => AdminConstants::ADMIN_IDENTIFIER_NAME_HINT
 
-          f.input :value,
+            i.input :value,
                   :label       => AdminConstants::ADMIN_IDENTIFIER_VALUE_LABEL,
                   :hint        => AdminConstants::ADMIN_IDENTIFIER_VALUE_HINT,
                   :placeholder => AdminConstants::ADMIN_IDENTIFIER_VALUE_PLACEHOLDER
 
-          f.input :rank, 
+            i.input :rank, 
                   :collection  => %w[1 2 3 4 5 6 7 8 9],
                   :label       => AdminConstants::ADMIN_IDENTIFIER_RANK_LABEL,
                   :hint        => AdminConstants::ADMIN_IDENTIFIER_RANK_HINT,
                   :placeholder => AdminConstants::ADMIN_IDENTIFIER_RANK_PLACEHOLDER
-      end
-    end
-    f.actions
-=begin
-Re think this, for now keep shallow on certs as dependents on certificates
-this is the Admin interface, this level of relationship may belong in the UI.
-  
-end
-    f.inputs do
-      
-        f.has_many :certs do |f|
-
-          f.input :certificate,
-                  :collection => Certs.where({:for_company => true}),
-                  :include_blank => false
-        
-          f.input :active
-
-          f.input :expires_on, 
-                  :as => :date_picker,
-                  :hint => AdminConstants::ADMIN_CERT_EXPIRES_ON_HINT
-
-          f.input :permanent
-
-          f.input :serial_number, 
-                  :hint => AdminConstants::ADMIN_CERT_SERIAL_NUMBER_HINT
         end
-  
-    end
-      f.actions
-=end
+      end
+    
+      f.inputs do 
+        f.has_many :permits, heading: false, allow_destroy: true do |p|
+          p.input :name
+          p.input :description
+          p.input :jurisdiction
+          p.input :basis
+
+          p.input :permanent
+          p.input :valid_from
+          p.input :valid_to
+        end
+      end
+    end 
+    f.actions
   end
 
   show :title => :display_name do
@@ -202,6 +192,7 @@ end
       row ("Projects") {company.projects}
       row ("Equipment") {company.equipment}
       row ("Address")  {company.addresses}
+      row ("Permits")  {company.permits}
     end
 
     active_admin_comments
@@ -226,10 +217,5 @@ end
     flash[:notice] = AdminConstants::ADMIN_COMPANY_ACTIVE
     redirect_to admin_company_path( company )
   end
-
-# 
-# W H I T E  L I S T.  W H I T E  L I S T.  W H I T E  L I S T.  W H I T E  L I S T.  W H I T E  L I S T. 
-#
-  permit_params :name, :credit_terms, :PO_required, :active, :bookkeeping_number, :line_of_business, :url, :licensee
 
 end

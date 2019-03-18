@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_14_163227) do
+ActiveRecord::Schema.define(version: 2019_03_18_005306) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,8 +64,8 @@ ActiveRecord::Schema.define(version: 2019_03_14_163227) do
     t.boolean "for_equipment"
     t.boolean "for_location"
     t.boolean "active"
-    t.string  "jurisdiction"
-    t.string  "basis"
+    t.string "jurisdiction"
+    t.string "basis"
     t.datetime "issued_on"
     t.datetime "expires_on"
     t.datetime "created_at", null: false
@@ -203,6 +203,27 @@ ActiveRecord::Schema.define(version: 2019_03_14_163227) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "permits", force: :cascade do |t|
+    t.string "permitable_type"
+    t.bigint "permitable_id"
+    t.string "name"
+    t.string "description"
+    t.string "issuer"
+    t.string "jurisdiction"
+    t.string "basis"
+    t.boolean "required"
+    t.boolean "for_person"
+    t.boolean "for_company"
+    t.boolean "for_equipment"
+    t.boolean "for_location"
+    t.boolean "permanent"
+    t.datetime "valid_from"
+    t.datetime "valid_to"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["permitable_type", "permitable_id"], name: "index_permits_on_permitable_type_and_permitable_id"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.integer "company_id"
@@ -316,6 +337,19 @@ ActiveRecord::Schema.define(version: 2019_03_14_163227) do
     t.integer "company_id"
     t.decimal "fee"
     t.string "fire_ant_risk_level"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "trials", force: :cascade do |t|
+    t.string "trialable_type"
+    t.bigint "trialable_id"
+    t.string "company_type"
+    t.bigint "company_id"
+    t.string "person_type"
+    t.bigint "person_id"
+    t.string "name"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

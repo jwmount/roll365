@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  trialable: one
+  trialable_type: Trialable
+  company: one
+  company_type: Company
+  person: one
+  person_type: Person
+  name: MyString
+  description: MyString
+
+two:
+  trialable: two
+  trialable_type: Trialable
+  company: two
+  company_type: Company
+  person: two
+  person_type: Person
+  name: MyString
+  description: MyString

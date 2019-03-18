@@ -24,12 +24,13 @@ class Company < ApplicationRecord
             :as        => :addressable,
             :autosave  => true,
             :dependent => :destroy
+  validates_associated :addresses
 
-  has_many :certs,
-           :as        => :certifiable, 
+  has_many :permits,
+           :as        => :permitable, 
            :autosave  => true, 
            :dependent => :destroy
-  validates_associated :certs
+  validates_associated :permits
 
   has_many :identifiers, 
            :as        => :identifiable, 
@@ -37,9 +38,10 @@ class Company < ApplicationRecord
            :dependent => :destroy
   validates_associated :identifiers
 
-  accepts_nested_attributes_for :addresses
-  accepts_nested_attributes_for :certs
-  accepts_nested_attributes_for :identifiers
+  # REQUIRED for nestd forms
+  accepts_nested_attributes_for :addresses, allow_destroy: true
+  accepts_nested_attributes_for :permits, allow_destroy: true
+  accepts_nested_attributes_for :identifiers, allow_destroy: true
   
 #
 # V A L I D A T I O N S   O N  C L A S S  O B J E C T   V A L I D A T I O N S   O N  C L A S S  O B J E C T. 

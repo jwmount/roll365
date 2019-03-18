@@ -22,11 +22,11 @@ class Person < ApplicationRecord
             :dependent    => :destroy
   validates_associated :addresses
 
-  has_many :certs, 
-           :as            => :certifiable, 
+  has_many :permits, 
+           :as            => :permitable, 
            :autosave      => true, 
            :dependent     => :destroy
-  validates_associated :certs
+  validates_associated :permits
 
   has_many :identifiers, 
            :as            => :identifiable, 
@@ -36,7 +36,7 @@ class Person < ApplicationRecord
 
   # NESTING           
   accepts_nested_attributes_for :addresses
-  accepts_nested_attributes_for :certs
+  accepts_nested_attributes_for :permits
   accepts_nested_attributes_for :identifiers
   
   # Update scopes for rails 5.2.2

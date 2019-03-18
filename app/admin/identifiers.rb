@@ -1,10 +1,10 @@
-#
-
 
 require 'active_support/core_ext/integer/inflections.rb'
 
 ActiveAdmin.register Identifier do
 
+  permit_params :name, :value, :rank
+  
   menu label: "Rollodex", parent: "Admin"
   #menu label: "Rollodex", parent: "Companies"
   
@@ -69,9 +69,6 @@ ActiveAdmin.register Identifier do
     end
   end
 
-#
-# W H I T E  L I S T
-#
-  permit_params :name, :value, :rank
+
     
 end

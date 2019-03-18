@@ -1,0 +1,48 @@
+%p#notice= notice
+
+%p
+  %b Permitable:
+  = @permit.permitable
+%p
+  %b Name:
+  = @permit.name
+%p
+  %b Description:
+  = @permit.description
+%p
+  %b Issuer:
+  = @permit.issuer
+%p
+  %b Jurisdiction:
+  = @permit.jurisdiction
+%p
+  %b Basis:
+  = @permit.basis
+%p
+  %b Required:
+  = @permit.required
+%p
+  %b For person:
+  = @permit.for_person
+%p
+  %b For company:
+  = @permit.for_company
+%p
+  %b For equipment:
+  = @permit.for_equipment
+%p
+  %b For location:
+  = @permit.for_location
+%p
+  %b Permanent:
+  = @permit.permanent
+%p
+  %b Valid from:
+  = @permit.valid_from
+%p
+  %b Valid to:
+  = @permit.valid_to
+
+= link_to 'Edit', edit_permit_path(@permit)
+\|
+= link_to 'Back', permits_path

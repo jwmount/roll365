@@ -1,12 +1,14 @@
 # Resources should never be nested more than 1 level deep. -- https://guides.rubyonrails.org/routing.html#controller-namespaces-and-routing
 Rails.application.routes.draw do
 
+  resources :trials
+  resources :permits
   devise_for :admin_users, ActiveAdmin::Devise.config
     ActiveAdmin.routes(self)
 
   namespace :admin do
-    resources :certificates, :certs, :companies, :conditions, :dashboard, :dockets, :engagements, :equipment,
-             :identifiers, :jobs, :materials, :people, :people_schedules, :projects, :quotes, :requirements,
+    resources :certificates, :companies, :conditions, :dashboard, :dockets, :engagements, :equipment,
+             :identifiers, :jobs, :materials, :people, :people_schedules, :permits, :projects, :quotes, :requirements,
              :reservations, :schedules, :solutions, :solution_tips, :tips
 
   
@@ -45,8 +47,8 @@ Rails.application.routes.draw do
     end
 
     shallow do
-      resources :certificates do
-        resources :certs
+      resources :companiess do
+        resources :permits
       end
     end
     
