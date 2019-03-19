@@ -5,10 +5,8 @@ require 'active_support/all'
 
 ActiveAdmin.register Schedule do
 
-  #menu :parent => "Operations", :if => lambda{|tabs_renderer|
-  #  controller.current_ability.can?(:manage, Role) &&
-  #  !Job.all.empty?
-  #}
+  permit_params :day, :job_id, :equipment_units_today
+  
   belongs_to :job
   
   filter :job
@@ -229,27 +227,5 @@ ActiveAdmin.register Schedule do
       :popup => ['Place a reservation','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes']
   end
 
-  permit_params :day, :job_id, :equipment_units_today
-
-end
-
-
-
-
-
-
-ActiveAdmin.register Schedule do
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-# permit_params :list, :of, :attributes, :on, :model
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if params[:action] == 'create' && current_user.admin?
-#   permitted
-# end
 
 end

@@ -1,9 +1,9 @@
 ActiveAdmin.register Equipment do
 
 
-
+  permit_params :name, :description
   menu parent: "Company"
-  belongs_to :company
+  belongs_to :company, :optional => true
   
     
   sidebar "Equipment Context", only: [:show, :edit] do 
@@ -83,11 +83,6 @@ ActiveAdmin.register Equipment do
 =end
     active_admin_comments
   end          
-
-# 
-# W H I T E L I S T.  W H I T E L I S T.  W H I T E L I S T.  W H I T E L I S T.  
-#
-  permit_params :name, :description
 
 
 end

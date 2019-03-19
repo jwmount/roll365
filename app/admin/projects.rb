@@ -1,5 +1,8 @@
 ActiveAdmin.register Project do
 
+  permit_params :name, :company_id, :rep_id, :project_start_on, :description, :active, 
+                :intend_to_bid, :submitted_bid
+
   menu label: "Projects", parent: "Company"
   
   # NOT OPTIONAL, effect is to scope projects to companies.
@@ -208,12 +211,5 @@ ActiveAdmin.register Project do
       li link_to "Manage Materials", admin_materials_path
       li link_to "Manage Tip Sites", admin_tips_path
   end
-
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-  permit_params :name, :company_id, :rep_id, :project_start_on, :description, :active, 
-  :intend_to_bid, :submitted_bid
-
 
 end

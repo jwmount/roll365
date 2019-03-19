@@ -1,5 +1,7 @@
 ActiveAdmin.register Role do
 
+  permit_params :name, :description
+
   menu :parent => "Admin Users"
 
   index do
@@ -34,9 +36,6 @@ ActiveAdmin.register Role do
     active_admin_comments    
   end
 
-#
-# W H I T E. L I S T
-#
-  permit_params :name, :description
+  
 
 end
