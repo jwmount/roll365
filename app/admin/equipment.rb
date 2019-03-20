@@ -28,6 +28,8 @@ ActiveAdmin.register Equipment do
 
 
   form do |f|
+
+    f.semantic_errors *f.object.errors.keys    
  
     f.inputs "Equipment for #{self.company.name}" do
 

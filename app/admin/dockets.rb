@@ -71,7 +71,7 @@ ActiveAdmin.register Docket do
   end
  
   form do |f|
-    error_panel f
+    f.semantic_errors *f.object.errors.keys
 
     #f.inputs "Docket from #{docket.person.display_name} for #{docket.engagement.schedule.job.name}" do      
     f.inputs do

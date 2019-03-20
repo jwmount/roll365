@@ -16,7 +16,7 @@ ActiveAdmin.register Role do
 
 
   form do |f|
-    error_panel f
+    f.semantic_errors *f.object.errors.keys
 
     f.inputs do
 

@@ -92,7 +92,7 @@ ActiveAdmin.register Solution do
 # Use conditional validations to determine if input is complete for a given contract type.
 # At this time if contract type is not given, nothing is required.
 form do |f|
-  error_panel f
+ 
   f.semantic_errors *f.object.errors.keys
 
 

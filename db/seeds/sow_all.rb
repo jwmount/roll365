@@ -186,16 +186,6 @@ end
 # Licensee rep
 #
 
-#
-# D E M O  P R O J E C T  A N D  D E P E N D E N T S -- MODIFY TO ONE DEEP RELATIONSHIPS
-#
-#  company
-#    addresses
-#    people
-#    identifiers
-#    certs
-#    tips
-
 
 demo_list = [
   { "company"    => { name: "Demo Company", line_of_business: "General resource contractor", url: "www.wsj.com"},

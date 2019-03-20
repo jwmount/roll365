@@ -28,7 +28,8 @@ ActiveAdmin.register Certificate do
   end
   
   form do |f|
-   
+    f.semantic_errors *f.object.errors.keys
+    
     f.inputs "Certificate" do
       f.input :name,          
               :required => true,

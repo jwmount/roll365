@@ -145,7 +145,7 @@ ActiveAdmin.register Schedule do
   end
 
   form do |f|
-    error_panel f
+    f.semantic_errors *f.object.errors.keys
 
     f.inputs "Schedule details.  Equipment for #{schedule.job.solution.quote.project.company.name}, #{schedule.job.solution.quote.project.name} project." do
 

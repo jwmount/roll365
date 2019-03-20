@@ -27,8 +27,11 @@ ActiveAdmin.register Condition do
 
   end
 
-
+    
   form :title => :name do |f|
+
+    f.semantic_errors *f.object.errors.keys
+
     f.inputs do |condition|
       f.input :name, 
               :required => true, 

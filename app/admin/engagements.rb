@@ -100,7 +100,7 @@ ActiveAdmin.register Engagement do
   end
 
   form do |f|
-    error_panel f
+    f.semantic_errors *f.object.errors.keys
 
     f.inputs "Schedule:  #{schedule.display_name}" do      
 

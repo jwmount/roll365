@@ -82,7 +82,8 @@ ActiveAdmin.register Project do
   
   form do |f|
 
-    
+    f.semantic_errors *f.object.errors.keys
+        
     f.inputs "#{company.name}" do
 
       f.input :name, 
