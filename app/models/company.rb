@@ -39,6 +39,7 @@ class Company < ApplicationRecord
   validates_associated :identifiers
 
   # REQUIRED for nestd forms
+  accepts_nested_attributes_for :people, allow_destroy: true
   accepts_nested_attributes_for :addresses, allow_destroy: true
   accepts_nested_attributes_for :permits, allow_destroy: true
   accepts_nested_attributes_for :identifiers, allow_destroy: true

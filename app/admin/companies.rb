@@ -1,5 +1,9 @@
 ActiveAdmin.register Company do
-# Nested attributes reference, https://stackoverflow.com/questions/21410005/nested-form-in-activeadmin-not-saving-updates
+
+# Eager loading to improve page performance
+includes :addresses, :identifiers, :permits
+
+# Nested attributes ActiveAdmin Docs
   permit_params :name, :credit_terms, :PO_required, :active, :bookkeeping_number, :line_of_business, :url, :licensee,
                 
                 addresses_attributes: [ :id, :addressable_id, :addressable_type, :street_address, :city, :state, :post_code, :map_reference, :longitude, :latitude],
@@ -9,7 +13,6 @@ ActiveAdmin.register Company do
                 permits_attributes: [:id, :permitable_id, :permitable_type, :name, :description, :issuer, :jurisdiction, 
                           :basis, :required, :for_person, :for_company, :for_equipment, :for_location, :permanent,
                           :valid_from, :valid_to]
-
 
 #
 # I N D E X / L I S T  C O N T E X T
@@ -22,22 +25,23 @@ ActiveAdmin.register Company do
   end
 
   sidebar "Company Details", only: [:show, :edit] do 
-    ul
+    ul do
       status_tag('Now you can:')
 
-      li link_to 'Do Projects', admin_company_projects_path( company )           
-      hr
+        li link_to 'Do Projects', admin_company_projects_path( company )           
+        hr
+    end
+    ul do
       status_tag('Work on Company Details:')
-       li link_to( "Equipment", admin_company_equipment_index_path( company ) )
-       li link_to( "People", admin_company_people_path( company ) )
-       li link_to( "Projects", admin_company_projects_path( company ) )
-      hr
+        li link_to( "Equipment", admin_company_equipment_path( company ) )
+        li link_to( "People", admin_company_people_path( company ) )
+        li link_to( "Projects", admin_company_projects_path( company ) )
+        hr
       li link_to "Dashboard", admin_dashboard_path
+    end
   end
 
-
-
-#
+  
 # Partials do APPEAR TO NOT WORK in rails 5.2.2
 # generates:  Missing partial admin/companies/_company.html.haml
 # but path should be admin/app/views/companies/_company.html.haml
@@ -181,18 +185,18 @@ ActiveAdmin.register Company do
   show :title => :display_name do
     attributes_table do
       row :name
+      row company.address
       row :line_of_business
-      row ("Rollodex") {company.identifiers}
       row ("Web Site") { link_to "#{company.url}", href="http://#{company.url}", target: '_blank' }
       row :credit_terms
       row("PO_required") { status_tag (company.PO_required ? "YES" : "No"), (company.PO_required ? :ok : :error) }        
       row("active") { status_tag (company.active ? "YES" : "No"), (company.active ? :ok : :error) }
       row :bookkeeping_number
-      row ("People") {company.people}
-      row ("Projects") {company.projects}
-      row ("Equipment") {company.equipment}
-      row ("Address")  {company.addresses}
-      row ("Permits")  {company.permits}
+      #row ("Rollodex") { company.identifiers }
+      row ("People")   { company.people }
+      #row ("Projects") {company.projects}
+      #row ("Equipment") {company.equipment}
+      #row company.permit
     end
 
     active_admin_comments

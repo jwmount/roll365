@@ -1,6 +1,9 @@
 ActiveAdmin.register Person do
 
+  belongs_to :company
   permit_params :company_id, :first_name, :last_name, :title, :available, :available_on, :OK_to_contact, :active,
+
+                companies_attributes: [:name, :credit_terms, :PO_required, :active, :bookkeeping_number, :line_of_business, :url, :licensee],
 
                 addresses_attributes: [ :id, :addressable_id, :addressable_type, :street_address, :city, :state, :post_code, :map_reference, :longitude, :latitude],
                 
@@ -10,16 +13,7 @@ ActiveAdmin.register Person do
                           :basis, :required, :for_person, :for_company, :for_equipment, :for_location, :permanent,
                           :valid_from, :valid_to]
   
-  #menu :parent => "Companies"
-
-#
-# S C O P E S   S C O P E S   S C O P E S   S C O P E S   S C O P E S  
-#
-  scope :all,            -> (people){ where( all: true ) }
-  # scope :active,         -> (people) { where( valid_from >= DateTime.now)}
-  # scope :not_available,  -> (people) { where(available: false) }
-  # scope :OK_to_contact,  -> (people) { where(OK_to_contact: true) }  
-  # scope :Do_NOT_contact, -> (people) { where(OK_to_contact: false) }
+# menu :parent => "Companies"
 
 #
 # I N D E X / L I S T  C O N T E X T
@@ -49,7 +43,7 @@ ActiveAdmin.register Person do
   end
   
   index do
-    
+
     selectable_column
     column :name do |person|
 
@@ -57,9 +51,11 @@ ActiveAdmin.register Person do
       h5 link_to "Contact: #{person.company.name}", admin_company_path(person.company_id)
       @identifiers = person.identifiers.order(:rank)
       render @identifiers
-      @addresses = person.addresses
-      render @addresses
       
+      @addresses = person.addresses
+      h5 person.addresses
+      
+
     end
 
     column :title

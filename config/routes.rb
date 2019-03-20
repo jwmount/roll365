@@ -28,10 +28,8 @@ Rails.application.routes.draw do
       end
     end
 
-    shallow do
-      resources :companies do
-        resources :addresses
-      end
+    resources :companies, shallow: true do
+      resources :addresses
     end
     
     shallow do
@@ -46,15 +44,20 @@ Rails.application.routes.draw do
       end
     end
 
-    shallow do
-      resources :companiess do
-        resources :permits
-      end
+    resources :companies, shallow: true do
+      resources :permits
     end
+     
     
     shallow do
       resources :companies do
         resources :identifiers
+      end
+    end
+
+    shallow do
+      resources :people do
+        resources :addresses
       end
     end
      
