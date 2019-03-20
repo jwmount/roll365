@@ -4,6 +4,9 @@ ActiveAdmin.register Docket do
 
   menu label: "Dockets", parent: "Engagement"
 
+  permit_params :engagement_id, :person_id, :number, :date_worked, :dated, :received_on, :operator_signed,
+                :client_signed, :approved, :approved_on, :approved_by, :a_inv_pay, :b_inv_pay, :supplier_inv_pay
+               
 =begin
   Rails 5.2.2, remove
   scope :all, :default => true

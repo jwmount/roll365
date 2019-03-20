@@ -1,9 +1,10 @@
 ActiveAdmin.register Project do
 
+  menu label: "Projects", parent: "Company"
   permit_params :name, :company_id, :rep_id, :project_start_on, :description, :active, 
                 :intend_to_bid, :submitted_bid
 
-  menu label: "Projects", parent: "Company"
+
   
   # NOT OPTIONAL, effect is to scope projects to companies.
   belongs_to :company

@@ -1,16 +1,25 @@
 ActiveAdmin.register Person do
 
-  permit_params :company_id, :first_name, :last_name, :title, :available, :available_on, :OK_to_contact, :active
+  permit_params :company_id, :first_name, :last_name, :title, :available, :available_on, :OK_to_contact, :active,
+
+                addresses_attributes: [ :id, :addressable_id, :addressable_type, :street_address, :city, :state, :post_code, :map_reference, :longitude, :latitude],
+                
+                identifiers_attributes: [:id, :identifiable_id, :identifiable_type, :name, :value, :rank],
+                
+                permits_attributes: [:id, :permitable_id, :permitable_type, :name, :description, :issuer, :jurisdiction, 
+                          :basis, :required, :for_person, :for_company, :for_equipment, :for_location, :permanent,
+                          :valid_from, :valid_to]
   
-  menu :parent => "Companies"
+  #menu :parent => "Companies"
 
-# Update scopes for rails 5.2.2
-
-  #scope :all,            -> { where(all: true) }
-  #scope :available,      -> { where(available: true) }
-  #scope :not_available,  -> { where(available: true) }
-  #scope :OK_to_contact,  -> { where(OK_to_contact: true) }  
-  #scope :Do_NOT_contact, -> { where(OK_to_contact: false) }
+#
+# S C O P E S   S C O P E S   S C O P E S   S C O P E S   S C O P E S  
+#
+  scope :all,            -> (people){ where( all: true ) }
+  # scope :active,         -> (people) { where( valid_from >= DateTime.now)}
+  # scope :not_available,  -> (people) { where(available: false) }
+  # scope :OK_to_contact,  -> (people) { where(OK_to_contact: true) }  
+  # scope :Do_NOT_contact, -> (people) { where(OK_to_contact: false) }
 
 #
 # I N D E X / L I S T  C O N T E X T
@@ -40,17 +49,17 @@ ActiveAdmin.register Person do
   end
   
   index do
-
+    
     selectable_column
     column :name do |person|
 
-      if person.identifiers.count > 0
-        h5 link_to "#{person.display_name + ', ' + person.title}", admin_company_person_path(person.company_id, person.id)
-        @identifiers = person.identifiers.order(:rank)
-        render @identifiers
-      else
-        h5 link_to "#{person.display_name}", new_admin_company_person_path(person.company_id)
-      end
+      h4 link_to "#{person.display_name}", new_admin_company_person_path(person.company_id)
+      h5 link_to "Contact: #{person.company.name}", admin_company_path(person.company_id)
+      @identifiers = person.identifiers.order(:rank)
+      render @identifiers
+      @addresses = person.addresses
+      render @addresses
+      
     end
 
     column :title
@@ -67,15 +76,14 @@ ActiveAdmin.register Person do
       status_tag (person.active ? "YES" : "No"), (person.active ? :ok : :error)
     end
 
-    column :certs do |person|
-      render person.certs
+    column :permits do |person|
+      person.permits
     end
     actions
   end
 
   form do |f|
     f.semantic_errors *f.object.errors.keys
-    #error_panel f
 
     f.inputs "Person Details" do
 
@@ -103,7 +111,7 @@ ActiveAdmin.register Person do
     end
 
     f.inputs do
-      f.has_many :addresses do |f|
+      f.has_many :addresses, heading: 'Addresses', allow_destroy: true do |f|
         f.input :street_address
         f.input :city
         f.input :state
@@ -113,7 +121,7 @@ ActiveAdmin.register Person do
     end
 
     f.inputs do
-      f.has_many :identifiers do |f|
+      f.has_many :identifiers, heading: 'Rollodex', allow_destroy: true do |f|
         f.input :name, 
                 :collection => AdminConstants::ADMIN_IDENTIFIER_NAME_COLLECTION,
                 :label      => AdminConstants::ADMIN_IDENTIFIER_NAME_LABEL,
@@ -132,23 +140,16 @@ ActiveAdmin.register Person do
       end
     end
 =begin
-    f.inputs do
-      f.has_many :certs, :heading => 'Certifications' do |cf|
-        
-        cf.input :certificate,
-                :collection       => Certificate.where({:for_person => true}),
-                :include_blank    => false
-
-        cf.input :expires_on, 
-                :as               => :date_picker,
-                :hint             => AdminConstants::ADMIN_CERT_EXPIRES_ON_HINT
-
-        cf.input :serial_number, 
-                :hint             => AdminConstants::ADMIN_CERT_SERIAL_NUMBER_HINT
-
-        cf.input :permanent
-
-        cf.input :active
+# [TODO] Valid_from and valid_to not displayed 
+    f.inputs do 
+      f.has_many :permits, heading: 'Permits', allow_destroy: true do |p|
+        p.input :name
+        p.input :description
+        p.input :jurisdiction
+        p.input :basis
+        p.input :permanent
+        p.input :valid_from
+        p.input :valid_to
       end
     end
 =end
@@ -179,6 +180,28 @@ ActiveAdmin.register Person do
       end
     end
 
+    # Permit is polymorphic for Company, Person, Equipment, ?
+    panel 'Permits & Qualifications' do
+      attributes_table_for(person) do
+        unless person.permits.any?
+          h4 'None'
+        else
+          permits = person.permits.all.each do |permit|
+            unless permit.valid_from.nil?
+              h4 'No'
+            else
+              row ("Name") {permit.name}
+              row ("Description") {permit.description}
+              row ("Valid_from") {permit.valid_from}
+              row ("----") #  {(permit.valid_from >= DateTime.now ? ' Current '  : ' Lapsed or pending') }
+            end
+          end
+        end
+      end
+    end
+
+=begin
+    # Removed as was based on Certificates has_many Certs belongs_to Certificates
     # Cert is polymorphic
     # certifiable_id == who owns it, e.g. Person, Company, Vehicle...
     # certificate_id == what is it, e.g. Driving License, Birth Certificate...
@@ -197,7 +220,7 @@ ActiveAdmin.register Person do
         end
       end
     end
-
+=end
     active_admin_comments
   end
 

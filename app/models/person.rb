@@ -84,6 +84,7 @@ class Person < ApplicationRecord
     [self.first_name, self.last_name].compact.join ' '
   end
  
+   
  #
  # Address(es)
  #   

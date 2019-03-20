@@ -1,23 +1,10 @@
 ActiveAdmin.register Condition do
 
+  permit_params  :name, :verbiage, :indication, :status, :approved, :change_approved_by, :change_approved_at
 
   menu parent: "Compliance"
-#  menu :label => "Compliance", :if => lambda{|tabs_renderer|
-#    controller.current_ability.can?(:manage, AdminUser)
-#  }
-=begin
-  scope :approved, -> { where(approved: true) }
 
-=begin
-  # Rails 3.x scopes, remove
-  scope :all
-  scope :approved do |conditions|
-    conditions.where ({approved: true})
-  end
-  scope :approved do |conditions|
-    conditions.where ({approved: false})
-  end
-=end 
+  scope :approved, -> (conditions){ where(approved: true) }
 
   filter :name
   filter :status
@@ -70,12 +57,5 @@ ActiveAdmin.register Condition do
     end
     active_admin_comments
   end
-
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-
- permit_params  :name, :verbiage, :indication, :status, :approved, :change_approved_by, :change_approved_at
-
 
 end
