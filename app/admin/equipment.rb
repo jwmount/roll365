@@ -20,18 +20,20 @@ ActiveAdmin.register Equipment do
       link_to equipment.name, admin_company_equipment_path(equipment.company.id, equipment.id), :class => "member_link"
     end
 
-    column :certs do |equipment|
-      render equipment.certs
+    column :permits do |equipment|
+      render equipment.permits
     end
 
   end  
 
 
+  #[TODO] Need to resolve nesting in order to create new equipment -- whose is it?
+  
   form do |f|
 
     f.semantic_errors *f.object.errors.keys    
- 
-    f.inputs "Equipment for #{self.company.name}" do
+ byebug
+    f.inputs "Equipment for #{f.company.name}" do
 
       f.input :name,
               :as                   => :select,
@@ -43,7 +45,7 @@ ActiveAdmin.register Equipment do
     # DRY -- not DRY, people, companies, tips also do this
     f.inputs do
 
-      f.has_many :certs do |f|
+      f.has_many :permits do |f|
         
         f.input :certificate,
                 :collection         => Certificate.where({:for_equipment => true}),
@@ -69,7 +71,7 @@ ActiveAdmin.register Equipment do
 
     attributes_table do
       rows :name, :company
-      row ("Certifications") { render equipment.certs}
+      row ("Certifications") { render equipment.permits}
 
     end
     

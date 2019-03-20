@@ -4,8 +4,6 @@ ActiveAdmin.register Condition do
 
   menu parent: "Compliance"
 
-  scope :approved, -> (conditions){ where(approved: true) }
-
   filter :name
   filter :status
   filter :verbiage
