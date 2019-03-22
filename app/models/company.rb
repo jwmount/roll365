@@ -7,17 +7,13 @@ class Company < ApplicationRecord
   validates_associated :people
 
   has_many :equipment, :dependent => :destroy
-  #validates_associated :equipment
+  validates_associated :equipment
            
   has_many :projects, :dependent => :destroy
-  #validates_associated :projects
+  validates_associated :projects
 
-  #has_many :reservations
-  #validates_associated :reservations
-
-  # We do not use :dependent => :destroy as tips survive company owners.  OK?
-  has_many :tips
-  #validates_associated :tips
+  has_many :tips # We do not use :dependent => :destroy as tips survive company owners.  OK?
+  validates_associated :tips
 
   # polymorphs
   has_many  :addresses,
@@ -38,15 +34,17 @@ class Company < ApplicationRecord
            :dependent => :destroy
   validates_associated :identifiers
 
+  #
   # REQUIRED for nestd forms
+  #
   accepts_nested_attributes_for :people, allow_destroy: true
   accepts_nested_attributes_for :addresses, allow_destroy: true
   accepts_nested_attributes_for :permits, allow_destroy: true
   accepts_nested_attributes_for :identifiers, allow_destroy: true
   
-#
-# V A L I D A T I O N S   O N  C L A S S  O B J E C T   V A L I D A T I O N S   O N  C L A S S  O B J E C T. 
-#
+  #
+  # V A L I D A T I O N S   O N  C L A S S  O B J E C T   V A L I D A T I O N S   O N  C L A S S  O B J E C T. 
+  #
   validates_presence_of :name
   validates_uniqueness_of :name
 
@@ -62,9 +60,9 @@ class Company < ApplicationRecord
                       }
   end
 
-#
-# D E F A U L T S
-#
+  #
+  # D E F A U L T S 
+  #
   after_initialize :defaults
 
   def defaults

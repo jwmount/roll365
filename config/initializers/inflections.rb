@@ -14,11 +14,14 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym 'RESTful'
 # end
- ActiveSupport::Inflector.inflections do |inflect|
-#   inflect.acronym 'RESTful'
+
+
+# 
+# Reference
+# https://stackoverflow.com/questions/30985472/how-to-use-inflections-on-a-rails-engine
+#
+ActiveSupport::Inflector.inflections(:en) do |inflect|
    inflect.uncountable %w( equipment )
-   inflect.plural   /^(equipment)$/i, '\1s'
-   inflect.singular /^(equipment)/i, '\1'
-   inflect.plural   /^(addresses)$/i, '\1es'
-   inflect.singular /^(address)es/i, '\1'
- end
+   inflect.irregular 'person', 'people'
+   inflect.irregular 'address', 'addresses'
+end

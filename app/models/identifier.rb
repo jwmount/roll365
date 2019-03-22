@@ -4,6 +4,7 @@ class Identifier < ApplicationRecord
   
 
     belongs_to :identifiable, polymorphic: true
+
   # removed, prevents @contact.save operations if present
   #  validates_presence_of :identifiable_id, :identifiable_type, :name, :value
   # trial:  see if having all defaults handles this.  Cleaner than trinary tests in people.rb etc.

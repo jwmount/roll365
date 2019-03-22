@@ -50,7 +50,7 @@ ActiveAdmin.register Person do
       h4 link_to "#{person.display_name}", new_admin_company_person_path(person.company_id)
       h5 link_to "Contact: #{person.company.name}", admin_company_path(person.company_id)
       @identifiers = person.identifiers.order(:rank)
-      render @identifiers
+      #@identifiers
       
       @addresses = person.addresses
       h5 person.addresses

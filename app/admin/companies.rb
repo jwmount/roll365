@@ -185,18 +185,20 @@ includes :addresses, :identifiers, :permits
   show :title => :display_name do
     attributes_table do
       row :name
-      row company.address
+      row ("Address") { company.address }
       row :line_of_business
       row ("Web Site") { link_to "#{company.url}", href="http://#{company.url}", target: '_blank' }
       row :credit_terms
       row("PO_required") { status_tag (company.PO_required ? "YES" : "No"), (company.PO_required ? :ok : :error) }        
       row("active") { status_tag (company.active ? "YES" : "No"), (company.active ? :ok : :error) }
       row :bookkeeping_number
-      #row ("Rollodex") { company.identifiers }
+
+      row ("Rollodex") { company.identifiers.name }
       row ("People")   { company.people }
       #row ("Projects") {company.projects}
       #row ("Equipment") {company.equipment}
-      #row company.permit
+      
+      row ("Permits") {company.permits}
     end
 
     active_admin_comments
