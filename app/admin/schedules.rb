@@ -1,12 +1,17 @@
-#require 'debugger'
 #require 'active_support/core_ext/object/include_blank.rb'
 #require 'active_support/core_ext/string/filters'
 require 'active_support/all'
 
 ActiveAdmin.register Schedule do
 
+  #
+  # W H I T E  L I S T   W H I T E  L I S T   W H I T E  L I S T   W H I T E  L I S T   W H I T E  L I S T  
+  #
   permit_params :day, :job_id, :equipment_units_today
   
+  #
+  # A S S O C I A T I O N S.  A S S O C I A T I O N S.  A S S O C I A T I O N S.  A S S O C I A T I O N S. 
+  #
   belongs_to :job
   
   filter :job

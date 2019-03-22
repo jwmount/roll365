@@ -1,8 +1,6 @@
 class Project < ApplicationRecord
   #include Sluggable
 
-  # audited, not on Rails 4 yet
-
   belongs_to :company
 
   has_many :certificates, :dependent => :destroy

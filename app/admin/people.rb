@@ -1,7 +1,8 @@
 ActiveAdmin.register Person do
 
   belongs_to :company
-  permit_params :company_id, :first_name, :last_name, :title, :available, :available_on, :OK_to_contact, :active,
+  
+  permit_params  :company_id, :first_name, :last_name, :title, :role, :available, :available_on, :OK_to_contact, :active,
 
                 companies_attributes: [:name, :credit_terms, :PO_required, :active, :bookkeeping_number, :line_of_business, :url, :licensee],
 
@@ -14,6 +15,9 @@ ActiveAdmin.register Person do
                           :valid_from, :valid_to]
   
 # menu :parent => "Companies"
+
+# Eager loading to improve page performance
+  includes :addresses, :identifiers, :permits
 
 #
 # I N D E X / L I S T  C O N T E X T
@@ -45,16 +49,28 @@ ActiveAdmin.register Person do
   index do
 
     selectable_column
+
+  #[TODO] -- this stanza is defective!  Point is to provide the entire collection of each of the polymorphi models.  We don't.
     column :name do |person|
 
       h4 link_to "#{person.display_name}", new_admin_company_person_path(person.company_id)
-      h5 link_to "Contact: #{person.company.name}", admin_company_path(person.company_id)
-      @identifiers = person.identifiers.order(:rank)
-      #@identifiers
+      h5 link_to "Affiliation: #{person.company.name}", admin_company_path(person.company_id)
       
-      @addresses = person.addresses
-      h5 person.addresses
+      @identifiables = person.identifiers.order(:rank)
+      if @identifiables.present?
+        h5 "#{@identifiables.first.name}: " + "\n#{@identifiables.first.value}" + "\nRank:  #{@identifiables.first.rank}"
+      else
+        h5 status_tag('No contact information')
+      end
       
+      @addressables = person.addresses
+      if @addressables.present?
+        h5 "Address: #{@addressables.first.street_address},  " + "\n#{@addressables.first.city},  \nMap reference: #{@addressables.first.map_reference}" #person.addresses
+      else
+        h5 status_tag('No address available')
+      end
+
+
 
     end
 

@@ -1,5 +1,5 @@
 
-#require 'active_support/core_ext/integer/inflections.rb'
+require 'active_support/core_ext/integer/inflections.rb'
 
 ActiveAdmin.register Identifier do
 

@@ -56,6 +56,7 @@ class Person < ApplicationRecord
 
 #
 # Roles people can be in
+# [TODO]. Move into Role model or remove altogether
 #
   roles_list = %w[ admin bookkeeper driver management operations sales superadmin visitor]
 
