@@ -192,36 +192,18 @@ ActiveAdmin.register Person do
         row("OK_to_contact") { status_tag (person.OK_to_contact ? "YES" : "No"), (person.OK_to_contact ? :ok : :error) }
       end
     end
-=begin
-    # Permit is polymorphic for Company, Person, Equipment, ?
-    panel 'Permits & Qualifications' do
-      attributes_table_for(person) do
-        unless person.permits.any?
-          h4 'None'
-        else
-          permits = person.permits.all.each do |permit|
-            unless permit.valid_from.nil?
-              h4 'No'
-            else
-              row ("Name") {permit.name}
-              row ("Description") {permit.description}
-              row ("Valid_from") {permit.valid_from}
-              row ("----") #  {(permit.valid_from >= DateTime.now ? ' Current '  : ' Lapsed or pending') }
-            end
-          end
-        end
-      end
-    end
-=end
+ 
     panel 'Permits & Qualifications' do
       attributes_table_for(person) do
         unless person.permits.any? do
           h4 'None'
         else
           person.permits.all.each do |permit|
-            row("#{permit.name}") {  permit.description +
-            (permit.valid_from ? ' Current '  : ' Lapsed or pending').to_s + ', ' +
-            (permit.valid_to ? ' Permanent ' : ' Temporary ').to_s 
+            row("#{permit.name}") {  permit.description  + 
+            "\t Valid From:  " +
+            (permit.valid_from.nil? ? 'unknown' : permit.valid_from.to_strftime("%a, %d %b %Y")) + ', ' +
+            "\t Valid Until: " +
+            (permit.valid_to.nil? ? 'unknown' : permit.valid_to.strftime("%a, %d %b %Y"))           
           }
           end
         end
