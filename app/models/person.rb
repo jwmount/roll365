@@ -18,20 +18,17 @@ class Person < ApplicationRecord
   #
   has_many  :addresses, 
             :as           => :addressable, 
-            :autosave     => true, 
-            :dependent    => :destroy
+            :autosave     => true
   validates_associated :addresses
 
   has_many :permits, 
            :as            => :permitable, 
-           :autosave      => true, 
-           :dependent     => :destroy
+           :autosave      => true
   validates_associated :permits
 
   has_many :identifiers, 
            :as            => :identifiable, 
-           :autosave      => true, 
-           :dependent     => :destroy
+           :autosave      => true
   validates_associated :identifiers
 
   # NESTING           

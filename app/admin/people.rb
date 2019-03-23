@@ -151,7 +151,8 @@ ActiveAdmin.register Person do
                 :placeholder => AdminConstants::ADMIN_IDENTIFIER_RANK_PLACEHOLDER 
       end
     end
-=begin
+ 
+
 # [TODO] Valid_from and valid_to not displayed 
     f.inputs do 
       f.has_many :permits, heading: 'Permits', allow_destroy: true do |p|
@@ -164,7 +165,7 @@ ActiveAdmin.register Person do
         p.input :valid_to
       end
     end
-=end
+ 
     f.actions
 
   end
@@ -176,7 +177,7 @@ ActiveAdmin.register Person do
       attributes_table_for(person) do
         row :company
         row :title
-        row ("Address") { render person.addresses }
+        row ("Address") { person.addresses }
         row ("Rollodex") { render person.identifiers }
         row ("active") { status_tag (person.active ? "YES" : "No"), (person.active ? :ok : :error) }
       end
@@ -191,7 +192,7 @@ ActiveAdmin.register Person do
         row("OK_to_contact") { status_tag (person.OK_to_contact ? "YES" : "No"), (person.OK_to_contact ? :ok : :error) }
       end
     end
-
+=begin
     # Permit is polymorphic for Company, Person, Equipment, ?
     panel 'Permits & Qualifications' do
       attributes_table_for(person) do
@@ -211,7 +212,22 @@ ActiveAdmin.register Person do
         end
       end
     end
-
+=end
+    panel 'Permits & Qualifications' do
+      attributes_table_for(person) do
+        unless person.permits.any? do
+          h4 'None'
+        else
+          person.permits.all.each do |permit|
+            row("#{permit.name}") {  permit.description +
+            (permit.valid_from ? ' Current '  : ' Lapsed or pending').to_s + ', ' +
+            (permit.valid_to ? ' Permanent ' : ' Temporary ').to_s 
+          }
+          end
+        end
+      end
+    end
+  end
 =begin
     # Removed as was based on Certificates has_many Certs belongs_to Certificates
     # Cert is polymorphic
@@ -236,15 +252,9 @@ ActiveAdmin.register Person do
     active_admin_comments
   end
 
-  batch_action :enhance do |selection|
-      # Do some deleting...
-      selection.destroy
+  # [TODO] Doesn't do anything useful except prompt.  
+  batch_action :destroy, :confirm => "Really really sure ???you want to delete all of these?" do |selection|
+      selection.delete(selection)
   end
-
-  batch_action :destroy, :confirm => "really really sure ???you want to delete all of these?" do |selection|
-      # Do some deleting...
-      selection.destroy
-  end
-
 
 end
