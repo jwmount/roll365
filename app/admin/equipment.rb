@@ -1,5 +1,6 @@
 ActiveAdmin.register Equipment do
 
+  menu label: "Equipment", parent: "Admin"
 
   permit_params :name, :description
 

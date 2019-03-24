@@ -2,7 +2,7 @@ ActiveAdmin.register Condition do
 
   permit_params  :name, :verbiage, :indication, :status, :approved, :change_approved_by, :change_approved_at
 
-  menu parent: "Compliance"
+  menu parent: "Admin"
 
   filter :name
   filter :status

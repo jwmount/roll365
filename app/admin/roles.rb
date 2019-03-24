@@ -2,7 +2,7 @@ ActiveAdmin.register Role do
 
   permit_params :name, :description
 
-  menu :parent => "Admin Users"
+  menu :parent => "Admin"
 
   index do
     selectable_column

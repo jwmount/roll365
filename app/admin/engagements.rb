@@ -1,16 +1,10 @@
 
-#require 'debugger'
 #require 'active_support/core_ext/object/include_blank.rb'
 #require 'active_support/core_ext/string/filters'
 require 'active_support/all'
 
-
 ActiveAdmin.register Engagement do
 
-  #menu :parent => "Operations", :if => lambda{|tabs_renderer|
-  #  controller.current_ability.can?(:manage, Role) &&
-  #  !Schedule.all.empty?
-  #}
   
   belongs_to :person, :optional=>true
   belongs_to :schedule, :optional=>false

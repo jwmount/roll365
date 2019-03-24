@@ -1,7 +1,7 @@
 ActiveAdmin.register Company do
 
 # Eager loading to improve page performance
-includes :addresses, :identifiers, :permits
+  includes :addresses, :identifiers, :permits
 
 # Nested attributes ActiveAdmin Docs
   permit_params :name, :credit_terms, :PO_required, :active, :bookkeeping_number, :line_of_business, :url, :licensee,
@@ -13,7 +13,8 @@ includes :addresses, :identifiers, :permits
                 permits_attributes: [:id, :permitable_id, :permitable_type, :name, :description, :issuer, :jurisdiction, 
                           :basis, :required, :for_person, :for_company, :for_equipment, :for_location, :permanent,
                           :valid_from, :valid_to]
-
+ 
+#  menu priority: 1 # puts it on the very left
 #
 # I N D E X / L I S T  C O N T E X T
 #
