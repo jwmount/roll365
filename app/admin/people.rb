@@ -1,7 +1,15 @@
 ActiveAdmin.register Person do
 
+#
+# The statement below SCOPES the association between Company and Person for index purposes.
+# When this statement is in effect, there is not way to index All persons.  usually this is fine.
+# Only when belongs_to is NOT in effect is there a People menu generated.
+
   belongs_to :company  
 
+#
+# W H I T E L I S T   W H I T E L I S T   W H I T E L I S T   W H I T E L I S T   W H I T E L I S T  
+#
   permit_params  :company_id, :first_name, :last_name, :title, :role, :available, :available_on, :OK_to_contact, :active,
 
                     companies_attributes: [:name, :credit_terms, :PO_required, :active, :bookkeeping_number, :line_of_business, :url, :licensee],
@@ -14,7 +22,6 @@ ActiveAdmin.register Person do
                           :basis, :required, :for_person, :for_company, :for_equipment, :for_location, :permanent,
                           :valid_from, :valid_to]
   
-#  menu :label => "People", :parent => "Admin"
 
 # Eager loading to improve page performance
   includes :addresses, :identifiers, :permits
@@ -50,7 +57,9 @@ ActiveAdmin.register Person do
     
     selectable_column
 
-  #[TODO] -- this stanza is defective!  Point is to provide the entire collection of each of the polymorphi models.  We don't.
+    column "Name (click for details)", :sortable => 'name' do |person|
+      link_to person.display_name, admin_person_path(person)
+    end
     column :display_name
     column :title
     column :company
