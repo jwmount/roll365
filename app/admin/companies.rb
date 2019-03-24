@@ -101,8 +101,7 @@ includes :addresses, :identifiers, :permits
   form do |f|
     f.semantic_errors *f.object.errors.keys
     
-    
-    f.inputs "Company Details" do
+    f.inputs "#{company.name}" do
 
       f.input :name, 
               :hint         => AdminConstants::ADMIN_COMPANY_NAME_HINT,

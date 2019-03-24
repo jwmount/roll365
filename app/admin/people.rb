@@ -1,20 +1,20 @@
 ActiveAdmin.register Person do
 
-  belongs_to :company
-  
+  belongs_to :company  
+
   permit_params  :company_id, :first_name, :last_name, :title, :role, :available, :available_on, :OK_to_contact, :active,
 
-                companies_attributes: [:name, :credit_terms, :PO_required, :active, :bookkeeping_number, :line_of_business, :url, :licensee],
+                    companies_attributes: [:name, :credit_terms, :PO_required, :active, :bookkeeping_number, :line_of_business, :url, :licensee],
 
-                addresses_attributes: [ :id, :addressable_id, :addressable_type, :street_address, :city, :state, :post_code, :map_reference, :longitude, :latitude],
+                    addresses_attributes: [ :id, :addressable_id, :addressable_type, :street_address, :city, :state, :post_code, :map_reference, :longitude, :latitude],
                 
-                identifiers_attributes: [:id, :identifiable_id, :identifiable_type, :name, :value, :rank],
+                    identifiers_attributes: [:id, :identifiable_id, :identifiable_type, :name, :value, :rank],
                 
-                permits_attributes: [:id, :permitable_id, :permitable_type, :name, :description, :issuer, :jurisdiction, 
+                    permits_attributes: [:id, :permitable_id, :permitable_type, :name, :description, :issuer, :jurisdiction, 
                           :basis, :required, :for_person, :for_company, :for_equipment, :for_location, :permanent,
                           :valid_from, :valid_to]
   
-# menu :parent => "Companies"
+#  menu :label => "People", :parent => "Admin"
 
 # Eager loading to improve page performance
   includes :addresses, :identifiers, :permits
@@ -46,52 +46,31 @@ ActiveAdmin.register Person do
       li link_to "Manage Tip Sites", admin_tips_path
   end
   
-  index do
-
+  index do |person|
+    
     selectable_column
 
   #[TODO] -- this stanza is defective!  Point is to provide the entire collection of each of the polymorphi models.  We don't.
-    column :name do |person|
-
-      h4 link_to "#{person.display_name}", new_admin_company_person_path(person.company_id)
-      h5 link_to "Affiliation: #{person.company.name}", admin_company_path(person.company_id)
-      
-      @identifiables = person.identifiers.order(:rank)
-      if @identifiables.present?
-        h5 "#{@identifiables.first.name}: " + "\n#{@identifiables.first.value}" + "\nRank:  #{@identifiables.first.rank}"
-      else
-        h5 status_tag('No contact information')
-      end
-      
-      @addressables = person.addresses
+    column :display_name
+    column :title
+    column :company
+    column :active
+    column :available
+    column :OK_to_contact
+    column :identifiers
+    column :address
+    column :permits
+    
+  
+    
+=begin
+    @addressables = person.addresses
       if @addressables.present?
         h5 "Address: #{@addressables.first.street_address},  " + "\n#{@addressables.first.city},  \nMap reference: #{@addressables.first.map_reference}" #person.addresses
       else
         h5 status_tag('No address available')
       end
-
-
-
-    end
-
-    column :title
-    
-    column :available do |person|
-      status_tag (person.available ? "YES" : "No"), (person.available ? :ok : :error)
-    end
-
-    column :OK_to_contact  do |person|
-      status_tag (person.OK_to_contact ? "YES" : "No"), (person.OK_to_contact ? :ok : :error)
-    end
-
-    column :active  do |person|
-      status_tag (person.active ? "YES" : "No"), (person.active ? :ok : :error)
-    end
-
-    column :permits do |person|
-      person.permits
-    end
-    actions
+=end
   end
 
   form do |f|
@@ -154,9 +133,15 @@ ActiveAdmin.register Person do
  
 
 # [TODO] Valid_from and valid_to not displayed 
+# [TODO] Add labels, hints and placeholders
     f.inputs do 
       f.has_many :permits, heading: 'Permits', allow_destroy: true do |p|
-        p.input :name
+
+        p.input :name,
+                label:       AdminConstants::ADMIN_PERMIT_NAME_LABEL,
+                hint:        AdminConstants::ADMIN_PERMIT_NAME_HINT,
+                placeholder: AdminConstants::ADMIN_PERMIT_NAME_PLACEHOLDER 
+
         p.input :description
         p.input :jurisdiction
         p.input :basis
@@ -178,13 +163,13 @@ ActiveAdmin.register Person do
         row :company
         row :title
         row ("Address") { person.addresses }
-        row ("Rollodex") { render person.identifiers }
-        row ("active") { status_tag (person.active ? "YES" : "No"), (person.active ? :ok : :error) }
+        row ("Rollodex") { person.identifiers }
       end
     end
 
     panel 'Availability' do
       attributes_table_for(person) do
+        row ("active") { status_tag (person.active ? "YES" : "No"), (person.active ? :ok : :error) }
         row("Available") { status_tag (person.available ? "YES" : "No"), (person.available ? :ok : :error) }
         unless person.available
           row( "When #{person.display_name} will be available") {person.available_on}
@@ -196,7 +181,7 @@ ActiveAdmin.register Person do
     panel 'Permits & Qualifications' do
       attributes_table_for(person) do
         unless person.permits.any? do
-          h4 'None'
+          h5 'None'
         else
           person.permits.all.each do |permit|
             row("#{permit.name}") {  permit.description  + 
@@ -204,7 +189,7 @@ ActiveAdmin.register Person do
             (permit.valid_from.nil? ? 'unknown' : permit.valid_from.to_strftime("%a, %d %b %Y")) + ', ' +
             "\t Valid Until: " +
             (permit.valid_to.nil? ? 'unknown' : permit.valid_to.strftime("%a, %d %b %Y"))           
-          }
+            }
           end
         end
       end
@@ -232,11 +217,6 @@ ActiveAdmin.register Person do
     end
 =end
     active_admin_comments
-  end
-
-  # [TODO] Doesn't do anything useful except prompt.  
-  batch_action :destroy, :confirm => "Really really sure ???you want to delete all of these?" do |selection|
-      selection.delete(selection)
   end
 
 end

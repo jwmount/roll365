@@ -52,10 +52,8 @@ Rails.application.routes.draw do
       resources :identifiers
     end
 
-    shallow do
-      resources :people do
-        resources :addresses
-      end
+    resources :people, shallow: true do
+      resources :addresses
     end
      
     shallow do

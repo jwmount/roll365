@@ -2,7 +2,7 @@ ActiveAdmin.register Equipment do
 
 
   permit_params :name, :description
-  menu parent: "Company"
+
   belongs_to :company, :optional => true
   
     
@@ -15,6 +15,8 @@ ActiveAdmin.register Equipment do
 
   index do
     selectable_column
+    
+    column :name
     
     column :name, sortable: :name do |equipment|
       link_to equipment.name, admin_company_equipment_path(equipment.company.id, equipment.id), :class => "member_link"
@@ -32,7 +34,7 @@ ActiveAdmin.register Equipment do
   form do |f|
 
     f.semantic_errors *f.object.errors.keys    
- byebug
+
     f.inputs "Equipment for #{f.company.name}" do
 
       f.input :name,

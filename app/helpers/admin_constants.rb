@@ -128,6 +128,12 @@ module AdminConstants
   ADMIN_MATERIAL_NAME_PLACEHOLDER        = "Name"
   ADMIN_MATERIAL_DESCRIPTION_PLACEHOLDER = "Description"
 #
+# Permit
+  ADMIN_PERMIT_NAME_LABEL                = "Name of Permit"
+  ADMIN_PERMIT_NAME_HINT                 = "What the permit is called."
+  ADMIN_PERMIT_NAME_PLACEHOLDER          = "Driver's License, Birth Certificate, ..."
+#
+#
 # Person
 #
   ADMIN_PERSON_FIRST_NAME_LABEL          = ""

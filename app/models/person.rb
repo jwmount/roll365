@@ -40,7 +40,7 @@ class Person < ApplicationRecord
   # scope :alphabetically, -> { order: ("last_name DESC") }
   scope :post_code,      -> { where(certifiable_type: "Person")}
   
-  delegate :post_code, :to => :address
+  # delegate :post_code, :to => :address
 
 #
 # V A L I D A T I O N S
@@ -82,7 +82,10 @@ class Person < ApplicationRecord
     [self.first_name, self.last_name].compact.join ' '
   end
  
-   
+  def company_name
+    "IBM"
+  end
+
  #
  # Address(es)
  #   

@@ -1,20 +1,4 @@
                                     Prefix Verb       URI Pattern                                                                              Controller#Action
-                                    trials GET        /trials(.:format)                                                                        trials#index
-                                           POST       /trials(.:format)                                                                        trials#create
-                                 new_trial GET        /trials/new(.:format)                                                                    trials#new
-                                edit_trial GET        /trials/:id/edit(.:format)                                                               trials#edit
-                                     trial GET        /trials/:id(.:format)                                                                    trials#show
-                                           PATCH      /trials/:id(.:format)                                                                    trials#update
-                                           PUT        /trials/:id(.:format)                                                                    trials#update
-                                           DELETE     /trials/:id(.:format)                                                                    trials#destroy
-                                   permits GET        /permits(.:format)                                                                       permits#index
-                                           POST       /permits(.:format)                                                                       permits#create
-                                new_permit GET        /permits/new(.:format)                                                                   permits#new
-                               edit_permit GET        /permits/:id/edit(.:format)                                                              permits#edit
-                                    permit GET        /permits/:id(.:format)                                                                   permits#show
-                                           PATCH      /permits/:id(.:format)                                                                   permits#update
-                                           PUT        /permits/:id(.:format)                                                                   permits#update
-                                           DELETE     /permits/:id(.:format)                                                                   permits#destroy
                     new_admin_user_session GET        /admin/login(.:format)                                                                   active_admin/devise/sessions#new
                         admin_user_session POST       /admin/login(.:format)                                                                   active_admin/devise/sessions#create
                 destroy_admin_user_session DELETE|GET /admin/logout(.:format)                                                                  active_admin/devise/sessions#destroy
