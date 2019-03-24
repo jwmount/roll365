@@ -4,7 +4,7 @@ ActiveAdmin.register Person do
 # The statement below SCOPES the association between Company and Person for index purposes.
 # When this statement is in effect, there is not way to index All persons.  usually this is fine.
 # Only when belongs_to is NOT in effect is there a People menu generated.
-
+# All paths for Person are modified to contain company_id.  E.g. column Name in index.
   belongs_to :company  
 
 #
@@ -22,7 +22,6 @@ ActiveAdmin.register Person do
                           :basis, :required, :for_person, :for_company, :for_equipment, :for_location, :permanent,
                           :valid_from, :valid_to]
   
-
 # Eager loading to improve page performance
   includes :addresses, :identifiers, :permits
 
@@ -58,7 +57,7 @@ ActiveAdmin.register Person do
     selectable_column
 
     column "Name (click for details)", :sortable => 'name' do |person|
-      link_to person.display_name, admin_person_path(person)
+      link_to "#{person.display_name}", admin_company_person_path(person.company, person)
     end
     column :display_name
     column :title

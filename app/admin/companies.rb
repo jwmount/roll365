@@ -1,6 +1,6 @@
 ActiveAdmin.register Company do
 
-# Eager loading to improve page performance
+# Eager loading is supposed to improve page load performance
   includes :addresses, :identifiers, :permits
 
 # Nested attributes ActiveAdmin Docs
@@ -76,7 +76,7 @@ ActiveAdmin.register Company do
     
     column :people do |company|
       if company.people.count > 0
-        link_to "People (#{company.people.count.to_s})", admin_company_people_path( company )
+        link_to "Staff (#{company.people.count.to_s})", admin_company_people_path( company )
       else
         link_to "New person", new_admin_company_person_path(company)
       end
