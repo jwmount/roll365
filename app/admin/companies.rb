@@ -182,28 +182,70 @@ ActiveAdmin.register Company do
     f.actions
   end
 
-  show :title => :display_name do
-    attributes_table do
-      row :name
-      row ("Address") { company.address }
-      row :line_of_business
-      row ("Web Site") { link_to "#{company.url}", href="http://#{company.url}", target: '_blank' }
-      row :credit_terms
-      row("PO_required") { status_tag (company.PO_required ? "YES" : "No"), (company.PO_required ? :ok : :error) }        
-      row("active") { status_tag (company.active ? "YES" : "No"), (company.active ? :ok : :error) }
-      row :bookkeeping_number
+  show :title => :display_name do |company|
+    
+    panel "Context" do
+      attributes_table_for (company) do
+        row :name
+        row :line_of_business
+        row ("Web Site") { link_to "#{company.url}", href="http://#{company.url}", target: '_blank' }
+        row :credit_terms
+        row("PO_required") { status_tag (company.PO_required ? "YES" : "No"), (company.PO_required ? :ok : :error) }        
+        row("active") { status_tag (company.active ? "YES" : "No"), (company.active ? :ok : :error) }
+        row :bookkeeping_number 
+      end
+    end
 
-      row ("Rollodex") { company.identifiers.name }
-      row ("People")   { company.people }
-      #row ("Projects") {company.projects}
-      #row ("Equipment") {company.equipment}
-      
-      row ("Permits") {company.permits}
+    panel "Address(es)" do
+      attributes_table_for (company) do
+        row ("Address") { company.address }
+      end
+    end
+
+    panel "Contact Information" do  
+      attributes_table_for (company) do
+        row ("Rollodex") { company.identifiers.name }
+      end
+    end
+
+#
+# NOTE:  This markup works nicely but leaves out information we already have which may be .nil and thus unusable.
+# [TODO] Consider best way to add attributes to each row.  Perhaps just use validations and defaults for Person at create time.
+#
+    panel "People" do  
+      attributes_table_for (company) do
+        unless company.people.any? do
+          h5 'None'
+        else
+          company.people.all.each do |person|
+            row ("#{person.title}"){ link_to "#{person.display_name}", admin_company_person_path(company,person) }
+          end
+        end
+      end
+    end
+
+    panel "Projects" do  
+      attributes_table_for (company) do
+        row ("Projects") {company.projects}
+      end
+    end
+
+    panel "Equipment" do  
+      attributes_table_for (company) do
+        row ("Equipment") {company.equipment}
+      end
+    end  
+
+    panel "Permits" do  
+      attributes_table_for (company) do
+        row ("Permits") {company.permits}
+      end
     end
 
     active_admin_comments
-
+    end
   end
+
 
 
 # 

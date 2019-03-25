@@ -59,7 +59,7 @@ ActiveAdmin.register Person do
     column "Name (click for details)", :sortable => 'name' do |person|
       link_to "#{person.display_name}", admin_company_person_path(person.company, person)
     end
-    column :display_name
+  
     column :title
     column :company
     column :active
