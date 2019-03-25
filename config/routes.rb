@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
     ActiveAdmin.routes(self)
 
+  
+  
   namespace :admin do
     
     resources :certificates, :companies, :conditions, :dashboard, :dockets, :engagements, :equipment,
@@ -21,10 +23,8 @@ Rails.application.routes.draw do
       end
     end
 
-    shallow do
-      resources :companies do
-        resources :projects
-      end
+    resources :companies, shallow: true do
+      resources :projects
     end
 
     resources :companies, shallow: true do
@@ -56,13 +56,17 @@ Rails.application.routes.draw do
       resources :addresses
     end
      
-    shallow do
-      resources :quotes do
-        resources :solutions
-      end
+    resources :projects, shallow: true do
+      resources :quotes
+    end
+
+    resources :quotes, shallow: true do
+      resources :solutions
     end
     
    
   end #namespace
+
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end #routes

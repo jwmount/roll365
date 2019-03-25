@@ -6,14 +6,14 @@ ActiveAdmin.register Project do
 
 
   
-  # NOT OPTIONAL, effect is to scope projects to companies.
+  # NOT OPTIONAL, effect is to scope projects to companies.  See same in People.
   belongs_to :company
 
 
-  scope :active, -> (projects) { where( active: true)}
-  scope :in_active, -> (projects) { where(active: false)}
-  scope :intends_to_bid, -> (projects){ where(intends_to_bid: true) }  
-  scope :submitted_bid, -> (projects){ where(submitted_bid: true)}
+#  scope :active, -> (projects) { where( active: true)}
+#  scope :in_active, -> (projects) { where(active: false)}
+#  scope :intends_to_bid, -> (projects){ where(intends_to_bid: true) }  
+#  scope :submitted_bid, -> (projects){ where(submitted_bid: true)}
 
   filter :name
   filter :description
@@ -26,6 +26,9 @@ ActiveAdmin.register Project do
     flash[:warning] = AdminConstants::ADMIN_COMPANY_INACTIVE unless project.company.active
   end
   
+  #
+  # I N D E X     I N D E X   I N D E X   I N D E X   I N D E X  
+  #
   index do
     selectable_column
 
@@ -48,26 +51,26 @@ ActiveAdmin.register Project do
       flash[:WARNING] = nil
       begin
         @person  = Person.find project.rep_id
-        render @person
+        @person
         @identifiers = @person.identifiers.order(:rank)
-        render @identifiers
+        @identifiers
       rescue ActiveRecord::RecordNotFound
         flash[:WARNING] = highlight(t(:project_missing_rep), "WARNING:")
         'None'
       end
     end
 
-    column "Requirements" do |project|
-      @requirements = project.requirements
-      render @requirements
-    end
+#    column "Requirements" do |project|
+#      @requirements = project.requirements
+#      @requirements
+#    end
 
     column 'Start Date' do |project|
       project.project_start_on.strftime("%m %b, %Y")
     end
         
-    column :intend_to_bid do |project|
-      status_tag (project.intend_to_bid ? "YES" : "No"), (project.intend_to_bid ? :ok : :error)      
+    column :intends_to_bid do |project|
+      status_tag (project.intends_to_bid ? "YES" : "No"), (project.intends_to_bid ? :ok : :error)      
     end     
 
     column :submitted_bid do |project|
@@ -166,19 +169,19 @@ ActiveAdmin.register Project do
         row :project_start_on
         row("Project Rep") do |project|   #NOTE:  not DRY, same as for :index column.
           @rep  = Person.find project.rep_id
-          render @rep 
-          render @rep.identifiers
+          @rep 
+          @rep.identifiers
         end
 
       row "Work Site" do |project|
-          render project.addresses
+        project.addresses
       end
       
       row :description
 
-      row "Requirements" do |project|
-        render project.requirements
-      end
+#      row "Requirements" do |project|
+#        project.requirements
+#      end
 
       row("Active") { status_tag (project.active ? "YES" : "No"), (project.active ? :ok : :error) }
     end
@@ -204,7 +207,8 @@ ActiveAdmin.register Project do
       status_tag('Now you can:')
       hr
       #li link_to 'Create a new Quote', new_admin_company_project_quote_path( project.company, project )     
-      li link_to 'Do Quotes', admin_company_project_quotes_path( project.company, project )     
+      #li link_to 'Do Quotes', admin_company_project_path( project.company, project )     
+      li link_to 'Do Quotes', admin_project_quotes_path( project )     
       hr
       status_tag('Other things you can do:')
       hr

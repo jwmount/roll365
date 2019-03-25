@@ -1,16 +1,15 @@
 class Project < ApplicationRecord
-  #include Sluggable
+  include Sluggable
 
   belongs_to :company
-
-  has_many :certificates, :dependent => :destroy
-  validates_associated :certificates
 
   has_many :quotes,       :dependent => :destroy
   validates_associated :quotes
 
   has_many  :people
   validates_associated :people
+
+
 #
 # P O L Y M O R P H I C  A S S O C I A T I O N S
 #
@@ -20,16 +19,15 @@ class Project < ApplicationRecord
             :dependent => :destroy
   validates_associated :addresses
 
-  has_many :requirements,
-           :as => :requireable,
-           :autosave => true,
-           :dependent => :destroy
-  validates_associated :requirements
+  has_many :permits,
+           :as => :permitable,
+           :autosave => :true
+  validates_associated :permits
   
 
 # polymorpth classes are updated directly from the parent            
   accepts_nested_attributes_for :addresses
-  accepts_nested_attributes_for :requirements
+  accepts_nested_attributes_for :permits
 
 
 #

@@ -23,24 +23,10 @@ ActiveAdmin.register Solution do
   end
 
   #before_action :ensure_permission, only: [ :edit, :update ]    
-#
-# S C O P E S
-#
-=begin
-   scope :all, :default => true
-   scope :approved do |solutions|
-     solutions.where ({approved: true})
-   end    
-   scope :client_approved do |solutions|
-     solutions.where ({client_approved: true})
-   end    
-   scope :semis_permitted do |solutions|
-     solutions.where ({semis_permitted: true})
-   end    
-=end
 
-  # Interesting note
+  # Interesting note on notation
   # "Total is %<total>.02f" % {:total => 43.1}  # => Total is 43.10
+  
   filter :equipment
 
 
@@ -427,6 +413,6 @@ form do |f|
     redirect_to admin_company_project_quote_solutions_path(
                   solution.quote.project.company, solution.quote.project, solution.quote, @solution_new.quote
                   )
-
   end
+
 end

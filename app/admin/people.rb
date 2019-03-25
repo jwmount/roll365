@@ -1,5 +1,6 @@
 ActiveAdmin.register Person do
 
+  menu label: "Admin"
 #
 # The statement below SCOPES the association between Company and Person for index purposes.
 # When this statement is in effect, there is not way to index All persons.  usually this is fine.
