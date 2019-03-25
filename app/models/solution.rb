@@ -2,11 +2,13 @@
 #require "spreadsheet"
 
 class Solution < ActiveRecord::Base
+
   include Sluggable
 #  include ActiveModel::Validations  #[TODO] What use do we make of this?
   
-
-  # A S S O C I A T I O N S     A S S O C I A T I O N S     A S S O C I A T I O N S     A S S O C I A T I O N S     
+#
+# A S S O C I A T I O N S     A S S O C I A T I O N S     A S S O C I A T I O N S     A S S O C I A T I O N S     
+#
   belongs_to :quote
   belongs_to :material
   has_many   :jobs, 
@@ -40,11 +42,11 @@ class Solution < ActiveRecord::Base
   validates :invoice_load_client, :pay_load_client, :numericality => {:greater_than_or_equal_to => 0}
   validates :invoice_tip_client, :pay_tip_client, :numericality => {:greater_than_or_equal_to => 0}
 
-  # validate :invoice_client_total
-  validates :pay_amounts?
-  validates :PO_required?
+  #validate :invoice_client_total   Does not exist
+  #validates :pay_amounts?          Causes 'at least one validation' error
+  #validates :PO_required?          Causes 'at least one validation' error
 
-
+  
   #
   # C O N T R A C T  T Y P E  V A L I D A T I O N S  --  I N C O M P L E T E
   # CONTRACT TYPE conditional validations -- given contract type, do we have what we need?
@@ -218,7 +220,7 @@ class Solution < ActiveRecord::Base
     list = equipment.collect! {|x| x.name}
 #    list.join()
   end
-  
+
 end
 
 
