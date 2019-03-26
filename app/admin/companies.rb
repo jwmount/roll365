@@ -212,14 +212,11 @@ ActiveAdmin.register Company do
 # NOTE:  This markup works nicely but leaves out information we already have which may be .nil and thus unusable.
 # [TODO] Consider best way to add attributes to each row.  Perhaps just use validations and defaults for Person at create time.
 #
+
     panel "People" do  
       attributes_table_for (company) do
-        unless company.people.any? do
-          h5 'None'
-        else
-          company.people.all.each do |person|
-            row ("#{person.title}"){ link_to "#{person.display_name}", admin_company_person_path(company,person) }
-          end
+        company.people.all.each do |person|
+          row ("#{person.title}"){ link_to "#{person.display_name}", admin_company_person_path(company,person) }
         end
       end
     end
@@ -243,14 +240,14 @@ ActiveAdmin.register Company do
     end
 
     active_admin_comments
-    end
+
   end
 
 
 
-# 
-# P U S H  B U T T O N S
-#
+  # 
+  # P U S H  B U T T O N S      P U S H  B U T T O N S      P U S H  B U T T O N S     
+  #
   # ACTIVATE
   # Activate sets the company status to Active (true).  Does not toggle.
   # 

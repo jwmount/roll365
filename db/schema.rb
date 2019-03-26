@@ -72,6 +72,18 @@ ActiveRecord::Schema.define(version: 2019_03_18_005306) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "certs", force: :cascade do |t|
+    t.string "certifiable_type"
+    t.bigint "certifiable_id"
+    t.datetime "expires_on"
+    t.string "serial_number"
+    t.boolean "permanent"
+    t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["certifiable_type", "certifiable_id"], name: "index_certs_on_certifiable_type_and_certifiable_id"
+  end
+
   create_table "companies", force: :cascade do |t|
     t.string "name"
     t.integer "credit_terms"

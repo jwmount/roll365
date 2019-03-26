@@ -179,7 +179,7 @@ companies_list.each do |model|
   @company.people.find_or_create_by( model["person"] )
   @company.identifiers.create( model["identifier"] )
   @company.tips.find_or_create_by( model["tip"] ) unless model["tip"].nil?
- puts "#{model} -- CREATED"
+ puts "#{model} -- CREATED companies from companies_list"
 end
 
 #
@@ -204,6 +204,7 @@ demo_list = [
 ]
 
 demo_list.each do |model| 
+
   @company = Company.find_or_create_by( model["company"] )
   @company.addresses.find_or_create_by( model["address"] )
   @company.people.find_or_create_by( model["person"] )
@@ -223,25 +224,25 @@ demo_list.each do |model|
   @quote.fire_ants_verified_by = 1
   @quote.save! 
 
-  @solution = @quote.solutions.new( model ["solution"] )
-  @solution.material_id = 1
-  @solution.equipment_name = "Truck"
-  @solution.save!
+# STOP HERE, NESTING IS OUT OF WHACK
+#  @solution = @quote.solutions.new( model ["solution"] )
+#  @solution.material_id = 1
+#  @solution.equipment_name = "Truck"
+#  @solution.save!
 
-# [TODO]
-  #@job = @solution.jobs.create!( model ["job"] )
-  #@schedule = @job.schedules.create!( model ["schedule"] )
+#  @job = @solution.jobs.create!( model ["job"] )
+#  @schedule = @job.schedules.create!( model ["schedule"] )
 
-  #@engagement = @schedule.engagements.new( model ["engagement"] )
-  #@engagement.person_id = 1
-  #@engagement.save!
+#  @engagement = @schedule.engagements.new( model ["engagement"] )
+#  @engagement.person_id = 1
+#  @engagement.save!
 
-  #@docket = @engagement.dockets.create!( person_id: 1, number: "00001")
+#  @docket = @engagement.dockets.create!( person_id: 1, number: "00001")
 end
 
 # [TODO] Pick up personal identifiers not captured so far.  These people exist already.
 # Prior existences, really?
-=begin 
+
 personal_identifiers_list = [
   {first_name: "Kelly", last_name: "Kolander", name: "email", value: "pat@osisoft.com"},
   {first_name: "Ben", last_name: "Rodrigues Jr.", name: "email", value: "jpetersen@petersendean.com"},
@@ -259,7 +260,6 @@ personal_identifiers_list.each do |model|
   end
 end
 
-=end
 
 
 #
@@ -559,7 +559,7 @@ end
   "As Directed",
   "Sandy Fill"
 ].each do |name|
-  material = Material.create!( name: name)
+  material = Material.find_or_create_by!( name: name)
 end
 
 # Conditions

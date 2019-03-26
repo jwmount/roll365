@@ -47,6 +47,7 @@ ActiveAdmin.register Project do
 
     # Project may have no rep, or some rep (one); multiple reps not supported so far.
     # Rep is a person who is 'us', that is not from the company.project set.  Hence not clear how to link to it.
+    # Do we still have flash[] in v5.2.2?
     column "Rep" do |project|
       flash[:WARNING] = nil
       begin
@@ -55,7 +56,7 @@ ActiveAdmin.register Project do
         @identifiers = @person.identifiers.order(:rank)
         @identifiers
       rescue ActiveRecord::RecordNotFound
-        flash[:WARNING] = highlight(t(:project_missing_rep), "WARNING:")
+        #flash[:WARNING] = highlight(t(:project_missing_rep), "WARNING:")
         'None'
       end
     end
