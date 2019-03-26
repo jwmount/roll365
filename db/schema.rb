@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_18_005306) do
+ActiveRecord::Schema.define(version: 2019_03_17_225022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,24 +64,12 @@ ActiveRecord::Schema.define(version: 2019_03_18_005306) do
     t.boolean "for_equipment"
     t.boolean "for_location"
     t.boolean "active"
-    t.string "jurisdiction"
-    t.string "basis"
+    t.string "issued_by"
     t.datetime "issued_on"
     t.datetime "expires_on"
+    t.string "basis"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "certs", force: :cascade do |t|
-    t.string "certifiable_type"
-    t.bigint "certifiable_id"
-    t.datetime "expires_on"
-    t.string "serial_number"
-    t.boolean "permanent"
-    t.boolean "active"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["certifiable_type", "certifiable_id"], name: "index_certs_on_certifiable_type_and_certifiable_id"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -208,6 +196,7 @@ ActiveRecord::Schema.define(version: 2019_03_18_005306) do
     t.bigint "permitable_id"
     t.string "name"
     t.string "description"
+    t.decimal "fee"
     t.string "issuer"
     t.string "jurisdiction"
     t.string "basis"
@@ -337,19 +326,6 @@ ActiveRecord::Schema.define(version: 2019_03_18_005306) do
     t.integer "company_id"
     t.decimal "fee"
     t.string "fire_ant_risk_level"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "trials", force: :cascade do |t|
-    t.string "trialable_type"
-    t.bigint "trialable_id"
-    t.string "company_type"
-    t.bigint "company_id"
-    t.string "person_type"
-    t.bigint "person_id"
-    t.string "name"
-    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

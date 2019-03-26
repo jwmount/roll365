@@ -4,11 +4,11 @@
 class Solution < ActiveRecord::Base
 
   include Sluggable
-#  include ActiveModel::Validations  #[TODO] What use do we make of this?
+  #  include ActiveModel::Validations  #[TODO] What use do we make of this?
   
-#
-# A S S O C I A T I O N S     A S S O C I A T I O N S     A S S O C I A T I O N S     A S S O C I A T I O N S     
-#
+  #
+  # A S S O C I A T I O N S     A S S O C I A T I O N S     A S S O C I A T I O N S     A S S O C I A T I O N S     
+  #
   belongs_to :quote
   belongs_to :material
   has_many   :jobs, 

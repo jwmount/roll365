@@ -8,10 +8,22 @@ class Permit < ApplicationRecord
   
   def defaults
     unless persisted?
-      self.name ||= 'unknown'
+      self.basis ||= 'unknown'
       self.description ||= 'Permits and Licenses'
-      self.issuer ||= 'DOT'
+      self.fee ||= 0.00
+      self.for_company||= false
+      self.for_equipment ||= false
+      self.for_location ||= false
+      self.for_person ||= false
+      self.issuer ||= 'unknown'
+      self.jurisdiction ||= 'unknown'
+      self.name ||= 'unknown'
+      self.permanent ||= false
+      self.required ||= false
+      self.valid_from ||= date.today
+      self.valid_to ||= date.today
     end
   end
 
 end
+

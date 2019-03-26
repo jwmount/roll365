@@ -1,7 +1,9 @@
 ActiveAdmin.register Person do
 
-  menu parent: "Company"
-#
+# Menu placement matters, crashes if placed after association with company (path not found)
+# Does NOT work here either!  No effect.  
+#  menu parent: "Admin"
+
 # The statement below SCOPES the association between Company and Person for index purposes.
 # When this statement is in effect, there is not way to index All persons.  usually this is fine.
 # Only when belongs_to is NOT in effect is there a People menu generated.

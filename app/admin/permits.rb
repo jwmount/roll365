@@ -10,7 +10,8 @@ ActiveAdmin.register Permit do
   belongs_to :equipment, :optional => true
 
   permit_params :permitable_id, :permitable_type, 
-                :name, :description, :issuer, :jurisdiction, :basis, :required,
+                :name, :description, :fee, :issuer, :jurisdiction, :basis, :required,
                 :for_person, :for_company, :for_equipment, :for_location, :permanent,
 		        :valid_from, :valid_to  
 end
+
