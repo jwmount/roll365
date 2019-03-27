@@ -189,6 +189,7 @@ ActiveAdmin.register Person do
       end
     end
  
+    [TODO] -- this is sloppy given way dates are assumed to be present based on name !nil.
     panel 'Permits & Qualifications' do
       attributes_table_for(person) do
          person.permits.all.each do |permit|
