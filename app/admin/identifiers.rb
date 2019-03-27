@@ -3,22 +3,12 @@ require 'active_support/core_ext/integer/inflections.rb'
 
 ActiveAdmin.register Identifier do
 
-  permit_params :name, :value, :rank
+  permit_params :identifiable_type, :identifiable_id, :name, :value, :rank
   
   menu label: "Rollodex", parent: "Admin"
-  #menu label: "Rollodex", parent: "Companies"
   
   #actions :all, :except => :new
 
-=begin
-  scope :all, :default => true
-  scope :People do |identifiers|
-    identifiers.where ({identifiable_type: 'Person'})
-  end
-  scope :Companies do |identifiers|
-    identifiers.where ({identifiable_type: 'Company'})
-  end
-=end
 
   filter :name
   filter :value  
