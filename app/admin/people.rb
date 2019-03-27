@@ -191,21 +191,17 @@ ActiveAdmin.register Person do
  
     panel 'Permits & Qualifications' do
       attributes_table_for(person) do
-        unless person.permits.any? do
-          h5 'None'
-        else
-          person.permits.all.each do |permit|
-            row("#{permit.name}") {  permit.description  + 
-            "\t Valid From:  " +
-            (permit.valid_from.nil? ? 'unknown' : permit.valid_from.to_strftime("%a, %d %b %Y")) + ', ' +
-            "\t Valid Until: " +
-            (permit.valid_to.nil? ? 'unknown' : permit.valid_to.strftime("%a, %d %b %Y"))           
-            }
-          end
+         person.permits.all.each do |permit|
+            unless permit.name.nil?
+              row("#{permit.name}") {  permit.description + "\t Valid From:  " +
+                (permit.valid_from.nil? ? 'unknown' : permit.valid_from.to_date.to_s) + ', ' + "\t Valid Until: " +
+                (permit.valid_to.nil?   ? 'unknown' : permit.valid_to.to_date.to_s)           
+              }
+            end
         end
       end
     end
-  end
+
 =begin
     # Removed as was based on Certificates has_many Certs belongs_to Certificates
     # Cert is polymorphic

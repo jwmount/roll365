@@ -20,8 +20,8 @@ class Permit < ApplicationRecord
       self.name ||= 'unknown'
       self.permanent ||= false
       self.required ||= false
-      self.valid_from ||= date.today
-      self.valid_to ||= date.today
+      self.valid_from ||= DateTime.now
+      self.valid_to ||= DateTime.now
     end
   end
 
