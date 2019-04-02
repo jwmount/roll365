@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
     ActiveAdmin.routes(self)
 
-
+  # use rails g controller welcome to direct root references to welcome index and the get is what to do there
   get 'welcome/index'
   root 'welcome#index'  
   
