@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'contact', to: :show, controller: 'welcome'
   get 'privacy', to: :show, controller: 'welcome'
   get 'tsandcs', to: :show, controller: 'welcome'
+ 
   #
   # A C T I V E  A D M I N   A C T I V E  A D M I N   A C T I V E  A D M I N   A C T I V E  A D M I N  
   #

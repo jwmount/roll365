@@ -262,6 +262,7 @@ batch_action_admin_company_equipment_index POST       /admin/companies/:company_
                                    contact GET        /contact(.:format)                                                                       welcome#contact
                                    privacy GET        /privacy(.:format)                                                                       welcome#privacy
                                    tsandcs GET        /tsandcs(.:format)                                                                       welcome#tsandcs
+                                   foolery GET        /foolery(.:format)                                                                       welcome#foolery
                                            GET        /admin/certificates(.:format)                                                            admin/certificates#index
                                            POST       /admin/certificates(.:format)                                                            admin/certificates#create
                                            GET        /admin/certificates/new(.:format)                                                        admin/certificates#new
