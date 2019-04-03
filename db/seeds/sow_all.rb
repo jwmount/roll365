@@ -214,6 +214,7 @@ demo_list.each do |model|
   @project.rep_id = 1
   @project.save!
 
+
   @project.addresses.find_or_create_by( model["projAddr"])
   @projmgr = @company.people.first
 

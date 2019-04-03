@@ -4,21 +4,18 @@
   %p.Fr8.Network
   //= image_tag "logo.png", size: "280x90", alt: "logo"
 
-  %p Roll365 Landing Page
-         
+          
   %p.floatright
+  = link_to "Dashboard", admin_dashboard_path
+  = ' | '
   = link_to "Logon or Register", admin_root_path
-
-  %br
-  %br
-  #menu
-    %ul
-      %li
-        = link_to 'Home', home_path
-      %li
-        = link_to 'FAQ', faq_path
-      %li
-        = link_to 'About Us', about_path
+  = ' | '
+  = link_to 'Home', home_path
+  = '  --  '
+  = link_to 'About Us', about_path
+  = ' | '
+  = link_to 'FAQ', faq_path
+  
 
   %br
   %br

@@ -262,7 +262,182 @@ batch_action_admin_company_equipment_index POST       /admin/companies/:company_
                                    contact GET        /contact(.:format)                                                                       welcome#contact
                                    privacy GET        /privacy(.:format)                                                                       welcome#privacy
                                    tsandcs GET        /tsandcs(.:format)                                                                       welcome#tsandcs
-                                   foolery GET        /foolery(.:format)                                                                       welcome#foolery
+                                 companies GET        /companies(.:format)                                                                     companies#index
+                                           POST       /companies(.:format)                                                                     companies#create
+                               new_company GET        /companies/new(.:format)                                                                 companies#new
+                              edit_company GET        /companies/:id/edit(.:format)                                                            companies#edit
+                                   company GET        /companies/:id(.:format)                                                                 companies#show
+                                           PATCH      /companies/:id(.:format)                                                                 companies#update
+                                           PUT        /companies/:id(.:format)                                                                 companies#update
+                                           DELETE     /companies/:id(.:format)                                                                 companies#destroy
+                                    people GET        /people(.:format)                                                                        people#index
+                                           POST       /people(.:format)                                                                        people#create
+                                new_person GET        /people/new(.:format)                                                                    people#new
+                               edit_person GET        /people/:id/edit(.:format)                                                               people#edit
+                                    person GET        /people/:id(.:format)                                                                    people#show
+                                           PATCH      /people/:id(.:format)                                                                    people#update
+                                           PUT        /people/:id(.:format)                                                                    people#update
+                                           DELETE     /people/:id(.:format)                                                                    people#destroy
+                                  projects GET        /projects(.:format)                                                                      projects#index
+                                           POST       /projects(.:format)                                                                      projects#create
+                               new_project GET        /projects/new(.:format)                                                                  projects#new
+                              edit_project GET        /projects/:id/edit(.:format)                                                             projects#edit
+                                   project GET        /projects/:id(.:format)                                                                  projects#show
+                                           PATCH      /projects/:id(.:format)                                                                  projects#update
+                                           PUT        /projects/:id(.:format)                                                                  projects#update
+                                           DELETE     /projects/:id(.:format)                                                                  projects#destroy
+                                conditions GET        /conditions(.:format)                                                                    conditions#index
+                                           POST       /conditions(.:format)                                                                    conditions#create
+                             new_condition GET        /conditions/new(.:format)                                                                conditions#new
+                            edit_condition GET        /conditions/:id/edit(.:format)                                                           conditions#edit
+                                 condition GET        /conditions/:id(.:format)                                                                conditions#show
+                                           PATCH      /conditions/:id(.:format)                                                                conditions#update
+                                           PUT        /conditions/:id(.:format)                                                                conditions#update
+                                           DELETE     /conditions/:id(.:format)                                                                conditions#destroy
+                           dashboard_index GET        /dashboard(.:format)                                                                     dashboard#index
+                                           POST       /dashboard(.:format)                                                                     dashboard#create
+                             new_dashboard GET        /dashboard/new(.:format)                                                                 dashboard#new
+                            edit_dashboard GET        /dashboard/:id/edit(.:format)                                                            dashboard#edit
+                                 dashboard GET        /dashboard/:id(.:format)                                                                 dashboard#show
+                                           PATCH      /dashboard/:id(.:format)                                                                 dashboard#update
+                                           PUT        /dashboard/:id(.:format)                                                                 dashboard#update
+                                           DELETE     /dashboard/:id(.:format)                                                                 dashboard#destroy
+                                   dockets GET        /dockets(.:format)                                                                       dockets#index
+                                           POST       /dockets(.:format)                                                                       dockets#create
+                                new_docket GET        /dockets/new(.:format)                                                                   dockets#new
+                               edit_docket GET        /dockets/:id/edit(.:format)                                                              dockets#edit
+                                    docket GET        /dockets/:id(.:format)                                                                   dockets#show
+                                           PATCH      /dockets/:id(.:format)                                                                   dockets#update
+                                           PUT        /dockets/:id(.:format)                                                                   dockets#update
+                                           DELETE     /dockets/:id(.:format)                                                                   dockets#destroy
+                               engagements GET        /engagements(.:format)                                                                   engagements#index
+                                           POST       /engagements(.:format)                                                                   engagements#create
+                            new_engagement GET        /engagements/new(.:format)                                                               engagements#new
+                           edit_engagement GET        /engagements/:id/edit(.:format)                                                          engagements#edit
+                                engagement GET        /engagements/:id(.:format)                                                               engagements#show
+                                           PATCH      /engagements/:id(.:format)                                                               engagements#update
+                                           PUT        /engagements/:id(.:format)                                                               engagements#update
+                                           DELETE     /engagements/:id(.:format)                                                               engagements#destroy
+                           equipment_index GET        /equipment(.:format)                                                                     equipment#index
+                                           POST       /equipment(.:format)                                                                     equipment#create
+                             new_equipment GET        /equipment/new(.:format)                                                                 equipment#new
+                            edit_equipment GET        /equipment/:id/edit(.:format)                                                            equipment#edit
+                                 equipment GET        /equipment/:id(.:format)                                                                 equipment#show
+                                           PATCH      /equipment/:id(.:format)                                                                 equipment#update
+                                           PUT        /equipment/:id(.:format)                                                                 equipment#update
+                                           DELETE     /equipment/:id(.:format)                                                                 equipment#destroy
+                               identifiers GET        /identifiers(.:format)                                                                   identifiers#index
+                                           POST       /identifiers(.:format)                                                                   identifiers#create
+                            new_identifier GET        /identifiers/new(.:format)                                                               identifiers#new
+                           edit_identifier GET        /identifiers/:id/edit(.:format)                                                          identifiers#edit
+                                identifier GET        /identifiers/:id(.:format)                                                               identifiers#show
+                                           PATCH      /identifiers/:id(.:format)                                                               identifiers#update
+                                           PUT        /identifiers/:id(.:format)                                                               identifiers#update
+                                           DELETE     /identifiers/:id(.:format)                                                               identifiers#destroy
+                                      jobs GET        /jobs(.:format)                                                                          jobs#index
+                                           POST       /jobs(.:format)                                                                          jobs#create
+                                   new_job GET        /jobs/new(.:format)                                                                      jobs#new
+                                  edit_job GET        /jobs/:id/edit(.:format)                                                                 jobs#edit
+                                       job GET        /jobs/:id(.:format)                                                                      jobs#show
+                                           PATCH      /jobs/:id(.:format)                                                                      jobs#update
+                                           PUT        /jobs/:id(.:format)                                                                      jobs#update
+                                           DELETE     /jobs/:id(.:format)                                                                      jobs#destroy
+                                 materials GET        /materials(.:format)                                                                     materials#index
+                                           POST       /materials(.:format)                                                                     materials#create
+                              new_material GET        /materials/new(.:format)                                                                 materials#new
+                             edit_material GET        /materials/:id/edit(.:format)                                                            materials#edit
+                                  material GET        /materials/:id(.:format)                                                                 materials#show
+                                           PATCH      /materials/:id(.:format)                                                                 materials#update
+                                           PUT        /materials/:id(.:format)                                                                 materials#update
+                                           DELETE     /materials/:id(.:format)                                                                 materials#destroy
+                                           GET        /people(.:format)                                                                        people#index
+                                           POST       /people(.:format)                                                                        people#create
+                                           GET        /people/new(.:format)                                                                    people#new
+                                           GET        /people/:id/edit(.:format)                                                               people#edit
+                                           GET        /people/:id(.:format)                                                                    people#show
+                                           PATCH      /people/:id(.:format)                                                                    people#update
+                                           PUT        /people/:id(.:format)                                                                    people#update
+                                           DELETE     /people/:id(.:format)                                                                    people#destroy
+                          people_schedules GET        /people_schedules(.:format)                                                              people_schedules#index
+                                           POST       /people_schedules(.:format)                                                              people_schedules#create
+                       new_people_schedule GET        /people_schedules/new(.:format)                                                          people_schedules#new
+                      edit_people_schedule GET        /people_schedules/:id/edit(.:format)                                                     people_schedules#edit
+                           people_schedule GET        /people_schedules/:id(.:format)                                                          people_schedules#show
+                                           PATCH      /people_schedules/:id(.:format)                                                          people_schedules#update
+                                           PUT        /people_schedules/:id(.:format)                                                          people_schedules#update
+                                           DELETE     /people_schedules/:id(.:format)                                                          people_schedules#destroy
+                                   permits GET        /permits(.:format)                                                                       permits#index
+                                           POST       /permits(.:format)                                                                       permits#create
+                                new_permit GET        /permits/new(.:format)                                                                   permits#new
+                               edit_permit GET        /permits/:id/edit(.:format)                                                              permits#edit
+                                    permit GET        /permits/:id(.:format)                                                                   permits#show
+                                           PATCH      /permits/:id(.:format)                                                                   permits#update
+                                           PUT        /permits/:id(.:format)                                                                   permits#update
+                                           DELETE     /permits/:id(.:format)                                                                   permits#destroy
+                                           GET        /projects(.:format)                                                                      projects#index
+                                           POST       /projects(.:format)                                                                      projects#create
+                                           GET        /projects/new(.:format)                                                                  projects#new
+                                           GET        /projects/:id/edit(.:format)                                                             projects#edit
+                                           GET        /projects/:id(.:format)                                                                  projects#show
+                                           PATCH      /projects/:id(.:format)                                                                  projects#update
+                                           PUT        /projects/:id(.:format)                                                                  projects#update
+                                           DELETE     /projects/:id(.:format)                                                                  projects#destroy
+                                    quotes GET        /quotes(.:format)                                                                        quotes#index
+                                           POST       /quotes(.:format)                                                                        quotes#create
+                                 new_quote GET        /quotes/new(.:format)                                                                    quotes#new
+                                edit_quote GET        /quotes/:id/edit(.:format)                                                               quotes#edit
+                                     quote GET        /quotes/:id(.:format)                                                                    quotes#show
+                                           PATCH      /quotes/:id(.:format)                                                                    quotes#update
+                                           PUT        /quotes/:id(.:format)                                                                    quotes#update
+                                           DELETE     /quotes/:id(.:format)                                                                    quotes#destroy
+                              requirements GET        /requirements(.:format)                                                                  requirements#index
+                                           POST       /requirements(.:format)                                                                  requirements#create
+                           new_requirement GET        /requirements/new(.:format)                                                              requirements#new
+                          edit_requirement GET        /requirements/:id/edit(.:format)                                                         requirements#edit
+                               requirement GET        /requirements/:id(.:format)                                                              requirements#show
+                                           PATCH      /requirements/:id(.:format)                                                              requirements#update
+                                           PUT        /requirements/:id(.:format)                                                              requirements#update
+                                           DELETE     /requirements/:id(.:format)                                                              requirements#destroy
+                              reservations GET        /reservations(.:format)                                                                  reservations#index
+                                           POST       /reservations(.:format)                                                                  reservations#create
+                           new_reservation GET        /reservations/new(.:format)                                                              reservations#new
+                          edit_reservation GET        /reservations/:id/edit(.:format)                                                         reservations#edit
+                               reservation GET        /reservations/:id(.:format)                                                              reservations#show
+                                           PATCH      /reservations/:id(.:format)                                                              reservations#update
+                                           PUT        /reservations/:id(.:format)                                                              reservations#update
+                                           DELETE     /reservations/:id(.:format)                                                              reservations#destroy
+                                 schedules GET        /schedules(.:format)                                                                     schedules#index
+                                           POST       /schedules(.:format)                                                                     schedules#create
+                              new_schedule GET        /schedules/new(.:format)                                                                 schedules#new
+                             edit_schedule GET        /schedules/:id/edit(.:format)                                                            schedules#edit
+                                  schedule GET        /schedules/:id(.:format)                                                                 schedules#show
+                                           PATCH      /schedules/:id(.:format)                                                                 schedules#update
+                                           PUT        /schedules/:id(.:format)                                                                 schedules#update
+                                           DELETE     /schedules/:id(.:format)                                                                 schedules#destroy
+                                 solutions GET        /solutions(.:format)                                                                     solutions#index
+                                           POST       /solutions(.:format)                                                                     solutions#create
+                              new_solution GET        /solutions/new(.:format)                                                                 solutions#new
+                             edit_solution GET        /solutions/:id/edit(.:format)                                                            solutions#edit
+                                  solution GET        /solutions/:id(.:format)                                                                 solutions#show
+                                           PATCH      /solutions/:id(.:format)                                                                 solutions#update
+                                           PUT        /solutions/:id(.:format)                                                                 solutions#update
+                                           DELETE     /solutions/:id(.:format)                                                                 solutions#destroy
+                             solution_tips GET        /solution_tips(.:format)                                                                 solution_tips#index
+                                           POST       /solution_tips(.:format)                                                                 solution_tips#create
+                          new_solution_tip GET        /solution_tips/new(.:format)                                                             solution_tips#new
+                         edit_solution_tip GET        /solution_tips/:id/edit(.:format)                                                        solution_tips#edit
+                              solution_tip GET        /solution_tips/:id(.:format)                                                             solution_tips#show
+                                           PATCH      /solution_tips/:id(.:format)                                                             solution_tips#update
+                                           PUT        /solution_tips/:id(.:format)                                                             solution_tips#update
+                                           DELETE     /solution_tips/:id(.:format)                                                             solution_tips#destroy
+                                      tips GET        /tips(.:format)                                                                          tips#index
+                                           POST       /tips(.:format)                                                                          tips#create
+                                   new_tip GET        /tips/new(.:format)                                                                      tips#new
+                                  edit_tip GET        /tips/:id/edit(.:format)                                                                 tips#edit
+                                       tip GET        /tips/:id(.:format)                                                                      tips#show
+                                           PATCH      /tips/:id(.:format)                                                                      tips#update
+                                           PUT        /tips/:id(.:format)                                                                      tips#update
+                                           DELETE     /tips/:id(.:format)                                                                      tips#destroy
                                            GET        /admin/certificates(.:format)                                                            admin/certificates#index
                                            POST       /admin/certificates(.:format)                                                            admin/certificates#create
                                            GET        /admin/certificates/new(.:format)                                                        admin/certificates#new

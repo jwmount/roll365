@@ -1,6 +1,8 @@
 class WelcomeController < ApplicationController
 
   
+  def index
+  end
   #
   # Appears to be unnecessary, if invalid method is sent in will respond with a 404?
   # May want to use method_missing here?  For now, just begin - rescue if file not found.

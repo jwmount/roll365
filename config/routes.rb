@@ -18,6 +18,28 @@ Rails.application.routes.draw do
   get 'privacy', to: :show, controller: 'welcome'
   get 'tsandcs', to: :show, controller: 'welcome'
  
+  resources :companies
+  resources :people
+  resources :projects
+  resources :conditions
+  resources :dashboard
+  resources :dockets
+  resources :engagements
+  resources :equipment
+  resources :identifiers
+  resources :jobs
+  resources :materials
+  resources :people
+  resources :people_schedules
+  resources :permits
+  resources :projects
+  resources :quotes
+  resources :requirements
+  resources :reservations
+  resources :schedules
+  resources :solutions
+  resources :solution_tips
+  resources :tips
   #
   # A C T I V E  A D M I N   A C T I V E  A D M I N   A C T I V E  A D M I N   A C T I V E  A D M I N  
   #
