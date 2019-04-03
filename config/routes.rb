@@ -8,13 +8,25 @@ Rails.application.routes.draw do
   get 'welcome/index'
   root 'welcome#index'  
   
- 
+  #
+  # Generate paths for footer
+  #
+  get 'about', to: :show, controller: 'welcome'
+  get 'advertise', to: :show, controller: 'welcome'
+  get 'faq', to: :show, controller: 'welcome'
+  get 'contact', to: :show, controller: 'welcome'
+  get 'privacy', to: :show, controller: 'welcome'
+  get 'tsandcs', to: :show, controller: 'welcome'
+  #
+  # A C T I V E  A D M I N   A C T I V E  A D M I N   A C T I V E  A D M I N   A C T I V E  A D M I N  
+  #
   namespace :admin do
     
     resources :certificates, :companies, :conditions, :dashboard, :dockets, :engagements, :equipment,
              :identifiers, :jobs, :materials, :people, :people_schedules, :permits, :projects, :quotes, :requirements,
              :reservations, :schedules, :solutions, :solution_tips, :tips
 
+    
   
 # Shallow Nesting ONE level deep with collection methods defined for :Companies
 # Section 2.7.2 Routing Rails BGides

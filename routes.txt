@@ -256,6 +256,12 @@ batch_action_admin_company_equipment_index POST       /admin/companies/:company_
                                            DELETE     /admin/comments/:id(.:format)                                                            admin/comments#destroy
                              welcome_index GET        /welcome/index(.:format)                                                                 welcome#index
                                       root GET        /                                                                                        welcome#index
+                                     about GET        /about(.:format)                                                                         welcome#about
+                                 advertise GET        /advertise(.:format)                                                                     welcome#advertise
+                                       faq GET        /faq(.:format)                                                                           welcome#faq
+                                   contact GET        /contact(.:format)                                                                       welcome#contact
+                                   privacy GET        /privacy(.:format)                                                                       welcome#privacy
+                                   tsandcs GET        /tsandcs(.:format)                                                                       welcome#tsandcs
                                            GET        /admin/certificates(.:format)                                                            admin/certificates#index
                                            POST       /admin/certificates(.:format)                                                            admin/certificates#create
                                            GET        /admin/certificates/new(.:format)                                                        admin/certificates#new
