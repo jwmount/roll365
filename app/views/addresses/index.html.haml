@@ -3,7 +3,7 @@
 %table
   %thead
     %tr
-      %th Addressable
+      %th Parent Type
       %th Street address
       %th City
       %th State
@@ -16,19 +16,19 @@
       %th
 
   %tbody
-    - @addresses.each do |address|
+    - @addresses.each do |addr|
       %tr
-        %td= address.addressable
-        %td= address.street_address
-        %td= address.city
-        %td= address.state
-        %td= address.po_box
-        %td= address.map_reference
-        %td= address.longitude
-        %td= address.latitude
-        %td= link_to 'Show', address
-        %td= link_to 'Edit', edit_address_path(address)
-        %td= link_to 'Destroy', address, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= addr.addressable_type
+        %td= addr.street_address
+        %td= addr.city
+        %td= addr.state
+        %td= addr.post_code
+        %td= addr.map_reference
+        %td= addr.longitude
+        %td= addr.latitude
+        %td= link_to 'Show', addr
+        %td= link_to 'Edit', edit_address_path(addr)
+        %td= link_to 'Destroy', addr, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 

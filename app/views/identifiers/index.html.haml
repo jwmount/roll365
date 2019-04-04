@@ -3,26 +3,24 @@
 %table
   %thead
     %tr
-      %th Company
-      %th Person
-      %th Name{30}
-      %th Value{30}
+      %th Parent Type
+      %th Parent Id
+      %th Name
+      %th Value
       %th Rank
-      %th
-      %th
-      %th
+      
 
   %tbody
-    - @identifiers.each do |identifier|
+    - @identifiers.each do |i|
       %tr
-        %td= identifier.company
-        %td= identifier.person
-        %td= identifier.name{30}
-        %td= identifier.value{30}
-        %td= identifier.rank
-        %td= link_to 'Show', identifier
-        %td= link_to 'Edit', edit_identifier_path(identifier)
-        %td= link_to 'Destroy', identifier, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= i.identifiable_type
+        %td= i.identifiable_id
+        %td= i.name
+        %td= i.value
+        %td= i.rank
+        %td= link_to 'Show', i
+        %td= link_to 'Edit', edit_identifier_path(i)
+        %td= link_to 'Destroy', i, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 
