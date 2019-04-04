@@ -36,7 +36,7 @@ class WelcomeController < ApplicationController
 
   # How to reach us
   def contact
-        begin
+    begin
       render params[:id]
     rescue ActionView::MissingTemplate
       render :file => "#{Rails.root}/public/contact", :layout => false, :status => :not_found

@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   root 'welcome#index'  
   
   #
-  # Generate paths for footer
+  # Generate paths for footer.  These paths rely on methods defined in the WelcomeController.
+  # There is no dashboard page at this time so no paths are needed.
   #
   get 'about', to: :show, controller: 'welcome'
   get 'advertise', to: :show, controller: 'welcome'
@@ -17,8 +18,8 @@ Rails.application.routes.draw do
   get 'contact', to: :show, controller: 'welcome'
   get 'privacy', to: :show, controller: 'welcome'
   get 'tsandcs', to: :show, controller: 'welcome'
- 
-  resources :addresses, :companies, :people, :projects, :conditions, :dashboard, :dockets,
+  
+  resources :addresses, :companies, :people, :projects, :conditions, :dockets,
             :engagements, :equipment, :identifiers, :jobs, :materials, :people, :people_schedules,
             :permits, :projects, :quotes, :requirements, :reservations, :schedules, :solutions,
             :solution_tips, :tips
