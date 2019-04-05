@@ -1,8 +1,9 @@
 %p#notice= notice
 
+%h1 Address for #{@address.addressable_type} 
 %p
-  %b Addressable:
-  = @address.addressable
+  %b Address for @name:
+  = @address.addressable_type
 %p
   %b Street address:
   = @address.street_address

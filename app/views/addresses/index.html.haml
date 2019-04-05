@@ -29,36 +29,9 @@
         %td= link_to 'Show', addr
         %td= link_to 'Edit', edit_address_path(addr)
         %td= link_to 'Destroy', addr, method: :delete, data: { confirm: 'Are you sure?' }
+      %end
+    %end
 
-  
-    - @projects.each do |addr|
-      %tr
-        %td= addr.addressable_type
-        %td= addr.street_address
-        %td= addr.city
-        %td= addr.state
-        %td= addr.post_code
-        %td= addr.map_reference
-        %td= addr.longitude
-        %td= addr.latitude
-        %td= link_to 'Show', addr
-        %td= link_to 'Edit', edit_address_path(addr)
-        %td= link_to 'Destroy', addr, method: :delete, data: { confirm: 'Are you sure?' }
-
-
-    - @people.each do |addr|
-      %tr
-        %td= addr.addressable_type
-        %td= addr.street_address
-        %td= addr.city
-        %td= addr.state
-        %td= addr.post_code
-        %td= addr.map_reference
-        %td= addr.longitude
-        %td= addr.latitude
-        %td= link_to 'Show', addr
-        %td= link_to 'Edit', edit_address_path(addr)
-        %td= link_to 'Destroy', addr, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 

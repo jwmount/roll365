@@ -6,9 +6,7 @@
         - @address.errors.full_messages.each do |message|
           %li= message
 
-  .field
-    = f.label :addressable
-    = f.text_field :addressable
+  
   .field
     = f.label :street_address
     = f.text_field :street_address
@@ -20,7 +18,7 @@
     = f.text_field :state
   .field
     = f.label :post_code
-    = f.text_field :po_box
+    = f.text_field :post_code
   .field
     = f.label :map_reference
     = f.text_field :map_reference
