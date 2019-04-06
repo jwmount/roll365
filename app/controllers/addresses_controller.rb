@@ -14,7 +14,6 @@ class AddressesController < InheritedResources::Base
   def edit
     @address = Address.find(params[:id])
     @parent = @address.addressable_type.constantize
-
     begin
       @name = @parent.find(@address.addressable_id).name
     rescue
@@ -34,7 +33,8 @@ class AddressesController < InheritedResources::Base
   private  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - -
 
     def address_params
-      params.require(:address).permit(:id, :addressable_id, :addressable_type, :street_address, :city, :state, :post_code, :map_reference, :longitude, :latitude)
+      #params.require(:address).permit(:id, :addressable_id, :addressable_type, :street_address, :city, :state, :post_code, :map_reference, :longitude, :latitude)
+      permit_params :addressable_type, :addressable_id, :street_address, :city, :state, :post_code, :map_reference, :longitude, :latitude
     end
 
 end
