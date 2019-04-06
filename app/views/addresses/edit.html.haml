@@ -1,5 +1,8 @@
-%h1 Editing address for #{@address.addressable_type} 
+%h1 Editing address for #{@name}
 
+%p
+  %b Parent type:
+  = @address.addressable_type
 
 = render 'form'
 
