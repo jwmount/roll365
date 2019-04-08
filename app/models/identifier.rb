@@ -5,7 +5,7 @@ class Identifier < ApplicationRecord
 
   belongs_to :identifiable, polymorphic: true
 
-  validates_presence_of :name, :value
+  validates_presence_of :name, :value, :identifiable_type, :identifiable_id
   validates :rank, :numericality => { :only_integer => true, :greater_than_or_equal_to => 1, :less_than => 10}
    
   # this doesn't seem to work?  refers to line below
@@ -22,7 +22,22 @@ class Identifier < ApplicationRecord
         end
       end
 
+#
+# Get and display parent name of polymorphic Indentifier
+#
+# On Person records name is not given  so use first and last names 
+  def display_parent_name
+    begin
+      @parent_name = "#{self.identifiable_type}".constantize.find(self.identifiable_id).name 
+    rescue
+      @parent_name = "#{self.identifiable_type}".constantize.find(self.identifiable_id).first_name 
+      @parent_name += " "
+      @parent_name += "#{self.identifiable_type}".constantize.find(self.identifiable_id).last_name 
+    end
 
+  end
+
+=begin
   def display_name (parent_name: self)
     
     case self.identifiable_type
@@ -44,5 +59,6 @@ class Identifier < ApplicationRecord
     end
     
   end
+=end
 
 end
