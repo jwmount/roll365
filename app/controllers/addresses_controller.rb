@@ -1,17 +1,5 @@
 class AddressesController < InheritedResources::Base
 
-=begin
-  # 
-  # Prepend parent type to each address
-  #  
-  def index
-    @addresses = Address.all
-    @addresses.each do |addr|
-      @parent = addr.addressable_type.constantize
-      addr.addressable_type += ':  ' + @parent.find(addr.addressable_id).name     
-    end
-  end
-=end
 
   def edit
     @address = Address.find(params[:id])
