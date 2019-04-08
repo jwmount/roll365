@@ -1,17 +1,18 @@
 %p#notice= notice
 
+
+%h1 Identifier for #{@name}
 %p
-  %b Company:
-  = @identifier.company
+  %b Parent type:
+  = @identifier.identifiable_type
 %p
-  %b Person:
-  = @identifier.person
+
 %p
-  %b Name{30}:
-  = @identifier.name{30}
+  %b Kind:
+  = @identifier.name
 %p
-  %b Value{30}:
-  = @identifier.value{30}
+  %b Value:
+  = @identifier.value
 %p
   %b Rank:
   = @identifier.rank

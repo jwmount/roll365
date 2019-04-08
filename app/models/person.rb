@@ -74,9 +74,6 @@ class Person < ApplicationRecord
 #
 # class methods
 #
-  def display_name
-    full_name
-  end
 
   def full_name
     [self.first_name, self.last_name].compact.join ' '

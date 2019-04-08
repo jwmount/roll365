@@ -7,7 +7,8 @@ class AddressesController < InheritedResources::Base
   def index
     @addresses = Address.all
     @addresses.each do |addr|
-      addr.addressable_type += ':  ' + Company.find(addr.addressable_id).name
+      @parent = addr.addressable_type.constantize
+      addr.addressable_type += ':  ' + @parent.find(addr.addressable_id).name     
     end
   end
 

@@ -4,16 +4,20 @@
   %thead
     %tr
       %th Parent Type
+      %th Parent Name
       %th Parent Id
-      %th Name
+      %th Kind
       %th Value
       %th Rank
       
 
   %tbody
     - @identifiers.each do |i|
+
       %tr
+      
         %td= i.identifiable_type
+        %td= i.display_name
         %td= i.identifiable_id
         %td= i.name
         %td= i.value

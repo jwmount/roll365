@@ -3,17 +3,11 @@ class Identifier < ApplicationRecord
 # A S S O C I A T I O N    A S S O C I A T I O N    A S S O C I A T I O N    A S S O C I A T I O N   
   
 
-    belongs_to :identifiable, polymorphic: true
+  belongs_to :identifiable, polymorphic: true
 
-  # removed, prevents @contact.save operations if present
-  #  validates_presence_of :identifiable_id, :identifiable_type, :name, :value
-  # trial:  see if having all defaults handles this.  Cleaner than trinary tests in people.rb etc.
-  # this seems to be fine so long as there are default values enforced.
-    validates_presence_of :name, :value
-    validates :rank, :numericality => { :only_integer => true, :greater_than_or_equal_to => 1, :less_than => 10}
+  validates_presence_of :name, :value
+  validates :rank, :numericality => { :only_integer => true, :greater_than_or_equal_to => 1, :less_than => 10}
    
-  # scope :ranked, -> { where(rank: "DSC") }
-  
   # this doesn't seem to work?  refers to line below
   # scope :ranked, order("rank DSC")
 
@@ -28,4 +22,27 @@ class Identifier < ApplicationRecord
         end
       end
 
+
+  def display_name (parent_name: self)
+    
+    case self.identifiable_type
+
+      when 'Company'
+        @company = Company.find( self.identifiable_id )
+        @company.name
+  
+      when 'Project'
+        @project = Project.find( self.identifiable_id )
+        @project.name
+  
+      when 'Person'
+        @person = Person.find( self.identifiable_id )
+        @person.full_name
+  
+      else
+        "Unknown type"
+    end
+    
   end
+
+end
