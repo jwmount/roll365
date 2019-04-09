@@ -7,7 +7,10 @@ class IdentifiersController < InheritedResources::Base
     begin
       @name = "#{@identifier.identifiable_type}".constantize.find(@identifier.identifiable_id).name 
     rescue
-      'Not provided.'
+      @parent = @identifier.identifiable_type.constantize
+      @name = @parent.find(@identifier.identifiable_id).first_name
+      @name += ' '
+      @name += @parent.find(@identifier.identifiable_id).last_name
     end
 
   end
