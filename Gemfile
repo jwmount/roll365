@@ -76,3 +76,6 @@ gem 'draper'
 
 
 gem 'foreman'
+
+# Pagination for index views
+gem 'will_paginate', '~> 3.0'

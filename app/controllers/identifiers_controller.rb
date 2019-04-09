@@ -1,6 +1,11 @@
 class IdentifiersController < InheritedResources::Base
 
 
+  def index
+    @identifiers = Identifier.all.paginate(page: params[:page], per_page: 15)
+  end
+
+
   def edit
     
     @identifier = Identifier.find(params[:id])

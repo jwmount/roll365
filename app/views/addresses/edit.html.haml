@@ -9,3 +9,6 @@
 = link_to 'Show', @address
 \|
 = link_to 'Back', addresses_path
+\|
+= button_to 'Back', addresses_path, :method => "get"
+= button_to "Show", action: "show"

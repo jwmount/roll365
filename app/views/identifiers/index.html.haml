@@ -26,6 +26,9 @@
         %td= link_to 'Edit', edit_identifier_path(i)
         %td= link_to 'Destroy', i, method: :delete, data: { confirm: 'Are you sure?' }
 
+
+= will_paginate @products
+
 %br
 
 = link_to 'New Identifier', new_identifier_path

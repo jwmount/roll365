@@ -1,5 +1,9 @@
 class AddressesController < InheritedResources::Base
 
+  def index
+    @addresses = Address.all.paginate(page: params[:page], per_page: 15)
+  end
+
 
   def edit
     @address = Address.find(params[:id])
