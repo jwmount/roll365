@@ -4,8 +4,9 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
-    @people = Person.all
+    @people = Person.all.paginate(page: params[:page], per_page: 15)
   end
+
 
   # GET /people/1
   # GET /people/1.json

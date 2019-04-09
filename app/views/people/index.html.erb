@@ -5,9 +5,9 @@
 <table>
   <thead>
     <tr>
-      <th>Company</th>
       <th>First name</th>
       <th>Last name</th>
+      <th>Company</th>
       <th>Title</th>
       <th>Available</th>
       <th>Available on</th>
@@ -20,9 +20,9 @@
   <tbody>
     <% @people.each do |person| %>
       <tr>
-        <td><%= person.company_id %></td>
         <td><%= person.first_name %></td>
         <td><%= person.last_name %></td>
+        <td><%= person.company_name %></td>
         <td><%= person.title %></td>
         <td><%= person.available %></td>
         <td><%= person.available_on %></td>
@@ -35,6 +35,8 @@
     <% end %>
   </tbody>
 </table>
+
+<%= will_paginate @companies %>
 
 <br>
 

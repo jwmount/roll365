@@ -80,7 +80,8 @@ class Person < ApplicationRecord
   end
  
   def company_name
-    "IBM"
+    @company = Company.find(self.company_id)
+    @company.name
   end
 
  #
