@@ -89,7 +89,6 @@ class Person < ApplicationRecord
   end
 
   def people
-    byebug
     @staff = self.people_path
   end
  #

@@ -7,7 +7,6 @@ namespace :db do
     fl = "#{Rails.root}/db/migrate/scaffolds.rb" 
     #Process each seed file in /db/seeds
     
-    byebug
     load(fl)
       
     end
