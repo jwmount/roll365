@@ -262,6 +262,7 @@ batch_action_admin_company_equipment_index POST       /admin/companies/:company_
                                    contact GET        /contact(.:format)                                                                       welcome#contact
                                    privacy GET        /privacy(.:format)                                                                       welcome#privacy
                                    tsandcs GET        /tsandcs(.:format)                                                                       welcome#tsandcs
+                                 dashboard GET        /dashboard(.:format)                                                                     welcome#dashboard
                                  addresses GET        /addresses(.:format)                                                                     addresses#index
                                            POST       /addresses(.:format)                                                                     addresses#create
                                new_address GET        /addresses/new(.:format)                                                                 addresses#new

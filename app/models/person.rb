@@ -75,6 +75,10 @@ class Person < ApplicationRecord
 # class methods
 #
 
+  def display_name
+    full_name
+  end
+  
   def full_name
     [self.first_name, self.last_name].compact.join ' '
   end
@@ -84,6 +88,10 @@ class Person < ApplicationRecord
     @company.name
   end
 
+  def people
+    byebug
+    @staff = self.people_path
+  end
  #
  # Address(es)
  #   

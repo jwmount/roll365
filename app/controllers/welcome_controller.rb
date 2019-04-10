@@ -7,6 +7,15 @@ class WelcomeController < ApplicationController
   # Appears to be unnecessary, if invalid method is sent in will respond with a 404?
   # May want to use method_missing here?  For now, just begin - rescue if file not found.
   #
+
+  def dashboard
+    'dashboard'
+  end
+
+  def companies
+    @companis = Company.order("updated_at ASC").select(:id, :name).limit(15).collect
+  end
+    
   def show
     begin
       render params[:id]

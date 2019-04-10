@@ -18,8 +18,9 @@ Rails.application.routes.draw do
   get 'contact', to: :show, controller: 'welcome'
   get 'privacy', to: :show, controller: 'welcome'
   get 'tsandcs', to: :show, controller: 'welcome'
+  get 'dashboard', to: :show, controller: 'welcome'
   
-  
+
   resources :addresses, :companies, :people, :projects, :conditions, :dockets,
             :engagements, :equipment, :identifiers, :jobs, :materials, :people, :people_schedules,
             :permits, :projects, :quotes, :requirements, :reservations, :schedules, :solutions,
