@@ -1,7 +1,7 @@
 ActiveAdmin.register Company do
 
 # Eager loading is supposed to improve page load performance
-  includes :addresses, :identifiers, :permits
+  includes :addresses, :identifiers
 
 # Nested attributes ActiveAdmin Docs
   permit_params :name, :credit_terms, :PO_required, :active, :bookkeeping_number, :line_of_business, :url, :licensee,

@@ -1,10 +1,11 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
 
+
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.order("name ASC").paginate(page: params[:page], per_page: 15)
+    @companies = Company.order(name: :asc).paginate(page: params[:page], per_page: 15)
   end
 
   # GET /companies/1
@@ -15,6 +16,8 @@ class CompaniesController < ApplicationController
   # GET /companies/new
   def new
     @company = Company.new
+    @company.addresses.build
+    @company.identifiers.build
   end
 
   # GET /companies/1/edit
@@ -25,6 +28,7 @@ class CompaniesController < ApplicationController
   # POST /companies.json
   def create
     @company = Company.new(company_params)
+    
 
     respond_to do |format|
       if @company.save
@@ -68,7 +72,11 @@ class CompaniesController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
+    # Nested attributes ActiveAdmin Docs    def company_params
     def company_params
-      params.require(:company).permit(:id, :name, :credit_terms, :PO_required, :active, :bookkeeping_number, :line_of_business, :url, :licensee)
+       params.require(:company).permit(:id, :name, :credit_terms, :PO_required, :active, :bookkeeping_number, :line_of_business, :url, :licensee,
+                addresses_attributes: [ :id, :addressable_id, :addressable_type, :street_address, :city, :state, :post_code, :map_reference, :longitude, :latitude],
+                identifiers_attributes: [:id, :identifiable_id, :identifiable_type, :name, :value, :rank] )
     end
+  
 end

@@ -1,8 +1,9 @@
 class Address < ApplicationRecord
 
 
-  belongs_to :addressable, polymorphic: true
-
+  #belongs_to :addressable, polymorphic: true
+  belongs_to :company, polymorphic: true
+  belongs_to :person, polymorphic: true
 #
 # Get and display parent name of polymorphic Address
 #

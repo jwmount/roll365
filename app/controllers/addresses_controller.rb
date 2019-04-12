@@ -1,7 +1,7 @@
 class AddressesController < InheritedResources::Base
 
   def index
-    @addresses = Address.all.paginate(page: params[:page], per_page: 15)
+    @addresses = Address.order(post_code: :asc).paginate(page: params[:page], per_page: 15) 
   end
 
 
