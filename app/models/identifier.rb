@@ -11,6 +11,9 @@ class Identifier < ApplicationRecord
   # this doesn't seem to work?  refers to line below
   # scope :ranked, order("rank DSC")
 
+  #kaminari
+  paginates_per  10
+
   # D E F A U L T  V A L U E S  
     after_initialize :defaults
   

@@ -2,10 +2,9 @@ class IdentifiersController < InheritedResources::Base
 
 
   def index
-    @identifiers = Identifier.all.paginate(page: params[:page], per_page: 15)
+    @identifiers = Identifier.order(name: :asc).page params[:page]
   end
-
-
+  
   def edit
     
     @identifier = Identifier.find(params[:id])
