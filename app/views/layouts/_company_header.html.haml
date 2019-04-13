@@ -1,2 +1,4 @@
 
 = button_to 'List of People', people_path, method: :get
+
+= paginate @companies, :left => 1, :right => 3

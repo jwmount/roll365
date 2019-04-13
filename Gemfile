@@ -78,4 +78,10 @@ gem 'draper'
 gem 'foreman'
 
 # Pagination for index views
-gem 'will_paginate', '~> 3.0'
+#gem 'will_paginate', '~> 3.0'
+
+# Kaminari for pagination (WillPaginate can't coexist with WillPaginate
+gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master'
+
+
+

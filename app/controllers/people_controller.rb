@@ -4,7 +4,7 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
-    @people = Person.order(last_name: :asc).paginate(page: params[:page], per_page: 15)
+    @people = Person.order(last_name: :asc).page params[:page]
   end
 
 

@@ -60,6 +60,9 @@ class Company < ApplicationRecord
                       }
   end
 
+  #kaminari
+  paginates_per  10
+  
   #
   # D E F A U L T S 
   #
