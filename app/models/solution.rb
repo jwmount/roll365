@@ -94,7 +94,8 @@ class Solution < ActiveRecord::Base
       self.total_material ||= 1
       self.unit_of_material ||= 'm3'
       self.unload_time ||= 0
-      self.purchase_order_required ||= self.quote.project.company.PO_required
+ #self.purchase_order_required ||= self.quote.project.company.PO_required
+      #self.purchase_order_required ||= @company.PO_required      
       self.drive_time_out_of_tip_site ||= 0
       # Job delegates to :equipment_units_required_per_day
       

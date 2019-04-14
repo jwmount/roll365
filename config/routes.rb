@@ -14,13 +14,15 @@ Rails.application.routes.draw do
   #
   get 'about', to: :show, controller: 'welcome'
   get 'advertise', to: :show, controller: 'welcome'
-  get 'faq', to: :show, controller: 'welcome'
   get 'contact', to: :show, controller: 'welcome'
+  get 'dashboard', to: :show, controller: 'welcome'
+  get 'faq', to: :show, controller: 'welcome'
+  get 'license', to: :show, controller: 'welcome'
   get 'privacy', to: :show, controller: 'welcome'
   get 'tsandcs', to: :show, controller: 'welcome'
-  get 'dashboard', to: :show, controller: 'welcome'
   
-
+  
+  
   resources :addresses, :companies, :people, :projects, :conditions, :dockets,
             :engagements, :equipment, :identifiers, :jobs, :materials, :people, :people_schedules,
             :permits, :projects, :quotes, :requirements, :reservations, :schedules, :solutions,
@@ -86,6 +88,7 @@ Rails.application.routes.draw do
     resources :quotes, shallow: true do
       resources :solutions
     end
+    
     
    
   end #namespace

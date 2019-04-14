@@ -8,12 +8,13 @@
 
   .field
     = f.label :day
-    = f.datetime_select :day
+    = f.datetime_select "2010-01-01".to_date
   .field
     = f.label :job_id
     = f.number_field :job_id
   .field
     = f.label :equipment_units_today
     = f.number_field :equipment_units_today
+
   .actions
     = f.submit 'Save'
