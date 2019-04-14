@@ -5,10 +5,6 @@ class MaterialsController < InheritedResources::Base
   	@materials = Material.order(name: :asc).page params[:page]
   end
 
-  def show
-  	 active_admin_comments
-  end
-  	
  
   private
 

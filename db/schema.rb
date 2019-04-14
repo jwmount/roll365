@@ -166,8 +166,11 @@ ActiveRecord::Schema.define(version: 2019_03_17_225022) do
   create_table "materials", force: :cascade do |t|
     t.string "name"
     t.string "description"
+    t.string "materialable_type"
+    t.bigint "materialable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["materialable_type", "materialable_id"], name: "index_materials_on_materialable_type_and_materialable_id"
   end
 
   create_table "people", force: :cascade do |t|

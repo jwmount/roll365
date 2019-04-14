@@ -10,7 +10,7 @@ class Solution < ActiveRecord::Base
   # A S S O C I A T I O N S     A S S O C I A T I O N S     A S S O C I A T I O N S     A S S O C I A T I O N S     
   #
   belongs_to :quote
-  belongs_to :material
+#  belongs_to :material
   has_many   :jobs, 
              :dependent => :destroy
   has_and_belongs_to_many :tips
@@ -145,7 +145,7 @@ class Solution < ActiveRecord::Base
   end
 
   # A purchase order is required if the company requires one.
-  # A purchase order may be required if T360 wants to have one.
+  # A purchase order may be required if roll365 wants to have one.
   # No purchase order is acceptable if neither case is true.
   def PO_required?
     # company doesn't, true (acceptable) either way
