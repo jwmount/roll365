@@ -7,7 +7,8 @@ class AddressesController < InheritedResources::Base
 
   def edit
     @address = Address.find(params[:id])
-    @parent = @address.addressable_type.constantize
+    #@parent = @address.addressable_type.constantize.  REMOVE soon 15April
+    @parent = @address.addressable.name
     begin
       @name = @parent.find(@address.addressable_id).name
     rescue
@@ -16,7 +17,8 @@ class AddressesController < InheritedResources::Base
 
   def show
     @address = Address.find(params[:id])
-    @parent = @address.addressable_type.constantize
+    #@parent = @address.addressable_type.constantize. REMOVE soon after 15April
+    @parent = @address.addressable
     begin   
       @name = @parent.find(@address.addressable_id).name
     rescue

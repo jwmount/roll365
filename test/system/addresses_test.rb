@@ -20,7 +20,7 @@ class AddressesTest < ApplicationSystemTestCase
     fill_in "Latitude", with: @address.latitude
     fill_in "Longitude", with: @address.longitude
     fill_in "Map reference", with: @address.map_reference
-    fill_in "Po box", with: @address.po_box
+    fill_in "Po box", with: @address.postal_code
     fill_in "State", with: @address.state
     fill_in "Street address", with: @address.street_address
     click_on "Create Address"

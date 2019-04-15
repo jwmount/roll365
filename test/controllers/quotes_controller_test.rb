@@ -17,7 +17,7 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create quote" do
     assert_difference('Quote.count') do
-      post quotes_url, params: { quote: { council: @quote.council, duration: @quote.duration, expected_start: @quote.expected_start, fire_ants: @quote.fire_ants, fire_ants_verified_by: @quote.fire_ants_verified_by, inclusions: @quote.inclusions, name{30}: @quote.name{30}, project_id: @quote.project_id, quote_to_id: @quote.quote_to_id, rep_id: @quote.rep_id } }
+      post quotes_url, params: { quote: { council: @quote.council, duration: @quote.duration, expected_start: @quote.expected_start, fire_ants: @quote.fire_ants, fire_ants_verified_by: @quote.fire_ants_verified_by, inclusions: @quote.inclusions, name: @quote.name, project_id: @quote.project_id, quote_to_id: @quote.quote_to_id, rep_id: @quote.rep_id } }
     end
 
     assert_redirected_to quote_url(Quote.last)
@@ -34,7 +34,7 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update quote" do
-    patch quote_url(@quote), params: { quote: { council: @quote.council, duration: @quote.duration, expected_start: @quote.expected_start, fire_ants: @quote.fire_ants, fire_ants_verified_by: @quote.fire_ants_verified_by, inclusions: @quote.inclusions, name{30}: @quote.name{30}, project_id: @quote.project_id, quote_to_id: @quote.quote_to_id, rep_id: @quote.rep_id } }
+    patch quote_url(@quote), params: { quote: { council: @quote.council, duration: @quote.duration, expected_start: @quote.expected_start, fire_ants: @quote.fire_ants, fire_ants_verified_by: @quote.fire_ants_verified_by, inclusions: @quote.inclusions, name: @quote.name, project_id: @quote.project_id, quote_to_id: @quote.quote_to_id, rep_id: @quote.rep_id } }
     assert_redirected_to quote_url(@quote)
   end
 

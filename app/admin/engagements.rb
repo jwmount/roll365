@@ -190,11 +190,13 @@ ActiveAdmin.register Engagement do
 #
 # P U S H B U T T O N S
 #
-  action_item :only => [:index, :show] do
+# action_item :only => [:index, :show] do
+  action_item('action_item_list_reservations') do
     link_to 'List reservations', admin_reservations_path
   end
 
-  action_item :only => [:edit, :show] do
+  #action_item :only => [:edit, :show] do
+  action_item('action_item_create_docket') do
     link_to "Create Docket",    
        new_admin_company_project_quote_solution_job_schedule_engagement_docket_path( 
             engagement.schedule.job.solution.quote.project.company, 

@@ -18,7 +18,8 @@ class Person < ApplicationRecord
   #
   has_many  :addresses, 
             :as           => :addressable, 
-            :autosave     => true
+            :autosave     => true,
+            :dependent    => :destroy
   validates_associated :addresses
 
   has_many :permits, 

@@ -1,12 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  addressable: one
+  addressable: one1
   addressable_type: Addressable
   street_address: MyString
   city: MyString
   state: MyString
-  po_box: MyString
+  post_code: MyString
   map_reference: MyString
   longitude: 1.5
   latitude: 1.5
@@ -17,7 +17,7 @@ two:
   street_address: MyString
   city: MyString
   state: MyString
-  po_box: MyString
+  post_code: MyString
   map_reference: MyString
   longitude: 1.5
   latitude: 1.5

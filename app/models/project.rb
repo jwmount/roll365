@@ -14,8 +14,8 @@ class Project < ApplicationRecord
 # P O L Y M O R P H I C  A S S O C I A T I O N S
 #
   has_many  :addresses,     
-            :as => :addressable, 
-            :autosave => true, 
+            :as        => :addressable, 
+            :autosave  => true, 
             :dependent => :destroy
   validates_associated :addresses
 

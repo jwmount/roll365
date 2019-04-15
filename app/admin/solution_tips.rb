@@ -348,7 +348,8 @@ form do |f|
   # Approve sets BOTH types of approval for now.  Elaborate later.
   # Aside from the obvious need to do one or the other and perhaps toggle them
   # this operation should be silently logged for audit purposes.
-  action_item :only => [:edit, :show] do
+  # action_item :only => [:edit, :show] do
+    action_item('action_item_approve') do
     link_to 'Approve', approve_admin_quote_solution_path( quote, solution )
   end
 
@@ -361,7 +362,7 @@ form do |f|
     redirect_to admin_quote_solution_path(@solution.quote, @solution)
   end
   
-  action_item :only => [:edit, :show] do
+  action_item('action_item_approve_confirm') do #:only => [:edit, :show] do
     link_to 'Costing', costing_admin_quote_solution_path( quote, solution ),
       :confirm => 'question?',
       :popup => ['Costing','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes']
@@ -374,7 +375,8 @@ form do |f|
     redirect_to admin_quote_solutions_path(solution.quote, solution ) 
   end
 
-  action_item :only => [:show] do
+  # action_item :only => [:show] do
+  action_item('action_item_costing_confirmation')  do
     link_to 'Copy', duplicate_admin_quote_solution_path( quote, solution )    
   end
 

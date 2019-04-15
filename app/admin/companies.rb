@@ -251,7 +251,8 @@ ActiveAdmin.register Company do
   # ACTIVATE
   # Activate sets the company status to Active (true).  Does not toggle.
   # 
-  action_item :only => [:edit, :show] do
+  #action_item :only => [:edit, :show] do
+  action_item('action_item_activate')  do    
     link_to 'Activate', activate_admin_company_path( company )
   end
 

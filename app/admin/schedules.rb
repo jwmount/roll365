@@ -227,7 +227,8 @@ ActiveAdmin.register Schedule do
 # P U S H  B U T T O N S
 #    
 
-  action_item :only => [:index, :show] do
+  # action_item(:edit) do :only => [:only, :show] do. DEPRECATED
+  action_item('action_item_reserve') do 
     link_to 'Reserve equipment', admin_reservations_path,
       :popup => ['Place a reservation','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes']
   end

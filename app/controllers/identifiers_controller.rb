@@ -9,27 +9,15 @@ class IdentifiersController < InheritedResources::Base
     
     @identifier = Identifier.find(params[:id])
     begin
-      @name = "#{@identifier.identifiable_type}".constantize.find(@identifier.identifiable_id).name 
+      @name = @identifier.identifiable.display_name
     rescue
-      @parent = @identifier.identifiable_type.constantize
-      @name = @parent.find(@identifier.identifiable_id).first_name
-      @name += ' '
-      @name += @parent.find(@identifier.identifiable_id).last_name
+      @name = flash["unknown display_name"]
     end
-
   end
 
-
   def show
-  	@identifier = Identifier.find(params[:id])
-    @parent = @identifier.identifiable_type.constantize
-    begin   
-      @name = @parent.find(@identifier.identifiable_id).name
-    rescue
-      @name = @parent.find(@identifier.identifiable_id).first_name
-      @name += ' '
-      @name += @parent.find(@identifier.identifiable_id).last_name
-    end
+    @identifier = Identifier.find( params[:id] )
+    @name = @identifier.identifiable.display_name
   end
 
 

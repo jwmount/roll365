@@ -1,10 +1,10 @@
 class Address < ApplicationRecord
 
 
-  #belongs_to :addressable, polymorphic: true
-  belongs_to :company, polymorphic: true
-  belongs_to :person, polymorphic: true
-
+# 
+# Used by Company, Person, Project
+  belongs_to :addressable, polymorphic: true
+  
   #kaminari
   paginates_per  10
 #

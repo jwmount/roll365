@@ -17,9 +17,9 @@ class IdentifiersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create identifier" do
     assert_difference('Identifier.count') do
-      post identifiers_url, params: { identifier: { company_id: @identifier.company_id, company_type: @identifier.company_type, name{30}: @identifier.name{30}, person_id: @identifier.person_id, person_type: @identifier.person_type, rank: @identifier.rank, value{30}: @identifier.value{30} } }
+        #post addresses_url, params: { address:    { addressable_id:  @address.addressable_id,     addressable_type:  @address.addressable_type, city: @address.city, latitude: @address.latitude, longitude: @address.longitude, map_reference: @address.map_reference, post_code: @address.po_box, state: @address.state, street_address: @address.street_address } }
+      post identifiers_url, params: { identifier: { identifiable_id: @identifier.identifiable_id, identifiable_type: @identifier.identifiable_type, name: @identifier.name, person_id: @identifier.person_id, person_type: @identifier.person_type, rank: @identifier.rank } }
     end
-
     assert_redirected_to identifier_url(Identifier.last)
   end
 
@@ -34,7 +34,7 @@ class IdentifiersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update identifier" do
-    patch identifier_url(@identifier), params: { identifier: { company_id: @identifier.company_id, company_type: @identifier.company_type, name{30}: @identifier.name{30}, person_id: @identifier.person_id, person_type: @identifier.person_type, rank: @identifier.rank, value{30}: @identifier.value{30} } }
+    patch identifier_url(@identifier), params: { identifier: { company_id: @identifier.company_id, company_type: @identifier.company_type, name: @identifier.name, person_id: @identifier.person_id, person_type: @identifier.person_type, rank: @identifier.rank } }
     assert_redirected_to identifier_url(@identifier)
   end
 
