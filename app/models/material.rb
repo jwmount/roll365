@@ -1,9 +1,11 @@
 class Material < ApplicationRecord
 
-  has_many :requirements, :dependent => :destroy
-  has_many :permits, :through => :requirements
- #pendent => :destroy
+  #
+  # used with Projects, Solutions, ??
+  #
+  belongs_to :materialable, polymorphic: true
 
+  
   #kaminari
   paginates_per  10
     
