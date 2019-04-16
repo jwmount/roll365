@@ -1,5 +1,6 @@
 class Company < ApplicationRecord
 
+
 #
 # A S S O C I A T I O N S    A S S O C I A T I O N S    A S S O C I A T I O N S   
 #
@@ -59,6 +60,10 @@ class Company < ApplicationRecord
                         :equal_to => AdminConstants::ADMIN_COMPANY_BOOKKEEPING_NO_DEFAULT
                       }
   end
+
+  #
+  # S C O P E S
+  #
 
   #kaminari
   paginates_per  10
