@@ -38,9 +38,25 @@
   </tbody>  
 </table>
 
+<%= link_to 'Number Alert', company_path(42), remote: true %>
+<%= link_to 'Change Below', company_path(42), remote: true %>
 
 <br>
 
 <%= link_to 'New Company', new_company_path %>
+
+
+<div id="target-for-change">
+  Now you see "ME"!
+</div>
+
+<h3>Dashboard Totals</h3>
+Dashboard totals: <span id="dashboard-totals"><%=
+  link_to ".",
+  url_for({controller: "companies", action: "totals"}),
+  method: :patch, remote: true,
+  class: "dashboard-totals"
+%></span>
+<%= javascript_tag '$(".dashboard-totals").click();' %>
 
 

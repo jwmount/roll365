@@ -21,8 +21,12 @@ Rails.application.routes.draw do
   get 'privacy', to: :show, controller: 'welcome'
   get 'tsandcs', to: :show, controller: 'welcome'
   
+  # UJS
+  scope :ujs, defaults: { format: :ujs } do
+    patch 'thing_totals' => 'companies#totals'
+  end 
   
-  
+  # Resource paths
   resources :addresses, :companies, :people, :projects, :conditions, :dockets,
             :engagements, :equipment, :identifiers, :jobs, :materials, :people, :people_schedules,
             :permits, :projects, :quotes, :requirements, :reservations, :schedules, :solutions,

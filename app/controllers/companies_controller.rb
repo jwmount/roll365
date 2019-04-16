@@ -65,6 +65,14 @@ class CompaniesController < ApplicationController
     end
   end
 
+#
+# UJS, do totals this way for quotes and lanes
+#
+  def totals
+    value = 101 # Some expensive database query
+    render js: "$('#dashboard-totals').html('#{value}')"
+  end 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_company
