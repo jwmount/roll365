@@ -1,0 +1,47 @@
+= form_with(model: person, local: true) do |form|
+  -if person.errors.any?
+    #error_explanation
+      %h2= pluralize(person.errors.count, "error")#prohibited this company from being saved:
+      %ul
+        - person.errors.full_messages.each do |message|
+          %li= message
+      
+
+  .field
+    = form.label :first_name
+    = form.text_field :first_name
+
+
+  .field
+    = form.label :last_name
+    = form.text_field :last_name
+
+  .field
+    = form.label :title
+    = form.text_field :title
+
+  .field
+    = form.label :available
+    = form.check_box :available
+
+
+  .field
+    = form.label :available_on
+    = form.datetime_select :available_on
+
+
+  .field
+    = form.label :OK_to_contact
+    = form.check_box :OK_to_contact
+
+  .field
+    = form.label :active
+    = form.check_box :active
+
+
+  = render :partial => "shared/address_form", locals: {form: form}
+
+  .actions
+    = form.submit
+
+  .end

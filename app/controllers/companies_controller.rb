@@ -14,10 +14,12 @@ class CompaniesController < ApplicationController
   end
 
   # GET /companies/new
+  # building the nested polymorphs here enables having them in the forms 
   def new
     @company = Company.new
     @company.addresses.build
     @company.identifiers.build
+    @company.permits
   end
 
   # GET /companies/1/edit

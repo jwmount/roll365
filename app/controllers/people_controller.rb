@@ -16,6 +16,9 @@ class PeopleController < ApplicationController
   # GET /people/new
   def new
     @person = Person.new
+    @person.addresses.build
+    @person.identifiers.build
+    @person.permits
   end
 
   # GET /people/1/edit

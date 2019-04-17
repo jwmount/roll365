@@ -28,10 +28,7 @@
         <td><%= company.active %></td>
         <td><%= company.bookkeeping_number %></td>
         <td><%= company.line_of_business %></td>
-        
-        
         <td><%= link_to truncate(company.url, :length => 140), "http://#{company.url}"  %>
-
         <td><%= company.licensee %></td>
         <td><%= link_to 'Show', company %></td>
         <td><%= link_to 'Edit', edit_company_path(company) %></td>
