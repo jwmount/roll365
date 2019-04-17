@@ -1,10 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<h1>
   <%= @company.name %>
-</p>
+</h1>
 
+<p>
+  <%= @company.address %>
+</p>
+<hr>
 <p>
   <strong>Credit terms:</strong>
   <%= @company.credit_terms %>
@@ -40,10 +43,7 @@
   <%= @company.licensee %>
 </p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @company.address %>
-</p>
+
 
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>
