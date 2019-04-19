@@ -38,11 +38,11 @@ class Company < ApplicationRecord
   #
   # REQUIRED for nestd forms
   #
-  accepts_nested_attributes_for :people, allow_destroy: true
   accepts_nested_attributes_for :addresses, allow_destroy: true
-  accepts_nested_attributes_for :permits, allow_destroy: true
   accepts_nested_attributes_for :identifiers, allow_destroy: true
-  
+  accepts_nested_attributes_for :people, allow_destroy: true
+  accepts_nested_attributes_for :permits, allow_destroy: true
+
   #
   # V A L I D A T I O N S   O N  C L A S S  O B J E C T   V A L I D A T I O N S   O N  C L A S S  O B J E C T. 
   #
@@ -94,20 +94,24 @@ class Company < ApplicationRecord
   def address
     @address = Address.where("addressable_id = ? AND addressable_type = ?", self.id, 'Company').limit(1)
     unless @address.blank?
-      address = "#{@address[0].street_address},  #{@address[0].city} #{@address[0].state} #{@address[0].post_code} "
+      address = "#{@address[0].street_address},  #{@address[0].city} #{@address[0].state} #{@address[0].post_code} " 
     else
       'Empty'
     end
   end
 
   def map_reference
-    @address = Address.where("addressable_id = ? AND addressable_type = ?", self.id, 'Company').limit(1)
-    unless @address.nil?
-      map_reference = "#{@address[0].map_reference}"
-    else
-      map_reference = 'Empty'
-    end
-  end  
+    'Empty'
+  end
+  #def map_reference
+  #  @address = self.address.limit(1)
+    #@address = Address.where("addressable_id = ? AND addressable_type = ?", self.id, 'Company').limit(1)
+  #  unless @address.nil?
+  #    map_reference = "#{@address[0].map_reference}"
+  #  else
+  #    map_reference = 'Empty'
+  #  end
+  #end  
     
   def equipment_list
     list = ""

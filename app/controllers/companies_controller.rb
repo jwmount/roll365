@@ -13,10 +13,9 @@ class CompaniesController < ApplicationController
   # GET /companies/1
   # GET /companies/1.json
   def show
-    @company = Company.find(params[:id])
+    @company = set_company
   end
 
-=begin
   # GET /companies/new
   # building the nested polymorphs here enables having them in the forms 
   def new
@@ -25,20 +24,18 @@ class CompaniesController < ApplicationController
     @company.identifiers.build
     @company.permits
   end
-=end
 
   # GET /companies/1/edit
   def edit
     @company = Company.find(params[:id])
+     @address = Address.where("addressable_id = ? AND addressable_type = ?", @company.id, 'Company').limit(1)
   end
 
 
   # POST /companies
   # POST /companies.json
   def create
-    @company = Company.new(company_params)
-    
-
+    @company = Company.new(nested_params)
     respond_to do |format|
       if @company.save
         format.html { redirect_to @company, notice: 'Company was successfully created.' }
@@ -54,7 +51,7 @@ class CompaniesController < ApplicationController
   # PATCH/PUT /companies/1
   # PATCH/PUT /companies/1.json
   def update
-    @address = set_company
+    @company = Company.find(params[:id])
     respond_to do |format|
       if @company.update!(nested_params)
         format.html { redirect_to @company, notice: 'yes,,Company was successfully updated.' }
@@ -66,7 +63,7 @@ class CompaniesController < ApplicationController
     end
   end
 
-=begin
+
   # DELETE /companies/1
   # DELETE /companies/1.json
   def destroy
@@ -84,19 +81,19 @@ class CompaniesController < ApplicationController
     value = 101 # Some expensive database query
     render js: "$('#dashboard-totals').html('#{value}')"
   end 
-=end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_company
-      @company = Company.find(params[:id])
+      Company.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     # Nested attributes ActiveAdmin Docs    def company_params
     def nested_params
 
-      params.require(:company).permit( :name, :credit_terms, :PO_required, :active, :bookkeeping_number, :line_of_business, :url, :licensee,
-        address: [:id, :identifiable_id, :street_address] )
+      params.require(:company).permit( :id, :name, :credit_terms, :PO_required, :active, :bookkeeping_number, :line_of_business, :url, :licensee,
+        address_attributes: [:addressable_id, :addressable_type, :street_address, :city, :state, :post_code, :map_reference, :longitude, :latitude] )
 
       #params.require(:company).permit( :street_address, :city, :state, :post_code, :map_reference, :longitude, :latitude )
      
@@ -106,8 +103,7 @@ class CompaniesController < ApplicationController
       
       #params.require(:portrait_tag).permit(:id, :addressable_id => [])
                 #identifier: [:id, :identifiable_id, :identifiable_type, :name, :value, :rank],
-                #person: [ :id, :people_id ]
-                
+                #person: [ :id, :people_id ] 
     end
   
 end
