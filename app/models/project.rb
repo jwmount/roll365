@@ -1,13 +1,13 @@
 class Project < ApplicationRecord
   include Sluggable
 
-  belongs_to :company
+#  belongs_to :company
 
-  has_many :quotes,       :dependent => :destroy
-  validates_associated :quotes
+#  has_many :quotes,       :dependent => :destroy
+#  validates_associated :quotes
 
-  has_many  :people
-  validates_associated :people
+ # has_many  :people
+ # validates_associated :people
 
 
 #

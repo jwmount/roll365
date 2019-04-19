@@ -2,7 +2,7 @@ class Person < ApplicationRecord
 
 
   belongs_to :company
-
+=begin
   has_many :dockets, :dependent => :destroy
   validates_associated :dockets
 
@@ -12,7 +12,7 @@ class Person < ApplicationRecord
   #has_many :reservations, :dependent => :destroy
   has_and_belongs_to_many :schedules
   validates_associated :schedules
-  
+=end
   #
   # P O L Y M O R P H I C  A S S O C I A T I O N S
   #
@@ -22,15 +22,15 @@ class Person < ApplicationRecord
             :dependent    => :destroy
   validates_associated :addresses
 
-  has_many :permits, 
-           :as            => :permitable, 
-           :autosave      => true
-  validates_associated :permits
-
   has_many :identifiers, 
            :as            => :identifiable, 
            :autosave      => true
   validates_associated :identifiers
+
+  has_many :permits, 
+           :as            => :permitable, 
+           :autosave      => true
+  validates_associated :permits
 
   # NESTING           
   accepts_nested_attributes_for :addresses

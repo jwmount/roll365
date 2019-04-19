@@ -21,16 +21,26 @@ Rails.application.routes.draw do
   get 'privacy', to: :show, controller: 'welcome'
   get 'tsandcs', to: :show, controller: 'welcome'
   
-  # UJS
+  # UJS - DEPRECATED ?
   scope :ujs, defaults: { format: :ujs } do
     patch 'thing_totals' => 'companies#totals'
   end 
   
   # Resource paths
-  resources :addresses, :companies, :people, :projects, :conditions, :dockets,
+  resources :addresses, :companies, :projects, :conditions, :dockets,
             :engagements, :equipment, :identifiers, :jobs, :materials, :people, :people_schedules,
             :permits, :projects, :quotes, :requirements, :reservations, :schedules, :solutions,
             :solution_tips, :tips
+  
+  resources :companies, shallow: true do
+    resources :addresses
+    resources :initializers
+  end
+
+  resources :peopple, shallow: true do
+    resources :addresses
+  end
+
   #
   # A C T I V E  A D M I N   A C T I V E  A D M I N   A C T I V E  A D M I N   A C T I V E  A D M I N  
   #
@@ -40,7 +50,7 @@ Rails.application.routes.draw do
              :identifiers, :jobs, :materials, :people, :people_schedules, :permits, :projects, :quotes, :requirements,
              :reservations, :schedules, :solutions, :solution_tips, :tips
 
-    
+  
   
 # Shallow Nesting ONE level deep with collection methods defined for :Companies
 # Section 2.7.2 Routing Rails BGides
@@ -59,7 +69,8 @@ Rails.application.routes.draw do
     resources :companies, shallow: true do
       resources :addresses
     end
-    
+ 
+
     shallow do
       resources :companies do
         resources :equipment
@@ -89,9 +100,9 @@ Rails.application.routes.draw do
       resources :quotes
     end
 
-    resources :quotes, shallow: true do
-      resources :solutions
-    end
+ #   resources :quotes, shallow: true do
+ #     resources :solutions
+ #   end
     
     
    

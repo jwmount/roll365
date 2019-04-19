@@ -8,8 +8,8 @@ class Quote < ApplicationRecord
 
   include Sluggable
 
-  belongs_to :project  
-  has_many :solutions, :dependent => :destroy
+#  belongs_to :project  
+#  has_many :solutions, :dependent => :destroy
   
 
   # Do not :scope => :project, this will cause arel to ROLLBACK with 'Cannot visit Project'
