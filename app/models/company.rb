@@ -20,7 +20,8 @@ class Company < ApplicationRecord
   has_many  :addresses,
             :as        => :addressable,
             :autosave  => true,
-            :dependent => :destroy
+            :dependent => :destroy,
+            inverse_of: :addressable
   validates_associated :addresses
 
   has_many :permits,
@@ -91,7 +92,18 @@ class Company < ApplicationRecord
     'contact'
   end
 
-  def address
+  
+  #
+  # Determin id of address if there is one, nil if none
+  # Note that this is a relation so extracting address.id is based on that
+  #
+  def has_address?
+    addr = Address.where("addressable_id = ? AND addressable_type = ?", self.id, 'Company').limit(1)
+    addr.ids[0]
+  end
+
+
+  def display_address
     @address = Address.where("addressable_id = ? AND addressable_type = ?", self.id, 'Company').limit(1)
     unless @address.blank?
       address = "#{@address[0].street_address},  #{@address[0].city} #{@address[0].state} #{@address[0].post_code} " 

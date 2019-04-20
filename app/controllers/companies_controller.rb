@@ -94,13 +94,6 @@ class CompaniesController < ApplicationController
 
       params.require(:company).permit( :id, :name, :credit_terms, :PO_required, :active, :bookkeeping_number, :line_of_business, :url, :licensee,
         address_attributes: [:addressable_id, :addressable_type, :street_address, :city, :state, :post_code, :map_reference, :longitude, :latitude] )
-
-      #params.require(:company).permit( :street_address, :city, :state, :post_code, :map_reference, :longitude, :latitude )
-     
-      #params.require(@address).permit(:id, :street_address, :city, :state, :post_code, :map_reference, :longitude, :latitude)
-
-      #params.require(:company).permit(:id, :name, :credit_terms, :PO_required, :active, :bookkeeping_number, :line_of_business, :url, :licensee)
-      
       #params.require(:portrait_tag).permit(:id, :addressable_id => [])
                 #identifier: [:id, :identifiable_id, :identifiable_type, :name, :value, :rank],
                 #person: [ :id, :people_id ] 

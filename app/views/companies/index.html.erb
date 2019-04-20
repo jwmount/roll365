@@ -7,6 +7,9 @@
 <table>
   <thead>
     <tr>
+
+      <th>ID</th>
+
       <th>Name</th>
       <th>Credit terms</th>
       <th>Po required</th>
@@ -22,6 +25,9 @@
   <tbody>
     <% @companies.each do |company| %>
       <tr>
+
+        <td><%= company.id%></td>
+
         <td><%= company.name%></td>
         <td><%= company.credit_terms %></td>
         <td><%= company.PO_required %></td>

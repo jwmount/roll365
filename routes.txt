@@ -258,11 +258,13 @@ batch_action_admin_company_equipment_index POST       /admin/companies/:company_
                                       root GET        /                                                                                        welcome#index
                                      about GET        /about(.:format)                                                                         welcome#about
                                  advertise GET        /advertise(.:format)                                                                     welcome#advertise
-                                       faq GET        /faq(.:format)                                                                           welcome#faq
                                    contact GET        /contact(.:format)                                                                       welcome#contact
+                                 dashboard GET        /dashboard(.:format)                                                                     welcome#dashboard
+                                       faq GET        /faq(.:format)                                                                           welcome#faq
+                                   license GET        /license(.:format)                                                                       welcome#license
                                    privacy GET        /privacy(.:format)                                                                       welcome#privacy
                                    tsandcs GET        /tsandcs(.:format)                                                                       welcome#tsandcs
-                                 dashboard GET        /dashboard(.:format)                                                                     welcome#dashboard
+                              thing_totals PATCH      /ujs/thing_totals(.:format)                                                              companies#totals {:format=>:ujs}
                                  addresses GET        /addresses(.:format)                                                                     addresses#index
                                            POST       /addresses(.:format)                                                                     addresses#create
                                new_address GET        /addresses/new(.:format)                                                                 addresses#new
@@ -279,14 +281,6 @@ batch_action_admin_company_equipment_index POST       /admin/companies/:company_
                                            PATCH      /companies/:id(.:format)                                                                 companies#update
                                            PUT        /companies/:id(.:format)                                                                 companies#update
                                            DELETE     /companies/:id(.:format)                                                                 companies#destroy
-                                    people GET        /people(.:format)                                                                        people#index
-                                           POST       /people(.:format)                                                                        people#create
-                                new_person GET        /people/new(.:format)                                                                    people#new
-                               edit_person GET        /people/:id/edit(.:format)                                                               people#edit
-                                    person GET        /people/:id(.:format)                                                                    people#show
-                                           PATCH      /people/:id(.:format)                                                                    people#update
-                                           PUT        /people/:id(.:format)                                                                    people#update
-                                           DELETE     /people/:id(.:format)                                                                    people#destroy
                                   projects GET        /projects(.:format)                                                                      projects#index
                                            POST       /projects(.:format)                                                                      projects#create
                                new_project GET        /projects/new(.:format)                                                                  projects#new
@@ -351,11 +345,11 @@ batch_action_admin_company_equipment_index POST       /admin/companies/:company_
                                            PATCH      /materials/:id(.:format)                                                                 materials#update
                                            PUT        /materials/:id(.:format)                                                                 materials#update
                                            DELETE     /materials/:id(.:format)                                                                 materials#destroy
-                                           GET        /people(.:format)                                                                        people#index
+                                    people GET        /people(.:format)                                                                        people#index
                                            POST       /people(.:format)                                                                        people#create
-                                           GET        /people/new(.:format)                                                                    people#new
-                                           GET        /people/:id/edit(.:format)                                                               people#edit
-                                           GET        /people/:id(.:format)                                                                    people#show
+                                new_person GET        /people/new(.:format)                                                                    people#new
+                               edit_person GET        /people/:id/edit(.:format)                                                               people#edit
+                                    person GET        /people/:id(.:format)                                                                    people#show
                                            PATCH      /people/:id(.:format)                                                                    people#update
                                            PUT        /people/:id(.:format)                                                                    people#update
                                            DELETE     /people/:id(.:format)                                                                    people#destroy
@@ -439,6 +433,46 @@ batch_action_admin_company_equipment_index POST       /admin/companies/:company_
                                            PATCH      /tips/:id(.:format)                                                                      tips#update
                                            PUT        /tips/:id(.:format)                                                                      tips#update
                                            DELETE     /tips/:id(.:format)                                                                      tips#destroy
+                         company_addresses GET        /companies/:company_id/addresses(.:format)                                               addresses#index
+                                           POST       /companies/:company_id/addresses(.:format)                                               addresses#create
+                       new_company_address GET        /companies/:company_id/addresses/new(.:format)                                           addresses#new
+                                           GET        /addresses/:id/edit(.:format)                                                            addresses#edit
+                                           GET        /addresses/:id(.:format)                                                                 addresses#show
+                                           PATCH      /addresses/:id(.:format)                                                                 addresses#update
+                                           PUT        /addresses/:id(.:format)                                                                 addresses#update
+                                           DELETE     /addresses/:id(.:format)                                                                 addresses#destroy
+                      company_initializers GET        /companies/:company_id/initializers(.:format)                                            initializers#index
+                                           POST       /companies/:company_id/initializers(.:format)                                            initializers#create
+                   new_company_initializer GET        /companies/:company_id/initializers/new(.:format)                                        initializers#new
+                          edit_initializer GET        /initializers/:id/edit(.:format)                                                         initializers#edit
+                               initializer GET        /initializers/:id(.:format)                                                              initializers#show
+                                           PATCH      /initializers/:id(.:format)                                                              initializers#update
+                                           PUT        /initializers/:id(.:format)                                                              initializers#update
+                                           DELETE     /initializers/:id(.:format)                                                              initializers#destroy
+                                           GET        /companies(.:format)                                                                     companies#index
+                                           POST       /companies(.:format)                                                                     companies#create
+                                           GET        /companies/new(.:format)                                                                 companies#new
+                                           GET        /companies/:id/edit(.:format)                                                            companies#edit
+                                           GET        /companies/:id(.:format)                                                                 companies#show
+                                           PATCH      /companies/:id(.:format)                                                                 companies#update
+                                           PUT        /companies/:id(.:format)                                                                 companies#update
+                                           DELETE     /companies/:id(.:format)                                                                 companies#destroy
+                         peopple_addresses GET        /peopple/:peopple_id/addresses(.:format)                                                 addresses#index
+                                           POST       /peopple/:peopple_id/addresses(.:format)                                                 addresses#create
+                       new_peopple_address GET        /peopple/:peopple_id/addresses/new(.:format)                                             addresses#new
+                                           GET        /addresses/:id/edit(.:format)                                                            addresses#edit
+                                           GET        /addresses/:id(.:format)                                                                 addresses#show
+                                           PATCH      /addresses/:id(.:format)                                                                 addresses#update
+                                           PUT        /addresses/:id(.:format)                                                                 addresses#update
+                                           DELETE     /addresses/:id(.:format)                                                                 addresses#destroy
+                             peopple_index GET        /peopple(.:format)                                                                       peopple#index
+                                           POST       /peopple(.:format)                                                                       peopple#create
+                               new_peopple GET        /peopple/new(.:format)                                                                   peopple#new
+                              edit_peopple GET        /peopple/:id/edit(.:format)                                                              peopple#edit
+                                   peopple GET        /peopple/:id(.:format)                                                                   peopple#show
+                                           PATCH      /peopple/:id(.:format)                                                                   peopple#update
+                                           PUT        /peopple/:id(.:format)                                                                   peopple#update
+                                           DELETE     /peopple/:id(.:format)                                                                   peopple#destroy
                                            GET        /admin/certificates(.:format)                                                            admin/certificates#index
                                            POST       /admin/certificates(.:format)                                                            admin/certificates#create
                                            GET        /admin/certificates/new(.:format)                                                        admin/certificates#new
@@ -751,22 +785,6 @@ batch_action_admin_company_equipment_index POST       /admin/companies/:company_
                                            PATCH      /admin/projects/:id(.:format)                                                            admin/projects#update
                                            PUT        /admin/projects/:id(.:format)                                                            admin/projects#update
                                            DELETE     /admin/projects/:id(.:format)                                                            admin/projects#destroy
-                                           GET        /admin/quotes/:quote_id/solutions(.:format)                                              admin/solutions#index
-                                           POST       /admin/quotes/:quote_id/solutions(.:format)                                              admin/solutions#create
-                                           GET        /admin/quotes/:quote_id/solutions/new(.:format)                                          admin/solutions#new
-                                           GET        /admin/solutions/:id/edit(.:format)                                                      admin/solutions#edit
-                                           GET        /admin/solutions/:id(.:format)                                                           admin/solutions#show
-                                           PATCH      /admin/solutions/:id(.:format)                                                           admin/solutions#update
-                                           PUT        /admin/solutions/:id(.:format)                                                           admin/solutions#update
-                                           DELETE     /admin/solutions/:id(.:format)                                                           admin/solutions#destroy
-                                           GET        /admin/quotes(.:format)                                                                  admin/quotes#index
-                                           POST       /admin/quotes(.:format)                                                                  admin/quotes#create
-                                           GET        /admin/quotes/new(.:format)                                                              admin/quotes#new
-                                           GET        /admin/quotes/:id/edit(.:format)                                                         admin/quotes#edit
-                                           GET        /admin/quotes/:id(.:format)                                                              admin/quotes#show
-                                           PATCH      /admin/quotes/:id(.:format)                                                              admin/quotes#update
-                                           PUT        /admin/quotes/:id(.:format)                                                              admin/quotes#update
-                                           DELETE     /admin/quotes/:id(.:format)                                                              admin/quotes#destroy
                         rails_service_blob GET        /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
                  rails_blob_representation GET        /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show
                         rails_disk_service GET        /rails/active_storage/disk/:encoded_key/*filename(.:format)                              active_storage/disk#show

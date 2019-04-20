@@ -20,7 +20,9 @@ Rails.application.routes.draw do
   get 'license', to: :show, controller: 'welcome'
   get 'privacy', to: :show, controller: 'welcome'
   get 'tsandcs', to: :show, controller: 'welcome'
-  
+
+  get 'ncaddr', to: :new_co, controller: 'addresses'
+     
   # UJS - DEPRECATED ?
   scope :ujs, defaults: { format: :ujs } do
     patch 'thing_totals' => 'companies#totals'
