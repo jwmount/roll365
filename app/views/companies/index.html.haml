@@ -1,6 +1,17 @@
 
 = render '/layouts/company_header'
 
+= search_form_for @q do |f|
+
+  .field
+    = f.label :name
+    = f.text_field :name_cont, class: 'form-control'
+
+  .action
+    = f.submit 
+ 
+
+= link_to "Clear", reqiest_path, class: "btn btn-default"
 
 %h1 Companies
 
@@ -35,11 +46,7 @@
         %td= link_to 'Edit', edit_company_path(company)
         %td= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' }
 
-
-
-
 %br
-
 = link_to 'New Company', new_company_path
 
 

@@ -78,8 +78,13 @@ gem 'draper'
 gem 'foreman'
 
 # Pagination for index views
-# Kaminari for pagination (WillPaginate can't coexist with WillPaginate
-gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master'
+# Kaminari for pagination (WillPaginate can't coexist with WillPaginat
+# gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master'
 
+# Search using Ransack and gems used by http://blog.magmalabs.io/2019/03/12/searching-with-ransack-in-ruby-on-rails.html
+gem 'faker'
+gem 'bootstrap', '~> 4.3.1'
+gem 'ransack'
+gem 'will_paginate-bootstrap4'
 
 

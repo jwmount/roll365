@@ -62,6 +62,7 @@ class Company < ApplicationRecord
                       }
   end
 
+  enum genre: { fantasy: 1, romance: 2, horror: 3, fiction: 4, poetry: 5 }
   #
   # S C O P E S
   #
