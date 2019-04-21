@@ -97,9 +97,8 @@ class Company < ApplicationRecord
   # Determin id of address if there is one, nil if none
   # Note that this is a relation so extracting address.id is based on that
   #
-  def has_address?
-    addr = Address.where("addressable_id = ? AND addressable_type = ?", self.id, 'Company').limit(1)
-    addr.ids[0]
+  def has_address? (company = 'Company')
+    (Address.where("addressable_id = ? AND addressable_type = ?", self.id, company).limit(1)).ids[0]
   end
 
 
@@ -108,7 +107,7 @@ class Company < ApplicationRecord
     unless @address.blank?
       address = "#{@address[0].street_address},  #{@address[0].city} #{@address[0].state} #{@address[0].post_code} " 
     else
-      'Empty'
+      'No address available.'
     end
   end
 

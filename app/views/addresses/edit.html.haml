@@ -1,4 +1,4 @@
-%h1 Editing address for:  #{@address.addressable.name}
+%h1 Edit address for:  #{@address.addressable.name}
 
 %p
   %b Parent type:
@@ -6,9 +6,10 @@
 
 = render 'form'
 
-= link_to 'Show', @address
-\|
-= link_to 'Back', addresses_path
-\|
-= button_to 'Back', addresses_path, :method => "get"
-= button_to "Show", action: "show"
+%table
+  %tr
+    %td{width: 10}
+      = button_to 'Back', addresses_path, :method => "get"
+    
+    %td
+      = button_to "Show", action: "show"

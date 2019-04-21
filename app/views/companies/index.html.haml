@@ -1,0 +1,45 @@
+
+= render '/layouts/company_header'
+
+
+%h1 Companies
+
+%table
+  %thead
+    %tr
+
+      %th ID
+      %th Name
+      %th Credit terms
+      %th Po required
+      %th Active
+      %th Bookkeeping number
+      %th Line of business
+      %th Web Site
+      %th Licensee
+      
+
+  %tbody
+    - @companies.each do |company|
+      %tr
+        %td= company.id
+        %td= company.name
+        %td= company.credit_terms
+        %td= company.PO_required
+        %td= company.active
+        %td= company.bookkeeping_number
+        %td= company.line_of_business
+        %td= link_to truncate(company.url, :length => 140), "http://#{company.url}"
+        %td= company.licensee
+        %td= link_to 'Show', company
+        %td= link_to 'Edit', edit_company_path(company)
+        %td= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' }
+
+
+
+
+%br
+
+= link_to 'New Company', new_company_path
+
+

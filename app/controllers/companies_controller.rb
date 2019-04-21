@@ -6,7 +6,7 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.order(name: :asc).page params[:page]
+    @companies = Company.order(name: :asc).page params[:companies]
   end
 
 
@@ -92,7 +92,7 @@ class CompaniesController < ApplicationController
     # Nested attributes ActiveAdmin Docs    def company_params
     def nested_params
 
-      params.require(:company).permit( :id, :name, :credit_terms, :PO_required, :active, :bookkeeping_number, :line_of_business, :url, :licensee,
+      params.require(:company).permit( :id, :name, :credit_terms, :PO_required, :active, :bookkeeping_number, :line_of_business, :url, :licensee, :term,
         address_attributes: [:addressable_id, :addressable_type, :street_address, :city, :state, :post_code, :map_reference, :longitude, :latitude] )
       #params.require(:portrait_tag).permit(:id, :addressable_id => [])
                 #identifier: [:id, :identifiable_id, :identifiable_type, :name, :value, :rank],
