@@ -15,6 +15,8 @@
 //= require turbolinks
 //= require_tree .
 
+// Following lines are related to asset compile fails on push to heroku.  WOrks fine with them
+// commented out.
 //require jquery3
 //require popper
 //require bootstrap

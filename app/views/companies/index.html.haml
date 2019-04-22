@@ -1,51 +1,54 @@
+.container-fluid
+  
+  .row
 
-= render '/layouts/company_header'
-
-
-= search_form_for @q do |f|
-  .field
-    = f.label :name
-    = f.text_field :name_cont, class: 'form-control'
-    = f.label :line_of_business
-    = f.text_field :line_of_business_cont, class: 'form-control'
-    = f.submit class: 'btn btn-primary'
+    .col-2
+      %h3 Search
+      = search_form_for @q do |f|
+        .field
+          = f.label :name
+          = f.text_field :name_cont, class: 'form-control'
+          = f.label :line_of_business
+          = f.text_field :line_of_business_cont, class: 'form-control'
+          = f.submit class: 'btn btn-primary'
  
-.btn
-= link_to "Clear", request_path, class: "btn btn-default"
+          .btn
+            = link_to "Clear", request_path, class: "btn btn-primary"
+    .col-6
+      %h3 Companies
+      %hr
 
-%h1 Companies
+      %table
+        %thead
+          %tr
 
-%table
-  %thead
-    %tr
+            %th Name
+            %th Line of Business
+            %th Web Site
+            %th Credit terms
+            %th Po required
+            %th Active
+            %th Bookkeeping number
+            %th Licensee
+            
+        %tbody
+          - @companies.each do |company|
+            %tr
+            
+              %td= company.name
+              %td= company.line_of_business
+              %td= link_to truncate(company.url, :length => 120), "http://#{company.url}"              
+              %td= company.credit_terms
+              %td= company.PO_required
+              %td= company.active
+              %td= company.bookkeeping_number
+              %td= company.licensee
+              %td= link_to 'Show', company
+              %td= link_to 'Edit', edit_company_path(company)
+              %td= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' }
 
-      %th ID
-      %th Name
-      %th Credit terms
-      %th Po required
-      %th Active
-      %th Bookkeeping number
-      %th Line of business
-      %th Web Site
-      %th Licensee
-      
+      %br
 
-  %tbody
-    - @companies.each do |company|
-      %tr
-        %td= company.id
-        %td= company.name
-        %td= company.credit_terms
-        %td= company.PO_required
-        %td= company.active
-        %td= company.bookkeeping_number
-        %td= company.line_of_business
-        %td= link_to truncate(company.url, :length => 140), "http://#{company.url}"
-        %td= company.licensee
-        %td= link_to 'Show', company
-        %td= link_to 'Edit', edit_company_path(company)
-        %td= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-= link_to 'New Company', new_company_path
-
+      = link_to new_company_path, class: 'btn btn-secondary' do
+        %i.glyphicon.glyphicon-plus
+        New Company

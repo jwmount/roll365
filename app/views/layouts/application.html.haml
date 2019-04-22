@@ -7,7 +7,18 @@
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  %body
-    = render '/shared/header'
-    = yield
-    = render '/shared/footer'
+  
+
+-#
+-# Bootstrap grid for application container  
+-#  
+.container-fluid
+  .row
+    .col
+      = render '/shared/header'
+  .row
+    .col
+      = yield
+  .row
+    .col
+      = render '/shared/footer'
