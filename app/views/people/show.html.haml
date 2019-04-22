@@ -1,0 +1,25 @@
+%p#notice= notice
+%p
+  %strong First name:
+  = @person.first_name
+%p
+  %strong Last name:
+  = @person.last_name
+%p
+  %strong Title:
+  = @person.title
+%p
+  %strong Available:
+  = @person.available
+%p
+  %strong Available on:
+  = @person.available_on
+%p
+  %strong Ok to contact:
+  = @person.OK_to_contact
+%p
+  %strong Active:
+  = @person.active
+= link_to 'Edit', edit_person_path(@person)
+|
+= link_to 'Back', people_path

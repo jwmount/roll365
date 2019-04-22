@@ -1,0 +1,30 @@
+%p#notice= notice
+%h1 Jobs
+%table
+  %thead
+    %tr
+      %th Solution
+      %th Start on
+      %th Time
+      %th Name
+      %th Finished on
+      %th Purchase order
+      %th Active
+      %th Complete
+      %th{:colspan => "3"}
+  %tbody
+    - @jobs.each do |job|
+      %tr
+        %td= job.solution_id
+        %td= job.start_on
+        %td= job.time
+        %td= job.name
+        %td= job.finished_on
+        %td= job.purchase_order
+        %td= job.active
+        %td= job.complete
+        %td= link_to 'Show', job
+        %td= link_to 'Edit', edit_job_path(job)
+        %td= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Job', new_job_path

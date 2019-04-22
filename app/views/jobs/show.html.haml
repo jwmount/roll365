@@ -1,0 +1,28 @@
+%p#notice= notice
+%p
+  %strong Solution:
+  = @job.solution_id
+%p
+  %strong Start on:
+  = @job.start_on
+%p
+  %strong Time:
+  = @job.time
+%p
+  %strong Name:
+  = @job.name
+%p
+  %strong Finished on:
+  = @job.finished_on
+%p
+  %strong Purchase order:
+  = @job.purchase_order
+%p
+  %strong Active:
+  = @job.active
+%p
+  %strong Complete:
+  = @job.complete
+= link_to 'Edit', edit_job_path(@job)
+|
+= link_to 'Back', jobs_path

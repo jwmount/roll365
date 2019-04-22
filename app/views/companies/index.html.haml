@@ -1,17 +1,19 @@
 
 = render '/layouts/company_header'
 
-= search_form_for @q do |f|
 
+= search_form_for @q do |f|
   .field
     = f.label :name
     = f.text_field :name_cont, class: 'form-control'
-
+  .field 
+    = f.label :line_of_business
+    = f.text_field :line_of_business, class: 'form-control'
   .action
     = f.submit 
  
-
-= link_to "Clear", reqiest_path, class: "btn btn-default"
+.btn
+= link_to "Clear", request_path, class: "btn btn-default"
 
 %h1 Companies
 
@@ -48,5 +50,4 @@
 
 %br
 = link_to 'New Company', new_company_path
-
 

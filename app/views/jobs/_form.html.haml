@@ -1,0 +1,35 @@
+= form_with(model: job, local: true) do |form|
+  - if job.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(job.errors.count, "error")
+        prohibited this job from being saved:
+      %ul
+        - job.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = form.label :solution_id
+    = form.number_field :solution_id
+  .field
+    = form.label :start_on
+    = form.datetime_select :start_on
+  .field
+    = form.label :time
+    = form.text_field :time
+  .field
+    = form.label :name
+    = form.text_field :name
+  .field
+    = form.label :finished_on
+    = form.datetime_select :finished_on
+  .field
+    = form.label :purchase_order
+    = form.text_field :purchase_order
+  .field
+    = form.label :active
+    = form.check_box :active
+  .field
+    = form.label :complete
+    = form.check_box :complete
+  .actions
+    = form.submit

@@ -87,4 +87,6 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'ransack'
 gem 'will_paginate-bootstrap4'
 
+gem 'sprockets-rails'
+gem 'jquery-rails'
 
