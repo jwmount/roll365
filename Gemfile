@@ -89,4 +89,5 @@ gem 'will_paginate-bootstrap4'
 
 gem 'sprockets-rails'
 gem 'jquery-rails'
+gem 'webpacker', '~>3.0'
 
