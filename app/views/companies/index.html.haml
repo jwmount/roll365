@@ -6,11 +6,9 @@
   .field
     = f.label :name
     = f.text_field :name_cont, class: 'form-control'
-  .field 
     = f.label :line_of_business
-    = f.text_field :line_of_business, class: 'form-control'
-  .action
-    = f.submit 
+    = f.text_field :line_of_business_cont, class: 'form-control'
+    = f.submit class: 'btn btn-primary'
  
 .btn
 = link_to "Clear", request_path, class: "btn btn-default"
