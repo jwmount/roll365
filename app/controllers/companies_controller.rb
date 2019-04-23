@@ -23,7 +23,7 @@ class CompaniesController < ApplicationController
     @company = Company.new
     @company.addresses.build(street_address: "t.b.d")
     @company.identifiers.build
-    @company.permits
+    @company.permits.build
   end
 
   # GET /companies/1/edit
@@ -68,6 +68,7 @@ class CompaniesController < ApplicationController
   # DELETE /companies/1
   # DELETE /companies/1.json
   def destroy
+    @company = set_company
     @company.destroy
     respond_to do |format|
       format.html { redirect_to companies_url, notice: 'Company was successfully destroyed.' }
