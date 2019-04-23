@@ -3,6 +3,7 @@
   .row
 
     .col-2
+
       %h3 Search
       = search_form_for @q do |f|
         .field
@@ -13,7 +14,7 @@
           = f.submit class: 'btn btn-primary'
  
           .btn
-            = link_to "Clear", request_path, class: "btn btn-primary"
+            = link_to "Clear", request_path, class: "btn btn-secondary"
     .col-6
       %h3 Companies
       %hr
@@ -37,7 +38,8 @@
             
               %td= company.name
               %td= company.line_of_business
-              %td= link_to truncate(company.url, :length => 120), "http://#{company.url}"              
+              %td{width: 1}
+                = link_to truncate(company.url, :length => 120), "http://#{company.url}"              
               %td= company.credit_terms
               %td= company.PO_required
               %td= company.active

@@ -1,6 +1,6 @@
-%p#notice= notice
 
-%h1 Address for: #{@address.addressable.name}
+
+%h1 Address of: #{@address.addressable.name}
 
 %p
   %b Rollodex type:
@@ -15,7 +15,7 @@
   %b State:
   = @address.state
 %p
-  %b Po box:
+  %b Postal Code:
   = @address.post_code
 %p
   %b Map reference:
@@ -28,4 +28,7 @@
   = @address.latitude
 
 = link_to 'Edit', edit_address_path(@address)
-= link_to 'Back', addresses_path
+
+%p
+
+= link_to "Back", ncaddr_path(@address.addressable_type)

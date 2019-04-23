@@ -1,8 +1,9 @@
-%h1.text-center
+%h1
   = @company.name
 
 %p
   = @company.display_address
+  = link_to 'edit', edit_address_path(@company)
 
 %hr
 
@@ -36,20 +37,19 @@
   %strong Licensee:
   = @company.licensee
 
-%p 
-
-= link_to 'Edit', edit_company_path(@company)
-= link_to 'Back', companies_path
+%p
 
 -#
 -# Determine if Company address exists
 -#
-- addr = @company.has_address?
-= addr
-- if addr.nil?
-  = link_to "New New Co", ncaddr_path(@company)
-  = link_to "New addr", new_company_address_path(@company)
-- else
-  = link_to "Edit addr", edit_address_path(addr)
+-# addr = @company.has_address?
+-#- if addr.nil?
+-#= link_to "Address", ncaddr_path(@company)
+  -#= link_to "New addr", new_company_address_path(@company)
+-#- else
+-#= link_to "Edit addr", edit_address_path(addr)
 
 %p
+
+= link_to 'Back', companies_path
+

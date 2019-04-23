@@ -12,11 +12,15 @@ class AddressesController < InheritedResources::Base
 # [TODO] clean this up
 #
   def ncaddr
-    @address = Address.new #(address_params)
-    @address.addressable_type = 'Company'
-    @address.addressable_id = params[:format]
-    @address.save
-    redirect_to edit_address_path(@address)
+    redirect_to companies_path if params[:format] == 'Company'
+    redirect_to initializer_path if params[:format] == 'Initializer'
+    redirect_to people_path if params[:format] == 'Person'
+    
+    #@address = Address.new #(address_params)
+    #@address.addressable_type = 'Company'
+    #@address.addressable_id = params[:format]
+    #@address.save
+    #redirect_to edit_address_path(@address)
   end
 
   def edit
@@ -26,6 +30,12 @@ class AddressesController < InheritedResources::Base
       @name = @parent.find(@address.addressable_id).name
     rescue
     end
+  end
+
+  #
+  # No direct operation is allowed, must be from an addressable parent
+  #
+  def new
   end
 
   def show

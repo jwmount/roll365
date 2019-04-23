@@ -85,7 +85,7 @@ gem 'foreman'
 # Search using Ransack and gems used by http://blog.magmalabs.io/2019/03/12/searching-with-ransack-in-ruby-on-rails.html
 gem 'faker'
 gem 'bootstrap', '~> 4.3.1'
-gem 'ransack'
+gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'will_paginate-bootstrap4'
 
 gem 'sprockets-rails'

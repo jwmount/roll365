@@ -9,7 +9,5 @@
 %table
   %tr
     %td{width: 10}
-      = button_to 'Back', addresses_path, :method => "get"
+      = link_to "Back", ncaddr_path(@address.addressable_type)
     
-    %td
-      = button_to "Show", action: "show"

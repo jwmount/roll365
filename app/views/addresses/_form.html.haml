@@ -6,6 +6,9 @@
         - @address.errors.full_messages.each do |message|
           %li= message
 
+  %h3 
+    = @parent
+
   .field
     = f.label :street_address
     = f.text_field :street_address
@@ -27,7 +30,7 @@
   .field
     = f.label :latitude
     = f.text_field :latitude
-  .actions
-    = f.submit 'Save this'
+  .action
+    = f.submit
   
 

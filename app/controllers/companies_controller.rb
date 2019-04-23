@@ -1,14 +1,13 @@
 class CompaniesController < ApplicationController
    before_action :set_company, only: [:show, :edit, :update, :destroy]
 
-
-
   # GET /companies
   # GET /companies.json
+  # @q is a relation
+  # @companies = returns a collection
   def index
-    #@companies = Company.order(name: :asc).page params[:companies]
     @q = Company.ransack(params[:q])
-    @companies = @q.result.page(params[:page])
+    @companies = @q.result.page(params[:page])     
   end
 
 
@@ -22,7 +21,7 @@ class CompaniesController < ApplicationController
   # building the nested polymorphs here enables having them in the forms 
   def new
     @company = Company.new
-    @company.addresses.build
+    @company.addresses.build(street_address: "t.b.d")
     @company.identifiers.build
     @company.permits
   end
@@ -30,7 +29,7 @@ class CompaniesController < ApplicationController
   # GET /companies/1/edit
   def edit
     @company = Company.find(params[:id])
-     @address = Address.where("addressable_id = ? AND addressable_type = ?", @company.id, 'Company').limit(1)
+    @address = Address.where("addressable_id = ? AND addressable_type = ?", @company.id, 'Company').limit(1)
   end
 
 

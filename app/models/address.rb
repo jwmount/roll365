@@ -9,7 +9,8 @@ class Address < ApplicationRecord
   #kaminari
   paginates_per  10
 
-#
+
+  #
 # Get and display parent name of polymorphic Address. [TODO]: remve after May 1
 #
   def display_parent_name 
