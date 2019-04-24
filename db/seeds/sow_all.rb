@@ -177,7 +177,7 @@ companies_list.each do |model|
   @company.addresses.find_or_create_by( model["address"] )
   model["person"]["title"] = "Rep" if @company.licensee
   @company.people.find_or_create_by( model["person"] )
-  @company.identifiers.create( model["identifier"] )
+  @company.identifiers.find_or_create_by( model["identifier"] )
   @company.tips.find_or_create_by( model["tip"] ) unless model["tip"].nil?
  puts "#{model} -- CREATED companies from companies_list"
 end

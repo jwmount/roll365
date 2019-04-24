@@ -17,14 +17,7 @@ class CompaniesController < ApplicationController
     @company = set_company
   end
 
-  # GET /companies/new
-  # building the nested polymorphs here enables having them in the forms 
-  def new
-    @company = Company.new
-    @company.addresses.build(street_address: "t.b.d")
-    @company.identifiers.build
-    @company.permits.build
-  end
+
 
   # GET /companies/1/edit
   def edit
@@ -32,6 +25,15 @@ class CompaniesController < ApplicationController
     @address = Address.where("addressable_id = ? AND addressable_type = ?", @company.id, 'Company').limit(1)
   end
 
+  # NOPE -- still ends up with @address.id = company.id.  
+  def new
+    @company = Company.new(name: 'Rigger')
+    @company.save!
+    
+    @address = @company.addresses.find_or_create_by( {addressable_type: 'Company', addressable_id: @company.id} )
+    
+    @address.save!
+  end
 
   # POST /companies
   # POST /companies.json
