@@ -23,6 +23,10 @@ class AddressesController < InheritedResources::Base
     #redirect_to edit_address_path(@address)
   end
 
+  def caddr
+  end
+  
+=begin
   def edit
     @address = Address.find(params[:id])
     @parent = @address.addressable.name
@@ -31,11 +35,18 @@ class AddressesController < InheritedResources::Base
     rescue
     end
   end
+=end 
 
+  def edit
+    @company = Company.find(params[:id])
+    @address = @company.addresses.first
+  end
   #
   # No direct operation is allowed, must be from an addressable parent
   #
   def new
+    @company = Company.find(params[:format])
+    @address = @company.addresses.first
   end
 
   def show
@@ -45,8 +56,9 @@ class AddressesController < InheritedResources::Base
       @name = @parent.find(@address.addressable_id).name
     rescue
     end
-    
   end
+
+
 
   private  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - -
 

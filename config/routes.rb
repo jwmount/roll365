@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   get 'tsandcs', to: :show, controller: 'welcome'
 
   get 'ncaddr', to: :new_co, controller: 'addresses'
+    
+  
      
   # UJS - DEPRECATED ?
   scope :ujs, defaults: { format: :ujs } do

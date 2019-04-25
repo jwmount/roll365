@@ -25,6 +25,7 @@
 
             %th Name
             %th Line of Business
+            %th City
             %th Web Site
             %th Credit terms
             %th Po required
@@ -38,7 +39,8 @@
             
               %td= company.name
               %td= company.line_of_business
-              %td{width: 1}
+              %td= company.display_address
+              %td
                 = link_to truncate(company.url, :length => 120), "http://#{company.url}"              
               %td= company.credit_terms
               %td= company.PO_required

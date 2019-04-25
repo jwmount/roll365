@@ -15,8 +15,8 @@ class CompaniesController < ApplicationController
   # GET /companies/1.json
   def show
     @company = set_company
+    @address = Address.where("addressable_id = ? AND addressable_type = ?", @company.id, 'Company').limit(1)
   end
-
 
 
   # GET /companies/1/edit
@@ -27,8 +27,13 @@ class CompaniesController < ApplicationController
 
   # NOPE -- still ends up with @address.id = company.id.  
   def new
-    @company = Company.new(name: 'Rigger')
-    @company.save!
+    @company = Company.find_or_create_by(name: 'Rigger')
+    begin
+      @company.save!
+    rescue
+      flash[:error] = "A Company could NOT be found or created."
+      nil
+    end
     
     @address = @company.addresses.find_or_create_by( {addressable_type: 'Company', addressable_id: @company.id} )
     
