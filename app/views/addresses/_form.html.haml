@@ -8,29 +8,35 @@
 
   %h3 
     = @parent
-
-  .field
-    = f.label :street_address
-    = f.text_field :street_address
-  .field
-    = f.label :city
-    = f.text_field :city
-  .field
-    = f.label :state
-    = f.text_field :state
-  .field
-    = f.label :post_code
-    = f.text_field :post_code
-  .field
-    = f.label :map_reference
-    = f.text_field :map_reference
-  .field
-    = f.label :longitude
-    = f.text_field :longitude
-  .field
-    = f.label :latitude
-    = f.text_field :latitude
+  
+  .form-group
+    = f.label :street_address, "Street Address:", class: "col-md-4 control-label"
+    .col-md-8
+      = f.text_field :street_address, class: "form-control"
+  .form-group
+    = f.label :city, "City", class: "col-md-4 control-label"
+    .col-md-8
+      = f.text_field :city, class: "form-control"
+  .form-group
+    = f.label :state, "State", class: "col-md-4 control-label"
+    .col-md-8
+      = f.text_field :state, class: "form-control"
+  .form-group
+    = f.label :post_code, "Post Code:", class: "col-md-4 control-label"
+    .col-md-8
+      = f.text_field :post_code, class: "form-control"
+  .form-group
+    = f.label :map_reference, "Map Reference", class: "col-md-4 control-label"
+    .col-md-8
+      = f.text_field :map_reference, class: "form-control"
+  .form-group
+    = f.label :longitude, "longitude", class: "col-md-4 control-label"
+    .col-md-8
+      = f.text_field :longitude, class: "form-control"
+  .form-group
+    = f.label :latitude, "Latitude", class: "col-md-4 control-label"
+    .col-md-8
+      = f.text_field :latitude, class: "form-control"      
   .action
     = f.submit
   
-

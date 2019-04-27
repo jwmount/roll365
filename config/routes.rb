@@ -21,9 +21,9 @@ Rails.application.routes.draw do
   get 'privacy', to: :show, controller: 'welcome'
   get 'tsandcs', to: :show, controller: 'welcome'
 
-  get 'ncaddr', to: :new_co, controller: 'addresses'
-    
-  
+ # return from edit address to 'companies#index'.  Works, but why?
+ get 'ncaddr', to: :new_co, controller: 'addresses'
+   
      
   # UJS - DEPRECATED ?
   scope :ujs, defaults: { format: :ujs } do
