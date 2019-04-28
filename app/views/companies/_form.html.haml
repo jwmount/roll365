@@ -25,23 +25,31 @@
   .form-group
     = form.label :credit_terms, "Credit Terms", class: "col-md-4 control-label"
     .col-md-8
-      =form.text_field :credit_terms, class: "form-control"
-  
+      = form.select(:credit_terms, { none: 1, week: 2, fortnight: 3, month: 4, 'same day': 5, 'on delivery': 6 })
   .form-group
     = form.label :Po_required, "PO Required", class: "col-md-4 control-label"
     .col-md-8
-      = form.text_field :PO_required, class: "form-control"
+      = form.radio_button(:PO_required, true)
+      = form.label(:PO_required, "Yes", value: true)
+      &nbsp;
+      = form.radio_button(:PO_required, false)
+      = form.label(:PO_required, "No", value: false)
 
   .form-group
     = form.label :active, "Active", class: "col-md-4 control-label"
     .col-md-8
-      = form.text_field :active, class: "form-control"
-
+      -# = form.text_field :active, class: "form-control"
+      = form.radio_button(:active, true)
+      = form.label(:active, "Active", value: true)
+      &nbsp;
+      = form.radio_button(:active, false)
+      = form.label(:active, "Inactive", value: false)
+   
   .form-group
     = form.label :bookkeeping_number, "Bookkeeping Number", class: "col-md-4 control-label" 
     .col-md-8
       = form.text_field :bookkeeping_number, class: "form-control"
-  
-  .actions
+  %p
+    .actions
     = form.submit
   

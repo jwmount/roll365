@@ -13,7 +13,6 @@
           = f.text_field :line_of_business_cont, class: 'form-control'
           = f.label :url
           = f.text_field :url_cont, class: 'form-control'
-
           = f.submit class: 'btn btn-primary'
  
           .btn
@@ -45,9 +44,9 @@
               %td= company.display_address
               %td
                 = link_to truncate(company.url, :length => 120), "http://#{company.url}"              
-              %td= company.credit_terms
-              %td= company.PO_required
-              %td= company.active
+              %td= company.display_credit_terms( company.credit_terms )
+              %td= company.PO_required == true ? 'Yes' : 'No'
+              %td= company.active == true ? 'Active' : 'Inactive'
               %td= company.bookkeeping_number
               %td= company.licensee
               %td= link_to 'Show', company

@@ -7,7 +7,7 @@ class CompaniesController < ApplicationController
   # @companies = returns a collection
   def index
     @q = Company.ransack(params[:q])
-    @companies = @q.result.page(params[:page])     
+    @companies = @q.result.order(name: 'ASC').page(params[:page])     
   end
 
 
@@ -25,18 +25,16 @@ class CompaniesController < ApplicationController
     @address = Address.where("addressable_id = ? AND addressable_type = ?", @company.id, 'Company').limit(1)
   end
 
-  # NOPE -- still ends up with @address.id = company.id.  
+  # A new Company must have it's dependents (polymorpths) from inception, we enforce that here.
   def new
-    @company = Company.find_or_create_by(name: 'Rigger')
+    @company = Company.find_or_create_by(name: 'New Company')
     begin
       @company.save!
     rescue
       flash[:error] = "A Company could NOT be found or created."
       nil
     end
-    
     @address = @company.addresses.find_or_create_by( {addressable_type: 'Company', addressable_id: @company.id} )
-    
     @address.save!
   end
 

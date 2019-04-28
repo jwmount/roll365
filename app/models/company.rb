@@ -62,7 +62,7 @@ class Company < ApplicationRecord
                       }
   end
 
-  enum credit: { no: 1, week: 2, fortnight: 3, month: 4, open: 5 }
+  
   #
   # S C O P E S
   #
@@ -92,7 +92,11 @@ class Company < ApplicationRecord
     'contact'
   end
 
-  
+  def display_credit_terms (terms)
+    cr = ['None', 'Week', 'Fortnight', 'Month', 'Same Day', 'On Delivery']
+    terms.nil? ? cr[0] : cr[terms]
+  end
+
   #
   # Determin id of address if there is one, nil if none
   # Note that this is a relation so extracting address.id is based on that
