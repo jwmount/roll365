@@ -6,37 +6,41 @@
         - @company.errors.full_messages.each do |message|
           %li= message
   
-  .field
-    = form.label :name
-    = form.text_field :name
-    
-  .field
-    = form.label :credit_terms
-    = form.number_field :credit_terms
-  
-  .field
-    = form.label :PO_required
-    = form.check_box :PO_required
 
-  .field
-    = form.label :active
-    = form.check_box :active
+  .form-group
+    = form.label :name, "Name", class: "col-md-4 control-label"
+    .col-md-8
+      = form.text_field :name, class: "form-control"
+
+  .form-group
+    = form.label :line_of_business, class: "col-md-4 control-label" 
+    .col-md-8
+      = form.text_field :line_of_business, class: "form-control"
   
-  .field
-    = form.label :bookkeeping_number
-    = form.number_field :bookkeeping_number
+  .form-group
+    = form.label :url, class: "col-md-4 control-label" 
+    .col-md-8
+      = form.text_field :url, class: "form-control"
+
+  .form-group
+    = form.label :credit_terms, "Credit Terms", class: "col-md-4 control-label"
+    .col-md-8
+      =form.text_field :credit_terms, class: "form-control"
   
-  .field
-    = form.label :line_of_business
-    = form.text_field :line_of_business
-  
-  .field
-    = form.label :url
-    = form.text_field :url
-  
-  .field
-    = form.label :licensee
-    = form.text_field :licensee
+  .form-group
+    = form.label :Po_required, "PO Required", class: "col-md-4 control-label"
+    .col-md-8
+      = form.text_field :PO_required, class: "form-control"
+
+  .form-group
+    = form.label :active, "Active", class: "col-md-4 control-label"
+    .col-md-8
+      = form.text_field :active, class: "form-control"
+
+  .form-group
+    = form.label :bookkeeping_number, "Bookkeeping Number", class: "col-md-4 control-label" 
+    .col-md-8
+      = form.text_field :bookkeeping_number, class: "form-control"
   
   .actions
     = form.submit
