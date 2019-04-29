@@ -1,3 +1,4 @@
+
 .container-fluid
   
   .row
@@ -13,12 +14,18 @@
           = f.text_field :line_of_business_cont, class: 'form-control'
           = f.label :url
           = f.text_field :url_cont, class: 'form-control'
+          = f.label :bookkeeping_number
+          = f.text_field :bookkeeping_number, class: 'form-control'
           = f.submit class: 'btn btn-primary'
- 
+
           .btn
             = link_to "Clear", request_path, class: "btn btn-secondary"
+          //= paginate @addresses            
+          %h4= paginate @companies
     .col-6
       %h3 Companies
+      = @companies.count 
+      listed
       %hr
 
       %table

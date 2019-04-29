@@ -4,10 +4,10 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   # @q is a relation
-  # @companies = returns a collection
+  # @companies = returns a collection, we sort and paginate based on that
   def index
     @q = Company.ransack(params[:q])
-    @companies = @q.result.order(name: 'ASC').page(params[:page])     
+    @companies = @q.result.order(name: 'ASC').paginate(page: params[:page], per_page: params[:per_page])
   end
 
 
