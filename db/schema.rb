@@ -74,13 +74,12 @@ ActiveRecord::Schema.define(version: 2019_03_17_225022) do
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
-    t.integer "credit_terms"
+    t.string "credit_terms"
     t.boolean "PO_required"
     t.boolean "active"
-    t.integer "bookkeeping_number"
+    t.string "bookkeeping_number"
     t.string "line_of_business"
     t.string "url"
-    t.string "licensee"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

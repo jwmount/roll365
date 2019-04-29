@@ -7,7 +7,7 @@ class CompaniesController < ApplicationController
   # @companies = returns a collection, we sort and paginate based on that
   def index
     @q = Company.ransack(params[:q])
-    @companies = @q.result.order(name: 'ASC').paginate(page: params[:page], per_page: params[:per_page])
+    @companies = @q.result.order(name: 'ASC').paginate(page: params[:page], per_page: 10 || params[:per_page])
   end
 
 
@@ -99,7 +99,7 @@ class CompaniesController < ApplicationController
     # Nested attributes ActiveAdmin Docs    def company_params
     def nested_params
 
-      params.require(:company).permit( :id, :name, :credit_terms, :PO_required, :active, :bookkeeping_number, :line_of_business, :url, :licensee, 
+      params.require(:company).permit( :id, :name, :credit_terms, :PO_required, :active, :bookkeeping_number, :line_of_business, :url,  
         address_attributes: [:addressable_id, :addressable_type, :street_address, :city, :state, :post_code, :map_reference, :longitude, :latitude] )
       #params.require(:portrait_tag).permit(:id, :addressable_id => [])
                 #identifier: [:id, :identifiable_id, :identifiable_type, :name, :value, :rank],

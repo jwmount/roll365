@@ -10,7 +10,7 @@
 # Note:  hash values cannot be duplicates so cannot have two "Identifiers" for example.
 #
 
-# TODO -- Create a Licensee Setup sequence better than this static approach.
+# [TODO ]-- Create a Licensee Setup sequence better than this static approach.
 # Note that here the Rep is named 'Account Representative' and this needs to be edited to make any 
 # sense once the account gets used by someone.
 
@@ -21,12 +21,14 @@
 companies_list = [
 # LICENSEE - This cannot be DRY with config/boots.rb, at least until we figure out how to use the 
 # ENV[] attributes.
+=begin
   { "company"    => { licensee: true, 
                       name: @licensee, line_of_business: @lob, url: @url},
     "address"    => { street_address: "t.b.d.", city: "Dixon", state: "CA", post_code: ""},
     "person"     => { first_name: "Account", last_name: "Representative", title: "Rep"},
     "identifier" => { name: "Office", value: "415 555-1212"}
-    }, 
+    },
+=end 
 # COMPANIES IN MARKET AREA
   { "company"    => { name: "1st Logistics", line_of_business: "Over-the-road transportation services", url: "www.truckcompaniesin.com/dot/1175905/"},
     "address"    => { street_address: "2001 Meyer Way", city: "Fairfield", state: "CA", post_code: "94533" },

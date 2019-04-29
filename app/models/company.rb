@@ -18,22 +18,24 @@ class Company < ApplicationRecord
 
   # polymorphs
   has_many  :addresses,
-            :as        => :addressable,
-            :autosave  => true,
-            :dependent => :destroy,
-            inverse_of: :addressable
+            :as         => :addressable,
+            :autosave   => true,
+            :dependent  => :destroy,
+            :inverse_of => :addressable
   validates_associated :addresses
 
   has_many :permits,
-           :as        => :permitable, 
-           :autosave  => true, 
-           :dependent => :destroy
+           :as         => :permitable, 
+           :autosave   => true, 
+           :dependent  => :destroy,
+           :inverse_of => :permitable
   validates_associated :permits
 
   has_many :identifiers, 
-           :as        => :identifiable, 
-           :autosave  => true, 
-           :dependent => :destroy
+           :as         => :identifiable, 
+           :autosave   => true, 
+           :dependent  => :destroy,
+           :inverse_of => :identifiable
   validates_associated :identifiers
 
   #
@@ -77,9 +79,23 @@ class Company < ApplicationRecord
 
   def defaults
      unless persisted?
-    end
+      
+       self.active             ||= true
+       self.bookkeeping_number ||= '00000 (Please edit)'
+       self.credit_terms       ||= 'None established'
+       self.line_of_business   ||= '(Please edit)'
+       self.name               ||= 'New Company (please edit)'
+       self.PO_required        ||= 'Yes (please edit)'
+       self.url                ||= 'fr8.network (please edit'
+   
+     end
   end
   
+  # [TODO] based on ENV['LICENSEE', 'unused or the name']
+  def licensee
+    'Not licensed'
+  end
+
   def is_bookkeeping_number?
     !self.bookkeeping_number.blank?
   end
@@ -92,9 +108,12 @@ class Company < ApplicationRecord
     'contact'
   end
 
+  #
+  # originally returned integer to be stored, string is easier to search on
+  #
   def display_credit_terms (terms)
     cr = ['None', 'Week', 'Fortnight', 'Month', 'Same Day', 'On Delivery']
-    terms.nil? ? cr[0] : cr[terms]
+    #terms.nil? ? cr[0] : cr[terms]
   end
 
   #
