@@ -4,10 +4,17 @@
 %p
   = @company.display_address
   = link_to 'edit address', edit_address_path
-  = link_to 'people', people_path  
+  = link_to 'people', people_path
+
+  %p
+
+  = render "identifiers/contacts_for"
+
+  = link_to "... more", parent_index_path(@company)
+  = link_to "edit contact", edit_identifier_path(@company)
+  
 %hr
-  = @company.identifiers.count
-  = link_to 'Contact info', company_identifiers_path
+  
 %p
   %strong Credit terms:
   = @company.credit_terms

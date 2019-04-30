@@ -264,6 +264,8 @@ batch_action_admin_company_equipment_index POST       /admin/companies/:company_
                                    license GET        /license(.:format)                                                                       welcome#license
                                    privacy GET        /privacy(.:format)                                                                       welcome#privacy
                                    tsandcs GET        /tsandcs(.:format)                                                                       welcome#tsandcs
+                                    ncaddr GET        /ncaddr(.:format)                                                                        addresses#ncaddr
+                              parent_index GET        /parent_index(.:format)                                                                  identifiers#parent_index
                               thing_totals PATCH      /ujs/thing_totals(.:format)                                                              companies#totals {:format=>:ujs}
                                  addresses GET        /addresses(.:format)                                                                     addresses#index
                                            POST       /addresses(.:format)                                                                     addresses#create
@@ -441,14 +443,14 @@ batch_action_admin_company_equipment_index POST       /admin/companies/:company_
                                            PATCH      /addresses/:id(.:format)                                                                 addresses#update
                                            PUT        /addresses/:id(.:format)                                                                 addresses#update
                                            DELETE     /addresses/:id(.:format)                                                                 addresses#destroy
-                      company_initializers GET        /companies/:company_id/initializers(.:format)                                            initializers#index
-                                           POST       /companies/:company_id/initializers(.:format)                                            initializers#create
-                   new_company_initializer GET        /companies/:company_id/initializers/new(.:format)                                        initializers#new
-                          edit_initializer GET        /initializers/:id/edit(.:format)                                                         initializers#edit
-                               initializer GET        /initializers/:id(.:format)                                                              initializers#show
-                                           PATCH      /initializers/:id(.:format)                                                              initializers#update
-                                           PUT        /initializers/:id(.:format)                                                              initializers#update
-                                           DELETE     /initializers/:id(.:format)                                                              initializers#destroy
+                       company_identifiers GET        /companies/:company_id/identifiers(.:format)                                             identifiers#index
+                                           POST       /companies/:company_id/identifiers(.:format)                                             identifiers#create
+                    new_company_identifier GET        /companies/:company_id/identifiers/new(.:format)                                         identifiers#new
+                                           GET        /identifiers/:id/edit(.:format)                                                          identifiers#edit
+                                           GET        /identifiers/:id(.:format)                                                               identifiers#show
+                                           PATCH      /identifiers/:id(.:format)                                                               identifiers#update
+                                           PUT        /identifiers/:id(.:format)                                                               identifiers#update
+                                           DELETE     /identifiers/:id(.:format)                                                               identifiers#destroy
                                            GET        /companies(.:format)                                                                     companies#index
                                            POST       /companies(.:format)                                                                     companies#create
                                            GET        /companies/new(.:format)                                                                 companies#new

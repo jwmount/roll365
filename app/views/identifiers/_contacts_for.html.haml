@@ -1,0 +1,14 @@
+
+
+- if @identifiers.nil?
+  
+  No contact info here, Mate
+  
+- else
+  
+  - @identifiers.each do |i|
+    %p
+    = i.name
+    = i.value
+
+  

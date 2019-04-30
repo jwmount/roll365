@@ -4,7 +4,20 @@ class IdentifiersController < InheritedResources::Base
   def index
     @identifiers = Identifier.order(name: :asc).page params[:page]
   end
-  
+
+  def parent_index
+    @identifiers = Identifier.where(:identifiable_id => params[:format]).order(name: :asc).page params[:page]
+    render "index"
+  end  
+   #
+  # No direct operation is allowed, must be from an addressable parent
+  #
+  def new
+    @company = Company.select(:company_id).find(params[:company_id]).take
+    @identifier = @company.identifiers.find_or_create_by( {identifiable_type: 'Company', identifiable_id: @company.id} )
+    @identifier.save!
+  end
+
   def edit
     
     @identifier = Identifier.find(params[:id])

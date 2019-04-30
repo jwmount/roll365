@@ -3,10 +3,12 @@
 
 %h1 Listing identifiers
 
+
 %table
   %thead
     %tr
       %th Parent Type
+      %th Parent ID
       %th Parent Name
       %th Parent Id
       %th Kind
@@ -20,6 +22,7 @@
       %tr
         
         %td= f.identifiable_type
+        %td= f.identifiable_id
         %td= f.display_parent_name
         %td= f.identifiable_id
         %td= f.name
@@ -32,4 +35,4 @@
 
 %br
 
-= link_to 'New Identifier', new_identifier_path
+= link_to 'New Identifier', new_identifiable_path
