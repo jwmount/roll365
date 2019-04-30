@@ -1,3 +1,4 @@
+
 %h1
   = @company.name
 
@@ -15,33 +16,32 @@
   
 %hr
   
-%p
-  %strong Credit terms:
+.field
+  %strong Credit terms: 
   = @company.credit_terms
 
-
-%p
+.field
   %strong PO required:
   = @company.PO_required
 
 
-%p
+.field
   %strong Active:
   = @company.active
 
-%p
+.field
   %strong>Bookkeeping number:
   = @company.bookkeeping_number
 
-%p
+.field
   %strong Line of business:
   = @company.line_of_business
 
-%p
+.field
   %strong Url:
   = @company.url
 
-%p
+.field
   %strong Licensee:
   = @company.licensee
 

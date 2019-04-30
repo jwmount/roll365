@@ -19,7 +19,6 @@ class CompaniesController < ApplicationController
       @identifiers = @company.identifiers
     rescue
       flash[:error] = 'No identifiers found.'
-      flash[:error]
     end 
     @address = Address.where("addressable_id = ? AND addressable_type = ?", @company.id, 'Company').limit(1)
     # Identifiers.where("identifiable_id = ? AND identifiable_type = 'Company", @company.id)

@@ -7,27 +7,22 @@
 %table
   %thead
     %tr
-      %th Parent Type
-      %th Parent ID
+      %th Priority
       %th Parent Name
-      %th Parent Id
       %th Kind
       %th Value
-      %th Rank
+      
       
 
   %tbody
     - @identifiers.each do |f|
 
       %tr
-        
-        %td= f.identifiable_type
-        %td= f.identifiable_id
+        %td{align: 'center'}
+          = f.rank
         %td= f.display_parent_name
-        %td= f.identifiable_id
         %td= f.name
         %td= f.value
-        %td= f.rank
         %td= link_to 'Show', f
         %td= link_to 'Edit', edit_identifier_path(f)
         %td= link_to 'Destroy', f, method: :delete, data: { confirm: 'Are you sure?' }

@@ -6,7 +6,7 @@ class IdentifiersController < InheritedResources::Base
   end
 
   def parent_index
-    @identifiers = Identifier.where(:identifiable_id => params[:format]).order(name: :asc).page params[:page]
+    @identifiers = Identifier.where(:identifiable_id => params[:format]).order(name: 'ASC', rank: 'ASC').page params[:page]
     render "index"
   end  
    #
@@ -24,7 +24,7 @@ class IdentifiersController < InheritedResources::Base
     begin
       @name = @identifier.identifiable.display_name
     rescue
-      @name = flash["unknown display_name"]
+      @name = flash["Identifier has unknown display_name"]
     end
   end
 

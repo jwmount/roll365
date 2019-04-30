@@ -8,8 +8,6 @@ class Identifier < ApplicationRecord
   validates_presence_of :name, :value, :identifiable_type, :identifiable_id
   validates :rank, :numericality => { :only_integer => true, :greater_than_or_equal_to => 1, :less_than => 10}
    
-  # this doesn't seem to work?  refers to line below
-  # scope :ranked, order("rank DSC")
 
   #kaminari
   paginates_per  10
