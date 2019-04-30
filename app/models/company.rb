@@ -81,12 +81,12 @@ class Company < ApplicationRecord
      unless persisted?
       
        self.active             ||= true
-       self.bookkeeping_number ||= '00000 (Please edit)'
-       self.credit_terms       ||= 'None established'
-       self.line_of_business   ||= '(Please edit)'
-       self.name               ||= 'New Company (please edit)'
-       self.PO_required        ||= 'Yes (please edit)'
-       self.url                ||= 'fr8.network (please edit'
+       self.bookkeeping_number ||= '(Please edit.)'
+       self.credit_terms       ||= '(Please edit.)'
+       self.line_of_business   ||= '(Please edit.)'
+       self.name               ||= '(Please edit.)'
+       self.PO_required        ||= true
+       self.url                ||= '(Please edit).'
    
      end
   end
@@ -124,6 +124,18 @@ class Company < ApplicationRecord
     (Address.where("addressable_id = ? AND addressable_type = ?", self.id, company).limit(1)).ids[0]
   end
 
+  #
+  # Do we have City, State ?
+  # Return as string, otherwise return nil with id of address record (for use in Linked_to "Please edit", edit_address_path)
+  # true means yes, prompt for city, state is needed, false means second returned value is correct.
+  def display_city
+    @address = Address.where("addressable_id = ? AND addressable_type = ?", self.id, 'Company').limit(1).take
+    if (@address.city && @address.state).blank?
+      return true, @address.id
+    else
+      return false, @address.city + ', ' + @address.state
+    end
+  end
 
   def display_address
     @address = Address.where("addressable_id = ? AND addressable_type = ?", self.id, 'Company').limit(1)

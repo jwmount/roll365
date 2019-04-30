@@ -9,6 +9,24 @@ class Address < ApplicationRecord
   #kaminari
   paginates_per  10
 
+  #
+  # D E F A U L T S 
+  #
+  after_initialize :defaults
+
+  def defaults
+     unless persisted?
+      
+       self.street_address     ||= nil
+       self.city               ||= nil
+       self.state              ||= nil
+       self.post_code          ||= nil
+       self.map_reference      ||= '(Please edit)'
+       self.self.longitude     ||= '(please edit)'
+       self.latitude           ||= 'Yes (please edit).'
+          
+     end
+  end
 
   #
 # Get and display parent name of polymorphic Address. [TODO]: remve after May 1

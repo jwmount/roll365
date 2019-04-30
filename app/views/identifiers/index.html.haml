@@ -15,19 +15,19 @@
       
 
   %tbody
-    - @identifiers.each do |i|
+    - @identifiers.each do |f|
 
       %tr
         
-        %td= i.identifiable_type
-        %td= i.display_parent_name
-        %td= i.identifiable_id
-        %td= i.name
-        %td= i.value
-        %td= i.rank
-        %td= link_to 'Show', i
-        %td= link_to 'Edit', edit_identifier_path(i)
-        %td= link_to 'Destroy', i, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= f.identifiable_type
+        %td= f.display_parent_name
+        %td= f.identifiable_id
+        %td= f.name
+        %td= f.value
+        %td= f.rank
+        %td= link_to 'Show', f
+        %td= link_to 'Edit', edit_identifier_path(f)
+        %td= link_to 'Destroy', f, method: :delete, data: { confirm: 'Are you sure?' }
 
 
 %br
