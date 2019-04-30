@@ -25,6 +25,7 @@ Rails.application.routes.draw do
  get 'ncaddr', to: :new_co, controller: 'addresses'
    
  get 'parent_index', to: :show, controller: 'identifiers'
+ 
      
   # UJS - DEPRECATED ?
   scope :ujs, defaults: { format: :ujs } do

@@ -266,6 +266,7 @@ batch_action_admin_company_equipment_index POST       /admin/companies/:company_
                                    tsandcs GET        /tsandcs(.:format)                                                                       welcome#tsandcs
                                     ncaddr GET        /ncaddr(.:format)                                                                        addresses#ncaddr
                               parent_index GET        /parent_index(.:format)                                                                  identifiers#parent_index
+                     parent_identifier_new GET        /identifier/:id(.:format)                                                                identifier#new
                               thing_totals PATCH      /ujs/thing_totals(.:format)                                                              companies#totals {:format=>:ujs}
                                  addresses GET        /addresses(.:format)                                                                     addresses#index
                                            POST       /addresses(.:format)                                                                     addresses#create
