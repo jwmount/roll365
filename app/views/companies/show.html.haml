@@ -10,42 +10,62 @@
   %p
 
   = render "identifiers/contacts_for"
-
   = link_to "... more", parent_index_path(@company)
   = link_to "edit contact", edit_identifier_path(@company)
   
 %hr
-  
-.field
-  %strong Credit terms: 
-  = @company.credit_terms
 
-.field
-  %strong PO required:
-  = @company.PO_required
+.container-fluid
+  .row
+    .col-sm-2
+      %em
+        Attributes
+    .col-sm-10
+      %em
+        Settings
+  %p
+  .row      
+    .col-sm-2
+      Credit terms:
+    .col-sm-10
+      = @company.credit_terms
+    
+    .row      
+    .col-sm-2
+      Status:
+    .col-sm-10
+      = @company.active ? 'Active' : 'Inactive'
 
+    .row      
+    .col-sm-2
+      Purchase Order:
+    .col-sm-10
+      = @company.PO_required ? 'Required' : 'Not Required'
 
-.field
-  %strong Active:
-  = @company.active
+    .row      
+    .col-sm-2
+      Bookkeeping Number:
+    .col-sm-10
+      = @company.bookkeeping_number
 
-.field
-  %strong>Bookkeeping number:
-  = @company.bookkeeping_number
+    .row      
+    .col-sm-2
+      Line of Business:
+    .col-sm-10
+      = @company.line_of_business
 
-.field
-  %strong Line of business:
-  = @company.line_of_business
+    .row      
+    .col-sm-2
+      URL (Web Site):
+    .col-sm-10
+      = @company.url
 
-.field
-  %strong Url:
-  = @company.url
-
-.field
-  %strong Licensee:
-  = @company.licensee
-
-%p
+    .row      
+    .col-sm-2
+      License:
+    .col-sm-10
+      = @company.licensee ? 'Yes' : 'No'
+  %p
 
 -#
 -# Determine if Company address exists
@@ -57,7 +77,8 @@
 -#- else
 -#= link_to "Edit addr", edit_address_path(addr)
 
-%p
+  %p
 
-= link_to 'Back', companies_path
+  = link_to 'Back', companies_path
+
 

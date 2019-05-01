@@ -9,7 +9,6 @@
     %tr
       %th Priority
       %th Parent Name
-      %th Kind
       %th Value
       
       
@@ -20,7 +19,7 @@
       %tr
         %td{align: 'center'}
           = f.rank
-        %td= f.display_parent_name
+        
         %td= f.name
         %td= f.value
         %td= link_to 'Show', f
@@ -30,3 +29,5 @@
 %br
 
 = link_to 'New (not edit) Identifier', new_company_identifier_path(1)
+
+= link_to 'Redirect Back', redirect_back(fallback_location: root_path)
