@@ -1,28 +1,22 @@
 class IdentifiersController < InheritedResources::Base
 
-
   def index
-    @identifiers = Identifier.order(name: :asc).page params[:page]
-  end
-
-  def parent_index
-    @ids = Identifier.where(:identifiable_id => params[:format]).order(name: 'ASC', rank: 'DESC').page params[:page]
-    @identifiers = @ids.order(rank: 'DESC')
-    render "index"
+    @parent = Company.find(params[:company_id])
+    @identifiers = @parent.identifiers
   end
 
   
   #
-  # No direct operation is allowed, must be from an addressable parent
+  # No direct operation is allowed, must be from an -able parent
   #
   def new
     @parent = Company.find(params[:company_id])
     @identifier = @parent.identifiers.new
     @identifier.save!
+    #redirect_to company_path(@parent)
   end
 
   def edit
-    
     @identifier = Identifier.find(params[:id])
     begin
       @name = @identifier.identifiable.display_name
@@ -35,7 +29,6 @@ class IdentifiersController < InheritedResources::Base
     @identifier = Identifier.find( params[:id] )
     @name = @identifier.identifiable.display_name
   end
-
 
   private
 

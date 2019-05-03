@@ -23,10 +23,8 @@ Rails.application.routes.draw do
 
  # return from edit address to 'companies#index'.  Works, but why?
  get 'ncaddr', to: :new_co, controller: 'addresses'
-   
- get 'parent_index', to: :show, controller: 'identifiers'
- 
-     
+
+
   # UJS - DEPRECATED ?
   scope :ujs, defaults: { format: :ujs } do
     patch 'thing_totals' => 'companies#totals'
@@ -40,9 +38,13 @@ Rails.application.routes.draw do
   
   resources :companies, shallow: true do
     resources :addresses
-    resources :identifiers
   end
 
+  resources :companies, shallow: true do
+    resources :identifiers
+  end
+  
+  
   resources :peopple, shallow: true do
     resources :addresses
   end

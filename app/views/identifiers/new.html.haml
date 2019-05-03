@@ -1,8 +1,8 @@
-%h1 New identifier
+%h1 New identifier for #{@parent.name}
 %p
   = @identifier.name
   = @identifier.id
 
 = render 'form'
 
-= link_to 'Back', identifiers_path
+= link_to 'Back', company_path(@parent)

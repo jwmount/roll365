@@ -10,8 +10,8 @@
   %p
 
   = render "identifiers/contacts_for"
-  = link_to "... more", parent_index_path(@company)
-  = link_to "edit contact", edit_identifier_path(@company)
+  = link_to "... more", company_identifiers_path(@company)
+  
   
 %hr
 
@@ -77,8 +77,8 @@
 -#- else
 -#= link_to "Edit addr", edit_address_path(addr)
 
-  %p
+%p
 
-  = link_to 'Back', companies_path
+= link_to 'Companies', companies_path
 
 

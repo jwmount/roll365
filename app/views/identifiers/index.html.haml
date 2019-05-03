@@ -1,7 +1,6 @@
 
-= paginate @identifiers, :left => 1, :right => 3
 
-%h1 Listing identifiers
+%h1 Listing Contact Info for  #{@parent.name}
 
 
 %table
@@ -28,6 +27,19 @@
 
 %br
 
-= link_to 'New (not edit) Identifier', new_company_identifier_path(1)
+= link_to 'New Identifier', new_company_identifier_path(@parent)
 
-= link_to 'Redirect Back', redirect_back(fallback_location: root_path)
+-# Find the way back to base or parent
+- if @identifiers[0].nil?
+  = link_to "Back to Base", companies_path
+- else
+  - case @identifiers[0].identifiable_type
+    - when "Company"
+      = link_to 'Back to Base', company_path(:id => @identifiers[0].identifiable_id)   # W O R K S
+    - else
+      = link_to 'Home', root_path
+
+
+
+
+
