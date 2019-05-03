@@ -1,0 +1,28 @@
+%h1 Contacts for  #{@parent.name}
+
+%table
+  %thead
+    %tr
+      %th Priority
+      %th Name
+      %th Value
+      
+      
+
+  %tbody
+    - @identifiers.each do |f|
+
+      %tr
+        %td{align: 'center'}
+          = f.rank
+        %td= f.name
+        %td= f.value
+        %td= link_to 'Show', f
+        %td= link_to 'Edit', edit_identifier_path(f)
+        %td= link_to 'Destroy', f, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Identifier', new_company_identifier_path(@parent)
+
+= link_to 'Companies', companies_path

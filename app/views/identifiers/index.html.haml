@@ -1,13 +1,16 @@
 
-
-%h1 Listing Contact Info for  #{@parent.name}
-
+-# To allow for Master lists, essentialy orphans when retrieved as entire collection
+-# Title depends on type of list
+-if @parent.nil?
+  %h1 Contacts for Master List of Contacts
+-else
+  Contacts for #{@parent.name}
 
 %table
   %thead
     %tr
       %th Priority
-      %th Parent Name
+      %th Name
       %th Value
       
       
@@ -18,7 +21,6 @@
       %tr
         %td{align: 'center'}
           = f.rank
-        
         %td= f.name
         %td= f.value
         %td= link_to 'Show', f
@@ -27,15 +29,20 @@
 
 %br
 
-= link_to 'New Identifier', new_company_identifier_path(@parent)
+-# If this is a Master List, no #new operation is allowed
+-# [TODO] clean this up using partials
+-unless @parent.nil?
+  = link_to 'New Identifier', new_company_identifier_path(@parent) 
+
 
 -# Find the way back to base or parent
+-# [TODO] some of this section seems to be residual croft
 - if @identifiers[0].nil?
   = link_to "Back to Base", companies_path
 - else
   - case @identifiers[0].identifiable_type
     - when "Company"
-      = link_to 'Back to Base', company_path(:id => @identifiers[0].identifiable_id)   # W O R K S
+      = link_to 'Back ', company_path(:id => @identifiers[0].identifiable_id)   # W O R K S
     - else
       = link_to 'Home', root_path
 

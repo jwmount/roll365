@@ -1,8 +1,16 @@
 class IdentifiersController < InheritedResources::Base
 
+  #
+  # if we have params we have a parent (some other member of some collection, e.g. Company)
+  # this may become extraneous
+  #
   def index
-    @parent = Company.find(params[:company_id])
-    @identifiers = @parent.identifiers
+    if params.has_key?("company_id")
+      @parent = Company.find(params[:company_id])
+      @identifiers = @parent.identifiers
+    else
+      @identifiers = Identifier.all
+    end
   end
 
   

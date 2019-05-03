@@ -5,13 +5,13 @@
 %p
   = @company.display_address
   = link_to 'edit address', edit_address_path
-  = link_to 'people', people_path
-
+  
   %p
 
   = render "identifiers/contacts_for"
   = link_to "... more", company_identifiers_path(@company)
-  
+  %p
+  = link_to '... people', people_path
   
 %hr
 

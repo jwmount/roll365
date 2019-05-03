@@ -27,7 +27,7 @@ class Identifier < ApplicationRecord
 # Get and display parent name of polymorphic Indentifier
 #
 # On Person records name is not given  so use first and last names 
-  def display_parent_name
+  def XXXdisplay_parent_nameXXX
     begin
       @parent_name = "#{self.identifiable_type}".constantize.find(self.identifiable_id).name 
     rescue
