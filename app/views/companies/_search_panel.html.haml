@@ -1,0 +1,18 @@
+%h3 Search
+= search_form_for @q do |f|
+  .field
+    = f.label :name
+    = f.text_field :name_cont, class: 'form-control'
+    = f.label :line_of_business
+    = f.text_field :line_of_business_cont, class: 'form-control'
+    = f.label :url
+    = f.text_field :url_cont, class: 'form-control'
+    = f.label :credit_terms
+    = f.text_field :credit_terms_cont, class: 'form-control'
+    = f.submit class: 'btn btn-primary'
+    .btn
+      = link_to "Clear", request_path, class: "btn btn-secondary"      
+    %hr
+
+    %h5
+      = will_paginate

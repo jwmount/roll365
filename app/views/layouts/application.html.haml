@@ -10,15 +10,18 @@
   
 
 -#
--# Bootstrap grid for application container  
+-# Bootstrap grid for all containers
 -#  
 .container-fluid
   .row
     .col
       = render '/shared/header'
+
   .row
     .col
+
       = yield
+
   .row
     .col
       = render '/shared/footer'
