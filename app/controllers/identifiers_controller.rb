@@ -38,6 +38,16 @@ class IdentifiersController < InheritedResources::Base
     @name = @identifier.identifiable.display_name
   end
 
+  def destroy
+    @identifier = Identifier.find( params[:id] )
+    @identifier.destroy
+    respond_to do |format|
+      format.html { redirect_to companies_path, notice: 'Contact was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+
+  end
+
   private
 
     def identifier_params

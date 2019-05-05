@@ -39,10 +39,10 @@
             %th{align: 'left', width: "64"}Line of Business
             %th{align: 'left', width: '32'}City
             %th Web Site
-            %th Credit terms
-            %th Po required
-            %th Active
-            %th Bookkeeping Number      
+            -#%th Credit terms
+            -#%th Po required
+            -#th Active
+            -#%th Bookkeeping Number      
         %tbody
           - @companies.each do |company|
             %tr
@@ -60,11 +60,11 @@
               %td{align: 'left', width: '32'}
                 = link_to truncate(company.url, :length => 120), "http://#{company.url}"              
               -#%td= company.display_credit_terms( company.credit_terms )
-              %td= company.credit_terms
+              -#%td= company.credit_terms
               
-              %td= company.PO_required == true ? 'Yes' : 'No'
-              %td= company.active == true ? 'Active' : 'Inactive'
-              %td= company.bookkeeping_number
+              -#%td= company.PO_required == true ? 'Yes' : 'No'
+              -#%td= company.active == true ? 'Active' : 'Inactive'
+              -#%td= company.bookkeeping_number
             
               %td= link_to 'Show', company
               %td= link_to 'Edit', edit_company_path(company)

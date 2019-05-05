@@ -70,7 +70,7 @@ class Company < ApplicationRecord
   #
 
   #kaminari
-  paginates_per  10
+  # [TODO] remove this, is part of Kaminari paginates_per  10
   
   #
   # D E F A U L T S 

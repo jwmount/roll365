@@ -22,7 +22,7 @@ class Address < ApplicationRecord
        self.state              ||= nil
        self.post_code          ||= nil
        self.map_reference      ||= '(Please edit)'
-       self.self.longitude     ||= '(please edit)'
+       self.longitude          ||= '(please edit)'
        self.latitude           ||= 'Yes (please edit).'
           
      end
