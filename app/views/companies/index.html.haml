@@ -68,7 +68,7 @@
             
               %td= link_to 'Show', company
               %td= link_to 'Edit', edit_company_path(company)
-              %td= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } 
+              %td= link_to 'Destroy', company, method: :delete, data: { confirm: "Are you sure you want to delete #{company.name}?" } 
       %br
 
       = link_to new_company_path, class: 'btn btn-secondary' do

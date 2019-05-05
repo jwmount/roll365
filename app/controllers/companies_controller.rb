@@ -67,7 +67,7 @@ class CompaniesController < ApplicationController
     @company = Company.find(params[:id])
     respond_to do |format|
       if @company.update!(nested_params)
-        format.html { redirect_to @company, notice: 'yes,,Company was successfully updated.' }
+        format.html { redirect_to @company, notice: "{@company} has been updated." }
         format.json { render :show, status: :ok, location: @company }
       else
         format.html { render :edit }
@@ -83,7 +83,7 @@ class CompaniesController < ApplicationController
     @company = set_company
     @company.destroy
     respond_to do |format|
-      format.html { redirect_to companies_path, notice: 'Company was successfully destroyed.' }
+      format.html { redirect_to companies_path, notice: "#{@company.name} has been deleted." }
       format.json { head :no_content }
     end
   end
