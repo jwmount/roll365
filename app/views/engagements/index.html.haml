@@ -1,39 +1,51 @@
-%h1 Listing engagements
+.col-2
+  
+  = render "search_panel", locals: {q: @q}
+          
 
-%table
-  %thead
-    %tr
-      %th Schedule
-      %th Person
-      %th Docket
-      %th Docket number
-      %th Onsite now
-      %th Onsite at
-      %th Breakdown
-      %th No show
-      %th Ok tomorrow
-      %th Engagement declined
-      %th
-      %th
-      %th
+.col-6
+  %h3 Engagements
+  = @engagements.count 
+  listed
+  %hr
 
-  %tbody
-    - @engagements.each do |engagement|
+
+  %h1 Listing engagements
+
+  %table
+    %thead
       %tr
-        %td= engagement.schedule_id
-        %td= engagement.person_id
-        %td= engagement.docket_id
-        %td= engagement.docket_number
-        %td= engagement.onsite_now
-        %td= engagement.onsite_at
-        %td= engagement.breakdown
-        %td= engagement.no_show
-        %td= engagement.OK_tomorrow
-        %td= engagement.engagement_declined
-        %td= link_to 'Show', engagement
-        %td= link_to 'Edit', edit_engagement_path(engagement)
-        %td= link_to 'Destroy', engagement, method: :delete, data: { confirm: 'Are you sure?' }
+        %th Schedule
+        %th Person
+        %th Docket
+        %th Docket number
+        %th Onsite now
+        %th Onsite at
+        %th Breakdown
+        %th No show
+        %th Ok tomorrow
+        %th Engagement declined
+        %th
+        %th
+        %th
 
-%br
+    %tbody
+      - @engagements.each do |engagement|
+        %tr
+          %td= engagement.schedule_id
+          %td= engagement.person_id
+          %td= engagement.docket_id
+          %td= engagement.docket_number
+          %td= engagement.onsite_now
+          %td= engagement.onsite_at
+          %td= engagement.breakdown
+          %td= engagement.no_show
+          %td= engagement.OK_tomorrow
+          %td= engagement.engagement_declined
+          %td= link_to 'Show', engagement
+          %td= link_to 'Edit', edit_engagement_path(engagement)
+          %td= link_to 'Destroy', engagement, method: :delete, data: { confirm: 'Are you sure?' }
 
-= link_to 'New Engagement', new_engagement_path
+  %br
+
+  = link_to 'New Engagement', new_engagement_path

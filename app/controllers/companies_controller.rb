@@ -21,8 +21,13 @@ class CompaniesController < ApplicationController
       flash[:error] = 'No identifiers found.'
     end 
     @address = Address.where("addressable_id = ? AND addressable_type = ?", @company.id, 'Company').limit(1)
-    # Identifiers.where("identifiable_id = ? AND identifiable_type = 'Company", @company.id)
-    
+
+    begin
+      @permits = @company.permits
+    rescue
+      flash[:error] = 'No permits found.'
+    end
+    @permit = Permit.where("permitable_id = ? AND permitable_type = ?", @company.id, 'Company').limit(1)
   end
 
 
@@ -43,6 +48,8 @@ class CompaniesController < ApplicationController
     end
     @address = @company.addresses.find_or_create_by( {addressable_type: 'Company', addressable_id: @company.id} )
     @address.save!
+    @permit = @company.permits.find_or_create( {permitable_type: 'Company', permitable_id: @company.id})
+    @permit.save?
   end
 
   # POST /companies
@@ -108,7 +115,9 @@ class CompaniesController < ApplicationController
 
       params.require(:company).permit( :id, :name, :credit_terms, :PO_required, :active, :bookkeeping_number, :line_of_business, :url,  
         address_attributes: [:addressable_id, :addressable_type, :street_address, :city, :state, :post_code, :map_reference, :longitude, :latitude],
-        identifier_attributes: [:id, :identifiable_id, :identifiable_type, :name, :value, :rank]
+        identifier_attributes: [:id, :identifiable_id, :identifiable_type, :name, :value, :rank],
+        permit_attributes: [:id, :permitable_type, :permitable_id, :name, :description, :issuer, :jurisdiction, :basis, :required, :for_person, 
+          :for_company, :for_equipment, :for_location, :permanent, :valid_from, :valid_to ]
         )
         #params.require(:portrait_tag).permit(:id, :addressable_id => [])
         #person: [ :id, :people_id ] 

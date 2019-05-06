@@ -10,9 +10,9 @@
       %th Approved
       %th Change approved by
       %th Change approved at
-      %th
-      %th
-      %th
+      %th Show
+      %th Edit
+      %th Delete
 
   %tbody
     - @conditions.each do |condition|
@@ -26,7 +26,7 @@
         %td= condition.change_approved_at
         %td= link_to 'Show', condition
         %td= link_to 'Edit', edit_condition_path(condition)
-        %td= link_to 'Destroy', condition, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Delete', condition, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 

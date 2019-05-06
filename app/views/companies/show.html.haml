@@ -11,7 +11,9 @@
   = render "identifiers/contacts_for"
   = link_to "... more", company_identifiers_path(@company)
   %p
-  = link_to '... people', people_path
+  = link_to '...people', people_path
+  %nbsp
+  = link_to '...permits', company_permits_path(@company)
   
 %hr
 

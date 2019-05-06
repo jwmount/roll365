@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
  # return from edit address to 'companies#index'.  Works, but why?
  get 'ncaddr', to: :new_co, controller: 'addresses'
+ 
 
 
   # UJS - DEPRECATED ?
@@ -42,10 +43,10 @@ Rails.application.routes.draw do
 
   resources :companies, shallow: true do
     resources :identifiers
+    resources :permits
   end
   
-  
-  resources :peopple, shallow: true do
+    resources :peopple, shallow: true do
     resources :addresses
   end
 

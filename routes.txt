@@ -466,6 +466,22 @@ batch_action_admin_company_equipment_index POST       /admin/companies/:company_
                                            PATCH      /companies/:id(.:format)                                                                 companies#update
                                            PUT        /companies/:id(.:format)                                                                 companies#update
                                            DELETE     /companies/:id(.:format)                                                                 companies#destroy
+                           company_permits GET        /companies/:company_id/permits(.:format)                                                 permits#index
+                                           POST       /companies/:company_id/permits(.:format)                                                 permits#create
+                        new_company_permit GET        /companies/:company_id/permits/new(.:format)                                             permits#new
+                                           GET        /permits/:id/edit(.:format)                                                              permits#edit
+                                           GET        /permits/:id(.:format)                                                                   permits#show
+                                           PATCH      /permits/:id(.:format)                                                                   permits#update
+                                           PUT        /permits/:id(.:format)                                                                   permits#update
+                                           DELETE     /permits/:id(.:format)                                                                   permits#destroy
+                                           GET        /companies(.:format)                                                                     companies#index
+                                           POST       /companies(.:format)                                                                     companies#create
+                                           GET        /companies/new(.:format)                                                                 companies#new
+                                           GET        /companies/:id/edit(.:format)                                                            companies#edit
+                                           GET        /companies/:id(.:format)                                                                 companies#show
+                                           PATCH      /companies/:id(.:format)                                                                 companies#update
+                                           PUT        /companies/:id(.:format)                                                                 companies#update
+                                           DELETE     /companies/:id(.:format)                                                                 companies#destroy
                          peopple_addresses GET        /peopple/:peopple_id/addresses(.:format)                                                 addresses#index
                                            POST       /peopple/:peopple_id/addresses(.:format)                                                 addresses#create
                        new_peopple_address GET        /peopple/:peopple_id/addresses/new(.:format)                                             addresses#new

@@ -2,35 +2,35 @@
 
 %p
   %b Schedule:
-  = @engagement.schedule_id
+-#  = @engagement.schedule_id
 %p
   %b Person:
-  = @engagement.person_id
+-#  = @engagement.person_id
 %p
   %b Docket:
-  = @engagement.docket_id
+-#  = @engagement.docket_id
 %p
   %b Docket number:
-  = @engagement.docket_number
+-#  = @engagement.docket_number
 %p
   %b Onsite now:
-  = @engagement.onsite_now
+-# = @engagement.onsite_now
 %p
   %b Onsite at:
-  = @engagement.onsite_at
+-# = @engagement.onsite_at
 %p
   %b Breakdown:
-  = @engagement.breakdown
+-# = @engagement.breakdown
 %p
   %b No show:
-  = @engagement.no_show
+-#  = @engagement.no_show
 %p
   %b Ok tomorrow:
-  = @engagement.OK_tomorrow
+-#  = @engagement.OK_tomorrow
 %p
   %b Engagement declined:
-  = @engagement.engagement_declined
+-#  = @engagement.engagement_declined
 
-= link_to 'Edit', edit_engagement_path(@engagement)
+-#  = link_to 'Edit', edit_engagement_path(@engagement)
 \|
 = link_to 'Back', engagements_path

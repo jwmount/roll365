@@ -12,7 +12,6 @@ class IdentifiersController < InheritedResources::Base
       @identifiers = Identifier.all
     end
   end
-
   
   #
   # No direct operation is allowed, must be from an -able parent
@@ -21,7 +20,6 @@ class IdentifiersController < InheritedResources::Base
     @parent = Company.find(params[:company_id])
     @identifier = @parent.identifiers.new
     @identifier.save!
-    #redirect_to company_path(@parent)
   end
 
   def edit

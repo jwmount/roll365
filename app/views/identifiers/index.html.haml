@@ -2,14 +2,15 @@
 -# To allow for Master lists, essentialy orphans when retrieved as entire collection
 -# Title depends on type of list
 -if @parent.nil?
-  %h1 Contacts for Master List of Contacts
+  %h1 Contacts Master List
 -else
   Contacts for #{@parent.name}
 
-%table
+%table.table.table-striped
   %thead
     %tr
-      %th Priority
+      %th Contact Name
+      %th{align: 'center'} Tier
       %th Name
       %th Value
       %th Show
@@ -22,6 +23,7 @@
     - @identifiers.each do |f|
 
       %tr
+        %td= f.display_parent_name
         %td{align: 'center'}
           = f.rank
         %td= f.name
