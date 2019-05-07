@@ -3,10 +3,12 @@ class PeopleController < ApplicationController
 
   # GET /people
   # GET /people.json
-  def index
-    @people = Person.order(last_name: :asc).page params[:page]
-  end
+  
 
+  def index
+    @q = Person.ransack(params[:q])
+    @people = @q.result.order(last_name: 'ASC').paginate(page: params[:page], per_page: 10 || params[:per_page])
+  end
 
   # GET /people/1
   # GET /people/1.json
@@ -16,9 +18,6 @@ class PeopleController < ApplicationController
   # GET /people/new
   def new
     @person = Person.new
-    @person.addresses.build
-    @person.identifiers.build
-    @person.permits.build
   end
 
   # GET /people/1/edit
@@ -29,9 +28,12 @@ class PeopleController < ApplicationController
   # POST /people.json
   def create
     @person = Person.new(person_params)
-
     respond_to do |format|
       if @person.save
+        @person.addresses.build(addressable_type = 'Person', addressable_id = @person.id)
+        @person.identifiers.build(addressable_type = 'Person', addressable_id = @person.id)
+
+        byebug
         format.html { redirect_to @person, notice: 'Person was successfully created.' }
         format.json { render :show, status: :created, location: @person }
       else

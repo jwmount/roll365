@@ -39,12 +39,12 @@ class Company < ApplicationRecord
   validates_associated :identifiers
 
   #
-  # REQUIRED for nestd forms
+  # REQUIRED for nestd forms which we are NOT using
   #
-  accepts_nested_attributes_for :addresses, allow_destroy: true
-  accepts_nested_attributes_for :identifiers, allow_destroy: true
-  accepts_nested_attributes_for :people, allow_destroy: true
-  accepts_nested_attributes_for :permits, allow_destroy: true
+ #accepts_nested_attributes_for :addresses, allow_destroy: true
+ # accepts_nested_attributes_for :identifiers, allow_destroy: true
+ # accepts_nested_attributes_for :people, allow_destroy: true
+ # accepts_nested_attributes_for :permits, allow_destroy: true
 
   #
   # V A L I D A T I O N S   O N  C L A S S  O B J E C T   V A L I D A T I O N S   O N  C L A S S  O B J E C T. 

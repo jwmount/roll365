@@ -1,0 +1,15 @@
+%h3 Search
+= search_form_for @q do |f|
+  .field
+    = f.label :last_name
+    = f.text_field :last_name_cont, class: 'form-control'
+    = f.label :first_name
+    = f.text_field :first_name_cont, class: 'form-control'
+
+    = f.submit class: 'btn btn-primary'
+    .btn
+      = link_to "Clear", request_path, class: "btn btn-secondary"      
+    %hr
+
+    %h5
+    = will_paginate

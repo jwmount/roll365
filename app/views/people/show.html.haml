@@ -1,25 +1,69 @@
-%p#notice= notice
+
+%h1
+  = @person.display_name
+
 %p
-  %strong First name:
-  = @person.first_name
-%p
-  %strong Last name:
-  = @person.last_name
-%p
-  %strong Title:
-  = @person.title
-%p
-  %strong Available:
-  = @person.available
-%p
-  %strong Available on:
-  = @person.available_on
-%p
-  %strong Ok to contact:
-  = @person.OK_to_contact
-%p
-  %strong Active:
-  = @person.active
+  
+  = link_to 'edit address', edit_address_path
+  
+  %p
+
+  = render "identifiers/contacts_for"
+
+  = link_to "... more", person_address_path(@person)
+  %p
+  = link_to '...people', people_path
+
+
+%hr
+
+.container-fluid
+  .row
+    .col-sm-2
+      %em
+        Attributes
+    .col-sm-10
+      %em
+        Settings
+  %p
+  .row      
+    .col-sm-2
+      First name:
+    .col-sm-10
+      = @person.first_name
+  .row
+    .col-sm-2
+      Last Name:
+    .col-sm-10
+      = @person.last_name
+  .row
+    .col-sm-2
+      Title:
+    .col-sm-10
+      = @person.title
+  .row
+    .col-sm-2
+      Available:
+    .col-sm-10
+      = @person.available ? 'Yes' : 'No'
+
+  .row
+    .col-sm-2
+      Available_on:
+    .col-sm-10
+      = @person.available_on
+  .row
+    .col-sm-2
+      OK To Contact:
+    .col-sm-10
+      = @person.OK_to_contact
+
+  .row
+    .col-sm-2
+      Active:
+    .col-sm-10
+      = @person.active ? 'Yes' : 'No'
+
 = link_to 'Edit', edit_person_path(@person)
-|
+&nbsp;
 = link_to 'Back', people_path

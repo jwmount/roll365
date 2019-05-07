@@ -48,8 +48,8 @@ class CompaniesController < ApplicationController
     end
     @address = @company.addresses.find_or_create_by( {addressable_type: 'Company', addressable_id: @company.id} )
     @address.save!
-    @permit = @company.permits.find_or_create( {permitable_type: 'Company', permitable_id: @company.id})
-    @permit.save?
+#    @permit = @company.permits.find_or_create( {permitable_type: 'Company', permitable_id: @company.id})
+#    @permit.save?
   end
 
   # POST /companies
