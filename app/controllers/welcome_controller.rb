@@ -2,6 +2,7 @@ class WelcomeController < ApplicationController
 
   
   def index
+    flash.now[:test] = "Welcome"
   end
   #
   # Appears to be unnecessary, if invalid method is sent in will respond with a 404?
@@ -39,7 +40,7 @@ class WelcomeController < ApplicationController
      begin
       render params[:id]
     rescue ActionView::MissingTemplate
-      render :file => "#{Rails.root}/public/avertise", :layout => false, :status => :not_found
+      render :file => "#{Rails.root}/public/advertise", :layout => false, :status => :not_found
     end
   end
 

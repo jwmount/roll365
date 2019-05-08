@@ -3,8 +3,12 @@
   = @person.display_name
 
 %p
-  
-  = link_to 'edit address', edit_address_path
+  -if @person.addresses.empty?
+    = link_to 'Create address', new_person_address_path(@person)
+  -else  
+    %nbsp
+    = link_to '...edit', @person.display_address
+    
   
   %p
 
@@ -12,7 +16,7 @@
 
   = link_to "... more", person_address_path(@person)
   %p
-  = link_to '...people', people_path
+
 
 
 %hr
@@ -51,19 +55,20 @@
     .col-sm-2
       Available_on:
     .col-sm-10
-      = @person.available_on
+      = @person.available_on.strftime("%a, %B %d, %Y - %I:%M %P %Z ")
+
   .row
     .col-sm-2
       OK To Contact:
     .col-sm-10
-      = @person.OK_to_contact
+      = @person.OK_to_contact ? 'Yes' : 'No'
 
   .row
     .col-sm-2
       Active:
     .col-sm-10
       = @person.active ? 'Yes' : 'No'
-
+%p
 = link_to 'Edit', edit_person_path(@person)
 &nbsp;
 = link_to 'Back', people_path

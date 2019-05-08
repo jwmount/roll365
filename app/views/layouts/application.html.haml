@@ -8,11 +8,14 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   
+- flash.each do |name, msg|
+  = content_tag :div, msg, class: name
 
 -#
 -# Bootstrap grid for all containers
 -#  
 .container-fluid
+
   .row
     .col
       = render '/shared/header'

@@ -19,7 +19,7 @@ class Person < ApplicationRecord
   has_many  :addresses, 
             :as           => :addressable, 
             :autosave     => true,
-            :dependent    => :destroy
+            :inverse_of   => :addressable
   validates_associated :addresses
 
   has_many :identifiers, 
@@ -37,11 +37,6 @@ class Person < ApplicationRecord
   accepts_nested_attributes_for :permits
   accepts_nested_attributes_for :identifiers
   
-  # Update scopes for rails 5.2.2
-  # scope :alphabetically, -> { order: ("last_name DESC") }
-  scope :post_code,      -> { where(certifiable_type: "Person")}
-  
-  # delegate :post_code, :to => :address
 
 #
 # V A L I D A T I O N S
@@ -56,7 +51,7 @@ class Person < ApplicationRecord
 # Roles people can be in
 # [TODO]. Move into Role model or remove altogether
 #
-  roles_list = %w[ admin bookkeeper driver management operations sales superadmin visitor]
+  roles_list = %w[ admin broker driver management operations sales superadmin visitor]
 
 #
 # Validations
@@ -95,7 +90,7 @@ class Person < ApplicationRecord
  #
  # Address(es)
  #   
-  def address
+  def display_address
     @address = Address.where("addressable_id = ? AND addressable_type = ?", self.id, 'Company').limit(1)
     unless @address.blank?
       address = "#{@address[0].street_address},  #{@address[0].city} #{@address[0].state} #{@address[0].post_code} "

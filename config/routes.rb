@@ -32,6 +32,18 @@ Rails.application.routes.draw do
   end 
   
   # Resource paths
+  shallow do
+    resources :people do
+        resources :addresses
+      end
+    end
+
+  shallow do
+    resources :peopple do
+      resources :identifiers
+    end
+  end
+
   resources :addresses, :companies, :projects, :conditions, :dockets,
             :engagements, :equipment, :identifiers, :jobs, :materials, :people, :people_schedules,
             :permits, :projects, :quotes, :requirements, :reservations, :schedules, :solutions,
@@ -46,9 +58,6 @@ Rails.application.routes.draw do
     resources :permits
   end
   
-    resources :peopple, shallow: true do
-    resources :addresses
-  end
 
   #
   # A C T I V E  A D M I N   A C T I V E  A D M I N   A C T I V E  A D M I N   A C T I V E  A D M I N  

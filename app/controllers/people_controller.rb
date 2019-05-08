@@ -3,8 +3,6 @@ class PeopleController < ApplicationController
 
   # GET /people
   # GET /people.json
-  
-
   def index
     @q = Person.ransack(params[:q])
     @people = @q.result.order(last_name: 'ASC').paginate(page: params[:page], per_page: 10 || params[:per_page])
@@ -13,6 +11,7 @@ class PeopleController < ApplicationController
   # GET /people/1
   # GET /people/1.json
   def show
+    @address = @person.addresses.where("addressable_id = ? AND addressable_type = ?", @person.id, 'Person')
   end
 
   # GET /people/new
@@ -30,10 +29,11 @@ class PeopleController < ApplicationController
     @person = Person.new(person_params)
     respond_to do |format|
       if @person.save
-        @person.addresses.build(addressable_type = 'Person', addressable_id = @person.id)
-        @person.identifiers.build(addressable_type = 'Person', addressable_id = @person.id)
-
-        byebug
+        @person.save!
+    @address = Address.new
+    @address.addressable_type = 'Person'
+    @address.addressable_id = @person.id
+    @address.save!
         format.html { redirect_to @person, notice: 'Person was successfully created.' }
         format.json { render :show, status: :created, location: @person }
       else
@@ -70,7 +70,12 @@ class PeopleController < ApplicationController
   #private
     # Use callbacks to share common setup or constraints between actions.
     def set_person
-      @person = Person.find(params[:id])
+      begin
+        @person = Person.find(params[:id])
+      rescue
+        flash[:missing_person] = "set_person returned nil."
+        redirect_to people_path
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -22,8 +22,15 @@ class AddressesController < InheritedResources::Base
   # No direct operation is allowed, must be from an addressable parent
   #
   def new
-    @company = Company.find(params[:format])
-    @address = @company.addresses.first
+    if params.has_key?('person_id')
+      @person = Person.find(params[:person_id])
+      @address = @person.addresses.new
+      @address.save
+      redirect_to person_path(@person)
+    else
+      @company = Company.find(params[:format])
+      @address = @company.addresses.first
+    end
   end
 
   def show
