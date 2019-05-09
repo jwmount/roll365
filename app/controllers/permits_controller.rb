@@ -17,6 +17,7 @@ class PermitsController < InheritedResources::Base
       @permit.permitable_type = 'Compay'
       @permit.permitable_id = ''
     redirect_to :index
+    end
   end
 
 
