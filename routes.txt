@@ -282,22 +282,22 @@ batch_action_admin_company_equipment_index POST       /admin/companies/:company_
                                            PATCH      /people/:id(.:format)                                                                    people#update
                                            PUT        /people/:id(.:format)                                                                    people#update
                                            DELETE     /people/:id(.:format)                                                                    people#destroy
-                       peopple_identifiers GET        /peopple/:peopple_id/identifiers(.:format)                                               identifiers#index
-                                           POST       /peopple/:peopple_id/identifiers(.:format)                                               identifiers#create
-                    new_peopple_identifier GET        /peopple/:peopple_id/identifiers/new(.:format)                                           identifiers#new
+                        person_identifiers GET        /people/:person_id/identifiers(.:format)                                                 identifiers#index
+                                           POST       /people/:person_id/identifiers(.:format)                                                 identifiers#create
+                     new_person_identifier GET        /people/:person_id/identifiers/new(.:format)                                             identifiers#new
                            edit_identifier GET        /identifiers/:id/edit(.:format)                                                          identifiers#edit
                                 identifier GET        /identifiers/:id(.:format)                                                               identifiers#show
                                            PATCH      /identifiers/:id(.:format)                                                               identifiers#update
                                            PUT        /identifiers/:id(.:format)                                                               identifiers#update
                                            DELETE     /identifiers/:id(.:format)                                                               identifiers#destroy
-                             peopple_index GET        /peopple(.:format)                                                                       peopple#index
-                                           POST       /peopple(.:format)                                                                       peopple#create
-                               new_peopple GET        /peopple/new(.:format)                                                                   peopple#new
-                              edit_peopple GET        /peopple/:id/edit(.:format)                                                              peopple#edit
-                                   peopple GET        /peopple/:id(.:format)                                                                   peopple#show
-                                           PATCH      /peopple/:id(.:format)                                                                   peopple#update
-                                           PUT        /peopple/:id(.:format)                                                                   peopple#update
-                                           DELETE     /peopple/:id(.:format)                                                                   peopple#destroy
+                                           GET        /people(.:format)                                                                        people#index
+                                           POST       /people(.:format)                                                                        people#create
+                                           GET        /people/new(.:format)                                                                    people#new
+                                           GET        /people/:id/edit(.:format)                                                               people#edit
+                                           GET        /people/:id(.:format)                                                                    people#show
+                                           PATCH      /people/:id(.:format)                                                                    people#update
+                                           PUT        /people/:id(.:format)                                                                    people#update
+                                           DELETE     /people/:id(.:format)                                                                    people#destroy
                                  addresses GET        /addresses(.:format)                                                                     addresses#index
                                            POST       /addresses(.:format)                                                                     addresses#create
                                new_address GET        /addresses/new(.:format)                                                                 addresses#new

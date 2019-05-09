@@ -3,12 +3,10 @@
   = @person.display_name
 
 %p
-  -if @person.addresses.empty?
-    = link_to 'Create address', new_person_address_path(@person)
-  -else  
-    %nbsp
-    = link_to '...edit', @person.display_address
-    
+  = @person.display_address
+  = link_to 'edit address', edit_address_path
+
+
   
   %p
 
@@ -16,7 +14,7 @@
 
   = link_to "... more", person_address_path(@person)
   %p
-
+  
 
 
 %hr

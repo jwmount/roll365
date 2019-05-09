@@ -1,0 +1,39 @@
+.row.col-4
+  .modal-content
+    %form#role-form{:method => "get"}
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"}
+        %h4.modal-title Person Address - #{@person.display_name}
+      .modal-body
+        .form-group.col-md-4
+          %p
+          Street
+          %select#street_address.form-control{:street_address => "street_address"}
+          %p 
+          City
+          %select#city.form-control{:city => "city XX name"}
+          %p
+          State
+          %select#state.form-control.col-4{:state => "state"}
+          %p
+          Postal Code
+          %select#postal_code.form-control.col-6{:postal_code => "postal_code"}
+          %p
+          Map Reference
+          %select#map_reference.form-control{:map_reference => "map_reference"}
+          %p
+          Longitude
+          %select#longitude.form-control{:Longitude => "Longitude"}
+          %p
+          Latitude
+          %select#latitude.form-control{:logitude => "Latitude"}
+          %p
+          Status
+          %select#role.form-control.col-4{:active => "active"}
+            %option{:disabled => "disabled", :selected => "selected"} Active
+            %option{:value => 1} active
+            %option{:value => 0} inactive
+          .clearfix
+      .modal-footer
+        %button.btn.btn-success{:type => "submit"} Submit
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Cancel

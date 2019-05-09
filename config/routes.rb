@@ -32,14 +32,12 @@ Rails.application.routes.draw do
   end 
   
   # Resource paths
-  shallow do
-    resources :people do
-        resources :addresses
-      end
-    end
+  resources :people, shallow: true do
+    resources :addresses
+  end
 
   shallow do
-    resources :peopple do
+    resources :people do
       resources :identifiers
     end
   end
