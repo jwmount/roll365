@@ -4,10 +4,9 @@
 
 %p
   = @person.display_address
-  = link_to 'edit address', edit_address_path
+  = link_to 'edit address', edit_person_address_path(@person, @address)
 
-
-  
+  = render 'address_modal'
   %p
 
   = render "identifiers/contacts_for"
@@ -15,8 +14,6 @@
   = link_to "... more", person_address_path(@person)
   %p
   
-
-
 %hr
 
 .container-fluid

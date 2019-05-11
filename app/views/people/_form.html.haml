@@ -58,7 +58,7 @@
       = form.radio_button(:active, false)
       = form.label(:active, "No", value: false)
 
-  = render :partial => "shared/address_form", locals: {form: form}
+  = render :partial => "address_form", locals: {form: form}
 
   .actions
     = form.submit

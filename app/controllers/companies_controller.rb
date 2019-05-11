@@ -27,7 +27,7 @@ class CompaniesController < ApplicationController
     rescue
       flash[:error] = 'No permits found.'
     end
-    @permit = Permit.where("permitable_id = ? AND permitable_type = ?", @company.id, 'Company').limit(1)
+    
   end
 
 
@@ -115,9 +115,7 @@ class CompaniesController < ApplicationController
 
       params.require(:company).permit( :id, :name, :credit_terms, :PO_required, :active, :bookkeeping_number, :line_of_business, :url,  
         address_attributes: [:addressable_id, :addressable_type, :street_address, :city, :state, :post_code, :map_reference, :longitude, :latitude],
-        identifier_attributes: [:id, :identifiable_id, :identifiable_type, :name, :value, :rank],
-        permit_attributes: [:id, :permitable_type, :permitable_id, :name, :description, :issuer, :jurisdiction, :basis, :required, :for_person, 
-          :for_company, :for_equipment, :for_location, :permanent, :valid_from, :valid_to ]
+        identifier_attributes: [:id, :identifiable_id, :identifiable_type, :name, :value, :rank]
         )
         #params.require(:portrait_tag).permit(:id, :addressable_id => [])
         #person: [ :id, :people_id ] 

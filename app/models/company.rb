@@ -10,10 +10,7 @@ class Company < ApplicationRecord
   has_many :equipment, :dependent => :destroy
   validates_associated :equipment
            
-  has_many :projects, :dependent => :destroy
-  validates_associated :projects
-
-  has_many :tips # We do not use :dependent => :destroy as tips survive company owners.  OK?
+    has_many :tips # We do not use :dependent => :destroy as tips survive company owners.  OK?
   validates_associated :tips
 
   # polymorphs
@@ -24,13 +21,7 @@ class Company < ApplicationRecord
             :inverse_of => :addressable
   validates_associated :addresses
 
-  has_many :permits,
-           :as         => :permitable, 
-           :autosave   => true, 
-           :dependent  => :destroy,
-           :inverse_of => :permitable
-  validates_associated :permits
-
+  
   has_many :identifiers, 
            :as         => :identifiable, 
            :autosave   => true, 
@@ -41,10 +32,10 @@ class Company < ApplicationRecord
   #
   # REQUIRED for nestd forms which we are NOT using
   #
- #accepts_nested_attributes_for :addresses, allow_destroy: true
- # accepts_nested_attributes_for :identifiers, allow_destroy: true
- # accepts_nested_attributes_for :people, allow_destroy: true
- # accepts_nested_attributes_for :permits, allow_destroy: true
+  accepts_nested_attributes_for :addresses, allow_destroy: true
+  accepts_nested_attributes_for :identifiers, allow_destroy: true
+  accepts_nested_attributes_for :people, allow_destroy: true
+ 
 
   #
   # V A L I D A T I O N S   O N  C L A S S  O B J E C T   V A L I D A T I O N S   O N  C L A S S  O B J E C T. 

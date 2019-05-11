@@ -56,22 +56,6 @@ ActiveRecord::Schema.define(version: 2019_03_17_225022) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "certificates", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.boolean "for_person"
-    t.boolean "for_company"
-    t.boolean "for_equipment"
-    t.boolean "for_location"
-    t.boolean "active"
-    t.string "issued_by"
-    t.datetime "issued_on"
-    t.datetime "expires_on"
-    t.string "basis"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "companies", force: :cascade do |t|
     t.string "name"
     t.string "credit_terms"
@@ -96,40 +80,6 @@ ActiveRecord::Schema.define(version: 2019_03_17_225022) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "dockets", force: :cascade do |t|
-    t.integer "engagement_id"
-    t.integer "person_id"
-    t.string "number"
-    t.datetime "date_worked"
-    t.datetime "dated"
-    t.datetime "received_on"
-    t.boolean "operator_signed"
-    t.boolean "client_signed"
-    t.boolean "approved"
-    t.datetime "approved_on"
-    t.string "approved_by"
-    t.decimal "a_inv_pay", precision: 7, scale: 2
-    t.decimal "b_inv_pay", precision: 7, scale: 2
-    t.decimal "supplier_inv_pay", precision: 7, scale: 2
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "engagements", force: :cascade do |t|
-    t.integer "schedule_id"
-    t.integer "person_id"
-    t.integer "docket_id"
-    t.string "docket_number"
-    t.boolean "onsite_now"
-    t.boolean "onsite_at"
-    t.boolean "breakdown"
-    t.boolean "no_show"
-    t.integer "OK_tomorrow"
-    t.boolean "engagement_declined"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "equipment", force: :cascade do |t|
     t.string "name", limit: 60
     t.integer "company_id"
@@ -147,19 +97,6 @@ ActiveRecord::Schema.define(version: 2019_03_17_225022) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["identifiable_type", "identifiable_id"], name: "index_identifiers_on_identifiable_type_and_identifiable_id"
-  end
-
-  create_table "jobs", force: :cascade do |t|
-    t.integer "solution_id"
-    t.datetime "start_on"
-    t.string "time"
-    t.string "name"
-    t.datetime "finished_on"
-    t.string "purchase_order"
-    t.boolean "active"
-    t.boolean "complete"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "materials", force: :cascade do |t|
@@ -182,143 +119,6 @@ ActiveRecord::Schema.define(version: 2019_03_17_225022) do
     t.datetime "available_on"
     t.boolean "OK_to_contact"
     t.boolean "active"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "people_schedules", force: :cascade do |t|
-    t.integer "person_id"
-    t.integer "schedule_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "permits", force: :cascade do |t|
-    t.string "permitable_type"
-    t.bigint "permitable_id"
-    t.string "name"
-    t.string "description"
-    t.decimal "fee"
-    t.string "issuer"
-    t.string "jurisdiction"
-    t.string "basis"
-    t.boolean "required"
-    t.boolean "for_person"
-    t.boolean "for_company"
-    t.boolean "for_equipment"
-    t.boolean "for_location"
-    t.boolean "permanent"
-    t.datetime "valid_from"
-    t.datetime "valid_to"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["permitable_type", "permitable_id"], name: "index_permits_on_permitable_type_and_permitable_id"
-  end
-
-  create_table "projects", force: :cascade do |t|
-    t.string "name"
-    t.integer "company_id"
-    t.integer "rep_id"
-    t.datetime "project_start_on"
-    t.string "description"
-    t.boolean "active"
-    t.integer "intends_to_bid"
-    t.integer "submitted_bid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "quotes", force: :cascade do |t|
-    t.integer "project_id"
-    t.integer "quote_to_id"
-    t.integer "rep_id"
-    t.string "name"
-    t.boolean "fire_ants"
-    t.string "fire_ants_verified_by"
-    t.text "inclusions"
-    t.datetime "expected_start"
-    t.integer "duration"
-    t.string "council"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "requirements", force: :cascade do |t|
-    t.string "requireable_type"
-    t.bigint "requireable_id"
-    t.integer "certificate_id"
-    t.boolean "for_person"
-    t.boolean "for_company"
-    t.boolean "for_location"
-    t.boolean "preference"
-    t.string "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["requireable_type", "requireable_id"], name: "index_requirements_on_requireable_type_and_requireable_id"
-  end
-
-  create_table "reservations", force: :cascade do |t|
-    t.integer "schedule_id"
-    t.integer "equipment_id"
-    t.integer "number_requested"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "roles", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "schedules", force: :cascade do |t|
-    t.datetime "day"
-    t.integer "job_id"
-    t.integer "equipment_units_today"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "solution_tips", force: :cascade do |t|
-    t.integer "solution_id"
-    t.integer "tip_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "solutions", force: :cascade do |t|
-    t.boolean "approved"
-    t.boolean "client_approved"
-    t.integer "drive_time_from_load_to_tip"
-    t.integer "drive_time_into_site"
-    t.integer "drive_time_into_tip"
-    t.integer "drive_time_out_of_site"
-    t.integer "drive_time_out_of_tip_site"
-    t.integer "drive_time_tip_to_load"
-    t.string "equipment_name"
-    t.decimal "equipment_dollars_per_day", precision: 7, scale: 2
-    t.integer "equipment_units_required_per_day"
-    t.decimal "hourly_hire_rate", precision: 7, scale: 2
-    t.decimal "invoice_load_client", precision: 7, scale: 2
-    t.decimal "invoice_tip_client", precision: 7, scale: 2
-    t.integer "kms_one_way"
-    t.integer "load_time"
-    t.integer "loads_per_day"
-    t.integer "material_id"
-    t.string "name"
-    t.decimal "pay_equipment_per_unit", precision: 7, scale: 2
-    t.decimal "pay_load_client", precision: 7, scale: 2
-    t.decimal "pay_tip_client", precision: 7, scale: 2
-    t.decimal "pay_tip", precision: 7, scale: 2
-    t.decimal "pay_tolls", precision: 7, scale: 2
-    t.boolean "purchase_order_required"
-    t.integer "quote_id"
-    t.string "solution_type"
-    t.boolean "semis_permitted"
-    t.integer "total_material"
-    t.string "unit_of_material"
-    t.integer "unload_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,5 +1,5 @@
 class PeopleController < ApplicationController
-  before_action :set_person, only: [:show, :edit, :update, :destroy]
+  before_action :set_person, only: [:create, :show, :edit, :update, :destroy]
 
   # GET /people
   # GET /people.json
@@ -27,15 +27,10 @@ class PeopleController < ApplicationController
 
   # POST /people
   # POST /people.json
-  def create
-    @person = Person.new(person_params)
+  def create 
     respond_to do |format|
-      if @person.save
-        @person.save!
-    @address = Address.new
-    @address.addressable_type = 'Person'
-    @address.addressable_id = @person.id
-    @address.save!
+      if @person.save (person_params)
+        @address.save
         format.html { redirect_to @person, notice: 'Person was successfully created.' }
         format.json { render :show, status: :created, location: @person }
       else
@@ -76,15 +71,14 @@ private
       begin
         @person = Person.find(params[:id])
       rescue
-        flash[:missing_person] = "set_person returned nil."
         redirect_to people_path
       end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def person_params
-      params.require(:person).permit(:company_id, :first_name, :last_name, :title, :available, :available_on, :OK_to_contact, :active,
-          addresses_attributes: [ :id, :addressable_id, :addressable_type, :street_address, :city, :state, :post_code, :map_reference, :longitude, :latitude],
-          identifiers_attributes: [:id, :identifiable_id, :identifiable_type, :name, :value, :rank] )
+      params.require(:person).permit(:id, :company_id, :first_name, :last_name, :title, :available, :available_on, :OK_to_contact, :active)
+      #    addresses_attributes: [ :addressable_id, :addressable_type, :street_address, :city, :state, :post_code, :map_reference, :longitude, :latitude],
+      #    identifiers_attributes: [:identifiable_id, :identifiable_type, :name, :value, :rank] )
     end
 end

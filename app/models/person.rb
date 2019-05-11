@@ -27,14 +27,9 @@ class Person < ApplicationRecord
            :autosave      => true
   validates_associated :identifiers
 
-  has_many :permits, 
-           :as            => :permitable, 
-           :autosave      => true
-  validates_associated :permits
 
   # NESTING           
   accepts_nested_attributes_for :addresses
-  accepts_nested_attributes_for :permits
   accepts_nested_attributes_for :identifiers
   
 

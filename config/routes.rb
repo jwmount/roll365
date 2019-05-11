@@ -1,8 +1,9 @@
 # Resources should never be nested more than 1 level deep. -- https://guides.rubyonrails.org/routing.html#controller-namespaces-and-routing
 Rails.application.routes.draw do
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
-    ActiveAdmin.routes(self)
+  #devise_for :admin_users, ActiveAdmin::Devise.config
+  # Generate routes for ActiveAdmin resources
+  #  ActiveAdmin.routes(self)
 
   # use rails g controller welcome to direct root references to welcome index and the get is what to do there
   get 'welcome/index'
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
   # Generate paths for footer.  These paths rely on methods defined in the WelcomeController.
   # There is no dashboard page at this time so no paths are needed.
   #
+  
   get 'about', to: :show, controller: 'welcome'
   get 'advertise', to: :show, controller: 'welcome'
   get 'contact', to: :show, controller: 'welcome'
@@ -21,109 +23,38 @@ Rails.application.routes.draw do
   get 'privacy', to: :show, controller: 'welcome'
   get 'tsandcs', to: :show, controller: 'welcome'
 
- # return from edit address to 'companies#index'.  Works, but why?
- get 'ncaddr', to: :new_co, controller: 'addresses'
+ # return from edit address to 'addressable#index'.
+ get 'ncaddr', to: :ncaddr, controller: 'addresses'
  
-
-
   # UJS - DEPRECATED ?
   scope :ujs, defaults: { format: :ujs } do
     patch 'thing_totals' => 'companies#totals'
   end 
   
   # Resource paths
-  resources :people, shallow: true do
-    resources :addresses
+  
+  # try shallow_path option
+  scope shallow_path: "organizations" do
+    resources :companies do
+      resources :addresses, shallow: true
+      resources :identifiers, shallow: true
+      resources :people, shallow: true
+    end
   end
-
-  shallow do
+  
+  scope shallow_path: "individuals" do
     resources :people do
-      resources :identifiers
+      resources :addresses, shallow: true
+      resources :identifiers, shallow: true
     end
   end
 
-  resources :addresses, :companies, :projects, :conditions, :dockets,
-            :engagements, :equipment, :identifiers, :jobs, :materials, :people, :people_schedules,
-            :permits, :projects, :quotes, :requirements, :reservations, :schedules, :solutions,
-            :solution_tips, :tips
-  
-  resources :companies, shallow: true do
-    resources :addresses
-  end
-
-  resources :companies, shallow: true do
-    resources :identifiers
-    resources :permits
-  end
   
 
-  #
-  # A C T I V E  A D M I N   A C T I V E  A D M I N   A C T I V E  A D M I N   A C T I V E  A D M I N  
-  #
-  namespace :admin do
-    
-    resources :certificates, :companies, :conditions, :dashboard, :dockets, :engagements, :equipment,
-             :identifiers, :jobs, :materials, :people, :people_schedules, :permits, :projects, :quotes, :requirements,
-             :reservations, :schedules, :solutions, :solution_tips, :tips
-
+  resources :materials, :equipment, :tips
+            
+            #:dockets, :projects, :engagements, :jobs, :people_schedules,
+            #:permits, :projects, :quotes, :requirements, :reservations, :schedules, :solutions,
+            #:solution_tips
   
-  
-# Shallow Nesting ONE level deep with collection methods defined for :Companies
-# Section 2.7.2 Routing Rails BGides
-#   collection methods (e.g. companies) are  only: [:index, :new, :create]
-#   nested methods are  only: [:show, :edit, :update, :destroy]
-    shallow do
-      resources :companies do
-        resources :people
-      end
-    end
-
-    resources :companies, shallow: true do
-      resources :projects
-    end
-
-    resources :companies, shallow: true do
-      resources :addresses
-    end
- 
-
-    shallow do
-      resources :companies do
-        resources :equipment
-      end
-    end
-
-    shallow do
-      resources :companies do
-        resources :certificates
-      end
-    end
-
-    resources :companies, shallow: true do
-      resources :permits
-    end
-     
-    
-    resources :companies, shallow: true do
-      resources :identifiers
-    end
-
-    resources :people, shallow: true do
-      resources :addresses
-    end
-     
-    resources :projects, shallow: true do
-      resources :quotes
-    end
-
- #   resources :quotes, shallow: true do
- #     resources :solutions
- #   end
-    
-    
-   
-  end #namespace
-
-  
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end #routes

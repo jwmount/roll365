@@ -1,0 +1,9 @@
+- if @people.nil?
+  
+  Nobody is affiliated yet.
+  
+- else
+  
+  - @people.each do |p|
+    %p
+    = p.dislay_name
