@@ -14,11 +14,13 @@ class EquipmentController < ApplicationController
 
   # GET /equipment/new
   def new
+    flash[:warning] = "Warning:  equipment select is by company_id for now."
     @equipment = Equipment.new
   end
 
   # GET /equipment/1/edit
   def edit
+    flash[:warning] = "Warning:  equipment select is by company_id for now."
   end
 
   # POST /equipment

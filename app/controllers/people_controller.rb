@@ -44,7 +44,6 @@ class PeopleController < ApplicationController
     @person = Person.new(person_params)
     respond_to do |format|
       if @person.save
-     
         format.html { redirect_to @person, notice: 'Person was successfully created.' }
         format.json { render :show, status: :created, location: @person }
       else

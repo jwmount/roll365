@@ -6,8 +6,8 @@
 = @person.company_name
 %hr/
 
-= render 'form'
--#= render 'form', person: @person
+= render 'form', locals: {person: @person}
+
 = link_to 'Show', @person
 |
 = link_to 'Back', people_path

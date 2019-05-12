@@ -10,7 +10,8 @@ class Person < ApplicationRecord
             :as           => :addressable, 
             :autosave     => true,
             :inverse_of   => :addressable
-  validates_associated :addresses
+  #validates_associated :addresses
+  accepts_nested_attributes_for :addresses, reject_if: lambda {|attributes| attributes['kind'].blank?}
 
   has_many :identifiers, 
            :as            => :identifiable, 
