@@ -93,3 +93,9 @@ gem 'jquery-rails'
 gem 'webpacker', '~>3.0'
 
 
+group :production do
+  gem 'bootstrap', '~> 4.3.1'
+  gem 'ransack', github: 'activerecord-hackery/ransack'
+  gem 'will_paginate-bootstrap4'
+end
+
