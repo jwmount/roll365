@@ -5,17 +5,10 @@ class Equipment < ApplicationRecord
 #
   belongs_to :company
   
-  has_many :reservations, :dependent => :destroy
-  validates_associated :reservations
 
 #
 # P O L Y M O R P H I C  A S S O C I A T I O N S
 #
-  has_many :permits, 
-           :as => :permitable, 
-           :autosave => true, 
-           :dependent => :destroy
-  accepts_nested_attributes_for :permits
 
 #
 # V A L I D A T I O N S

@@ -195,13 +195,13 @@ demo_list = [
     "person"     => { first_name: "Demo", last_name: "Demosthenes"},
     "identifier" => { name: "Main Number", value: "415-478-1121"},
     "equipment"  => { name: "Truck" },
-    "project"    => { name: 'DemoProject', project_start_on: Date.today },
-    "projAddr"   => { street_address: "1017 MacDonald Ave.", city: "Richmond", state: "CA", post_code: "94801"},
-    "quote"      => { name: "Q001", expected_start: Date.today + 1 },
-    "solution"   => { name: "S01" },
-    "job"        => { name: "JDemo", start_on: Date.today + 1, finished_on: Date.today + 2  },
-    "schedule"   => { day: Date.today + 1 },
-    "engagement" => {}
+#    "project"    => { name: 'DemoProject', project_start_on: Date.today },
+#    "projAddr"   => { street_address: "1017 MacDonald Ave.", city: "Richmond", state: "CA", post_code: "94801"},
+#    "quote"      => { name: "Q001", expected_start: Date.today + 1 },
+#    "solution"   => { name: "S01" },
+#    "job"        => { name: "JDemo", start_on: Date.today + 1, finished_on: Date.today + 2  },
+#    "schedule"   => { day: Date.today + 1 },
+#    "engagement" => {}
   }
 ]
 
@@ -212,20 +212,20 @@ demo_list.each do |model|
   @company.people.find_or_create_by( model["person"] )
   @company.equipment.find_or_create_by( model["equipment"])
 
-  @project = @company.projects.new( model["project"])
-  @project.rep_id = 1
-  @project.save!
+#  @project = @company.projects.new( model["project"])
+#  @project.rep_id = 1
+#  @project.save!
 
 
-  @project.addresses.find_or_create_by( model["projAddr"])
-  @projmgr = @company.people.first
+ # @project.addresses.find_or_create_by( model["projAddr"])
+#  @projmgr = @company.people.first
 
-  @quote = @project.quotes.new( model["quote"])
-  @quote.quote_to_id = @projmgr.id
-  @quote.rep_id = 1
-  @quote.expected_start = Date.today + 1
-  @quote.fire_ants_verified_by = 1
-  @quote.save! 
+# @quote = @project.quotes.new( model["quote"])
+#  @quote.quote_to_id = @projmgr.id
+#  @quote.rep_id = 1
+#  @quote.expected_start = Date.today + 1
+#  @quote.fire_ants_verified_by = 1
+ # @quote.save! 
 
 # STOP HERE, NESTING IS OUT OF WHACK
 #  @solution = @quote.solutions.new( model ["solution"] )
@@ -269,9 +269,10 @@ end
 # Construction Projects in the East Bay from Business Times Lists published December 6-12, 2013
 # Equipment, employee names not known as not in BT List
 #
-def rep
-  rep ||= Person.where("title = ?", "Rep")[0].id
-end
+#def rep
+#  rep ||= Person.where("title = ?", "Rep")[0].id
+#end
+=begin
 projects_list = [
  { "company"     => { name: "McCarthy Building Cos. Inc.", line_of_business: "Construction", url: "www.mccarthy.com"},
     "address"    => { street_address: "343 Sansome St., 14th Floor", city: "San Francisco", state: "CA", post_code: "94104"},
@@ -465,7 +466,7 @@ projects_list.each do |model|
   puts "#{model} -- Created."
 end
 
-
+=end
 #
 # Material types  
 #
@@ -637,15 +638,16 @@ end
   Condition.create!(:name => condition[0], :verbiage => condition[1], :indication => condition[2], change_approved_at: Date.today)
 end
 
+=begin
 #
 # R O L E S
 # [TODO] Add description attribute
-[
-  ["Admin", "People who run the application"],
-  ["Driver", "Operates OTR equipment"]
-].each do |role|
-  Role.find_or_create_by( :name=>role[0], :description=>role[1])
-end
+#[
+#  ["Admin", "People who run the application"],
+#  ["Driver", "Operates OTR equipment"]
+#].each do |role|
+#  Role.find_or_create_by( :name=>role[0], :description=>role[1])
+#end
 
 #
 # Certificate(s)
@@ -663,6 +665,6 @@ end
   Certificate.find_or_create_by( :name => certificate[0], :description => certificate[1], :for_person => certificate[2], :for_company => certificate[3], 
     :for_equipment => certificate[4], :for_location => certificate[5], :active => certificate[6] ) 
 end 
-
+=end
 
 puts "--sow_all Done"
