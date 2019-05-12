@@ -9,8 +9,6 @@ class Identifier < ApplicationRecord
   validates :rank, :numericality => { :only_integer => true, :greater_than_or_equal_to => 1, :less_than => 10}
    
 
-  #kaminari
-  paginates_per  10
 
   # D E F A U L T  V A L U E S  
     after_initialize :defaults

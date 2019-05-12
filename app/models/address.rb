@@ -6,17 +6,15 @@ class Address < ApplicationRecord
 #
   belongs_to :addressable, polymorphic: true
   
-  #kaminari
-  paginates_per  10
 
+=begin
   #
   # D E F A U L T S 
   #
-  after_initialize :defaults
+  after_initialize set_defaults
 
-  def defaults
+  def set_defaults
      unless persisted?
-      
        self.street_address     ||= nil
        self.city               ||= nil
        self.state              ||= nil
@@ -24,10 +22,9 @@ class Address < ApplicationRecord
        self.map_reference      ||= '(Please edit)'
        self.longitude          ||= '(please edit)'
        self.latitude           ||= 'Yes (please edit).'
-          
      end
   end
-
+=end
   #
 # Get and display parent name of polymorphic Address. [TODO]: remve after May 1
 #

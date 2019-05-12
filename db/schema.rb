@@ -32,9 +32,9 @@ ActiveRecord::Schema.define(version: 2019_03_17_225022) do
   create_table "addresses", force: :cascade do |t|
     t.string "addressable_type"
     t.bigint "addressable_id"
-    t.string "street_address"
-    t.string "city"
-    t.string "state"
+    t.string "street_address", value: 'Please update'
+    t.string "city",           value: 'Please update'
+    t.string "state",          value: 'Please update'
     t.string "post_code"
     t.string "map_reference"
     t.float "longitude"

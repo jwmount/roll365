@@ -6,7 +6,5 @@ class Material < ApplicationRecord
   belongs_to :materialable, polymorphic: true
 
   
-  #kaminari
-  paginates_per  10
     
 end
