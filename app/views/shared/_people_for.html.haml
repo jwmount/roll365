@@ -1,9 +1,10 @@
-- if @people.nil?
+
+- if @company.nil?
   
   Nobody is affiliated yet.
   
 - else
   
-  - @people.each do |p|
+  - @company.people.each do |p|
     %p
-    = p.dislay_name
+    = p.display_name

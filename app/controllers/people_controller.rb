@@ -1,5 +1,5 @@
 class PeopleController < ApplicationController
-  before_action :set_person, only: [:create, :show, :edit, :update, :destroy]
+  before_action :set_person, only: [:show, :edit, :update, :destroy]
 
   # GET /people
   # GET /people.json
@@ -16,7 +16,17 @@ class PeopleController < ApplicationController
 
   # GET /people/new
   def new
-    @person = Person.new
+    if params.has_key?('company_id')
+      @company = Company.find(params[:company_id])
+      @person = Person.new
+      @person.company_id = params[:company_id]
+      @person.save
+    end
+    if @person.save
+      redirect_to person_path(@person) #person GET    /organizations/people/:id(.:format)         people#show
+    else
+      render "company/show"
+    end
   end
 
   # GET /people/1/edit
@@ -28,9 +38,10 @@ class PeopleController < ApplicationController
   # POST /people
   # POST /people.json
   def create 
+    @person = Person.new(person_params)
     respond_to do |format|
-      if @person.save (person_params)
-        @address.save
+      if @person.save
+     
         format.html { redirect_to @person, notice: 'Person was successfully created.' }
         format.json { render :show, status: :created, location: @person }
       else
@@ -67,18 +78,19 @@ class PeopleController < ApplicationController
 private
 
     # Use callbacks to share common setup or constraints between actions.
+    # MEMBER of collection ust already exist or obvioysly thsi will not work.
     def set_person
       begin
         @person = Person.find(params[:id])
       rescue
-        redirect_to people_path
+    
       end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def person_params
-      params.require(:person).permit(:id, :company_id, :first_name, :last_name, :title, :available, :available_on, :OK_to_contact, :active)
-      #    addresses_attributes: [ :addressable_id, :addressable_type, :street_address, :city, :state, :post_code, :map_reference, :longitude, :latitude],
+      params.require(:person).permit(:id, :company_id, :first_name, :last_name, :title, :available, :available_on, :OK_to_contact, :active,
+           addresses_attributes: [ :addressable_id, :addressable_type, :street_address, :city, :state, :post_code, :map_reference, :longitude, :latitude] )
       #    identifiers_attributes: [:identifiable_id, :identifiable_type, :name, :value, :rank] )
     end
 end

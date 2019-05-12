@@ -11,7 +11,7 @@
   = render "shared/contacts_for"
   = link_to "New Contact", new_company_identifier_path(@company)  
   %hr
-  = render "shared/people_for"
+  = render "shared/people_for", locals: {company: @company}
   = link_to 'New People', new_company_person_path(@company)  
 
 
