@@ -5,9 +5,9 @@ Rails.application.routes.draw do
 # These next 3 lines create the ActiveAdmin rails engine.  Can be removed to cut down on the clutter 
 # of routes.  This will cause a dyno fail 503, Service not available.  
 # [TODO]  Decide how to handle this.
-  devise_for :admin_users, ActiveAdmin::Devise.config
+  # devise_for :admin_users, ActiveAdmin::Devise.config
   # Generate routes for ActiveAdmin resources
-   ActiveAdmin.routes(self)
+  # ActiveAdmin.routes(self)
 
   # use rails g controller welcome to direct root references to welcome index and the get is what to do there
   get 'welcome/index'
