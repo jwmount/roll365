@@ -101,6 +101,8 @@ ActiveRecord::Schema.define(version: 2019_03_17_225022) do
   end
 
   create_table "materials", force: :cascade do |t|
+    t.string "materialable_type"
+    t.bigint "materialable_id"
     t.string "name"
     t.string "description"
     t.string "materialable_type"
