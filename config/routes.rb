@@ -51,7 +51,7 @@ Rails.application.routes.draw do
 
   
 
-  resources :materials, :equipment, :tips
+  resources :addresses, :conditions, :materials, :equipment, :tips
             
             #:dockets, :projects, :engagements, :jobs, :people_schedules,
             #:permits, :projects, :quotes, :requirements, :reservations, :schedules, :solutions,

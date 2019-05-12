@@ -21,7 +21,11 @@ class PeopleController < ApplicationController
       @person = Person.new
       @person.company_id = params[:company_id]
       @person.save
-    end
+    # OK, we came in direct, no @company_id
+    else 
+      flash[:warning] = "Warning:  new people must be created by company they work for.  Nice phrase ..."
+    end   
+    
     if @person.save
       redirect_to person_path(@person) #person GET    /organizations/people/:id(.:format)         people#show
     else
@@ -32,7 +36,6 @@ class PeopleController < ApplicationController
   # GET /people/1/edit
   # REMEMBER, dependents are created at parent create time! ! !
   def edit
-    redirect_to 'addresses/edit'
   end
 
   # POST /people
@@ -83,7 +86,7 @@ private
       begin
         @person = Person.find(params[:id])
       rescue
-    
+        flash[:warning] = "@person was not found in people#set_person."
       end
     end
 

@@ -2,17 +2,7 @@ class Person < ApplicationRecord
 
 
   belongs_to :company
-=begin
-  has_many :dockets, :dependent => :destroy
-  validates_associated :dockets
 
-  has_many :engagements, :dependent => :destroy
-  validates_associated :engagements
-
-  #has_many :reservations, :dependent => :destroy
-  has_and_belongs_to_many :schedules
-  validates_associated :schedules
-=end
   #
   # P O L Y M O R P H I C  A S S O C I A T I O N S
   #
@@ -33,10 +23,12 @@ class Person < ApplicationRecord
   accepts_nested_attributes_for :identifiers
   
 
-#
-# V A L I D A T I O N S
-#
-#  validates_presence_of :last_name
+  #
+  # V A L I D A T I O N S
+  #
+  # No nameless'ness allowed
+  validates_presence_of :first_name
+  validates_presence_of :last_name
 
 #
 # D E F A U L T S
@@ -54,6 +46,8 @@ class Person < ApplicationRecord
   after_initialize :defaults
   def defaults
      unless persisted?
+       self.first_name       ||= 'first name'
+       self.last_name        ||= 'last name'
        self.active           ||= true
        self.OK_to_contact    ||= true
        self.available        ||= true

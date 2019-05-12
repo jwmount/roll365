@@ -21,13 +21,6 @@ class CompaniesController < ApplicationController
       flash[:error] = 'No identifiers found.'
     end 
     @address = Address.where("addressable_id = ? AND addressable_type = ?", @company.id, 'Company').limit(1)
-
-    begin
-      @permits = @company.permits
-    rescue
-      flash[:error] = 'No permits found.'
-    end
-    
   end
 
 
@@ -43,7 +36,7 @@ class CompaniesController < ApplicationController
     begin
       @company.save!
     rescue
-      flash[:error] = "A Company could NOT be found or created."
+      flash[:error] = "Company NOT be found or was not created."
       nil
     end
     @address = @company.addresses.find_or_create_by( {addressable_type: 'Company', addressable_id: @company.id} )

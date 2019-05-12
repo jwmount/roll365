@@ -1,9 +1,10 @@
-= form_with(model: person, local: true) do |form|
-  -if person.errors.any?
+
+= form_for @person do |form|
+  -if @person.errors.any?
     #error_explanation
       %h2= pluralize(person.errors.count, "error")#prohibited this company from being saved:
       %ul
-        - person.errors.full_messages.each do |message|
+        - @person.errors.full_messages.each do |message|
           %li= message
       
 
@@ -58,7 +59,7 @@
       = form.radio_button(:active, false)
       = form.label(:active, "No", value: false)
 
-  = render :partial => "address_form", locals: {form: form}
+  -#= render :partial => "address_form", locals: {form: form}
 
   .actions
     = form.submit
