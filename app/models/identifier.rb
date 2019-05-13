@@ -36,7 +36,7 @@ class Identifier < ApplicationRecord
 
   end
 
- 
+  
 =begin
   def display_name (parent_name: self)
     

@@ -57,6 +57,16 @@ Rails.application.routes.draw do
     resources :identifiers, only: [:index, :new, :created]
   end
   resources :people
+
+  # Finally, we want to support maintaining the lists of addresses
+  # Ths REQUIRES that addrressable_type be provided
+  # These will be matches made last in matchhing order
+  
+  # rails routes -g addresses
+  resources :addresses
+  
+  # rails routes -g identifiers
+  resources :identifiers
  
 
 =begin  

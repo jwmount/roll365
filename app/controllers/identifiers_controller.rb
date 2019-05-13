@@ -4,13 +4,20 @@ class IdentifiersController  < ApplicationController # < InheritedResources::Bas
   # if we have params we have a parent (some other member of some collection, e.g. Company)
   # this may become extraneous
   #
+  # Build out this case statement for other Identifiable types, if any.
   def index
-    if params.has_key?("company_id")
-      @parent = Company.find(params[:company_id])
-      @identifiers = @parent.identifiers
-    else
-      @identifiers = Identifier.all
-    end
+    # Build out these cases for new types of Identifiers
+    case 
+      when params.has_key?('company_id') then
+        @parent = Company.find(params[:company_id])
+        @identifiers = parent.identifiers
+      when params.has_key?('person_id') then
+        @parent = Person.find(params[:person_id])
+        @identifiers = parent.identifiers
+      else
+        @identifiers = Identifier.all
+      end
+    @identifiers
   end
   
   #

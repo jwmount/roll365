@@ -3,6 +3,7 @@ class AddressesController  < ApplicationController # < InheritedResources::Base
   
   def index
     @addresses = Address.order(city: :asc).page params[:page]
+    flash[:Notification] = "Addresses can only be created for companies or for people."
   end
 
   #
@@ -58,6 +59,16 @@ class AddressesController  < ApplicationController # < InheritedResources::Base
     end
   end
 
+  # DELETE /companies/1
+  # DELETE /companies/1.json
+  def destroy
+    @address = Address.find(params[:id])
+    @address.destroy
+    respond_to do |format|
+      format.html { redirect_to addresses_path, notice: "#{@address} has been deleted." }
+      format.json { head :no_content }
+    end
+  end
 
   private  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - -
 

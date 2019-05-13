@@ -1,5 +1,8 @@
 class ConditionsController  < ApplicationController # < InheritedResources::Base< InheritedResources::Base
 
+  def index
+  	render inline: "Hang on there while the actions get defined, apparently they were all in ActiveAdmin"
+  end
 
   private
 

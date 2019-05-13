@@ -9,6 +9,7 @@
 %table.table.table-striped
   %thead
     %tr
+      %th Kind
       %th Contact Name
       %th{align: 'center'} Tier
       %th Name
@@ -23,6 +24,7 @@
     - @identifiers.each do |f|
 
       %tr
+        %td= f.identifiable_type
         %td= f.display_parent_name
         %td{align: 'center'}
           = f.rank
