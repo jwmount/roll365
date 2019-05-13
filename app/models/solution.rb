@@ -3,7 +3,7 @@
 
 class Solution < ActiveRecord::Base
 
-  include Sluggable
+
   #  include ActiveModel::Validations  #[TODO] What use do we make of this?
   
   #
