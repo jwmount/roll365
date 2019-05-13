@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 # ActiveAdmin.routes(self)
 
   # use rails g controller welcome to direct root references to welcome index and the get is what to do there
-  #get 'welcome/index'
+  get 'welcome/index'
   root 'welcome#index'  
   
   #
