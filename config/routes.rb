@@ -46,14 +46,18 @@ Rails.application.routes.draw do
   # ... only build routes with the minimal amount of information to uniquely identify the resource...
   resources :companies do
     resources :addresses, only: [:index, :new, :create]
+    resources :identifiers, only: [:index, :new, :create]
   end
+  resources :companies
   resources :addresses, only: [:show, :edit, :update, :destroy]
-  resources :identifiers, only: [:show, :edit, :update, :destroy]
-
+  resources :identifiers, only: [:show, :edit, :update, :destroy]  
+  
   resources :people do
     resources :addresses, only: [:index, :new, :create]
+    resources :identifiers, only: [:index, :new, :created]
   end
-  
+  resources :people
+ 
 
 =begin  
   scope shallow_prefix: "organizations" do
@@ -80,7 +84,7 @@ Rails.application.routes.draw do
 =end
   
 
-  resources :addresses, :companies, :identifiers, :conditions, :materials, :equipment, :tips
+  resources :conditions, :materials, :equipment, :tips
             
             #:dockets, :projects, :engagements, :jobs, :people_schedules,
             #:permits, :projects, :quotes, :requirements, :reservations, :schedules, :solutions,

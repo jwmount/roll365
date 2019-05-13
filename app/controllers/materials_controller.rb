@@ -1,4 +1,4 @@
-class MaterialsController < InheritedResources::Base
+class MaterialsController  < ApplicationController # < InheritedResources::Base< InheritedResources::Base
 
 
   def index

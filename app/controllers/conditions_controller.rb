@@ -1,4 +1,5 @@
-class ConditionsController < InheritedResources::Base
+class ConditionsController  < ApplicationController # < InheritedResources::Base< InheritedResources::Base
+
 
   private
 

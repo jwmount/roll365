@@ -1,4 +1,4 @@
-class TipsController < InheritedResources::Base
+class TipsController  < ApplicationController # < InheritedResources::Base< InheritedResources::Base
 
   private
 
