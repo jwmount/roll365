@@ -1,5 +1,6 @@
-class AddressesController < InheritedResources::Base
-
+class AddressesController  < ApplicationController # < InheritedResources::Base
+  # Error, Uninitialized Constant InheritedResources is the Cause of the Routing Error about that, bad punctuation in message is confusing
+  
   def index
     @addresses = Address.order(city: :asc).page params[:page]
   end
@@ -25,7 +26,7 @@ class AddressesController < InheritedResources::Base
     if params.has_key?('person_id')
       @person = Person.find(params[:person_id])
       @address = @person.addresses.new
-      @address.save
+      @address.save(address_params)
       redirect_to person_path(@person)
     else
       @company = Company.find(params[:format])
@@ -42,6 +43,20 @@ class AddressesController < InheritedResources::Base
     end
   end
 
+  # PATCH/PUT /companies/1
+  # PATCH/PUT /companies/1.json
+  def update
+    @address = Address.find(params[:id])
+    respond_to do |format|
+      if @address.update!(address_params)
+        format.html { redirect_to @address, notice: "{@address} has been updated." }
+        format.json { render :show, status: :ok, location: @address }
+      else
+        format.html { render :edit }
+        format.json { render json: @address.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
 
   private  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - -

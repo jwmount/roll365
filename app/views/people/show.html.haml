@@ -4,7 +4,7 @@
 
 %p
   = @person.display_address
-  = link_to 'edit address', edit_person_address_path(@person, @address)
+  -#= link_to 'Edit Address', edit_person_address_path(@person)
 
   -#= render 'address_modal'
   %p
