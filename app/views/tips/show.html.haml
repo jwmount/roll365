@@ -1,18 +1,57 @@
 %p#notice= notice
 
-%p
-  %b Name:
+%h1
   = @tip.name
-%p
-  %b Company:
-  = @tip.company_id
-%p
-  %b Fee:
-  = @tip.fee
-%p
-  %b Fire ant risk level:
-  = @tip.fire_ant_risk_level
 
+%p
+  = @tip.display_address
+
+  = link_to 'edit address', edit_address_path(@tip)
+%hr
+ 
+  = render "shared/contacts_for"
+  = link_to "New Contact", new_company_tip_path(@company)  
+  %hr
+  = render "shared/people_for", locals: {company: @company}
+  = link_to 'New People', new_company_person_path(@company)  
+
+
+%hr
+
+.container-fluid
+  .row
+    .col-sm-2
+      %em
+        Attributes
+    .col-sm-10
+      %em
+        Settings
+  %p
+  .row      
+    .col-sm-2
+      Name:
+    .col-sm-10
+      = @tip.name
+
+  .row
+    .col-sm-2
+      Company_id
+    .col-sm-10
+      = @tip.company_id
+
+  .row
+    .col-sm-2
+      Fee
+    .col-sm-10
+      = @tip.fee
+
+  .row
+    .col-sm-2
+      Materials Accepted
+    .col-sm-10
+      = @tip.fire_ant_risk_level
+
+%p
 = link_to 'Edit', edit_tip_path(@tip)
 \|
 = link_to 'Back', tips_path
