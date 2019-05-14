@@ -1,47 +1,47 @@
-= form_with(model: @address, scope: :address) do |f|
-  = f.label :city, "Search for:" 
-  = f.text_field :city, id: :city
-  = f.submit "Search"
 
-%h1 Listing addresses
+.container-fluid
 
--#= paginate @addresses
-//= paginate @addresses, :left => 1, :right => 3
+  %h1 Finder
 
-%table
-  %thead
-    %tr
-      %th Parent Type
-      %th Parent Name
-      %th Street address
-      %th City
-      %th State
-      %th Po box
-      %th Map reference
-      %th Longitude
-      %th Latitude
-      %th
-      %th
-      %th
+  .row
 
-  %tbody
-    - @addresses.each do |addr|
-      %tr
-        %td= addr.addressable_type
-        %td= addr.display_parent_name
-        %td= addr.street_address
-        %td= addr.city
-        %td= addr.state
-        %td= addr.post_code
-        %td= addr.map_reference
-        %td= addr.longitude
-        %td= addr.latitude
-        %td= link_to 'Show', addr
-        %td= link_to 'Edit', edit_address_path(addr)
-        %td= link_to 'Destroy', addr, method: :delete, data: { confirm: "Are you sure you want to delete #{addr.display_parent_name} #{addr.addressable_type} address?" }
-      %end
-    %end
+    .col-2
 
-%br
+      = render "search_panel", locals: {q: @q}
+          
+    .col-6
+      %h3 Addresses
+      = @addresses.count 
+      listed
+      %hr
+
+      %table.table.table-striped
+
+
+        %thead
+          %tr
+            %th Name
+            %th{align: 'left'}Street Address
+            %th{align: 'left', valign: 'top'} City
+            %th{align: 'left', width: '32'}State
+
+            %th Post Code
+            
+        %tbody
+          - @addresses.each do |addr|
+            %tr
+              %td{align: 'left', width: '224'}= link_to addr.addressable.name, company_path(1)
+              %td{align: 'left', width: '224'}= addr.street_address
+              %td{align: 'left', width: "64"}= addr.city
+              %td= addr.state
+              %td= addr.post_code
+              %td= map_reference
+            
+              %td= link_to 'Show', addr
+              %td= link_to 'Edit', edit_address_path(addr)
+              %td= link_to 'Destroy', address, method: :delete, data: { confirm: "Are you sure you want to delete #{addr}?" } 
+      %br
+
+
 
 -#= link_to 'New Address', new_address_path

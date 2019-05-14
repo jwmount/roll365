@@ -1,0 +1,8 @@
+_search_panel_frag.html.haml
+
+how to make use of this?
+
+= form_with(model: @address, scope: :address) do |f|
+  = f.label :city, "Search for:" 
+  = f.text_field :city, id: :city
+  = f.submit "Search"

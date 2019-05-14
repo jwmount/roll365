@@ -4,29 +4,61 @@
 
 %p
   %b Rollodex type:
-  = @address.addressable_type
-%p
-  %b Street address:
-  = @address.street_address
-%p
-  %b City:
-  = @address.city
-%p
-  %b State:
-  = @address.state
-%p
-  %b Postal Code:
-  = @address.post_code
-%p
-  %b Map reference:
-  = @address.map_reference
-%p
-  %b Longitude:
-  = @address.longitude
-%p
-  %b Latitude:
-  = @address.latitude
+  = link_to @address.addressable_type, companies_path
 
+%hr
+
+.container-fluid
+  .row
+    .col-sm-2
+      %em
+        Attributes
+    .col-sm-10
+      %em
+        Settings
+  %p
+  .row      
+    .col-sm-2
+      Street Address:
+    .col-sm-10
+      = @address.street_address
+
+  .row
+    .col-sm-2
+      City:
+    .col-sm-10
+      = @address.city
+
+  .row
+    .col-sm-2
+      State:
+    .col-sm-10
+      = @address.state
+
+  .row
+    .col-sm-2
+      Postal Code:
+    .col-sm-10
+      = @address.post_code
+
+  .row
+    .col-sm-2
+      Map reference:
+    .col-sm-10
+      = @address.map_reference
+
+  .row
+    .col-sm-2
+      Longitude:
+    .col-sm-10
+      = @address.longitude
+
+  .row
+    .col-sm-2
+      Latitude:
+    .col-sm-10
+      = @address.latitude
+%p
 = link_to 'Edit', edit_address_path(@address)
 
 %p
