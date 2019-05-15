@@ -31,9 +31,13 @@ class IdentifiersController  < ApplicationController # < InheritedResources::Bas
   # No direct operation is allowed, must be from an -able parent
   #
   def new
-    @parent = Company.find(params[:company_id])
-    @identifier = @parent.identifiers.new
-    @identifier.save!
+    begin
+      @parent = Company.find(params[:company_id])
+      @identifier = @parent.identifiers.new
+      @identifier.save!
+    rescue
+      redirect_to root_path, notice = "Attempt to instatiate a new identifier failed."
+    end
   end
 
   def edit

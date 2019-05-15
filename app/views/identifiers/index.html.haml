@@ -20,6 +20,7 @@
 
         %thead
           %tr
+            %th Orgaization or Person
             %th Name
             %th Value
             %th Rank or Priority
@@ -29,6 +30,7 @@
           - @identifiers.each do |iden|
             %tr
               %td{align: 'left', width: '224'}= link_to iden.identifiable.name, company_path(iden.identifiable_id)
+              %td= iden.name
               %td{align: 'left', width: '224'}= iden.value
               %td{align: 'left', width: "64"}= iden.rank
 
