@@ -4,21 +4,21 @@ class AddressesController  < ApplicationController # < InheritedResources::Base
   def index
     @q = Address.ransack(params[:q])
     @addresses = @q.result.order(city: 'ASC').paginate(page: params[:page], per_page: 10 || params[:per_page])
-    flash[:Notification] = "Reminder:  Addresses can only be created frp, companies or people finders."
+    flash[:Notification] = "Reminder:  Addresses can only be created from Addressable resources, i.e. companies or people finders."
   end
 
   #
   # ncaddr - address new or edit, return to proper controller type based on params[:format]
   #
-  def ncaddr
+  def XXXncaddr
     redirect_to companies_path if params[:format] == 'Company'
     redirect_to initializer_path if params[:format] == 'Initializer'
     redirect_to people_path if params[:format] == 'Person'
   end
 
   def edit
-    @company = Company.find(params[:id])
-    @address = @company.addresses.first
+    @address = Address.find(params[:id])
+    @company = @address.addressable
   end
   
   #

@@ -6,8 +6,6 @@
 
 = render 'form'
 
-%table
-  %tr
-    %td{width: 10}
-      = link_to "Back", ncaddr_path(@address.addressable_type)
-    
+      
+%p    
+= link_to 'Back to Address', address_path(@address)

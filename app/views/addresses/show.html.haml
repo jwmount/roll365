@@ -4,7 +4,7 @@
 
 %p
   %b Rollodex type:
-  = link_to @address.addressable_type, companies_path
+  = link_to @address.addressable_type.pluralize, companies_path
 
 %hr
 
@@ -59,8 +59,15 @@
     .col-sm-10
       = @address.latitude
 %p
-= link_to 'Edit', edit_address_path(@address)
+-#= link_to 'Edit Address', edit_address_path(@address)
+-#= link_to "Return", @address.addressable
 
-%p
-
-= link_to "Back", ncaddr_path(@address.addressable_type)
+= link_to edit_address_path(@address), class: 'btn btn-primarary' do
+  %i.glyphicon.glyphicon-plus
+    Edit Address
+%nbsp
+%nbsp
+= link_to @address.addressable, class: 'btn btn-secondary' do
+  %i.glyphicon.glyphicon-plus
+    Return to Company
+      
