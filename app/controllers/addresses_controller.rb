@@ -2,11 +2,9 @@ class AddressesController  < ApplicationController # < InheritedResources::Base
   # Error, Uninitialized Constant InheritedResources is the Cause of the Routing Error about that, bad punctuation in message is confusing
   
   def index
-    #@addresses = Address.order(city: :asc).page params[:page]
-
     @q = Address.ransack(params[:q])
     @addresses = @q.result.order(city: 'ASC').paginate(page: params[:page], per_page: 10 || params[:per_page])
-    flash[:Notification] = "Reminder:  Addresses can only be created frp, companies or people fomders."
+    flash[:Notification] = "Reminder:  Addresses can only be created frp, companies or people finders."
   end
 
   #

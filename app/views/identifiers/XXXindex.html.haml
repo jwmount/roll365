@@ -1,0 +1,59 @@
+
+-# To allow for Master lists, essentialy orphans when retrieved as entire collection
+-# Title depends on type of list
+-if @parent.nil?
+  %h1 Contacts Master List
+-else
+  Contacts for #{@parent.name}
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th Kind
+      %th Contact Name
+      %th{align: 'center'} Tier
+      %th Name
+      %th Value
+      %th Show
+      %th Edit
+      %th Delete
+      
+      
+
+  %tbody
+    - @identifiers.each do |f|
+
+      %tr
+        %td= f.identifiable_type
+        %td= f.display_parent_name
+        %td{align: 'center'}
+          = f.rank
+        %td= f.name
+        %td= f.value
+        %td= link_to 'Show', f
+        %td= link_to 'Edit', edit_identifier_path(f)
+        %td= link_to 'Destroy', f, method: :delete, data: { confirm: "Are you sure you want to delete #{f.name}?" }
+
+%br
+
+-# If this is a Master List, no #new operation is allowed
+-# [TODO] clean this up using partials
+-unless @parent.nil?
+  = link_to 'New Identifier', new_company_identifier_path(@parent) 
+
+
+-# Find the way back to base or parent
+-# [TODO] some of this section seems to be residual croft
+- if @identifiers[0].nil?
+  = link_to "Back to Base", companies_path
+- else
+  - case @identifiers[0].identifiable_type
+    - when "Company"
+      = link_to 'Back ', company_path(:id => @identifiers[0].identifiable_id)   # W O R K S
+    - else
+      = link_to 'Home', root_path
+
+
+
+
+

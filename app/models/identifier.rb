@@ -15,9 +15,9 @@ class Identifier < ApplicationRecord
   
       def defaults
         unless persisted?
-          self.name ||= 'unknown'
-          self.rank ||= 1
-          self.value ||= 'unknown'
+          self.name ||= 'Please edit'
+          self.rank ||= 9
+          self.value ||= 'Please edit'
         end
       end
 

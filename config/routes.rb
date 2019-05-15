@@ -47,6 +47,7 @@ Rails.application.routes.draw do
   resources :companies do
     resources :addresses, only: [:index, :new, :create]
     resources :identifiers, only: [:index, :new, :create]
+    resources :people
   end
   resources :companies
   resources :addresses, only: [:show, :edit, :update, :destroy]
@@ -56,11 +57,13 @@ Rails.application.routes.draw do
     resources :addresses, only: [:index, :new, :create]
     resources :identifiers, only: [:index, :new, :created]
   end
+
+  # provides paths that are not nested with Company
   resources :people
 
-  # Finally, we want to support maintaining the lists of addresses
-  # Ths REQUIRES that addrressable_type be provided
-  # These will be matches made last in matchhing order
+  # Support maintaining the index actions.
+  # Ths REQUIRES that addrressable_type be provided.
+  # These will be matches made last in matchhing order.
   
   # rails routes -g addresses
   resources :addresses

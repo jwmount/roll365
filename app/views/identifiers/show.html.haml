@@ -1,22 +1,41 @@
-%p#notice= notice
 
 
-%h1 Identifier for #{@name}
-%p
-  %b Parent type:
-  = @identifier.identifiable_type
-%p
+%h1 Contact for: #{@identifier.identifiable.name}
 
 %p
-  %b Kind:
-  = @identifier.name
-%p
-  %b Value:
-  = @identifier.value
-%p
-  %b Rank:
-  = @identifier.rank
+  %b Rollodex type:
+  #{@identifier.identifiable_type}
+  -#= link_to @identifier.identifiable_type, companies_path
 
+%hr
+
+.container-fluid
+  .row
+    .col-sm-2
+      %em
+        Attributes
+    .col-sm-10
+      %em
+        Settings
+  %p
+  .row      
+    .col-sm-2
+      Name:
+    .col-sm-10
+      = @identifier.name
+
+  .row
+    .col-sm-2
+      Value:
+    .col-sm-10
+      = @identifier.value
+
+  .row
+    .col-sm-2
+      Rank or Priority:
+    .col-sm-10
+      = @identifier.rank.ordinalize
+%p
 = link_to 'Edit', edit_identifier_path(@identifier)
-\|
-= link_to 'Back', companies_path
+%nbsp
+= link_to "Back", ncaddr_path(@identifier.identifiable_type)

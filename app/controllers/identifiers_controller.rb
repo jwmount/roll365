@@ -5,6 +5,7 @@ class IdentifiersController  < ApplicationController # < InheritedResources::Bas
   # this may become extraneous
   #
   # Build out this case statement for other Identifiable types, if any.
+=begin
   def index
     # Build out these cases for new types of Identifiers
     case 
@@ -19,7 +20,13 @@ class IdentifiersController  < ApplicationController # < InheritedResources::Bas
       end
     @identifiers
   end
-  
+
+=end
+  def index
+    @q = Identifier.ransack(params[:q])
+    @identifiers = @q.result.order(name: 'ASC').paginate(page: params[:page], per_page: 10 || params[:per_page])
+    flash[:Notification] = "Reminder:  Identifiers (or Contacts) can only be created from companies or people finders."
+  end
   #
   # No direct operation is allowed, must be from an -able parent
   #
@@ -41,6 +48,7 @@ class IdentifiersController  < ApplicationController # < InheritedResources::Bas
   def show
     @identifier = Identifier.find( params[:id] )
     @name = @identifier.identifiable.display_name
+    flash[:Information] = "Rank or Priority denotes the prefered order of use for a specific way to reach the other party."
   end
 
   def destroy
