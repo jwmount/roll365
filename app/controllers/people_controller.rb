@@ -91,7 +91,7 @@ private
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def person_params
-      params.require(:person).permit(:id, :company_id, :first_name, :last_name, :title, :available, :available_on, :OK_to_contact, :active,
+      params.require(:person).permit(:company_id, :first_name, :last_name, :title, :available, :available_on, :OK_to_contact, :active,
            addresses_attributes: [ :addressable_id, :addressable_type, :street_address, :city, :state, :post_code, :map_reference, :longitude, :latitude] )
       #    identifiers_attributes: [:identifiable_id, :identifiable_type, :name, :value, :rank] )
     end
