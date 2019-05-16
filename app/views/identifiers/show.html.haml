@@ -38,4 +38,11 @@
 %p
 = link_to 'Edit', edit_identifier_path(@identifier)
 %nbsp
-= link_to "Back", ncaddr_path(@identifier.identifiable_type)
+-#= link_to "Back", ncaddr_path(@identifier.identifiable_type)
+
+
+%nbsp
+%nbsp
+= link_to @identifier.identifiable, class: 'btn btn-secondary' do
+  %i.glyphicon.glyphicon-plus
+    Return

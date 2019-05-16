@@ -1,30 +1,9 @@
 class IdentifiersController  < ApplicationController # < InheritedResources::Base< InheritedResources::Base
 
-  #
-  # if we have params we have a parent (some other member of some collection, e.g. Company)
-  # this may become extraneous
-  #
-  # Build out this case statement for other Identifiable types, if any.
-=begin
-  def index
-    # Build out these cases for new types of Identifiers
-    case 
-      when params.has_key?('company_id') then
-        @parent = Company.find(params[:company_id])
-        @identifiers = parent.identifiers
-      when params.has_key?('person_id') then
-        @parent = Person.find(params[:person_id])
-        @identifiers = parent.identifiers
-      else
-        @identifiers = Identifier.all
-      end
-    @identifiers
-  end
 
-=end
   def index
     case 
-
+      
       when params.has_key?(:company_id) then
         @parent = Company.find(params[:company_id])
         @identifiers = @parent.identifiers
@@ -93,6 +72,17 @@ class IdentifiersController  < ApplicationController # < InheritedResources::Bas
         format.html { render :edit }
         format.json { render json: @identifier.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  # DELETE /companies/1
+  # DELETE /companies/1.json
+  def destroy
+    @identifier = Identifier.find(params[:id])
+    @identifier.destroy
+    respond_to do |format|
+      format.html { redirect_to company_identifiers_path(@identifier.identifiable), notice: "#{@identifier.name} has been deleted." }
+      format.json { head :no_content }
     end
   end
 

@@ -12,7 +12,7 @@
   = link_to "contacts...", company_identifiers_path(@company)  
 %hr
   = render "shared/people_for", locals: {company: @company}
-  = link_to 'people...', new_company_person_path(@company)  
+  = link_to 'people...', company_people_path(@company)  
 
 
 
@@ -69,20 +69,9 @@
       License:
     .col-sm-10
       = @company.licensee ? 'Yes' : 'No'
-  %p
-
--#
--# Determine if Company address exists
--#
--# addr = @company.has_address?
--#- if addr.nil?
--#= link_to "Address", ncaddr_path(@company)
-  -#= link_to "New addr", new_company_address_path(@company)
--#- else
--#= link_to "Edit addr", edit_address_path(addr)
-
 %p
-
+%nbsp
+%nbsp
 = link_to 'Companies', companies_path
 
 

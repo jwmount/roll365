@@ -34,10 +34,14 @@
               %td{align: 'left', width: '224'}= link_to iden.identifiable.name, company_path(iden.identifiable_id)
               %td= iden.name
               %td{align: 'left', width: '224'}= iden.value
-              %td{align: 'left', width: "64"}= iden.rank
+              %td{align: 'left', width: "64"}= iden.rank.ordinalize
 
             
               %td= link_to 'Show', iden
               %td= link_to 'Edit', edit_identifier_path(iden)
-              %td= link_to 'Destroy', address, method: :delete, data: { confirm: "Are you sure you want to delete #{iden}?" } 
+              %td= link_to 'Destroy', identifier_path(iden), method: :delete, data: { confirm: "Are you sure you want to delete #{iden.name}?" } 
       %br
+      -if params.has_key? (:company_id)
+        = link_to new_company_identifier_path(@parent), class: 'btn btn-secondary' do
+          %i.glyphicon.glyphicon-plus
+            New Contact Info

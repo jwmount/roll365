@@ -8,3 +8,4 @@
   - @company.people.each do |p|
     %p
     = p.display_name
+    = link_to 'person...', company_person_path(@company, p)  

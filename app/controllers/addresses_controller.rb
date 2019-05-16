@@ -7,15 +7,7 @@ class AddressesController  < ApplicationController # < InheritedResources::Base
     flash[:Notification] = "Reminder:  Addresses can only be created from Addressable resources, i.e. companies or people finders."
   end
 
-  #
-  # ncaddr - address new or edit, return to proper controller type based on params[:format]
-  #
-  def XXXncaddr
-    redirect_to companies_path if params[:format] == 'Company'
-    redirect_to initializer_path if params[:format] == 'Initializer'
-    redirect_to people_path if params[:format] == 'Person'
-  end
-
+  
   def edit
     @address = Address.find(params[:id])
     @company = @address.addressable
@@ -73,9 +65,19 @@ class AddressesController  < ApplicationController # < InheritedResources::Base
 
   private  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - -
 
-    def address_params
-      params.require(:address).permit( :id, :addressable_id, :addressable_type, :street_address, :city, :state, :post_code, :map_reference, :longitude, :latitude)
-    end
+#
+  # ncaddr - address new or edit, return to proper controller type based on params[:format]
+  # the params[:format] key seems wrong, works tho
+  #
+  def DEPRECATED_ncaddr
+    redirect_to companies_path if params[:format] == 'Company'
+    redirect_to initializer_path if params[:format] == 'Initializer'
+    redirect_to people_path if params[:format] == 'Person'
+  end
+
+  def address_params
+    params.require(:address).permit( :addressable_id, :addressable_type, :street_address, :city, :state, :post_code, :map_reference, :longitude, :latitude)
+  end
 
 end
 
