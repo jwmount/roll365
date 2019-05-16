@@ -23,7 +23,23 @@ class IdentifiersController  < ApplicationController # < InheritedResources::Bas
 
 =end
   def index
-    @q = Identifier.ransack(params[:q])
+    case 
+
+      when params.has_key?(:company_id) then
+        @parent = Company.find(params[:company_id])
+        @identifiers = @parent.identifiers
+      
+      when params.has_key?(:person_id) then
+        @parent = Person.find(params[:person_id])
+        @identifiers = @parent.identifiers
+      
+      else
+        @identifiers = Identifier.all
+    end
+    
+    @q = @identifiers.ransack(params[:q])
+
+    #@q = Identifier.ransack(params[:q]).where("identifiable_type = ? AND identifiable_type = ?", @company.id)
     @identifiers = @q.result.order(name: 'ASC').paginate(page: params[:page], per_page: 10 || params[:per_page])
     flash[:Notification] = "Reminder:  Identifiers (or Contacts) can only be created from companies or people finders."
   end

@@ -20,6 +20,7 @@
 
         %thead
           %tr
+            %th Kind
             %th Orgaization or Person
             %th Name
             %th Value
@@ -29,6 +30,7 @@
         %tbody
           - @identifiers.each do |iden|
             %tr
+              %td= iden.identifiable_type
               %td{align: 'left', width: '224'}= link_to iden.identifiable.name, company_path(iden.identifiable_id)
               %td= iden.name
               %td{align: 'left', width: '224'}= iden.value
