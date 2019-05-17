@@ -85,7 +85,7 @@ class Person < ApplicationRecord
     unless @address.blank?
       address = "#{@address[0].street_address},  #{@address[0].city} #{@address[0].state} #{@address[0].post_code} "
     else
-      'Empty'
+      link_to "New Address", new_person_address_path(@person)
     end
   end
 

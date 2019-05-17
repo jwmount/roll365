@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   # try shallow_path option, reference 2.7.2 Shallow Nesting, Rails Routing from the Outside In, Guides
   # ... only build routes with the minimal amount of information to uniquely identify the resource...
   resources :companies do
-    resources :addresses, only: [:index, :new, :create]
+    resources :addresses, only: [:index, :edit, :new, :create]
     resources :identifiers, only: [:index, :new, :create]
     resources :people
   end

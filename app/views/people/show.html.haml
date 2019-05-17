@@ -5,7 +5,8 @@
   = @person.company.name
 
 %p
-  = @person.display_address
+  = @person.display_address 
+%p
   -#= link_to 'Edit Address', edit_person_address_path(@person)
 
   -#= render 'address_modal'
@@ -13,7 +14,6 @@
 
   = render "identifiers/contacts_for"
 
-  = link_to "... more", person_address_path(@person)
   %p
   
 %hr

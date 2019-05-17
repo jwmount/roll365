@@ -4,8 +4,19 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
-    @q = Person.ransack(params[:q])
-    @people = @q.result.order(last_name: 'ASC').paginate(page: params[:page], per_page: 10 || params[:per_page])
+    case
+      when params.has_key?(:company_id) then
+        @parent = Company.find(params[:company_id])
+        @people = @parent.people
+      when params.has_key?(:person_id) then
+        @parent = Person.find(params[:person_id])
+        @people = @parent.identifiers  
+      else
+        @people = Person.all
+    end
+
+    @q = @people.ransack(params[:q])
+    @people = @q.result.order(first_name: 'ASC').paginate(page: params[:page], per_page: 10 || params[:per_page])
   end
 
   # GET /people/1

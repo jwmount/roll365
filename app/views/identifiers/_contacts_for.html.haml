@@ -2,8 +2,9 @@
 
 - if @identifiers.nil?
   
-  No contact info here, Mate
-  
+  Identifiers
+  = link_to 'New Contacts', new_person_identifier(@person)
+
 - else
   
   - @identifiers.each do |i|

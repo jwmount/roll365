@@ -1,22 +1,42 @@
 
-%h1
-  = @company.name
+.container-fluid
+  .row
+    .col-sm-6
+      %h1
+        = @company.name
+        %p
+        %h3  
+          = @company.line_of_business
+        %p
+          = @company.display_address
+          = link_to 'Edit Address...', edit_company_address_path(@company)
+        %hr
+  .row
+    .col-sm-2
+      %em
+        Identifiers and Contacts
+    .col-sm-10
+      = link_to "contacts...", company_identifiers_path(@company)  
 
-%p
-  = @company.display_address
-
-  = link_to 'addresses...', edit_address_path(@company)
-
-%hr
-  = render "shared/contacts_for"
-  = link_to "contacts...", company_identifiers_path(@company)  
-%hr
-  = render "shared/people_for", locals: {company: @company}
-  = link_to 'people...', company_people_path(@company)  
-
-
-
+  .row
+    .col-sm-2
+      = render "shared/contacts_for"
+  %hr
+  .row
+    .col-sm-2
+      %em
+        People & Associates
+    .col-sm-10
+      = link_to 'people...', company_people_path(@company)  
   
+  .row
+    .col-sm-2
+      = render "shared/people_for", locals: {company: @company}
+  .row
+    .col-sm-10
+      %p
+      
+ 
 %hr
 
 .container-fluid
