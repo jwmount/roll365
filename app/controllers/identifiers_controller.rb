@@ -2,8 +2,8 @@ class IdentifiersController  < ApplicationController # < InheritedResources::Bas
 
 
   def index
+    # effectively define scope
     case 
-      
       when params.has_key?(:company_id) then
         @parent = Company.find(params[:company_id])
         @identifiers = @parent.identifiers
@@ -11,30 +11,27 @@ class IdentifiersController  < ApplicationController # < InheritedResources::Bas
       when params.has_key?(:person_id) then
         @parent = Person.find(params[:person_id])
         @identifiers = @parent.identifiers
-      
       else
         @identifiers = Identifier.all
     end
     
     @q = @identifiers.ransack(params[:q])
-
-    #@q = Identifier.ransack(params[:q]).where("identifiable_type = ? AND identifiable_type = ?", @company.id)
     @identifiers = @q.result.order(name: 'ASC').paginate(page: params[:page], per_page: 10 || params[:per_page])
     flash[:Notification] = "Reminder:  Identifiers (or Contacts) can only be created from companies or people finders."
   end
+
   #
   # No direct operation is allowed, must be from an -able or belongs_to parent
   #
   def new
+    # scope
     case 
-    when params.has_key?(:company_id)
-      @parent = Company.find(params[:person_id])
-      #@identifier = @parent.identifiers.new
-      
-    when params.has_key?(:person_id) then
-      @parent = Person.find(params[:person_id])
-      #@identifier = @parent.identifiers.new
-    end
+      when params.has_key?(:company_id)
+        @parent = Company.find(params[:person_id])
+      when params.has_key?(:person_id) then
+        @parent = Person.find(params[:person_id])
+      end
+    
     begin
       @identifier = @parent.identifiers.new
       @identifier.save!

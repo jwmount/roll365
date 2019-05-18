@@ -32,9 +32,6 @@ Rails.application.routes.draw do
   get 'privacy', to: :show, controller: 'welcome'
   get 'tsandcs', to: :show, controller: 'welcome'
 
- # return from edit address to 'addressable#index'.
- get 'ncaddr', to: :ncaddr, controller: 'addresses'
- 
   # UJS - DEPRECATED ?
   scope :ujs, defaults: { format: :ujs } do
     patch 'thing_totals' => 'companies#totals'

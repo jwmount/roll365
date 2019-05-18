@@ -1,11 +1,14 @@
-%h1 Edit address for:  #{@address.addressable.display_name}
 
-%p
-  %b Parent type:
-  = @address.addressable_type
+.container_fluid  
+  %h1 Edit address for:  #{@address.addressable.display_name}
 
-= render 'form'
+  %p
+    %b Parent type:
+  
+    = @address.addressable_type
+
+  = render 'form'
 
       
-%p    
-= link_to 'Back to Address', address_path(@address)
+  %p    
+  = link_to 'Back to Address', address_path(@address)
