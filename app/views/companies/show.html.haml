@@ -10,18 +10,10 @@
         %p
           = @company.display_address
           = link_to 'Edit Address...', edit_company_address_path(@company)
-        %hr
-  .row
-    .col-sm-2
-      %em
-        Identifiers and Contacts
-    .col-sm-10
-      = link_to "contacts...", company_identifiers_path(@company)  
+  
+  
+    = render "shared/contacts_for"
 
-  .row
-    .col-sm-2
-      = render "shared/contacts_for"
-  %hr
   .row
     .col-sm-2
       %em

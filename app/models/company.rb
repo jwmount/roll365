@@ -121,11 +121,8 @@ class Company < ApplicationRecord
   # true means yes, prompt for city, state is needed, false means second returned value is correct.
   def display_city
     @address = Address.where("addressable_id = ? AND addressable_type = ?", self.id, 'Company').limit(1).take
-    if (@address.city && @address.state).blank?
-      return true, @address.id
-    else
-      return false, @address.city + ', ' + @address.state
-    end
+    
+    @address.nil? ? 'Please edit' : @address.city + ', ' + @address.state
   end
 
   def display_address

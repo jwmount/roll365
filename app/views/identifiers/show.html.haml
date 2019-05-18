@@ -1,6 +1,11 @@
 
 
-%h1 Contact for: #{@identifier.identifiable.name}
+%h1 
+  Contact for: 
+  -if @identifier.identifiable.valid?
+    #{@identifier.identifiable.display_name}
+  -else
+    #{@identifier.identifiable.first_name}, #{@identifier.identifiable.last_name}
 
 %p
   %b Rollodex type:

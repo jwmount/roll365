@@ -17,12 +17,13 @@ class AddressesController  < ApplicationController # < InheritedResources::Base
   # No direct operation is allowed, must be from an addressable parent
   #
   def new
-    if params.has_key?('person_id')
+    if params.has_key?(:person_id)
       @person = Person.find(params[:person_id])
       @address = @person.addresses.new
-      @address.save(address_params)
-      redirect_to person_path(@person)
+      @address.save!
+      redirect_to address_path(@address)
     else
+      byebug
       @company = Company.find(params[:format])
       @address = @company.addresses.first
     end

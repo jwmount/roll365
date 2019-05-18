@@ -5,17 +5,22 @@
   = @person.company.name
 
 %p
-  = @person.display_address 
+  -if @person.addresses.empty?
+    Minnie is homeless
+    = link_to "address", new_person_address_path(@person)
+  -else
+    = @person.display_address 
+    = link_to "show address", edit_address_path(@address)
+
 %p
   -#= link_to 'Edit Address', edit_person_address_path(@person)
 
   -#= render 'address_modal'
   %p
 
-  = render "identifiers/contacts_for"
+  = render "shared/contacts_for"
 
-  %p
-  
+ 
 %hr
 
 .container-fluid
@@ -70,6 +75,6 @@
 &nbsp;
 = link_to 'Back', people_path
 &nbsp;
-= link_to new_company_path, class: 'btn btn-secondary' do
+= link_to companies_path, class: 'btn btn-secondary' do
   %i.glyphicon.glyphicon-plus
   Companies

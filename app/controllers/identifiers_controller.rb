@@ -23,11 +23,19 @@ class IdentifiersController  < ApplicationController # < InheritedResources::Bas
     flash[:Notification] = "Reminder:  Identifiers (or Contacts) can only be created from companies or people finders."
   end
   #
-  # No direct operation is allowed, must be from an -able parent
+  # No direct operation is allowed, must be from an -able or belongs_to parent
   #
   def new
+    case 
+    when params.has_key?(:company_id)
+      @parent = Company.find(params[:person_id])
+      #@identifier = @parent.identifiers.new
+      
+    when params.has_key?(:person_id) then
+      @parent = Person.find(params[:person_id])
+      #@identifier = @parent.identifiers.new
+    end
     begin
-      @parent = Company.find(params[:company_id])
       @identifier = @parent.identifiers.new
       @identifier.save!
     rescue

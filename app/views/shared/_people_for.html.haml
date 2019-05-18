@@ -1,4 +1,4 @@
-
+%hr
 - if @company.nil?
   
   No affiliations yet.
@@ -6,6 +6,6 @@
 - else
   
   - @company.people.each do |p|
-    %p
+
     = p.display_name
     

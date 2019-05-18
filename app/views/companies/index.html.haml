@@ -18,7 +18,6 @@
     
       %table.table.table-striped
 
-
         %thead
           %tr
             %th{align: 'left'}Name
@@ -33,22 +32,16 @@
               %td{align: 'left', width: '32'}= company.name
 
               %td{align: 'left', width: "64"}= company.line_of_business
-               
-              - status, value = company.display_city 
-              -if status
-                %td= link_to "Please edit", edit_address_path(value)
+                 
+              - @addr = company.addresses.first
+              -if @addr.nil?
+                %td= link_to 'Please edit', edit_company_addresses_path(company, addr)
               -else
-                %td{align: 'left', width: '32'}= value
+                %td= @addr.city
               
               %td{align: 'left', width: '32'}
                 = link_to truncate(company.url, :length => 120), "http://#{company.url}"              
-              -#%td= company.display_credit_terms( company.credit_terms )
-              -#%td= company.credit_terms
               
-              -#%td= company.PO_required == true ? 'Yes' : 'No'
-              -#%td= company.active == true ? 'Active' : 'Inactive'
-              -#%td= company.bookkeeping_number
-            
               %td= link_to 'Show', company
               %td= link_to 'Edit', edit_company_path(company)
               %td= link_to 'Destroy', company, method: :delete, data: { confirm: "Are you sure you want to delete #{company.name}?" } 

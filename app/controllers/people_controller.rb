@@ -10,11 +10,10 @@ class PeopleController < ApplicationController
         @people = @parent.people
       when params.has_key?(:person_id) then
         @parent = Person.find(params[:person_id])
-        @people = @parent.identifiers  
+        @people = @parent.people  
       else
         @people = Person.all
     end
-
     @q = @people.ransack(params[:q])
     @people = @q.result.order(first_name: 'ASC').paginate(page: params[:page], per_page: 10 || params[:per_page])
   end
@@ -23,11 +22,13 @@ class PeopleController < ApplicationController
   # GET /people/1.json
   def show
     @address = @person.addresses.where("addressable_id = ? AND addressable_type = ?", @person.id, 'Person')
+    @identifiers = @person.identifiers
   end
 
   # GET /people/new
   def new
-    if params.has_key?('company_id')
+    byebug
+    if params.has_key?(:company_id)
       @company = Company.find(params[:company_id])
       @person = Person.new
       @person.company_id = params[:company_id]
@@ -54,7 +55,7 @@ class PeopleController < ApplicationController
   def create 
     @person = Person.new(person_params)
     respond_to do |format|
-      if @person.save
+      if @person.save!
         format.html { redirect_to @person, notice: 'Person was successfully created.' }
         format.json { render :show, status: :created, location: @person }
       else
@@ -103,7 +104,7 @@ private
     # Never trust parameters from the scary internet, only allow the white list through.
     def person_params
       params.require(:person).permit(:company_id, :first_name, :last_name, :title, :available, :available_on, :OK_to_contact, :active,
-           addresses_attributes: [ :addressable_id, :addressable_type, :street_address, :city, :state, :post_code, :map_reference, :longitude, :latitude] )
-      #    identifiers_attributes: [:identifiable_id, :identifiable_type, :name, :value, :rank] )
+           addresses_attributes: [ :addressable_id, :addressable_type, :street_address, :city, :state, :post_code, :map_reference, :longitude, :latitude],
+           identifiers_attributes: [:identifiable_id, :identifiable_type, :name, :value, :rank] )
     end
 end

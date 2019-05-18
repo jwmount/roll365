@@ -1,10 +1,36 @@
-- if @identifiers.nil?
-  
-  No contact info here, Mate
-  
-- else
-  
-  - @identifiers.each do |i|
+
+.container-fluid
+  %hr
+  .row
+    .col-sm-2
+      %em
+        Identifiers
+    .col-sm-2
+      %em
+        Priority
+    .col-sm-8
+      %em
+        Settings
+  .row
+    .col-sm-2
     %p
-    = i.rank.ordinalize + '--' + i.name + ': ' + i.value
+
+  - if @identifiers.empty?
+    No identifiers found.  
+    = link_to 'Identifiers', new_person_identifier_path(@person)
+  - else
+    - @identifiers.each do |i|
     
+      .row
+        .col-sm-2
+          = i.name + ':'
+        .col-sm-2
+          = i.rank.ordinalize
+        .col-sm-8
+          = i.value
+
+    .row
+      .col-sm-2
+      .col-sm-2
+      .col-sm-8
+        = link_to 'identifiers', root_path

@@ -81,9 +81,10 @@ class Person < ApplicationRecord
  # Address(es)
  #   
   def display_address
-    @address = Address.where("addressable_id = ? AND addressable_type = ?", self.id, 'Company').limit(1)
+    @address = Address.where("addressable_id = ? AND addressable_type = ?", self.id, 'Person').limit(1)
+    #@address = Address.where("addressable_id = ? AND addressable_type = ?", self.id, 'Company').limit(1)
     unless @address.blank?
-      address = "#{@address[0].street_address},  #{@address[0].city} #{@address[0].state} #{@address[0].post_code} "
+      address = "#{@address[0].street_address},  #{@address[0].city}, #{@address[0].state} #{@address[0].post_code} "
     else
       link_to "New Address", new_person_address_path(@person)
     end

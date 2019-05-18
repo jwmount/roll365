@@ -32,7 +32,7 @@
                 %td= person.company_name
                 %td= person.title
                 
-                %td= link_to 'Show', person
+                %td= link_to 'Show', person_path(person)
                 %td= link_to 'Edit', edit_person_path(person)
                 %td= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' }
 
