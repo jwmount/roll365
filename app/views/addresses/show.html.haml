@@ -1,14 +1,15 @@
 
 
-%h1 Address of: #{@address.addressable.name}
 
-%p
-  %b Rollodex type:
-  = link_to @address.addressable_type.pluralize, companies_path
-
-%hr
 
 .container-fluid
+
+  %h1 Address of: #{@address.addressable.display_name}
+  %p
+    %b Rollodex type:
+    = link_to @address.addressable_type.pluralize, addresses_path
+  %hr
+
   .row
     .col-sm-2
       %em
