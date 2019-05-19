@@ -45,7 +45,8 @@ class IdentifiersController  < ApplicationController # < InheritedResources::Bas
     begin
       @name = @identifier.identifiable.display_name
     rescue
-      @name = flash["Identifier has unknown display_name"]
+      @name = "Identifier has unknown display_name"
+      flash[:Warning] = @name
     end
   end
 

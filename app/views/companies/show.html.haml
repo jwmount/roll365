@@ -9,7 +9,8 @@
           = @company.line_of_business
         %p
           = @company.display_address
-          = link_to 'Edit Address...', edit_company_address_path(@company)
+          = link_to 'address...', company_addresses_path(@address) -# FAILS any other path
+
   
   
     = render "shared/contacts_for"
@@ -81,9 +82,9 @@
       License:
     .col-sm-10
       = @company.licensee ? 'Yes' : 'No'
-%p
-%nbsp
-%nbsp
-= link_to 'Companies', companies_path
+  %p
+  %nbsp
+  %nbsp
+  = link_to 'Companies', companies_path
 
 

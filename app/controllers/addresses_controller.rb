@@ -2,15 +2,21 @@ class AddressesController  < ApplicationController # < InheritedResources::Base
   # Error, Uninitialized Constant InheritedResources is the Cause of the Routing Error about that, bad punctuation in message is confusing
   
   def index
+    flash[:Notification] = "Reminder:  Addresses can only be created from Addressable resources, i.e. companies or people finders."
     @q = Address.ransack(params[:q])
     @addresses = @q.result.order(city: 'ASC').paginate(page: params[:page], per_page: 10 || params[:per_page])
-    flash[:Notification] = "Reminder:  Addresses can only be created from Addressable resources, i.e. companies or people finders."
   end
 
-  
   def edit
-    @address = Address.find(params[:id])
-    @company = @address.addressable
+    @address = Address.where("addressable_type = ? AND addressable_id = ?", 'Company', params[:id]).take
+    unless @address.nil?
+      @company = Company.where("id = ?", @address.addressable_id ).take
+    end
+    @address = Address.where("addressable_type = ? AND addressable_id = ?", 'Person', params[:id]).take
+    unless @address.nil?
+      @person = Person.where("id = ?", @address.addressable_id ).take
+    end
+    
   end
   
   #
@@ -23,7 +29,6 @@ class AddressesController  < ApplicationController # < InheritedResources::Base
       @address.save!
       redirect_to address_path(@address)
     else
-      byebug
       @company = Company.find(params[:format])
       @address = @company.addresses.first
     end
@@ -67,15 +72,6 @@ class AddressesController  < ApplicationController # < InheritedResources::Base
   private  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -- - -
 
 #
-  # ncaddr - address new or edit, return to proper controller type based on params[:format]
-  # the params[:format] key seems wrong, works tho
-  #
-  def DEPRECATED_ncaddr
-    redirect_to companies_path if params[:format] == 'Company'
-    redirect_to initializer_path if params[:format] == 'Initializer'
-    redirect_to people_path if params[:format] == 'Person'
-  end
-
   def address_params
     params.require(:address).permit( :addressable_id, :addressable_type, :street_address, :city, :state, :post_code, :map_reference, :longitude, :latitude)
   end

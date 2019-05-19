@@ -8,9 +8,9 @@ class Person < ApplicationRecord
   #
   has_many  :addresses, 
             :as           => :addressable, 
-            :autosave     => true,
-            :inverse_of   => :addressable
-  #validates_associated :addresses
+            :autosave     => true
+  validates_associated :addresses
+  
   accepts_nested_attributes_for :addresses, reject_if: lambda {|attributes| attributes['kind'].blank?}
 
   has_many :identifiers, 
@@ -81,12 +81,11 @@ class Person < ApplicationRecord
  # Address(es)
  #   
   def display_address
-    @address = Address.where("addressable_id = ? AND addressable_type = ?", self.id, 'Person').limit(1)
-    #@address = Address.where("addressable_id = ? AND addressable_type = ?", self.id, 'Company').limit(1)
-    unless @address.blank?
-      address = "#{@address[0].street_address},  #{@address[0].city}, #{@address[0].state} #{@address[0].post_code} "
+    @address = Address.where("addressable_id = ? AND addressable_type = ?", self.id, 'Person').limit(1).take
+    if @address.valid?
+       "#{@address.street_address},  #{@address.city}, #{@address.state} #{@address.post_code} "
     else
-      link_to "New Address", new_person_address_path(@person)
+      'No Address found'
     end
   end
 

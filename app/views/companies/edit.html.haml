@@ -1,6 +1,8 @@
 %h1
   = @company.name
 = @company.display_address
+= link_to "address...", addresses_path(@company)
+
 %hr/
 = render 'form', company: @company
 &nbsp;

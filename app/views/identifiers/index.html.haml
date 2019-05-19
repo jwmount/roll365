@@ -31,7 +31,8 @@
           - @identifiers.each do |iden|
             %tr
               %td= iden.identifiable_type
-              %td{align: 'left', width: '224'}= link_to iden.identifiable.name, company_path(iden.identifiable_id)
+              -# use path to take user to company as all persons have an affiliation
+              %td{align: 'left', width: '224'}= link_to iden.identifiable.display_name, company_path(iden.identifiable_id)
               %td= iden.name
               %td{align: 'left', width: '224'}= iden.value
               %td{align: 'left', width: "64"}= iden.rank.ordinalize

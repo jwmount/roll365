@@ -1,5 +1,4 @@
 class CompaniesController < ApplicationController
-   before_action :set_company, only: [:show, :edit, :update, :destroy]
 
   # GET /companies
   # GET /companies.json
@@ -20,7 +19,11 @@ class CompaniesController < ApplicationController
     rescue
       flash[:error] = 'No identifiers found.'
     end 
-    @address = Address.where("addressable_id = ? AND addressable_type = ?", @company.id, 'Company').limit(1)
+    begin
+      @address = Address.where("addressable_id = ? AND addressable_type = ?", @company.id, 'Company').limit(1)
+    rescue
+      flash[:error] = "No address found."
+    end
   end
 
 

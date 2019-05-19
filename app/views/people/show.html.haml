@@ -1,37 +1,35 @@
+.container-fluid
+  %h1
+    = @person.display_name
+    ,
+    = @person.company.name
 
-%h1
-  = @person.display_name
-  ,
-  = @person.company.name
+  %p
+    -if @person.addresses.empty?
+      This person is homeless!
+      = link_to "person_address...", person_address_path(@person)
+    -else
+      = @person.display_address 
+      = link_to "address.4..", edit_person_address_path(@address)
 
-%p
-  -if @person.addresses.empty?
-    Minnie is homeless
-    = link_to "address", new_person_address_path(@person)
-  -else
-    = @person.display_address 
-    = link_to "show address", edit_address_path(@address)
+  %p
+    -#= link_to 'Edit Address', edit_person_address_path(@person)
 
-%p
-  -#= link_to 'Edit Address', edit_person_address_path(@person)
-
-  -#= render 'address_modal'
+    -#= render 'address_modal'
   %p
 
   = render "shared/contacts_for"
 
- 
-%hr
+  %hr
 
-.container-fluid
-  .row
-    .col-sm-2
-      %em
-        Attributes
-    .col-sm-10
-      %em
-        Settings
-  %p
+    .row
+      .col-sm-2
+        %em
+          Attributes
+      .col-sm-10
+        %em
+          Settings
+    %p
   .row      
     .col-sm-2
       First name:
@@ -70,11 +68,12 @@
       Active:
     .col-sm-10
       = @person.active ? 'Yes' : 'No'
-%p
-= link_to 'Edit', edit_person_path(@person)
-&nbsp;
-= link_to 'Back', people_path
-&nbsp;
-= link_to companies_path, class: 'btn btn-secondary' do
-  %i.glyphicon.glyphicon-plus
-  Companies
+  %p
+  = link_to 'Edit', edit_person_path(@person)
+  &nbsp;
+  = link_to 'Back', people_path
+  
+  &nbsp;
+  = link_to companies_path, class: 'btn btn-secondary' do
+    %i.glyphicon.glyphicon-plus
+    Companies

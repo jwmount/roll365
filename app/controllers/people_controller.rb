@@ -27,7 +27,6 @@ class PeopleController < ApplicationController
 
   # GET /people/new
   def new
-    byebug
     if params.has_key?(:company_id)
       @company = Company.find(params[:company_id])
       @person = Person.new

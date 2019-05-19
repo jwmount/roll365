@@ -1,9 +1,10 @@
 %h1 Edit Person
 
-= @person.first_name
-= @person.last_name
- 
-= @person.company_name
+%h3
+  = @person.first_name
+  = @person.last_name
+  of 
+  = @person.company_name
 %hr/
 
 = render 'form', locals: {person: @person}
