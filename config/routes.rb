@@ -37,8 +37,12 @@ Rails.application.routes.draw do
     patch 'thing_totals' => 'companies#totals'
   end 
   
-  # Resource paths
-  
+  # Resource paths DEFINE BEFORE NESTING
+
+ resources :companies
+ resources :addresses #, only: [:show, :edit, :update, :destroy]
+ resources :identifiers#, only: [:show, :edit, :update, :destroy]  
+ 
   # try shallow_path option, reference 2.7.2 Shallow Nesting, Rails Routing from the Outside In, Guides
   # ... only build routes with the minimal amount of information to uniquely identify the resource...
   resources :companies do
@@ -46,9 +50,6 @@ Rails.application.routes.draw do
     resources :identifiers, only: [:index, :new, :create]
     resources :people
   end
-  resources :companies
-  resources :addresses, only: [:show, :edit, :update, :destroy]
-  resources :identifiers, only: [:show, :edit, :update, :destroy]  
   
   resources :people do
     resources :addresses, only: [:index, :show, :edit, :new, :create]
@@ -69,7 +70,7 @@ Rails.application.routes.draw do
   resources :identifiers
  
 
-=begin  
+=begin
   scope shallow_prefix: "organizations" do
     resources :companies do
       resources :addresses, shallow: true

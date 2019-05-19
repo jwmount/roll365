@@ -9,9 +9,7 @@
           = @company.line_of_business
         %p
           = @company.display_address
-          = link_to 'address...', company_addresses_path(@address) -# FAILS any other path
-
-  
+          = link_to 'address...', company_addresses_path(@address)
   
     = render "shared/contacts_for"
 
