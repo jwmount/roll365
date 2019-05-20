@@ -21,7 +21,8 @@ class PeopleController < ApplicationController
   # GET /people/1
   # GET /people/1.json
   def show
-    @address = @person.addresses.where("addressable_id = ? AND addressable_type = ?", @person.id, 'Person')
+    @person = Person.find(params[:id])
+    @address = @person.addresses.take
     @identifiers = @person.identifiers
   end
 
@@ -47,6 +48,7 @@ class PeopleController < ApplicationController
   # GET /people/1/edit
   # REMEMBER, dependents are created at parent create time! ! !
   def edit
+    @person = Person.find(params[:id])
   end
 
   # POST /people
@@ -67,6 +69,7 @@ class PeopleController < ApplicationController
   # PATCH/PUT /people/1
   # PATCH/PUT /people/1.json
   def update
+    @person = Person.find(params[:id])    
     respond_to do |format|
       if @person.update(person_params)
         format.html { redirect_to @person, notice: 'Person was successfully updated.' }
@@ -91,16 +94,17 @@ class PeopleController < ApplicationController
 private
 
     # Use callbacks to share common setup or constraints between actions.
-    # MEMBER of collection ust already exist or obvioysly thsi will not work.
+    # MEMBER of collection must already exist or obvioysly thsi will not work.
     def set_person
       begin
-        @person = Person.find(params[:id])
+        @person = Person.find(params[:id], person_params)
       rescue
-        flash[:warning] = "@person was not found in people#set_person."
+        flash[:Error] = "Person requested was not found."
       end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
+    # This method seems to work erratically
     def person_params
       params.require(:person).permit(:company_id, :first_name, :last_name, :title, :available, :available_on, :OK_to_contact, :active,
            addresses_attributes: [ :addressable_id, :addressable_type, :street_address, :city, :state, :post_code, :map_reference, :longitude, :latitude],

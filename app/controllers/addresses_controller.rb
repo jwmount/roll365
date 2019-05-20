@@ -7,16 +7,20 @@ class AddressesController  < ApplicationController # < InheritedResources::Base
     @addresses = @q.result.order(city: 'ASC').paginate(page: params[:page], per_page: 10 || params[:per_page])
   end
 
+  # get @address and @parent
   def edit
-    @address = Address.where("addressable_type = ? AND addressable_id = ?", 'Company', params[:id]).take
-    unless @address.nil?
-      @company = Company.where("id = ?", @address.addressable_id ).take
+    begin
+      @address = Address.find(params[:id])
+    rescue
+      flash[:Error] = "Address was not found using #{params[:id]}.  See your Sys Admin.}"
+      redirect_to addresses_path
     end
-    @address = Address.where("addressable_type = ? AND addressable_id = ?", 'Person', params[:id]).take
-    unless @address.nil?
-      @person = Person.where("id = ?", @address.addressable_id ).take
+    begin
+      @parent = @address.addressable    
+    rescue
+      flash[:Error] = "Parent, a.k.a. Addressable, record not found for #{params.map}. "
+      redirect_to addresses_path
     end
-    
   end
   
   #
