@@ -53,7 +53,7 @@ class AddressesController  < ApplicationController # < InheritedResources::Base
     @address = Address.find(params[:id])
     respond_to do |format|
       if @address.update!(address_params)
-        format.html { redirect_to @address, notice: "{@address} has been updated." }
+        format.html { redirect_to @address, notice: "Address has been updated." }
         format.json { render :show, status: :ok, location: @address }
       else
         format.html { render :edit }
@@ -68,7 +68,7 @@ class AddressesController  < ApplicationController # < InheritedResources::Base
     @address = Address.find(params[:id])
     @address.destroy
     respond_to do |format|
-      format.html { redirect_to addresses_path, notice: "#{@address} has been deleted." }
+      format.html { redirect_to addresses_path, notice: "Address has been deleted." }
       format.json { head :no_content }
     end
   end
