@@ -1,32 +1,48 @@
-%h1 Listing conditions
+.container-fluid
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Verbiage
-      %th Indication
-      %th Status
-      %th Approved
-      %th Change approved by
-      %th Change approved at
-      %th Show
-      %th Edit
-      %th Delete
+  %h1 Finder
 
-  %tbody
-    - @conditions.each do |condition|
-      %tr
-        %td= condition.name
-        %td= condition.verbiage
-        %td= condition.indication
-        %td= condition.status
-        %td= condition.approved
-        %td= condition.change_approved_by
-        %td= condition.change_approved_at
-        %td= link_to 'Show', condition
-        %td= link_to 'Edit', edit_condition_path(condition)
-        %td= link_to 'Delete', condition, method: :delete, data: { confirm: 'Are you sure?' }
+  .row
+
+    .col-2
+
+      = render "search_panel", locals: {q: @q}
+          
+
+    .col-6
+      %h3 Conditions
+      = @conditions.count 
+      listed
+      %hr
+    
+      %table.table.table-striped
+
+        %thead
+          %tr
+            %th{align: 'left'} Name
+            %th{align: 'left', valign: 'top', width: '224'}Verbiage
+            %th{align: 'left', width: '32'}Indication
+            %th{align: 'left', width: '32'}Status
+            %th{align: 'left', width: '32'}Approved
+            %th{align: 'left', width: '32'}By
+            %th{align: 'left', width: '32'}When
+            %th{align: 'left', width: '32'}Show
+            %th{align: 'left', width: '32'}Edit
+            %th{align: 'left', width: '32'}Delete
+            
+        %tbody
+          - @conditions.each do |f|
+            %tr
+            %td= f.name
+            %td{align: 'left', width: 224}= f.verbiage
+            %td= f.indication
+            %td= f.status
+            %td= f.approved
+            %td= f.change_approved_by
+            %td= f.change_approved_at
+            %td= link_to 'Show', f
+            %td= link_to 'Edit', edit_condition_path(f)
+            %td= link_to 'Delete', f, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 
