@@ -97,7 +97,7 @@ private
     # MEMBER of collection must already exist or obvioysly thsi will not work.
     def set_person
       begin
-        @person = Person.find(params[:id], person_params)
+        @person = Person.find(params[:id])
       rescue
         flash[:Error] = "Person requested was not found."
       end

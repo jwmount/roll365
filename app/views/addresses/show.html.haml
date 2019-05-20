@@ -2,7 +2,10 @@
 
 .container-fluid
 
-  %h1 Address of: #{@address.addressable.display_name}
+  %h1 
+    Address
+    @address.addressable.display_name
+  
   %p
     %b Rollodex type:
     = link_to @address.addressable_type.pluralize, addresses_path
@@ -58,15 +61,13 @@
     .col-sm-10
       = @address.latitude
 %p
--#= link_to 'Edit Address', edit_address_path(@address)
--#= link_to "Return", @address.addressable
 
-= link_to edit_address_path(@address), class: 'btn btn-primarary' do
+= link_to edit_address_path(@address), class: 'btn btn-secondary' do
   %i.glyphicon.glyphicon-plus
-    Edit Address
+    Edit
 %nbsp
 %nbsp
 = link_to @address.addressable, class: 'btn btn-secondary' do
   %i.glyphicon.glyphicon-plus
-    Return
+    Go Back
       

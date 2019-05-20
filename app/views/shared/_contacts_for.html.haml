@@ -1,36 +1,41 @@
 
 .container-fluid
-  %hr
+
+%h5 Company Contacts
+%hr
   .row
-    .col-sm-2
-      %em
-        Identifiers
     .col-sm-2
       %em
         Priority
+    .col-sm-2
+      %em
+        Identifiers  
     .col-sm-8
       %em
-        Settings
+        Value
+  
   .row
-    .col-sm-2
+    .col-sm-5
     %p
 
   - if @identifiers.empty?
     No identifiers found.  
     = link_to 'Identifiers', new_person_identifier_path(@person)
   - else
+
+
     - @identifiers.each do |i|
     
       .row
-        .col-sm-2
-          = i.name + ':'
+
         .col-sm-2
           = i.rank.ordinalize
-        .col-sm-8
+        .col-sm-2
+          = i.name + ':'          
+        .col-sm-2
           = i.value
-
-    .row
-      .col-sm-2
-      .col-sm-2
-      .col-sm-8
-        = link_to 'identifiers', root_path
+        .col-sm-6
+          = link_to 'edit', people_identifier_path(i)
+      
+     
+      

@@ -1,11 +1,13 @@
 %hr
 - if @company.nil?
   
-  No affiliations yet.
+  No affiliations found.
   
 - else
   
   - @company.people.each do |p|
-
-    = p.display_name
-    
+    .row
+      .col-sm-10
+        = p.display_name
+      .col-sm-2
+        = link_to "show", root_path
