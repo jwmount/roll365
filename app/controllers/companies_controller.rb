@@ -24,6 +24,11 @@ class CompaniesController < ApplicationController
     rescue
       flash[:error] = "No address found."
     end
+    begin
+      @people = @company.people
+    rescue
+      flash[:error] = "No people are affiliated."
+    end
   end
 
 

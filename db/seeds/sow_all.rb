@@ -30,6 +30,7 @@ companies_list = [
     },
 =end 
 # COMPANIES IN MARKET AREA
+companies_list = 
   { "company"    => { name: "1st Logistics", line_of_business: "Over-the-road transportation services", url: "www.truckcompaniesin.com/dot/1175905/"},
     "address"    => { street_address: "2001 Meyer Way", city: "Fairfield", state: "CA", post_code: "94533" },
     "person"     => { last_name: "t.b.d."},
@@ -43,8 +44,7 @@ companies_list = [
   { "company"    => { name: "Blue Line Transfer", line_of_business: "Cartage, waste removal & recycling service", url: ""},
     "address"    => { street_address: "500 E. James Court", city: "South San Francisco", state: "CA", post_code: "94080"},
     "person"     => { last_name: "t.b.d."},
-    "identifier" => { name: "Main Office", value: "t.b.d."},
-    "tip"        => { name: "Blue Line Transfer", fee: 15.00, fire_ant_risk_level: "none"}
+    "identifier" => { name: "Main Office", value: "t.b.d."}
     }, 
   { "company"    => { name: "Lawson Drayage, Inc.", line_of_business: "Machinery Moving, Rigging, & Heavy Transportation for any Industry",
                       url: "lawsoninc.com"},
@@ -151,22 +151,22 @@ companies_list = [
   { "company"    => { name: "Shames Construction Co. Ltd.", line_of_business: "Commercial general contractor", url: "www.shames.com"},
     "address"    => { street_address: "5826 Brisa St.", city: "Livermore", state: "CA", post_code: "94550"},
     "person"     => { first_name: "Carolyn", last_name: "Shames", title: "President and CEO"},
-    "identifier" => { name: "Main Number", value: "925 606-3000"}
+    "identifier" => { name: "Main Number", value: "925 606-3000", rank: 1}
   },
   { "company"    => { name: "James E. Roberts - Obayashi Corp.", line_of_business: "General construction", url: "www.robertsobayashi.com"},
     "address"    => { street_address: "20 Oak Court", city: "Danville", state: "CA", post_code: "94526"},
     "person"     => { first_name: "Scott", last_name: "Smith"},
-    "identifier" => { name: "Main Number", value: "925 820-0600"}
+    "identifier" => { name: "Main Number", value: "925 820-0600", rank: 1}
     },
   { "company"    => { name: "Engineering/Remediation Resources Group Inc.", line_of_business: "Environmental construction and engineering", url: "www.errg.com"},
     "address"    => { street_address: "4585 Pacheco Blvd., Suite 200", city: "Martinez", state: "CA", post_code: "94553"},
     "person"     => { first_name: "Cynthia", last_name: "Liu"},
-    "identifier" => { name: "Main Number", value: "925 969-0750"}
+    "identifier" => { name: "Main Number", value: "925 969-0750", rank: 1}
   },
   { "company"    => { name: "Paradigm General Contractors", line_of_business: "General contractor", url: "www.paradigmgc.com"},
     "address"    => { street_address: "1017 MacDonald Ave.", city: "Richmond", state: "CA", post_code: "94801"},
     "person"     => { first_name: "Karla", last_name: "Deshon"},
-    "identifier" => { name: "Main Number", value: "510-478-1121"}
+    "identifier" => { name: "Main Number", value: "510-478-1121", rank: 1}
   }
 ]
 
@@ -174,299 +174,64 @@ companies_list = [
 # Create Rep once licensee company exists
 #
 companies_list.each do |model| 
-  @company = Company.find_or_create_by( model["company"] )
-  @company.save
-  @company.addresses.find_or_create_by( model["address"] )
-  model["person"]["title"] = "Rep" if @company.licensee
-  @company.people.find_or_create_by( model["person"] )
-  @company.identifiers.find_or_create_by( model["identifier"] )
-  @company.tips.find_or_create_by( model["tip"] ) unless model["tip"].nil?
- puts "#{model} -- CREATED companies from companies_list"
-end
+  
+  @company = Company.find_or_initialize_by( model["company"] )
 
-#
-# Licensee rep
-#
-
-
-demo_list = [
-  { "company"    => { name: "Demo Company", line_of_business: "General resource contractor", url: "www.wsj.com"},
-    "address"    => { street_address: "9 Alder Court", city: "Fairfax", state: "CA", post_code: "94935"},
-    "person"     => { first_name: "Demo", last_name: "Demosthenes"},
-    "identifier" => { name: "Main Number", value: "415-478-1121"},
-    "equipment"  => { name: "Truck" },
-#    "project"    => { name: 'DemoProject', project_start_on: Date.today },
-#    "projAddr"   => { street_address: "1017 MacDonald Ave.", city: "Richmond", state: "CA", post_code: "94801"},
-#    "quote"      => { name: "Q001", expected_start: Date.today + 1 },
-#    "solution"   => { name: "S01" },
-#    "job"        => { name: "JDemo", start_on: Date.today + 1, finished_on: Date.today + 2  },
-#    "schedule"   => { day: Date.today + 1 },
-#    "engagement" => {}
-  }
-]
-
-demo_list.each do |model| 
-
-  @company = Company.find_or_create_by( model["company"] )
-  @company.addresses.find_or_create_by( model["address"] )
-  @company.people.find_or_create_by( model["person"] )
-  @company.equipment.find_or_create_by( model["equipment"])
-
-#  @project = @company.projects.new( model["project"])
-#  @project.rep_id = 1
-#  @project.save!
-
-
- # @project.addresses.find_or_create_by( model["projAddr"])
-#  @projmgr = @company.people.first
-
-# @quote = @project.quotes.new( model["quote"])
-#  @quote.quote_to_id = @projmgr.id
-#  @quote.rep_id = 1
-#  @quote.expected_start = Date.today + 1
-#  @quote.fire_ants_verified_by = 1
- # @quote.save! 
-
-# STOP HERE, NESTING IS OUT OF WHACK
-#  @solution = @quote.solutions.new( model ["solution"] )
-#  @solution.material_id = 1
-#  @solution.equipment_name = "Truck"
-#  @solution.save!
-
-#  @job = @solution.jobs.create!( model ["job"] )
-#  @schedule = @job.schedules.create!( model ["schedule"] )
-
-#  @engagement = @schedule.engagements.new( model ["engagement"] )
-#  @engagement.person_id = 1
-#  @engagement.save!
-
-#  @docket = @engagement.dockets.create!( person_id: 1, number: "00001")
-end
-
-# [TODO] Pick up personal identifiers not captured so far.  These people exist already.
-# Prior existences, really?
-
-personal_identifiers_list = [
-  {first_name: "Kelly", last_name: "Kolander", name: "email", value: "pat@osisoft.com"},
-  {first_name: "Ben", last_name: "Rodrigues Jr.", name: "email", value: "jpetersen@petersendean.com"},
-  {first_name: "Michael", last_name: "Hester", name: "email", value: "pres@mandhcorp.com"},
-  {first_name: "Cynthia", last_name: "Liu", name: "email", value: "cindy.liu@errg.com"},
-  {first_name: "Karla", last_name: "Deshon", name: "email", value: "karla@paradigmgc.com"}
-]
-personal_identifiers_list.each do |model|
- # puts
-  @people = Person.where( "first_name = ? AND last_name = ?", model[:first_name], model[:last_name] )
-  puts "*-*-*-*-* WARNING:  Person not found: #{model}" if @people.empty?
-  @people.each do |person| 
-    person.identifiers.create!( name: model[:name], value: model[:value], rank: person.identifiers.count + 1 )
-    puts "#{@person} -- CREATED"
-  end
-end
-
-
-
-#
-# Construction Projects in the East Bay from Business Times Lists published December 6-12, 2013
-# Equipment, employee names not known as not in BT List
-#
-#def rep
-#  rep ||= Person.where("title = ?", "Rep")[0].id
-#end
-=begin
-projects_list = [
- { "company"     => { name: "McCarthy Building Cos. Inc.", line_of_business: "Construction", url: "www.mccarthy.com"},
-    "address"    => { street_address: "343 Sansome St., 14th Floor", city: "San Francisco", state: "CA", post_code: "94104"},
-    "identifier" => { name: "Main Number", value: "415 397-5151"},
-    "project"    => { name: 'Kaiser Hospital Replacement Project Phase II', 
-                      rep_id: rep, 
-                      project_start_on: "01-04-2010",
-                      description: "879,000 square foot hospital and medical office building."},
-    "projAddr"   => { street_address: "280 W. MacArthur Blvd.", city: "Oakland", state: "CA", post_code: "94611"}
-  },
- { "company"     => { name: "Rudolph and Sletten Inc.", line_of_business: "Construction", url: "www.rsconstruction.com"},
-    "address"    => { street_address: "1600 Seaport Blvd., Ste. 350", city: "Redwood City", state: "CA", post_code: "94063"},
-    "identifier" => { name: "Main Number", value: "650 216-3600"},
-    "project"    => { name: "Kaiser Permanente San Leandro Medical Center", rep_id: rep, project_start_on: "01-01-2010",
-                      description: "Hospital with 264 acute care beds."},
-    "projAddr"   => { street_address: "1755 Fairway Drive", city: "San Leandro", state: "CA", post_code: "94577"}
-  },
- { "company"     => { name: "Clark Construction Group - California LLP", line_of_business: "Construction", url: "www.clarkconstruction.com"},
-    "address"    => { street_address: "7677 Oakport St., Ste. 1040", city: "Oakland", state: "CA", post_code: "94621"},
-    "identifier" => { name: "Main Number", value: "510 430-6000"},
-    "project"    => { name: "Highland Hospital - Alameda Country Medical Center", rep_id: rep, project_start_on: "01-01-2010",
-                      description: "169-bed acute care tower, 78,000-square-foot satellite building."},
-    "projAddr"   => { street_address: "1411 E. 32st St.", city: "Oakland", state: "CA", post_code: "94602"}
-  },
- { "company"     => { name: "Flatiron Construction Corp.", line_of_business: "Construction", url: "www.flatironcorp.com"},
-    "address"    => { street_address: "2100 Goodyear Road", city: "Benicia", state: "CA", post_code: "94510"},
-    "identifier" => { name: "Main Number", value: "707 742-6000"},
-    "project"    => { name: "BART Oakland Airport Connector", rep_id: rep, project_start_on: "11-11-2013",
-                      description: "3.2 mile connection between Coliseum and airport."},
-    "projAddr"   => { street_address: "1100 Airport Drive", city: "Oakland", state: "CA", post_code: "94621"}
-  },
- { "company"     => { name: "Webcor Builders", line_of_business: "Construction", url: "www.webcor.com"},
-    "address"    => { street_address: "207 King St., Ste. 300", city: "San Francisco", state: "CA", post_code: "94107"},
-    "identifier" => { name: "Main Number", value: "415 978-1000"},
-    "project"    => { name: "California Memorial Stadium Seismic Improvements", rep_id: rep, project_start_on: "06-10-2013",
-                      description: "Reconstruction and revovation of historic stadium"},
-    "projAddr"   => { street_address: "Rimway Road and Canyon Road", city: "Berkeley", state: "CA", post_code: "94704"}
-  },
- { "company"     => { name: "DPR Construction", line_of_business: "Construction", url: "www.dpr.com"},
-    "address"    => { street_address: "1450-Veterans Blvd.", city: "Redwood City", state: "CA", post_code: "94063"},
-    "identifier" => { name: "Main Number", value: "650 474-1450"},
-    "project"    => { name: "Alta Bates Oakland Campus, Patient Care Pavilion", rep_id: rep, project_start_on: "08-10-2013",
-                      description: "250,000-square-foot, 13-story hospital including 238 beds."},
-    "projAddr"   => { street_address: "350 Hawthorne Ave.", city: "Oakland", state: "CA", post_code: "94609"}
-  },
- { "company"     => { name: "Top Grade Construction Inc.", line_of_business: "Construction", url: "www.topgradeconstruction.com"},
-    "address"    => { street_address: "50 Contractors St.", city: "Livermore", state: "CA", post_code: "94551"},
-    "identifier" => { name: "Main Number", value: "925 449-5764"},
-    "project"    => { name: "Stoneridge Creek", rep_id: rep, project_start_on: "01-01-2010",
-                      description: "Senior living community with 479 units."},
-    "projAddr"   => { street_address: "5698 Stoneridge Drive", city: "Pleasanton", state: "CA", post_code: "94588"}
-  },
- { "company"     => { name: "S.D. Deacon Corp.", line_of_business: "Construction", url: "www.deacon.com"},
-    "address"    => { street_address: "7745 Greenback Lane, Ste. 250", city: "Citrus Heights", state: "CA", post_code: "95610"},
-    "identifier" => { name: "Main Number", value: "916 969-0900"},
-    "project"    => { name: "Paragon Outlet Mall", rep_id: rep, 
-                      project_start_on: "08-11-2013",
-                      description: "543,000 square foot outlet mall."},
-    "projAddr"   => { street_address: "El Charro Road and Interstate 580", city: "Livermore", state: "CA", post_code: "94588"}
-  },
- { "company"     => { name: "Skanska", line_of_business: "Construction", url: "www.skanska.com"},
-    "address"    => { street_address: "1999 Harrison St.", city: "Oakland", state: "CA", post_code: "94612"},
-    "identifier" => { name: "Main Number", value: "510 285-1800"},
-    "project"    => { name: "BART Warm Springs Extension Phase I", rep_id: rep, 
-                      project_start_on: "08-09-2013",
-                      description: "New alignment for BART extension to Warm Springs"},
-    "projAddr"   => { street_address: "1320 Stevenson Blvd.", city: "Fremont", state: "CA", post_code: "94538"}
-  },
- { "company"     => { name: "Turner Construction Co.", line_of_business: "Construction", url: "www.turnerconstruction.com/oakland"},
-    "address"    => { street_address: "1111 Broadway, Ste. 2100", city: "Oakland", state: "CA", post_code: "94607"},
-    "identifier" => { name: "Main Number", value: "510 267-8100"},
-    "project"    => { name: "Oakland International Airport Terminal 1", rep_id: rep, 
-                      project_start_on: "12-07-2013",
-                      description: "300,000 square foot renovation including central utility plant."},
-    "projAddr"   => { street_address: "1100 Airport Drive", city: "Oakland", state: "CA", post_code: "94621"}
-  },
- { "company"     => { name: "Rudolph and Sletten Inc.", line_of_business: "Construction", url: ""},
-    "address"    => { street_address: "1111 Broadway, Ste. 2100", city: "Oakland", state: "CA", post_code: "94607"},
-    "identifier" => { name: "Main Number", value: "510 267-8100"},
-    "project"    => { name: "UC Berkeley Energy Biosciences Building", rep_id: rep, 
-                      project_start_on: "03-10-2013",
-                      description: "112,600 square foot multi-story lab and office building."},
-    "projAddr"   => { street_address: "2151 Berkeley Way", city: "Berkeley", state: "CA", post_code: "94709"}
-  },
- { "company"     => { name: "SCM Construction Management Services Inc.", line_of_business: "Construction", url: "www.scmcms.com"},
-    "address"    => { street_address: "1920 Standiford Ave., Ste 1", city: "Modesto", state: "CA", post_code: "95350"},
-    "identifier" => { name: "Main Number", value: "209 338-0157"},
-    "project"    => { name: "Linc (formerly West Dublin Apartments)", rep_id: rep, 
-                      project_start_on: "01-01-2011",
-                      description: "309-unit transit-oriented apartment complex."},
-    "projAddr"   => { street_address: "6600 Golden Gate Drive", city: "Dublin", state: "CA", post_code: "94588"}
-  },
- { "company"     => { name: "Vance Brown Builders", line_of_business: "Construction", url: "www.vancebrown.com"},
-    "address"    => { street_address: "3197 Park Blvd.,", city: "Palo Alto", state: "CA", post_code: "94306"},
-    "identifier" => { name: "Main Number", value: "650 849-9900"},
-    "project"    => { name: "Martinez Commons", rep_id: rep, 
-                      project_start_on: "01-09-2010",
-                      description: "416-bed student dormitory."},
-    "projAddr"   => { street_address: "2520 Channing Way", city: "Berkeley", state: "CA", post_code: "94720"}
-  },
- { "company"     => { name: "AvalonBay Communities Inc.", line_of_business: "Construction", url: "www.avalonbay.com"},
-    "address"    => { street_address: "455 Market St., Ste 1650", city: "San Francisco", state: "CA", post_code: "94105"},
-    "identifier" => { name: "Main Number", value: "415 284-9087"},
-    "project"    => { name: "Avalon Dublin Station II", rep_id: rep, 
-                      project_start_on: "04-01-2012",
-                      description: "255 units, 4-story wooden frame structure."},
-    "projAddr"   => { street_address: "5200 Iron Horse Pkwy.", city: "Dublin", state: "CA", post_code: "94568"}
-  },
- { "company"     => { name: "O.C. Jones & Sons Inc." },
-    "project"    => { name: "State Route 4 Widening-Loverige Interchange", rep_id: rep, 
-                      project_start_on: "09-01-2010",
-                      description: "Freeway bridge widenings and adjacent ramps."},
-    "projAddr"   => { street_address: "Hwy. 4, Loveridge Road", city: "Pittsburg", state: "CA", post_code: "94565"}
-  },
- { "company"     => { name: "Webcor Builders" },
-    "project"    => { name: "Lawrence Berkeley National Laboratory Phase II", rep_id: rep, 
-                      project_start_on: "03-01-2010",
-                      description: "43,000-square-foot construction and modernization."},
-    "projAddr"   => { street_address: "One Cyclotron Road", city: "Berkeley", state: "CA", post_code: "94720"}
-  },
- { "company"     => { name: "SCM Construction Management Services Inc." },
-    "project"    => { name: "Public Market Emeryville Apartments", rep_id: rep, 
-                      project_start_on: "05-01-2012",
-                      description: "190-unit Apartment complex."},
-    "projAddr"   => { street_address: "5959 Shellmound St.", city: "Emeryville", state: "CA", post_code: "94608"}
-  },
- { "company"     => { name: "Balfour Beatty", line_of_business: "Construction", url: "www.howardswright.com" },
-    "address"    => { street_address: "5858 Horton St., Ste. 170", city: "Emeryville", state: "CA", post_code: "94608"},
-    "identifier" => { name: "Main Number", value: "510 903-2054"},
-    "project"    => { name: "MacArthur Transit Village Phase I", rep_id: rep, 
-                      project_start_on: "07-01-2012",
-                      description: "Infrastructure and 170,333-square-foot parking garage." },
-    "projAddr"   => { street_address: "550 W. MacArthur Blvd.", city: "Oakland", state: "CA", post_code: "94609" }
-  },
- { "company"     => { name: "Top Grade Construction Inc." },
-    "project"    => { name: "Route 238 Corridor Improvement", rep_id: rep, 
-                      project_start_on: "09-01-2010",
-                      description: "Loop system, landscaping and spot widening."},
-    "projAddr"   => { street_address: "Mission Blvd.", city: "Hayward", state: "CA", post_code: "94536"}
-  },
- { "company"     => { name: "Johnstone Moyer Inc.", line_of_business: "Construction", url: "www.johnstonemoyer.com" },
-    "address"    => { street_address: "1720 S. Amphlett Blvd., Ste. 250", city: "San Mateo", state: "CA", post_code: "94402"},
-    "identifier" => { name: "Main Number", value: "650 570-6161"},
-    "project"    => { name: "Brio", rep_id: rep, 
-                      project_start_on: "10-01-2012",
-                      description: "300-unit, 5-acre apartment complex."},
-    "projAddr"   => { street_address: "141 N. Civic Drive", city: "Walnut Creek", state: "CA", post_code: "94596"}
-  },
- { "company"     => { name: "J.R. Roberts/Deacon Inc.", line_of_business: "Construction", url: "www.jrrobertsdeacon.com" },
-    "address"    => { street_address: "6140 Stoneridge Mall Road, Ste. 370", city: "unknown", state: "CA", post_code: "00000"},
-    "identifier" => { name: "Main Number", value: "916 729-5600"},
-    "project"    => { name: "Paragon", rep_id: rep, 
-                      project_start_on: "10-01-2012",
-                      description: "301-unit mixed-use apartment community and retail."},
-    "projAddr"   => { street_address: "3700 Beacon Ave.", city: "Fremont", state: "CA", post_code: ""}
-  },
- { "company"     => { name: "UC Construction", line_of_business: "Construction", url: "www.ucconstruct.com" },
-    "address"    => { street_address: "4216 Kiernan Ave.", city: "Modesto", state: "CA", post_code: "95356"},
-    "identifier" => { name: "Main Number", value: "209 543-1608"},
-    "project"    => { name: "Foothill Square Redevelopment Project", rep_id: rep, 
-                      project_start_on: "06-01-2012",
-                      description: "201,900-square-foot shopping center redevelopment."},
-    "projAddr"   => { street_address: "10700 MacArthur Blvd.", city: "Oakland", state: "CA", post_code: "94605"}
-  },
- { "company"     => { name: "Build Group Inc.", line_of_business: "Construction", url: "www.buildgc.com" },
-    "address"    => { street_address: "457 Minna St., Ste. 100", city: "Modesto", state: "CA", post_code: "94103"},
-    "identifier" => { name: "Main Number", value: "415 367-9399"},
-    "project"    => { name: "Archstone Parkside", rep_id: rep, 
-                      project_start_on: "05-01-2012",
-                      description: "175 luxury live/work units and ground-level retail."},
-    "projAddr"   => { street_address: "1225 Powell St.", city: "Emeryville", state: "CA", post_code: "94608"}
-  }
-
-]
-
-projects_list.each do |model| 
   begin
-    @company = Company.create!( model["company"] )
-    @company.addresses.create!( model["address"] )
-    @company.identifiers.create!( model["identifier"] )
-    puts @company.name + " -- Created."
-  rescue
-    puts "rescue model: #{model.inspect}"
-    puts model["company"][:name]
-    @company = Company.where( "name = ?", model["company"][:name])
-    @company = @company[0]
+    @company.save!
+  rescue ActiveRecord::RecordInvalid => e
+    if e.message == 'Validation failed: Name has already been taken'
+      puts e
+      next
+    end
   end
-  @project = @company.projects.find_or_create_by( model["project"])
-  @project.addresses.find_or_create_by( model["projAddr"])
-  @projmgr = @company.people.first
-  puts "#{model} -- Created."
+      
+  @address = @company.addresses.find_or_initialize_by( model["address"] )
+  begin
+    @address.save!
+  rescue ActiveRecord::RecordInvalid => e
+    if e.message == 'Validation failed.'
+      puts e
+      next
+    end
+  end  
+
+
+  @identifier = @company.identifiers.find_or_initialize_by( model["identifier"] )
+  begin
+    @identifier.save!
+  rescue ActiveRecord::RecordInvalid => e
+    if e.message == 'Validation failed.'
+      puts e
+      next
+    end
+  end  
+ 
+  @person = @company.people.find_or_initialize_by( model["person"])
+  begin
+    @person.save!
+  rescue ActiveRecord::RecordInvalid => e
+    if e.message == 'Validation failed. Name already taken.'
+      puts e
+      next
+    end
+  end  
+  
+  @address = @person.addresses.find_or_initialize_by( model["address"] )
+  begin
+    @address.save!
+  rescue ActiveRecord::RecordInvalid => e
+    if e.message == 'Validation failed.'
+      puts e
+      next
+    end
+  end  
+
 end
 
-=end
+ 
+
+
 #
 # Material types  
 #
@@ -563,13 +328,20 @@ end
   "As Directed",
   "Sandy Fill"
 ].each do |name|
-  material = Material.find_or_create_by!( name: name)
+  material = Material.find_or_create_by!( name: name )
+  material.save!
 end
 
+puts "\n\nConditions\n\n"
 # Conditions
 # Fire Ants verbiage text is composed at run time.
 [
  [
+   "Himalayan Raspbery",
+   "If present this quote includes cost to remove and transport them.",
+   "Varies"
+ ],
+  [
    "Fire Ants",
    "If fire ants are present this quote includes that cost.",
    "Required"
