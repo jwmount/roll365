@@ -2,6 +2,8 @@
 .container-fluid
 
 %em Company Contacts
+= link_to 'contacts...', company_identifiers_path(@company)
+
 %hr
   .row
     .col-sm-2
@@ -34,8 +36,7 @@
           = i.name + ':'          
         .col-sm-2
           = i.value
-        .col-sm-6
-          = link_to 'edit', people_identifier_path(i)
+
       
      
       
