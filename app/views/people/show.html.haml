@@ -1,5 +1,6 @@
 .container-fluid
   %h1
+  -unless params[:company_id]
     = @person.display_name
     ,
     = @person.company.name
