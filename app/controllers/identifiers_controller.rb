@@ -2,6 +2,7 @@ class IdentifiersController  < ApplicationController # < InheritedResources::Bas
 
 
   def index
+    byebug
     # effectively define scope
     case 
       when params.has_key?(:company_id) then
