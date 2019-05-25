@@ -7,14 +7,22 @@
         - @tip.errors.full_messages.each do |message|
           %li= message
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :fee
-    = f.text_field :fee
-  .field
-    = f.label :fire_ant_risk_level
-    = f.text_field :fire_ant_risk_level
-  .actions
-    = f.submit 'Save'
+  .form-group
+    = f.label :name, class: "col-sm-4 control-label"
+    .col-sm-8
+      = f.text_field :name, class: "form-control"
+
+    .form-group
+    = f.label :fee, class: "col-sm-4 control-label"
+    .col-sm-8
+      = f.text_field :fee, class: "form-control"     
+ 
+    .form-group
+    = f.label :fire_ant_risk_level, class: "col-sm-4 control-label"
+    .col-sm-8
+      = f.select( :fire_ant_risk_level, %w[low medium high] )
+    %p
+      .actions
+        = f.submit 'Save'
+
+

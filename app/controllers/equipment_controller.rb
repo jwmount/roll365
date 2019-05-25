@@ -4,12 +4,16 @@ class EquipmentController < ApplicationController
   # GET /equipment
   # GET /equipment.json
   def index
-    @equipment = Equipment.all
+    @q = Equipment.ransack(params[:q])
+    @equipment = @q.result.order(name: 'ASC').paginate(page: params[:page], per_page: 10 || params[:per_page])
+    flash[:warning] = "Warning:  equipment attributes are not defined yet."
   end
 
   # GET /equipment/1
   # GET /equipment/1.json
   def show
+    @equipment = Equipment.find(params[:id])
+    flash[:warning] = "Truck and equipment characteristics have not been defined yet."
   end
 
   # GET /equipment/new
@@ -20,7 +24,8 @@ class EquipmentController < ApplicationController
 
   # GET /equipment/1/edit
   def edit
-    flash[:warning] = "Warning:  equipment select is by company_id for now."
+    @equipment = Equipment.find(params[:id])
+    flash[:warning] = "Warning:  form.html.haml conversion fails as of 05-25-2019"
   end
 
   # POST /equipment
@@ -71,6 +76,6 @@ class EquipmentController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def equipment_params
-      params.require(:equipment).permit(:id, :name, :company_id)
+      params.require(:equipment).permit(:name, :company_id, :description)
     end
 end

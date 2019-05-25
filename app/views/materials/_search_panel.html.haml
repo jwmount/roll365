@@ -1,0 +1,19 @@
+%h3 Search
+= search_form_for @q do |f|
+  .field
+    = f.label :name
+    = f.text_field :name_cont, class: 'form-control'
+    = f.label :description
+    = f.text_field :description_cont, class: 'form-control'
+    
+    = f.submit class: 'btn btn-primary'
+    .btn
+      = link_to "Clear", request_path, class: "btn btn-secondary"      
+    %hr
+
+
+    %p
+
+    = link_to new_material_path, class: 'btn btn-secondary' do
+      %i.glyphicon.glyphicon-plus
+        New Material

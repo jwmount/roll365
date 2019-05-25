@@ -1,15 +1,15 @@
 class TipsController  < ApplicationController # < InheritedResources::Base< InheritedResources::Base
 
-  before_action :set_tip, only: [:show, :edit, :update, :destroy]
+  before_action :set_tip, only: [:edit, :update, :destroy]
 
   def index
     @q = Tip.ransack(params[:q])
     @tips = @q.result.order(name: 'ASC').paginate(page: params[:page], per_page: 10 || params[:per_page])
-    flash[:Information] = "Tip sites are usually land fills or disposal facilities.  Fire ants are an environmental contaminant that you can't take to specified locations."
+    flash[:Information] = "Tip sites are usually land fills or disposal facilities.  Materials accepted vary."
   end
 
   def show
-  	@tip = set_tip
+    @tip = Tip.find(params[:id])
   end
 
   def edit
@@ -49,6 +49,15 @@ class TipsController  < ApplicationController # < InheritedResources::Base< Inhe
     end
   end
 
+  # DELETE /tip/1
+  # DELETE /tip/1.json
+  def destroy
+    @tip.destroy
+    respond_to do |format|
+      format.html { redirect_to tip_url, notice: 'Tip was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
   private
 
     # Use callbacks to share common setup or constraints between actions.
@@ -57,7 +66,7 @@ class TipsController  < ApplicationController # < InheritedResources::Base< Inhe
     end
 
     def tip_params
-      params.require(:tip).permit(:name, :company_id, :fee, :fire_ant_risk_level)
+      params.require(:tip).permit(:name, :fee, :fire_ant_risk_level)
     end
 end
 

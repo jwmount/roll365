@@ -6,6 +6,10 @@ class ConditionsController  < ApplicationController
     @conditions = @q.result.order(name: 'ASC').paginate(page: params[:page], per_page: 10 || params[:per_page])
     flash[:info] = "Hang on there while the actions get defined, apparently they were all in ActiveAdmin"
   end
+ 
+  def edit
+    @condition = Condition.find(params[:id])
+  end
 
   def new
     @condition = Condition.new

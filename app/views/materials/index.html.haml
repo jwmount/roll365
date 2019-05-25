@@ -1,26 +1,46 @@
 
-= paginate @materials, :left => 1, :right => 3
 
-%h1 Listing materials
+.container-fluid
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Description
-      %th
-      %th
-      %th
+  %h1 Finder
+  %h5
+    = will_paginate
 
-  %tbody
-    - @materials.each do |material|
-      %tr
-        %td= material.name
-        %td= material.description
-        %td= link_to 'Show', material
-        %td= link_to 'Edit', edit_material_path(material)
-        %td= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' }
+  .row
 
-%br
+    .col-2
 
-= link_to 'New Material', new_material_path
+      = render "search_panel", locals: {q: @q}
+          
+
+    .col-6
+      %h3 Materials
+      = @materials.count 
+      listed
+          
+    
+      %table.table.table-striped
+
+        %thead
+          %tr
+            %th{align: 'left'}Name
+            %th{align: 'left', valign: 'top'} Description
+
+        %tbody
+          - @materials.each do |material|
+            %tr
+          
+              %td{align: 'left', width: '32'}= material.name
+
+              %td{align: 'left', width: "64"}= material.description
+                 
+              
+              %td= link_to 'Show', material
+              %td= link_to 'Edit', edit_material_path(material)
+              %td= link_to 'Destroy', material, method: :delete, data: { confirm: "Are you sure you want to delete #{material.name}?" } 
+      %br
+
+      = link_to new_company_path, class: 'btn btn-secondary' do
+        %i.glyphicon.glyphicon-plus
+          New Material
+      

@@ -10,9 +10,6 @@ class Company < ApplicationRecord
   has_many :equipment, :dependent => :destroy
   validates_associated :equipment
            
-    has_many :tips # We do not use :dependent => :destroy as tips survive company owners.  OK?
-  validates_associated :tips
-
   # polymorphs
   has_many  :addresses,
             :as         => :addressable,

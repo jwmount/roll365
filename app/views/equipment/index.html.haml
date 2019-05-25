@@ -1,18 +1,50 @@
 %p#notice= notice
-%h1 Equipment
-%table
-  %thead
-    %tr
-      %th Name
-      %th Company
-      %th{:colspan => "3"}
-  %tbody
-    - @equipment.each do |equipment|
-      %tr
-        %td= equipment.name
-        %td= equipment.company_id
-        %td= link_to 'Show', equipment
-        %td= link_to 'Edit', edit_equipment_path(equipment)
-        %td= link_to 'Destroy', equipment, method: :delete, data: { confirm: 'Are you sure?' }
-%br/
+
+.container-fluid
+
+  %h1 Finder
+
+  .row
+
+    .col-2
+
+      = render "search_panel", locals: {q: @q}
+          
+    .col-6
+      %h3 Equipment
+      = @equipment.count 
+      listed
+      %hr
+
+      %table.table.table-striped
+
+
+        %thead
+          %tr
+            %th Model
+            %th Company
+            
+
+        %tbody
+          - @equipment.each do |e|
+            %tr
+              %td= e.name
+              %td= e.company.display_name
+
+              %td= link_to 'Show', e
+              %td= link_to 'Edit', edit_equipment_path(e)
+              %td= link_to 'Destroy', identifier_path(e), method: :delete, data: { confirm: "Are you sure you want to delete #{e.name}?" } 
+      %br
+      -if params.has_key? (:equipment_id)
+        = link_to new_company_equipment_path(@parent), class: 'btn btn-secondary' do
+          %i.glyphicon.glyphicon-plus
+            New Equipment
+  .row
+    .col-2 
+      = link_to "Back to Company", equipment_company_path(@parent)
+
+
+
+
+%hr/
 = link_to 'New Equipment', new_equipment_path

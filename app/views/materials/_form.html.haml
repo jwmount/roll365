@@ -6,11 +6,16 @@
         - @material.errors.full_messages.each do |message|
           %li= message
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :description
-    = f.text_field :description
+  .form-group
+    = f.label :name, class: "col-sm-4 control-label"
+    .col-sm-8
+      = f.text_field :name, class: "form-control"
+
+    .form-group
+    = f.label :description, class: "col-sm-4 control-label"
+    .col-sm-8
+      = f.text_field :description, class: "form-control"      
+
+  
   .actions
     = f.submit 'Save'
