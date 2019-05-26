@@ -48,7 +48,9 @@
             New Contact Info
   .row
     .col-2 
+    -# if user has arrived from a Finder 'back' should take them to the item they came from.
+      -byebug
       -if params.has_key?(:company_id)
-        = link_to "Back to Company", company_path(@parent)
-      -else #no @parent exists, so either khide this link or just go Home.
-        = link_to "Home", root_path
+        = link_to "Company x", company_path(@parent)
+      -if params.has_key?(:person_id)
+        = link_to "Person", person_path(@parent)

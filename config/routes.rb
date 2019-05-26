@@ -15,8 +15,8 @@ Rails.application.routes.draw do
 # ActiveAdmin.routes(self)
 
   # use rails g controller welcome to direct root references to welcome index and the get is what to do there
-  get 'welcome/index'
-  root 'welcome#index'  
+  get 'welcome/landing'
+  root 'welcome#landing'  
   
   #
   # Generate paths for footer.  These paths rely on methods defined in the WelcomeController.
