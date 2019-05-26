@@ -10,7 +10,6 @@ class TipsController  < ApplicationController # < InheritedResources::Base< Inhe
 
   def show
     @tip = Tip.find(params[:id])
-    @parent = @tip.find(@tip.company_id) unless @tip.company_id.nil?
   end
 
   def edit
@@ -37,7 +36,7 @@ class TipsController  < ApplicationController # < InheritedResources::Base< Inhe
   end
 
   # PATCH/PUT /tips/1
-  # PATCH/PUT /tipss/1.json
+  # PATCH/PUT /tips/1.json
   def update
     respond_to do |format|
       if @tip.update!(tip_params)
