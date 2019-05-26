@@ -14,19 +14,8 @@
 -#  
 .container-fluid
 
-  .row
-    .col
-      = render '/shared/header'
+  = render '/shared/header'
+ 
+  = yield
 
-
-  &nbsp
-  &nbsp
-
-  .row
-    .col
-
-      = yield
-
-  .row
-    .col
-      = render '/shared/footer'
+  = render '/shared/footer'
