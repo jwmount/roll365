@@ -20,10 +20,15 @@
 
         %thead
           %tr
-            %th{align: 'left'}Name
+            %th{align: 'left'}
+              %em
+                Name
+            %th{align: 'left'}
+              %em
+                Risk Level
             %th{align: 'left', valign: 'top'} Company
             %th{align: 'left', width: '32'} Fee
-            %th Risk Level
+            %th Description (+soon)
             
 
         %tbody
@@ -31,9 +36,10 @@
             %tr
           
               %td{align: 'left', width: '224'}= tip.name
-           
-              %td= tip.fee
               %td= tip.fire_ant_risk_level
+              %td 't.b.d'
+              %td= tip.fee
+              
                
               %td= link_to 'Show', tip
               %td= link_to 'Edit', edit_tip_path(tip)
@@ -43,3 +49,5 @@
       = link_to new_tip_path, class: 'btn btn-secondary' do
         %i.glyphicon.glyphicon-plus
           New Tip Site
+
+  = link_to 'Tip Sites', tips_path

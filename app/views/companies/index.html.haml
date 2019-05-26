@@ -20,15 +20,24 @@
 
         %thead
           %tr
-            %th{align: 'left'}Name
-            %th{align: 'left', valign: 'top'} Line of Business
-            %th{align: 'left', width: '32'}City
-            %th Web Site
-
+            %th{align: 'left'} 
+              %em
+                Name
+            %th{align: 'left', valign: 'top'}
+              %em
+                Line of Business
+            %th{align: 'left', width: '32'}
+              %em 
+                City
+            %th 
+              %em
+                Web Site
+            %th
+              %em
+                Credit Terms
         %tbody
           - @companies.each do |company|
             %tr
-          
               %td{align: 'left', width: '32'}= company.name
 
               %td{align: 'left', width: "64"}= company.line_of_business
@@ -42,6 +51,8 @@
               %td{align: 'left', width: '32'}
                 = link_to truncate(company.url, :length => 120), "http://#{company.url}"              
               
+              %td= company.credit_terms
+
               %td= link_to 'Show', company
               %td= link_to 'Edit', edit_company_path(company)
               %td= link_to 'Destroy', company, method: :delete, data: { confirm: "Are you sure you want to delete #{company.name}?" } 

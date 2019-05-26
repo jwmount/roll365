@@ -19,10 +19,16 @@
         %table.table.table-striped
           %thead
             %tr
-            %th First name
-            %th Last name
+            %th
+              %em
+                First name
+            %th
+              %em
+                Last name
             %th Company
-            %th Title
+            %th
+              %em
+                Title
             
           %tbody
             - @people.each do |person|

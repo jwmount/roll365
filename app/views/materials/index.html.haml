@@ -14,7 +14,7 @@
           
 
     .col-6
-      %h3 Materials
+      %h3 Materials, Loads
       = @materials.count 
       listed
           
@@ -23,8 +23,12 @@
 
         %thead
           %tr
-            %th{align: 'left'}Name
-            %th{align: 'left', valign: 'top'} Description
+            %th{align: 'left'}
+              %em
+                Name
+            %th{align: 'left', valign: 'top'}
+              %em
+                Description
 
         %tbody
           - @materials.each do |material|

@@ -32,6 +32,20 @@ class ConditionsController  < ApplicationController
   	@condition = Condition.find(params[:id])
   end
   	
+  # PATCH/PUT /conditions/1
+  # PATCH/PUT /conditions/1.json
+  def update
+    @condition = Condition.find(params[:id])
+    respond_to do |format|
+      if @condition.update!(condition_params)
+        format.html { redirect_to @condition, notice: "#{@condition.name} Condition has been updated." }
+        format.json { render :show, status: :ok, location: @condition }
+      else
+        format.html { render :edit }
+        format.json { render json: @company.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   private
 

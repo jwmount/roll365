@@ -1,6 +1,6 @@
 # sow_all_seeds
 # $ rake db:demo:sow_all_seeds
-#
+# $ heroku run bundle eec rake db:demo2
 #
 # D I R E C T O R Y   C O M P A N I E S
 # 
@@ -9,6 +9,7 @@
 # First company is our licensee, this admittedly fragile rule, is/was? used next to determine this status.
 # Note:  hash values cannot be duplicates so cannot have two "Identifiers" for example.
 #
+
 
 # [TODO ]-- Create a Licensee Setup sequence better than this static approach.
 # Note that here the Rep is named 'Account Representative' and this needs to be edited to make any 

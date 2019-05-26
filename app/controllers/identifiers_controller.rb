@@ -72,7 +72,7 @@ class IdentifiersController  < ApplicationController # < InheritedResources::Bas
     @identifier = Identifier.find(params[:id])
     respond_to do |format|
       if @identifier.update!(identifier_params)
-        format.html { redirect_to @identifier, notice: "{@identifier} has been updated." }
+        format.html { redirect_to @identifier, notice: "#{@identifier} Contact has been updated." }
         format.json { render :show, status: :ok, location: @address }
       else
         format.html { render :edit }

@@ -73,7 +73,7 @@ class CompaniesController < ApplicationController
     @company = Company.find(params[:id])
     respond_to do |format|
       if @company.update!(nested_params)
-        format.html { redirect_to @company, notice: "{@company} has been updated." }
+        format.html { redirect_to @company, notice: "#{@company} Company has been updated." }
         format.json { render :show, status: :ok, location: @company }
       else
         format.html { render :edit }

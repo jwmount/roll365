@@ -1,27 +1,66 @@
 %p#notice= notice
 
-%p
-  %b Name:
-  = @condition.name
-%p
-  %b Verbiage:
-  = @condition.verbiage
-%p
-  %b Indication:
-  = @condition.indication
-%p
-  %b Status:
-  = @condition.status
-%p
-  %b Approved:
-  = @condition.approved
-%p
-  %b Change approved by:
-  = @condition.change_approved_by
-%p
-  %b Change approved at:
-  = @condition.change_approved_at
+.container-fluid
+  .row
+    .col-sm-6
+      %h1
+        Condition
+  .row
+    .col-sm-6
+      %h3
+        = @condition.name      
+      
+ 
+%hr
 
-= link_to 'Edit', edit_condition_path(@condition)
-\|
-= link_to 'Back', conditions_path
+.container-fluid
+  .row
+    .col-sm-2
+      %em
+        Attributes
+    .col-sm-10
+      %em
+        Settings
+  %p
+  .row      
+    .col-sm-2
+      Verbiage:
+    .col-sm-10
+      = @condition.verbiage
+    
+  .row      
+    .col-sm-2
+      Indication/When to Use:
+    .col-sm-10
+      = @condition.indication
+
+  .row      
+    .col-sm-2
+      Statis:
+    .col-sm-10
+      = @condition.status ? 'Effective' : 'Not Required'
+
+  .row      
+    .col-sm-2
+      Approved:
+    .col-sm-10
+      = @condition.approved ? 'Approved' : 'Not Approved'
+
+  .row      
+    .col-sm-2
+      Change Approved By:
+    .col-sm-10
+      = @condition.change_approved_by
+
+  .row      
+    .col-sm-2
+      When approved:
+    .col-sm-10
+      = @condition.change_approved_at
+
+  .row
+    .col-sm-2
+      = link_to 'Edit', edit_condition_path(@condition)
+      = link_to 'Back', conditions_path
+
+
