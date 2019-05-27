@@ -27,7 +27,7 @@ class IdentifiersController  < ApplicationController # < InheritedResources::Bas
     # scope
     case 
       when params.has_key?(:company_id)
-        @parent = Company.find(params[:person_id])
+        @parent = Company.find(params[:company_id])
       when params.has_key?(:person_id) then
         @parent = Person.find(params[:person_id])
       end
@@ -72,7 +72,7 @@ class IdentifiersController  < ApplicationController # < InheritedResources::Bas
     @identifier = Identifier.find(params[:id])
     respond_to do |format|
       if @identifier.update!(identifier_params)
-        format.html { redirect_to @identifier, notice: "#{@identifier} Contact has been updated." }
+        format.html { redirect_to @identifier, notice: "#{@identifier.name} contact has been updated." }
         format.json { render :show, status: :ok, location: @address }
       else
         format.html { render :edit }
