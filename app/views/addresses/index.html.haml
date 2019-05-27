@@ -2,7 +2,7 @@
 .container-fluid
 
   %h1 Finder
-
+  = will_paginate
   .row
 
     .col-2
@@ -13,6 +13,10 @@
       %h3 Addresses
       = @addresses.count 
       listed
+
+      
+      
+        
       %hr
 
       %table.table.table-striped
