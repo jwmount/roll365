@@ -71,8 +71,12 @@
   %p
   = link_to 'Edit', edit_person_path(@person)
   &nbsp;
-  = link_to 'Back', people_path
+  = link_to 'Back', people_path 
+
+  - unless @parent.nil?
+    = link_to 'Parent', company_path(@parent)
   
+
   &nbsp;
   = link_to companies_path, class: 'btn btn-secondary' do
     %i.glyphicon.glyphicon-plus

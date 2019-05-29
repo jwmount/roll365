@@ -24,6 +24,7 @@ class PeopleController < ApplicationController
     @person = Person.find(params[:id])
     @address = @person.addresses.take
     @identifiers = @person.identifiers
+    @parent = @person.company
   end
 
   # GET /people/new
