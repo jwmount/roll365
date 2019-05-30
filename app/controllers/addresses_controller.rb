@@ -1,10 +1,24 @@
 class AddressesController  < ApplicationController # < InheritedResources::Base
   # Error, Uninitialized Constant InheritedResources is the Cause of the Routing Error about that, bad punctuation in message is confusing
   
+  # An address member is created when a new member of Company or Person collections are created.  
   def index
-    flash[:Notification] = "Reminder:  Addresses can only be created from Addressable resources, i.e. companies or people finders."
-    @q = Address.ransack(params[:q])
+    # effectively define scope
+    case 
+      when params.has_key?(:company_id) then
+        @parent = Company.find(params[:company_id])
+        @addresses = @parent.addresses
+      
+      when params.has_key?(:person_id) then
+        @parent = Person.find(params[:person_id])
+        @addresses = @parent.addresses
+      else
+        @addresses = Address.all
+    end
+    
+    @q = @addresses.ransack(params[:q])
     @addresses = @q.result.order(city: 'ASC').paginate(page: params[:page], per_page: 10 || params[:per_page])
+    flash[:Notification] = "Reminder:  Addresses can only be created from companies or people finders."    
   end
 
   # get @address and @parent
@@ -18,8 +32,8 @@ class AddressesController  < ApplicationController # < InheritedResources::Base
     begin
       @parent = @address.addressable    
     rescue
-      flash[:Error] = "Parent, a.k.a. Addressable, record not found for #{params.map}. "
-      redirect_to addresses_path
+      flash[:Error] = "Parent, a.k.a. Addressable, record not found."
+      
     end
   end
   
@@ -41,10 +55,6 @@ class AddressesController  < ApplicationController # < InheritedResources::Base
   def show
     @address = Address.find(params[:id])
     @parent = @address.addressable
-    begin   
-      @name = @parent.find(@address.addressable_id).name
-    rescue
-    end
   end
 
   # PATCH/PUT /companies/1

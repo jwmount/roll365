@@ -8,8 +8,14 @@
         %h3  
           = @company.line_of_business
         %p
+        
           = @company.display_address
-          = link_to 'address...', company_address_path(@company)
+          
+          - if @company.addresses.nil?
+            = link_to 'new address', new_company_address_path(@company)
+          - else
+            = link_to 'addresses', company_addresses_path(@company)
+          
   
   = render "shared/contacts_for"
   &nbsp
