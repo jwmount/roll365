@@ -1,11 +1,21 @@
-%hr
+
 - if @company.nil?
   
   No affiliations found.
   
 - else
   
-  - @company.people.each do |p|
-    .row
-      .col-sm
-        = p.display_name
+- @company.people.each do |p|
+  - @identifiers = p.identifiers
+  .row
+    .col-sm-4
+      = p.display_name
+    .col-sm-8
+      %h4
+      - @identifiers.each do |i|
+        = i.value
+        = i.name
+        (
+        = i.rank.ordinalize
+        )
+        .row

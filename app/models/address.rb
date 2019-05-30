@@ -31,12 +31,6 @@ class Address < ApplicationRecord
   def display_name
     'Ralph'
   end
-#
-# Get and display parent name of polymorphic Address. [TODO]: remove after May 1
-#
-  def DEPRECATEDdisplay_parent_name 
- 	#@parent_name = "#{self.addressable_type}".constantize.find(self.addressable_id).name if unused
-    @parent_name = self.addressable.name
-  end
+
 
 end

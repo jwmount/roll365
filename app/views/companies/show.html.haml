@@ -15,25 +15,24 @@
             = link_to 'new address', new_company_address_path(@company)
           - else
             = link_to 'addresses', company_addresses_path(@company)
-          
+       
   
   = render "shared/contacts_for"
+
   &nbsp
   .row
-    .col-sm-2
+    .col-sm
       %em
         People & Associates
-    .col-sm-10
-      = link_to 'people...', company_people_path(@company)  
+    .col-sm
+      = link_to 'edit', company_people_path(@company)  
       or
-      = link_to 'new person...', new_company_person_path(@company)
-  
+      = link_to 'new', new_company_person_path(@company)
+
   .row
-    .col-sm-2
-      = render "shared/people_for", locals: {company: @company}
-  .row
-    .col-sm-10
-      %p
+    .col-sm
+      = render "shared/people_for"
+
       
  
 %hr
