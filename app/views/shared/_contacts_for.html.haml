@@ -1,42 +1,44 @@
 
-.container-fluid
-
-%em Company Contacts
--if @company
-  = link_to 'contacts...', company_identifiers_path(@company)
-
-  .row
-    .col-sm-2
-      %em
-        Priority
-    .col-sm-2
-      %em
-        Identifiers  
-    .col-sm-8
-      %em
-        Value
+.row
+  %hr
+.row
+  .col-sm-2
+    %em 
+      Contacts
+    %hr
+  .col-sm-2
+    -if @company
+      = link_to 'edit', company_identifiers_path(@company)
+      %hr
   
+.row
+
+  .col-sm-2
+    %em
+      Kind  
+  .col-sm-2
+    %em
+      Value
+  .col-sm-2
+    %em
+      Order To Use
+  
+- if @identifiers.empty?
+  No identifiers found.  
+  -#= link_to 'Identifiers', new_person_identifier_path(@person)
+- else
+&nbsp
+
+- @identifiers.each do |i|
+
   .row
-    .col-sm-5
-    %p
 
-  - if @identifiers.empty?
-    No identifiers found.  
-    -#= link_to 'Identifiers', new_person_identifier_path(@person)
-  - else
-
-
-    - @identifiers.each do |i|
-    
-      .row
-
-        .col-sm-2
-          = i.rank.ordinalize
-        .col-sm-2
-          = i.name + ':'          
-        .col-sm-2
-          = i.value
-
+    .col-sm-2
+      = i.name     
+    .col-sm-2
+      = i.value
+    .col-sm-2
+      = i.rank.ordinalize
       
      
       

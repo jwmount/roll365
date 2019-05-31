@@ -12,32 +12,36 @@
           = @company.display_address
           
           - if @company.addresses.nil?
-            = link_to 'new address', new_company_address_path(@company)
+            = link_to 'new', new_company_address_path(@company)
           - else
-            = link_to 'addresses', company_addresses_path(@company)
+            = link_to 'edit', company_addresses_path(@company)
        
   
   = render "shared/contacts_for"
 
   &nbsp
+  
   .row
-    .col-sm
+    .col-sm-2
       %em
         People & Associates
-    .col-sm
+        %hr
+    .col-sm-2
       = link_to 'edit', company_people_path(@company)  
       or
       = link_to 'new', new_company_person_path(@company)
-
-  .row
+      %hr
+      %p
+  .row     
     .col-sm
       = render "shared/people_for"
-
-      
- 
-%hr
-
-.container-fluid
+  &nbsp
+  .row
+    .col_sm-4
+      %em
+        Company Characteristics
+      %hr
+    
   .row
     .col-sm-2
       %em
