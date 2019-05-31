@@ -32,6 +32,9 @@ Rails.application.routes.draw do
   get 'privacy', to: :show, controller: 'welcome'
   get 'tsandcs', to: :show, controller: 'welcome'
 
+  get 'terms', to: 'companies#terms'
+  get 'active', to: 'companies#active'
+
   # UJS - DEPRECATED ?
   scope :ujs, defaults: { format: :ujs } do
     patch 'thing_totals' => 'companies#totals'

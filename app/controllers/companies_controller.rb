@@ -9,6 +9,11 @@ class CompaniesController < ApplicationController
     @companies = @q.result.order(name: 'ASC').paginate(page: params[:page], per_page: 10 || params[:per_page])
   end
 
+  def terms
+  end
+
+  def active
+  end
 
   # GET /companies/1
   # GET /companies/1.json

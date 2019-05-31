@@ -37,60 +37,75 @@
       = render "shared/people_for"
   &nbsp
   .row
-    .col_sm-4
+    .col_sm-2
       %em
         Company Characteristics
-      %hr
+        %hr
     
   .row
     .col-sm-2
       %em
         Attributes
-    .col-sm-10
+    .col-sm-2
       %em
         Settings
+        
   %p
   .row      
     .col-sm-2
       Credit terms:
-    .col-sm-10
+    .col-sm-2
       = @company.credit_terms
-    
-    .row      
+    .col-sm-2
+      = link_to 'edit', terms_path(@company)
+      
+  .row      
     .col-sm-2
       Status:
-    .col-sm-10
+    .col-sm-2
       = @company.active ? 'Active' : 'Inactive'
+    .col-sm-2
+      = link_to 'active', active_path(@company)
 
-    .row      
+  .row      
     .col-sm-2
       Purchase Order:
-    .col-sm-10
+    .col-sm-2
       = @company.PO_required ? 'Required' : 'Not Required'
-
-    .row      
+    .col-sm-2
+      = link_to "edit", root_path
+  
+  .row      
     .col-sm-2
       Bookkeeping Number:
-    .col-sm-10
+    .col-sm-2
       = @company.bookkeeping_number
+    .col-sm-2
+      = link_to "edit", root_path
 
-    .row      
+  .row      
     .col-sm-2
       Line of Business:
-    .col-sm-10
+    .col-sm-2
       = @company.line_of_business
+    .col-sm-2
+      = link_to "edit", root_path
 
-    .row      
+  .row      
     .col-sm-2
       URL (Web Site):
-    .col-sm-10
+    .col-sm-2
       = @company.url
+    .col-sm-2
+      = link_to "edit", root_path
 
-    .row      
+  .row      
     .col-sm-2
       License:
-    .col-sm-10
+    .col-sm-2
       = @company.licensee ? 'Yes' : 'No'
+    .col-sm-2
+      = link_to "edit", root_path      
   %p
   %nbsp
   %nbsp
