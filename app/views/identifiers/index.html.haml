@@ -50,10 +50,14 @@
         = link_to new_company_identifier_path(@parent), class: 'btn btn-secondary' do
           %i.glyphicon.glyphicon-plus
             New Contact Info
+      -if params.has_key? (:person_id)
+        = link_to new_person_identifier_path(@parent), class: 'btn btn-secondary' do
+          %i.glyphicon.glyphicon-plus
+            New Contact Info
+            
   .row
     .col-2 
     -# if user has arrived from a Finder 'back' should take them to the item they came from.
-      -byebug
       -if params.has_key?(:company_id)
         = link_to "Company x", company_path(@parent)
       -if params.has_key?(:person_id)

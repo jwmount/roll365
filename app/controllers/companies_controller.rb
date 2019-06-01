@@ -9,10 +9,20 @@ class CompaniesController < ApplicationController
     @companies = @q.result.order(name: 'ASC').paginate(page: params[:page], per_page: 10 || params[:per_page])
   end
 
-  def terms
+  def company_active
+    puts 'active, no content'
+    render html: " Yo, NO Content! This is active_path Mon.  #{params}", layout: 'application'
   end
 
-  def active
+  def company_PO
+    puts 'PO Required, no content'
+    render html: "Now, PO is needful mon, how they going to pay?. #{params}", layout: 'application'
+  end
+
+  def company_terms
+    puts 'terms, no content'
+    # Could use render_to block to do this
+    render html: "params = This does the job?  #{params}", layout: 'application'
   end
 
   # GET /companies/1

@@ -1,9 +1,10 @@
 .container-fluid
-  %h1
+  
   -unless params[:company_id]
-    = @person.display_name
-    ,
-    = @person.company.name
+    %h1
+      = @person.display_name
+    %h3
+      = @person.company.name
 
   %p
     -if @person.addresses.empty?
@@ -17,8 +18,9 @@
 
     -#= render 'address_modal'
   %p
-
+    = link_to "list for this person", person_identifiers_path(@person)
     = render "shared/contacts_for"
+
 
   %hr
 

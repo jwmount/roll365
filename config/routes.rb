@@ -32,8 +32,11 @@ Rails.application.routes.draw do
   get 'privacy', to: :show, controller: 'welcome'
   get 'tsandcs', to: :show, controller: 'welcome'
 
-  get 'terms', to: 'companies#terms'
-  get 'active', to: 'companies#active'
+  # Companies -- named routes, probably not the most flexible way imagineable
+  get 'company_terms', to: 'companies#company_terms'
+  get 'company_active', to: 'companies#company_active', as: :company_active
+  get 'company_PO', to: 'companies#company_PO', as: :company_PO
+
 
   # UJS - DEPRECATED ?
   scope :ujs, defaults: { format: :ujs } do

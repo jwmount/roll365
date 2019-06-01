@@ -57,7 +57,7 @@
     .col-sm-2
       = @company.credit_terms
     .col-sm-2
-      = link_to 'edit', terms_path(@company)
+      = link_to 'explain', company_terms_path(@company)
       
   .row      
     .col-sm-2
@@ -65,7 +65,7 @@
     .col-sm-2
       = @company.active ? 'Active' : 'Inactive'
     .col-sm-2
-      = link_to 'active', active_path(@company)
+      = link_to 'explain', company_active_path(@company)
 
   .row      
     .col-sm-2
@@ -73,7 +73,7 @@
     .col-sm-2
       = @company.PO_required ? 'Required' : 'Not Required'
     .col-sm-2
-      = link_to "edit", root_path
+      = link_to "explain", company_PO_path(@company)
   
   .row      
     .col-sm-2
