@@ -5,8 +5,8 @@
   .col-sm-2
     %em 
       Contacts
-      
     %hr
+
   .col-sm-2
     -if @company
       = link_to 'edit', company_identifiers_path(@company)
@@ -40,6 +40,8 @@
       = i.value
     .col-sm-2
       = i.rank.ordinalize
+    .col_sm-2
+      = link_to 'edit', edit_identifier_path(i)
       
      
       
