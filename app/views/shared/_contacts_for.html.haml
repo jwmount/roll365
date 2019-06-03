@@ -33,14 +33,14 @@
 - @identifiers.each do |i|
 
   .row
-
-    .col-sm-2
+    
+    .col-sm-2.data
       = i.name     
-    .col-sm-2
+    .col-sm-2.data
       = i.value
-    .col-sm-2
+    .col-sm-2.data
       = i.rank.ordinalize
-    .col_sm-2
+    .col_sm-.data
       = link_to 'edit', edit_identifier_path(i)
       
      

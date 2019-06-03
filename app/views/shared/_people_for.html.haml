@@ -1,4 +1,5 @@
 
+
 - if @company.nil?
   
   No affiliations found.
@@ -8,14 +9,13 @@
 - @company.people.each do |p|
   - @identifiers = p.identifiers
   .row
-    .col-sm-2
+    .col-sm-2.data
       = p.display_name
-    .col-sm-8
+    .col-sm-2.data
       %h4
       - @identifiers.each do |i|
         = i.value
         = i.name
-        (
+
         = i.rank.ordinalize
-        )
-        .row
+    .row
