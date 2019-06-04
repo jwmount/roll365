@@ -10,10 +10,10 @@
   .row
     .col-sm-2.data
       = p.display_name
-    .col-sm-2.data
+    .col-sm-4.data
     
       - @identifiers.each do |i|
-        = i.value
-        = i.name
+        = i.value + ' -'
+        = i.name + ' -'
         = i.rank.ordinalize
-    .row
+        .w-100
