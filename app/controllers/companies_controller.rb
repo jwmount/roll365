@@ -127,7 +127,7 @@ class CompaniesController < ApplicationController
     # Nested attributes 
     def nested_params
 
-      params.require(:company).permit( :id, :name, :credit_terms, :PO_required, :active, :bookkeeping_number, :line_of_business, :url,  
+      params.require(:company).permit( :name, :credit_terms, :PO_required, :active, :bookkeeping_number, :line_of_business, :url,  
         address_attributes: [:addressable_id, :addressable_type, :street_address, :city, :state, :post_code, :map_reference, :longitude, :latitude],
         identifier_attributes: [:id, :identifiable_id, :identifiable_type, :name, :value, :rank]
         )
