@@ -71,15 +71,19 @@
     .col-sm-10
       = @person.active ? 'Yes' : 'No'
   %p
-  = link_to 'Edit', edit_person_path(@person)
+  = link_to 'Person', edit_person_path(@person)
   &nbsp;
-  = link_to 'Back', people_path 
+
 
   - unless @parent.nil?
-    = link_to 'Parent', company_path(@parent)
+    = link_to 'Company', company_path(@parent)
   
-
-  &nbsp;
+  .row
+  
+  = link_to people_path, class: 'btn btn-secondary' do
+    %i.glyphicon.glyphicon-plus
+    People
+  &nbsp
   = link_to companies_path, class: 'btn btn-secondary' do
     %i.glyphicon.glyphicon-plus
     Companies

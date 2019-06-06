@@ -10,10 +10,13 @@
   .row
     .col-sm-2.data
       = p.display_name
-    .col-sm-4.data
     
+    .col-sm-4.data
       - @identifiers.each do |i|
         = i.value + ' -'
         = i.name + ' -'
         = i.rank.ordinalize
         .w-100
+    .col-sm.data
+      = link_to 'edit', person_identifiers_path(p)
+    
