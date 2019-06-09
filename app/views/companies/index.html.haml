@@ -50,7 +50,7 @@
                 %td= @addr.city
               
               %td{align: 'left', width: '32'}
-                = link_to truncate(company.url, :length => 120), "http://#{company.url}"              
+                = link_to truncate(company.url, :length => 120), "http://#{company.url}", :target => 'blank'
               
               %td= company.credit_terms
 

@@ -36,12 +36,18 @@
     .col-sm-12
       = render "shared/people_for"
   &nbsp
+
   .row
     .col_sm-2
       %em
         Company Characteristics
         %hr
-    
+    .col-sm-1
+    .col-sm-1
+      = link_to 'edit', edit_company_path(@company)
+      %hr
+
+
   .row
     .col-sm-2
       %em
@@ -95,7 +101,7 @@
     .col-sm-2
       URL (Web Site):
     .col-sm-2.data
-      = @company.url
+      = link_to truncate(@company.url, :length => 120), "http://#{@company.url}", :target => 'blank'        
     .col-sm-2.data
       = link_to "edit", root_path
 
@@ -109,6 +115,5 @@
   %p
   %nbsp
   %nbsp
-  = link_to 'Companies', companies_path
 
-
+  = render "shared/finders_buttons"

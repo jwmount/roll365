@@ -2,10 +2,16 @@
   = @company.name
 = @company.display_address
 = link_to "address...", edit_company_address_path(@company)
-
 %hr/
-= render 'form', company: @company
-&nbsp;
-= link_to 'Show', @company
-|
-= link_to 'Back', companies_path
+
+%nbsp
+.col
+  = render 'form', company: @company
+
+%nbsp
+.col
+  = link_to 'Show', @company
+
+%nbsp
+.col
+  = render "shared/finders_buttons"
