@@ -58,7 +58,7 @@
         
   %p
   .row      
-    .col-sm-2
+    .col-sm-2.data
       Credit terms:
     .col-sm-2.data
       = @company.credit_terms
@@ -66,7 +66,7 @@
       = link_to 'explain', company_terms_path(@company)
       
   .row      
-    .col-sm-2
+    .col-sm-2.data
       Status:
     .col-sm-2.data
       = @company.active ? 'Active' : 'Inactive'
@@ -74,7 +74,7 @@
       = link_to 'explain', company_active_path(@company)
 
   .row      
-    .col-sm-2
+    .col-sm-2.data
       Purchase Order:
     .col-sm-2.data
       = @company.PO_required ? 'Required' : 'Not Required'
@@ -82,7 +82,7 @@
       = link_to "explain", company_PO_path(@company)
   
   .row      
-    .col-sm-2
+    .col-sm-2.data
       Bookkeeping Number:
     .col-sm-2.data
       = @company.bookkeeping_number
@@ -90,7 +90,7 @@
       = link_to "edit", root_path
 
   .row      
-    .col-sm-2
+    .col-sm-2.data
       Line of Business:
     .col-sm-2.data
       = @company.line_of_business
@@ -98,7 +98,7 @@
       = link_to "edit", root_path
 
   .row      
-    .col-sm-2
+    .col-sm-2.data
       URL (Web Site):
     .col-sm-2.data
       = link_to truncate(@company.url, :length => 120), "http://#{@company.url}", :target => 'blank'        
@@ -106,7 +106,7 @@
       = link_to "edit", root_path
 
   .row      
-    .col-sm-2
+    .col-sm-2.data
       License:
     .col-sm-2.data
       = @company.licensee ? 'Yes' : 'No'

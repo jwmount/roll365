@@ -5,7 +5,7 @@
   .row
 
     .col-2
-
+          
       = render "search_panel", locals: {q: @q}
           
 
@@ -14,7 +14,7 @@
       = @conditions.count 
       listed
       %hr
-    
+      = will_paginate
       %table.table.table-striped
 
         %thead
@@ -34,17 +34,17 @@
             
         %tbody
           - @conditions.each do |f|
-            %tr
-            %td= f.name
-            %td{align: 'left', width: 224}= f.verbiage
-            %td= f.indication
-            %td= f.status
-            %td= f.approved
-            %td= f.change_approved_by
-            %td= f.change_approved_at
-            %td= link_to 'Show', f
-            %td= link_to 'Edit', edit_condition_path(f)
-            %td= link_to 'Delete', f, method: :delete, data: { confirm: 'Are you sure?' }
+            %tr.data
+              %td= f.name
+              %td{align: 'left', width: 224}= f.verbiage
+              %td= f.indication
+              %td= f.status
+              %td= f.approved
+              %td= f.change_approved_by
+              %td= f.change_approved_at
+              %td= link_to 'Show', f
+              %td= link_to 'Edit', edit_condition_path(f)
+              %td= link_to 'Delete', f, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 

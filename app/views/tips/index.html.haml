@@ -15,6 +15,8 @@
       listed
       %hr
 
+      
+      = will_paginate
       %table.table.table-striped
 
 
@@ -33,7 +35,7 @@
 
         %tbody
           - @tips.each do |tip|
-            %tr
+            %tr.data
           
               %td{align: 'left', width: '224'}= tip.name
               %td= tip.fire_ant_risk_level

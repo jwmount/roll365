@@ -20,21 +20,29 @@
 
 
         %thead
+
           %tr
-            %th Kind
-            %th Organization or Person
+        
+            %th
+              %em
+                Kind
+            %th
+              %em
+                Organization or Person
             %th 
               %em
                 Name
             %th
               %em
                 Value
-            %th Rank or Priority
+            %th
+              %em
+                Rank or Priority
             
 
         %tbody
           - @identifiers.each do |iden|
-            %tr
+            %tr.data
               %td= iden.identifiable_type
               -# use path to take user to company as all persons have an affiliation
               %td{align: 'left', width: '224'}= link_to iden.identifiable.display_name, company_path(iden.identifiable_id)

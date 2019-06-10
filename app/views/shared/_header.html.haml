@@ -1,22 +1,22 @@
 
 .row.justify-content-md-center
-  .col.col-lg-8
-    
-  .col-md-auto
-    
-  .col.col-lg-2
-
+  .col-sm-8
+    Currently in #{controller_name}
 
 .row
   .col-sm-1
     
 .row
-  .col-md-12
+  .col-sm-12
   
 .row
-  .col-md-2
+  .col-sm-2
+  .col-sm-1
     = link_to 'Home', root_path      
-    - flash.each do |name, msg|
-      = content_tag :div, msg, class: name
-  .col-sm-10
+  
+  .col-sm-8
     = render "shared/finders_buttons"
+    - flash.each do |name, msg|
+      .row.tbg
+        = content_tag :div, msg, class: name
+  %hr

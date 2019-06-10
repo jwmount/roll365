@@ -33,7 +33,7 @@
             
           %tbody
             - @people.each do |person|
-              %tr
+              %tr.data
                 %td= person.first_name
                 %td= person.last_name
                 %td= person.company_name

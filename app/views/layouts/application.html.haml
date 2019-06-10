@@ -14,7 +14,8 @@
 -#  
 .container-fluid
 
-  = render '/shared/header'
+  - unless self.controller_name == 'welcome'
+    = render '/shared/header'
  
   = yield
 

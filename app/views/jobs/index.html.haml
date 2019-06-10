@@ -14,7 +14,7 @@
       %th{:colspan => "3"}
   %tbody
     - @jobs.each do |job|
-      %tr
+      %tr.data
         %td= job.solution_id
         %td= job.start_on
         %td= job.time

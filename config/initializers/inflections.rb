@@ -21,7 +21,7 @@
 # https://stackoverflow.com/questions/30985472/how-to-use-inflections-on-a-rails-engine
 #
 ActiveSupport::Inflector.inflections(:en) do |inflect|
-   inflect.uncountable %w( equipment )
+   inflect.uncountable %w( equipment, equipment )
    inflect.irregular 'person', 'people'
    inflect.irregular 'address', 'addresses'
 end
