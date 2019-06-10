@@ -5,13 +5,14 @@ class AddressesController  < ApplicationController # < InheritedResources::Base
   def index
     # effectively define scope
     case 
-      when params.has_key?(:company_id) then
+      when params.has_key?(:company_id)
         @parent = Company.find(params[:company_id])
         @addresses = @parent.addresses
-      
-      when params.has_key?(:person_id) then
+    
+      when params.has_key?(:person_id)
         @parent = Person.find(params[:person_id])
         @addresses = @parent.addresses
+    
       else
         @addresses = Address.all
     end
