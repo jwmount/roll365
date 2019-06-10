@@ -2,7 +2,7 @@
 .container-fluid
 
   %h1 Finder
-  = will_paginate
+  
   .row
 
     .col-2
@@ -14,7 +14,7 @@
       = @addresses.count 
       listed
 
-      
+      = will_paginate    
       
         
       %hr
@@ -24,12 +24,22 @@
 
         %thead
           %tr
-            %th Name
-            %th{align: 'left'}Street Address
-            %th{align: 'left', valign: 'top'} City
-            %th{align: 'left', width: '32'}State
+            %th
+              %em
+                Name
+            %th
+              %em
+                Street Address
+            %th
+              %em
+                City
+            %th
+              %em
+                State
 
-            %th Post Code
+            %th
+              %em
+                Post Code
             
         %tbody
           - @addresses.each do |addr|

@@ -2,7 +2,7 @@
 .container-fluid
 
   %h1 Finder
-  = will_paginate
+  
 
   .row
 
@@ -15,7 +15,7 @@
       %h3 Carriers
       = @companies.count 
       listed
-    
+      = will_paginate  
     
       %table.table.table-striped
 

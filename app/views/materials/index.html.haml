@@ -3,8 +3,6 @@
 .container-fluid
 
   %h1 Finder
-  %h5
-    = will_paginate
 
   .row
 
@@ -17,7 +15,8 @@
       %h3 Materials, Loads
       = @materials.count 
       listed
-          
+      = will_paginate        
+      %hr  
     
       %table.table.table-striped
 

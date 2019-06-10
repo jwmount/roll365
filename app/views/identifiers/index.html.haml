@@ -2,7 +2,6 @@
 .container-fluid
   .nbsp
   %h1 Finder
-  = will_paginate
   
   .row
 
@@ -14,6 +13,7 @@
       %h3 Contacts
       = @identifiers.count 
       listed
+      = will_paginate
       %hr
 
       %table.table.table-striped

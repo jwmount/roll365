@@ -3,7 +3,7 @@
 .container-fluid
 
   %h1 Finder
-  = will_paginate
+  
   
   .row
 
@@ -15,6 +15,7 @@
       %h3 Equipment
       = @equipment.count 
       listed
+      = will_paginate 
       %hr
 
       %table.table.table-striped
