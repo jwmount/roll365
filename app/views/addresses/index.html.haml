@@ -13,9 +13,7 @@
       %h3 Addresses
       = @addresses.count 
       listed
-
       = will_paginate    
-      
         
       %hr
 
@@ -44,7 +42,8 @@
         %tbody
           - @addresses.each do |addr|
             %tr.data
-              %td{align: 'left', width: '224'}= link_to addr.addressable.display_name, company_path(addr.addressable_id)
+              
+              %td{align: 'left', width: '224'}= link_to addr.addressable.display_name, company_path(addr)
               %td{align: 'left', width: '224'}= addr.street_address
               %td{align: 'left', width: "64"}= addr.city
               %td= addr.state

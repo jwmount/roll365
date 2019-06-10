@@ -36,29 +36,4 @@ class Identifier < ApplicationRecord
 
   end
 
-  
-=begin
-  def display_name (parent_name: self)
-    
-    case self.identifiable_type
-
-      when 'Company'
-        @company = Company.find( self.identifiable_id )
-        @company.name
-  
-      when 'Project'
-        @project = Project.find( self.identifiable_id )
-        @project.name
-  
-      when 'Person'
-        @person = Person.find( self.identifiable_id )
-        @person.full_name
-  
-      else
-        "Unknown type"
-    end
-    
-  end
-=end
-
 end
