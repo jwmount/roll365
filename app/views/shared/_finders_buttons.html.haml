@@ -1,13 +1,20 @@
 .row
-  .col_sm
-    .col_sm_2
-      = link_to companies_path, class: 'btn btn-secondary' do
-        %i.glyphicon.glyphicon-plus
-        Companies
+  .col
+    
+    =link_to 'Addresses', addresses_path
+  .col
+    
+    =link_to 'Companies', companies_path
+  .col
+    =link_to 'Conditions', conditions_path
+  .col
+    =link_to 'Contacts', identifiers_path
+  .col
+    =link_to 'Equipment', equipments_path
+  .col
+    =link_to 'Materials', materials_path
+  .col
+    =link_to 'People', people_path
+  .col
+    =link_to 'Tip Sites', tips_path
   
-      &nbsp
-
-      = link_to people_path, class: 'btn btn-secondary' do
-        %i.glyphicon.glyphicon-plus
-        People
-

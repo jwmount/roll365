@@ -49,8 +49,7 @@
               -else
                 %td= @addr.city
               
-              %td{align: 'left', width: '32'}
-                = link_to truncate(company.url, :length => 120), "http://#{company.url}", :target => 'blank'
+              %td= link_to truncate(company.url, :length => 120), "http://#{company.url}", :target => 'blank'
               
               %td= company.credit_terms
 
@@ -63,5 +62,12 @@
         %i.glyphicon.glyphicon-plus
           New Company
 
+  .nbsp 
+  .nbsp
+  
+  
       
-      
+
+          
+
+
