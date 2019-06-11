@@ -4,6 +4,7 @@ class AddressesController  < ApplicationController # < InheritedResources::Base
   # An address member is created when a new member of Company or Person collections are created.  
   def index
     # effectively define scope
+  
     case 
       when params.has_key?(:company_id)
         @parent = Company.find(params[:company_id])
@@ -84,7 +85,7 @@ class AddressesController  < ApplicationController # < InheritedResources::Base
     @address = Address.find(params[:id])
     @address.destroy
     respond_to do |format|
-      format.html { redirect_to addresses_path, notice: "Address has been deleted." }
+      format.html { redirect_to addresses_path, notice: "Address #{@address.id} has been deleted." }
       format.json { head :no_content }
     end
   end
