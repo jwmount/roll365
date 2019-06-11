@@ -17,9 +17,14 @@ class AddressesController  < ApplicationController # < InheritedResources::Base
         @addresses = Address.all
     end
     
+    if @addresses.empty?
+      flash.now[:Error] = "Address addressable does not exist for some member."
+      redirect_to welcome_landing_path
+    end
+    
     @q = @addresses.ransack(params[:q])
     @addresses = @q.result.order(city: 'ASC').paginate(page: params[:page], per_page: 10 || params[:per_page])
-    flash[:Notification] = "Reminder:  Addresses can only be created from companies or people finders."    
+    
   end
 
   # get @address and @parent

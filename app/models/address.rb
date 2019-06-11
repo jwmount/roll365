@@ -5,6 +5,8 @@ class Address < ApplicationRecord
 # Used by Company, Person, Project ... 
 #
   belongs_to :addressable, polymorphic: true
+
+  validates_presence_of :addressable_type, :addressable_id
   
   #
   # D E F A U L T S 

@@ -39,9 +39,9 @@
         %tbody
           - @companies.each do |company|
             %tr.data 
-              %td{align: 'left', width: '32'}= company.name
+              %td= company.name
 
-              %td{align: 'left', width: "64"}= company.line_of_business
+              %td= company.line_of_business
                  
               - @addr = company.addresses.first
               -if @addr.nil?
