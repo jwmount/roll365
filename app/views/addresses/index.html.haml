@@ -43,7 +43,7 @@
           - @addresses.each do |addr|
             %tr
               -unless addr.addressable.nil?
-                %td= link_to addr.addressable.display_name, company_path(addr)
+                %td= link_to "#{addr.addressable.display_name} "+"#{addr.id}", company_path(addr)
               -else
                 -flash[:alert] = "Alert:  address record #{addr.id} has invalid parent: #{addr.addressable_type}, #{addr.addressable_id}."
               %td= addr.street_address
