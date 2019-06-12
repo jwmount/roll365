@@ -7,6 +7,9 @@
           %li= message
 
   .field
+    = f.label :tracking_id
+    = f.number_field :tracking_id
+  .field
     = f.label :ship_from
     = f.text_field :ship_from
   .field
@@ -19,16 +22,17 @@
     = f.label :deadline
     = f.text_field :deadline
   .field
-    = f.label :body
-    = f.text_area :body
+    = f.label :cargo
+    = f.text_field :cargo
+  .field
+    = f.label :load
+    = f.text_field :load
   .field
     = f.label :quote_basis
     = f.text_area :quote_basis
   .field
     = f.label :quote_complete
     = f.text_field :quote_complete
-  .field
-    = f.label :tracking_id
-    = f.number_field :tracking_id
+
   .actions
     = f.submit 'Save'

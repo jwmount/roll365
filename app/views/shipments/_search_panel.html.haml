@@ -17,9 +17,11 @@
     = f.label :deadline
     = f.text_field :deadline_cont, class: 'form-control'
 
-    = f.label :body
-    = f.text_field :body_cont
+    = f.label :cargo
+    = f.text_field :cargo_cont
 
+    = f.label :load
+    = f.text_field :load_cont
     = f.submit class: 'btn btn-primary'
     .btn
       = link_to "Clear", request_path, class: "btn btn-secondary"      

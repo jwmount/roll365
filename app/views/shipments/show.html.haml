@@ -1,6 +1,9 @@
 %p#notice= notice
 
 %p
+  %b Tracking:
+  = @shipment.tracking_id
+%p
   %b Ship from:
   = @shipment.ship_from
 %p
@@ -13,17 +16,18 @@
   %b Deliver:
   = @shipment.deadline
 %p
-  %b Body:
-  = @shipment.body
+  %b Cargo:
+  = @shipment.cargo
+%p
+  %b Load:
+  = @shipment.load
 %p
   %b Quote basis:
   = @shipment.quote_basis
 %p
   %b Quote complete:
   = @shipment.quote_complete
-%p
-  %b Tracking:
-  = @shipment.tracking_id
+
 
 = link_to 'Edit', edit_shipment_path(@shipment)
 \|

@@ -5,7 +5,8 @@ class CreateShipments < ActiveRecord::Migration[5.2]
       t.string :ship_to
       t.string :pickup
       t.string :deadline
-      t.text :body
+      t.text :cargo
+      t.text :load
       t.text :quote_basis
       t.decimal :quote_complete
       t.string :tracking_id

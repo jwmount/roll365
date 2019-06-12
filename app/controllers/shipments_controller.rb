@@ -80,6 +80,6 @@ rescue ActiveRecord::RecordNotUnique => e
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shipment_params
-      params.require(:shipment).permit(:ship_from, :ship_to, :pickup, :deadline, :body, :quote_basis, :quote_complete, :tracking_id)
+      params.require(:shipment).permit(:ship_from, :ship_to, :pickup, :deadline, :cargo, :load, :quote_basis, :quote_complete, :tracking_id)
     end
 end
