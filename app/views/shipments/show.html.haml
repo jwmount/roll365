@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Ship from:
+  = @shipment.ship_from
+%p
+  %b Ship to:
+  = @shipment.ship_to
+%p
+  %b Pickup:
+  = @shipment.pickup
+%p
+  %b Deliver:
+  = @shipment.deadline
+%p
+  %b Body:
+  = @shipment.body
+%p
+  %b Quote basis:
+  = @shipment.quote_basis
+%p
+  %b Quote complete:
+  = @shipment.quote_complete
+%p
+  %b Tracking:
+  = @shipment.tracking_id
+
+= link_to 'Edit', edit_shipment_path(@shipment)
+\|
+= link_to 'Back', shipments_path

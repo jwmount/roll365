@@ -4,6 +4,8 @@
   .col
     =link_to 'Carriers', companies_path
   .col
+    =link_to 'Comments', comments_path
+  .col
     =link_to 'Conditions', conditions_path
   .col
     =link_to 'Contacts', identifiers_path
@@ -14,7 +16,8 @@
   .col-sm-1
     =link_to 'People', people_path
   .col-sm
-    =link_to 'Shipments', companies_path
+    %b
+      =link_to 'Shipments', shipments_path
   .col
     =link_to 'Tip Sites', tips_path
   

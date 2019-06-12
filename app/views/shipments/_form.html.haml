@@ -1,0 +1,34 @@
+= form_for @shipment do |f|
+  - if @shipment.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@shipment.errors.count, "error")} prohibited this shipment from being saved:"
+      %ul
+        - @shipment.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :ship_from
+    = f.text_field :ship_from
+  .field
+    = f.label :ship_to
+    = f.text_field :ship_to
+  .field
+    = f.label :pickup
+    = f.text_field :pickup
+  .field
+    = f.label :deadline
+    = f.text_field :deadline
+  .field
+    = f.label :body
+    = f.text_area :body
+  .field
+    = f.label :quote_basis
+    = f.text_area :quote_basis
+  .field
+    = f.label :quote_complete
+    = f.text_field :quote_complete
+  .field
+    = f.label :tracking_id
+    = f.number_field :tracking_id
+  .actions
+    = f.submit 'Save'

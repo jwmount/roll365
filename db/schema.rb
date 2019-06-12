@@ -1,4 +1,3 @@
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,31 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_17_225022) do
+ActiveRecord::Schema.define(version: 2019_06_11_232136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-=begin
-  create_table "active_admin_comments", force: :cascade do |t|
-    t.string "namespace"
-    t.text "body"
-    t.string "resource_type"
-    t.bigint "resource_id"
-    t.string "author_type"
-    t.bigint "author_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
-    t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
-    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
-  end
-=end
+
   create_table "addresses", force: :cascade do |t|
     t.string "addressable_type"
     t.bigint "addressable_id"
-    t.string "street_address", value: 'Please update'
-    t.string "city",           value: 'Please update'
-    t.string "state",          value: 'Please update'
+    t.string "street_address"
+    t.string "city"
+    t.string "state"
     t.string "post_code"
     t.string "map_reference"
     t.float "longitude"
@@ -44,19 +29,16 @@ ActiveRecord::Schema.define(version: 2019_03_17_225022) do
     t.datetime "updated_at", null: false
     t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
   end
-=begin
-  create_table "admin_users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+
+  create_table "comments", force: :cascade do |t|
+    t.string "by"
+    t.text "body"
+    t.string "tracking_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_admin_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+    t.index ["tracking_id"], name: "index_comments_on_tracking_id", unique: true
   end
-=end
+
   create_table "companies", force: :cascade do |t|
     t.string "name"
     t.string "credit_terms"
@@ -101,8 +83,6 @@ ActiveRecord::Schema.define(version: 2019_03_17_225022) do
   end
 
   create_table "materials", force: :cascade do |t|
-    t.string "materialable_type"
-    t.bigint "materialable_id"
     t.string "name"
     t.string "description"
     t.string "materialable_type"
@@ -124,6 +104,22 @@ ActiveRecord::Schema.define(version: 2019_03_17_225022) do
     t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "shipments", force: :cascade do |t|
+    t.string "ship_from"
+    t.string "ship_to"
+    t.string "pickup"
+    t.string "deadline"
+    t.text "body"
+    t.text "quote_basis"
+    t.decimal "quote_complete"
+    t.string "tracking_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ship_from"], name: "index_shipments_on_ship_from"
+    t.index ["ship_to"], name: "index_shipments_on_ship_to"
+    t.index ["tracking_id"], name: "index_shipments_on_tracking_id", unique: true
   end
 
   create_table "tips", force: :cascade do |t|

@@ -1,6 +1,8 @@
 # Resources should never be nested more than 1 level deep. -- https://guides.rubyonrails.org/routing.html#controller-namespaces-and-routing
 Rails.application.routes.draw do
 
+  resources :comments
+  resources :shipments
 # rake routes > routes.txt  for inspection in editor
 # rake routes -c 'get'      to see verbs
 # rake routes -g '<path>'.  to see paths and prfixes
@@ -75,33 +77,8 @@ Rails.application.routes.draw do
   # rails routes -g identifiers
   resources :identifiers
  
-
-=begin
-  scope shallow_prefix: "organizations" do
-    resources :companies do
-      resources :addresses, shallow: true
-      resources :people, shallow: true
-    end
-  end
-
-  scope shallow_prefix: "organizations" do
-    resources :companies do
-      resources :addresses, shallow: true
-      resources :identifiers, shallow: true
-      resources :people, shallow: true
-    end
-  end
   
-  scope shallow_path: "individuals" do
-    resources :people do
-      resources :addresses, shallow: true
-      resources :identifiers, shallow: true
-    end
-  end
-=end
-  
-
-  resources :conditions, :materials, :equipment, :tips
+  resources :comments, :conditions, :materials, :equipment, :shipments, :tips
             
             #:dockets, :projects, :engagements, :jobs, :people_schedules,
             #:permits, :projects, :quotes, :requirements, :reservations, :schedules, :solutions,
