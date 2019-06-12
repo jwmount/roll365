@@ -1,7 +1,7 @@
 %p#notice= notice
 
 %p
-  %b Tracking:
+  %b Tracking ID (unique):
   = @shipment.tracking_id
 %p
   %b Ship from:
@@ -20,7 +20,7 @@
   = @shipment.cargo
 %p
   %b Load:
-  = @shipment.load
+  = @shipment.utilization
 %p
   %b Quote basis:
   = @shipment.quote_basis

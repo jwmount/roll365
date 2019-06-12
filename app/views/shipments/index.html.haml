@@ -7,7 +7,7 @@
 
       = render "search_panel", locals: {q: @q}
  
-    .col-6
+    .col-10
       %h3 Shipments
       = @shipments.count.to_s
       listed
@@ -45,13 +45,12 @@
         %tbody
           - @shipments.each do |shipment|
             %tr.data 
-              %td= shipment.tracking_id.to_i
-
+              %td= shipment.tracking_id
               %td= shipment.ship_from
               %td= shipment.ship_to
               %td= shipment.deadline
               %td= shipment.cargo
-              %td= shipment.load
+              %td= shipment.utilization
               %td= shipment.quote_basis
               %td= shipment.quote_complete
               

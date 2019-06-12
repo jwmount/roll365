@@ -112,7 +112,7 @@ ActiveRecord::Schema.define(version: 2019_06_11_232136) do
     t.string "pickup"
     t.string "deadline"
     t.text "cargo"
-    t.text "load"
+    t.string "utilization"
     t.text "quote_basis"
     t.decimal "quote_complete"
     t.string "tracking_id"

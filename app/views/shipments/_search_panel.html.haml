@@ -2,7 +2,7 @@
 = search_form_for @q do |f|
   .field
     
-    = f.label :tracking_id
+    = f.label 'Tracking Identifier (unique)'
     = f.text_field :tracking_id_cont, class: 'form-control'
 
     = f.label :ship_from
@@ -20,6 +20,8 @@
     = f.label :cargo
     = f.text_area :cargo_cont
 
+    = f.label :utilization
+    = f.text_field :utilization
 
     = f.submit class: 'btn btn-primary'
     .btn
