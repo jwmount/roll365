@@ -1,23 +1,21 @@
-.row
-  .col
-    =link_to 'Addresses', addresses_path
-  .col
-    =link_to 'Carriers', companies_path
-  .col
-    =link_to 'Comments', comments_path
-  .col
-    =link_to 'Conditions', conditions_path
-  .col
-    =link_to 'Contacts', identifiers_path
-  .col
-    =link_to 'Equipment', equipment_index_path
-  .col
-    =link_to 'Materials', materials_path
-  .col-sm-1
-    =link_to 'People', people_path
-  .col-sm
-    %b
-      =link_to 'Shipments', shipments_path
-  .col
-    =link_to 'Tip Sites', tips_path
+
+=link_to_unless_current 'Addresses', addresses_path
+&nbsp;
+=link_to_unless_current 'Carriers', companies_path
+&nbsp;
+=link_to_unless_current 'Comments', comments_path
+&nbsp;
+=link_to_unless_current 'Conditions', conditions_path
+&nbsp;
+=link_to_unless_current 'Contacts', identifiers_path
+&nbsp;
+=link_to_unless_current 'Equipment', equipment_index_path
+&nbsp;
+=link_to_unless_current 'Materials', materials_path
+&nbsp;
+=link_to_unless_current 'People', people_path
+&nbsp;
+=link_to_unless_current'Shipments', shipments_path
+&nbsp;
+=link_to_unless_current 'Tip Sites', tips_path
   

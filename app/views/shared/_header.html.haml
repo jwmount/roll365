@@ -15,7 +15,7 @@
     = link_to 'Home', root_path      
   
   .col-sm-8
-    = render "shared/finders_buttons"
+    
     - flash.each do |name, msg|
       .row.tbg
         = content_tag :div, msg, class: name

@@ -14,34 +14,12 @@
   %p
   %p
 
+%br
 %center
 
-  = link_to 'Addresses', addresses_path
-  &nbsp;
-  = link_to 'Contract Clauses', conditions_path    
-  &nbsp;
-  = link_to 'Carriers', companies_path
-  &nbsp;
-  = link_to 'Comments', comments_path
-  &nbsp;
-  = link_to 'Contacts', identifiers_path
-  &nbsp;
-  = link_to 'Equipment', equipment_index_path
-  &nbsp
-  = link_to 'Materials', materials_path
-  &nbsp;
-  = link_to 'People', people_path
-  &nbsp;
-  = link_to 'Shipments', shipments_path
-  &nbsp;
-  = link_to 'Tip Sites', tips_path
+  = link_to new_shipment_path, class: 'btn btn-secondary' do
+    %i.glyphicon.glyphicon-plus
+      Continue to Shipments
+%br
 
-  %p
-  Under Development
-  %p
-  = link_to 'Call Management', identifiers_path
-  &nbsp;
-  = link_to 'Lane Development', addresses_path
 
-  %p
-  %p

@@ -1,67 +1,39 @@
 .container-fluid
 
-  %h1 Finder
-  
-  .row
-    .col-2
-
-      = render "search_panel", locals: {q: @q}
- 
-    .col-10
-      %h3 Shipments
+.row
+  .col-sm-1
+    .col
+      
+.row
+  .col-sm-1
+    .col
+      %h2 Shipments
+.row
+  .col-sm-1
+    .col
       = @shipments.count.to_s
       listed
+
+
+  .col-sm-1
+    .col
+
       = will_paginate  
-    
-      %table.table.table-striped
+  
 
-        %thead
-          %tr
-            %th{align: 'left'} 
-              %em
-                Tracking ID
-            %th{align: 'left', valign: 'top'}
-              %em
-                Ship From
-            %th{align: 'left', width: '32'}
-              %em 
-                Ship To
-            %th 
-              %em
-                Deadline
-            %th
-              %em
-                Cargo
-            %th
-              %em
-                Load
-            %th
-              %em
-                Quote Basis
-            %th
-              %em
-                Quote Complete
-
-        %tbody
-          - @shipments.each do |shipment|
-            %tr.data 
-              %td= shipment.tracking_id
-              %td= shipment.ship_from
-              %td= shipment.ship_to
-              %td= shipment.deadline
-              %td= shipment.cargo
-              %td= shipment.utilization
-              %td= shipment.quote_basis
-              %td= shipment.quote_complete
-              
-              %td= link_to 'Show', shipment
-              %td= link_to 'Update', edit_shipment_path(shipment)
-              %td= link_to 'Destroy', shipment, method: :delete, data: { confirm: "Are you sure you want to delete #{shipment.tracking_id}?" } 
-      %br
-
-      = link_to new_shipment_path, class: 'btn btn-secondary' do
+.row
+  .col-sm-2
+    .col
+      = link_to shipment_search_path, class: 'btn btn-secondary' do
         %i.glyphicon.glyphicon-plus
-          New Shipment
+          Find Shipments
 
-  .nbsp 
-  .nbsp
+  .col-sm-2
+    = link_to new_shipment_path, class: 'btn btn-secondary' do
+      %i.glyphicon.glyphicon-plus
+        New Shipment
+
+.row
+  .col-sm-2
+    .col
+      = render "index_table"
