@@ -3,6 +3,7 @@ class Shipment < ApplicationRecord
 #
 # Validations
 #
+  validates_presence_of :tracking_id
   validates_uniqueness_of :tracking_id #, :scope => [:question_id]
 #
 # Initializations
@@ -10,13 +11,14 @@ class Shipment < ApplicationRecord
   after_initialize :defaults
   def defaults
      unless persisted?
-       self.ship_from        ||= 'here'
-       self.ship_to          ||= 'there'
-       self.deadline         ||= 'soon'
-       self.cargo            ||= 'what is'
+       self.ship_from        ||= 'open'
+       self.ship_to          ||= 'open'
+       self.pickup           ||= 'open'
+       self.deadline         ||= 'open'
+       self.cargo            ||= 'what is in the shipment'
        self.utilization      ||= 'FL, Full Load, 100%'
-       self.quote_basis      ||= 'list of costs'
-       self.quote_complete   ||= '$1000'
+       self.quote_basis      ||= 'open'
+       self.quote_complete   ||= 'open'
     end
   end
 

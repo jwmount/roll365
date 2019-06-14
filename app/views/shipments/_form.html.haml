@@ -1,38 +1,57 @@
-= form_for @shipment do |f|
+= form_for @shipment do |form|
   - if @shipment.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@shipment.errors.count, "error")} prohibited this shipment from being saved:"
+      %h2.tbg= "#{pluralize(@shipment.errors.count, "error")} prohibited this permit from being saved:"
       %ul
         - @shipment.errors.full_messages.each do |message|
-          %li= message
+          %li.tbg= message
 
-  .field
-    = f.label :tracking_id
-    = f.text_field :tracking_id
-  .field
-    = f.label :ship_from
-    = f.text_field :ship_from
-  .field
-    = f.label :ship_to
-    = f.text_field :ship_to
-  .field
-    = f.label :pickup
-    = f.text_field :pickup
-  .field
-    = f.label :deadline
-    = f.text_field :deadline
-  .field
-    = f.label :cargo
-    = f.text_area :cargo
-  .field
-    = f.label :utlization
-    = f.text_field :utilization
-  .field
-    = f.label :quote_basis
-    = f.text_area :quote_basis
-  .field
-    = f.label :quote_complete
-    = f.number_field :quote_complete
+  .form-group
+    = form.label :tracking_id, "Tracking Identifier", class: "col-md-4 control-label"
+    .col-md-8
+      = form.text_field :tracking_id, class: "form_control"
 
-  .actions
-    = f.submit 'Save'
+  .form-group
+    = form.label :ship_from, class: "col-md-4 control-label" 
+    .col-md-8
+      = form.text_field :ship_from, class: "form-control"
+  
+  .form-group
+    = form.label :ship_to, class: "col-md-4 control-label" 
+    .col-md-8
+      = form.text_field :ship_to, class: "form-control"
+
+  .form-group
+    = form.label :pickup, class: "col-md-4 control-label"
+    .col-md-8
+      = form.text_field :pickup, class: "form-control"
+
+  .form-group
+    = form.label :deadline, "Deadline", class: "col-md-4 control-label" 
+    .col-md-8
+      = form.text_field :deadline, class: "form-control"
+
+  .form-group
+    = form.label :cargo, "Cargo", class: "col-md-4 control-label" 
+    .col-md-8
+      = form.text_area :deadline, class: "form-control"
+
+  .form-group
+    = form.label :utilization, "Utilization", class: "col-md-4 control-label" 
+    .col-md-8
+      = form.text_field :utilization, class: "form-control"
+
+  .form-group
+    = form.label :quote_basis, "Basis for Quote (Costs)", class: "col-md-4 control-label" 
+    .col-md-8
+      = form.text_field :deadline, class: "form-control"
+
+  .form-group
+    = form.label :quote_complete, "Quote ($)", class: "col-md-4 control-label" 
+    .col-md-8
+      = form.text_field :deadline, class: "form-control"      
+  
+  %p
+    .actions
+    = form.submit
+  
