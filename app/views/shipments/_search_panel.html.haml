@@ -25,11 +25,12 @@
 
     = f.submit class: 'btn btn-primary'
     .btn
-      = link_to "Clear", request_path, class: "btn btn-secondary"      
+      = link_to "Clear", request_path, class: "btn btn-secondary"
+  .row
+    .col-sm-1
+      .btn      
+        = link_to "Back", shipments_path, class: "btn btn-secondary"
     %hr
-
+    
     %p
 
-    = link_to new_shipment_path, class: 'btn btn-secondary' do
-      %i.glyphicon.glyphicon-plus
-        New Shipment

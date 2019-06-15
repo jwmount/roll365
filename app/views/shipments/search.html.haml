@@ -1,4 +1,3 @@
-_index_search.html.haml
 
 .container-fluid
 
@@ -8,12 +7,17 @@ _index_search.html.haml
     .col-2
       = render "search_panel", locals: {q: @q}
    
-    .col-10
+    .col-2
       %h3 Shipments
       = @shipments.count.to_s
       listed
       = will_paginate  
-    
+    .col-sm-2
+      .col
+        = link_to new_shipment_path, class: 'btn btn-secondary' do
+          %i.glyphicon.glyphicon-plus
+            New Shipment
+
       %table.table.table-striped
 
         %thead
@@ -57,12 +61,8 @@ _index_search.html.haml
               
               %td= link_to 'Show', shipment
               %td= link_to 'Update', edit_shipment_path(shipment)
-              %td= link_to 'Destroy', shipment, method: :delete, data: { confirm: "Are you sure you want to delete #{shipment.tracking_id}?" } 
+              %td= link_to 'Close', shipment, method: :close, data: { confirm: "Are you sure you want shipment #{shipment.tracking_id}? closed?" } 
       %br
 
-      = link_to new_shipment_path, class: 'btn btn-secondary' do
-        %i.glyphicon.glyphicon-plus
-          New Shipment
-
-  .nbsp 
   .nbsp
+    %p

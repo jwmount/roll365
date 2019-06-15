@@ -12,6 +12,14 @@ class ShipmentsController < ApplicationController
     @shipments = @q.result.order(tracking_id: 'ASC').paginate(page: params[:page], per_page: 10 || params[:per_page])
   end
 
+  #
+  # Same as Index except has _seaerch_panel
+  #
+  def search
+    @q = Shipment.ransack(params[:q])
+    @shipments = @q.result.order(tracking_id: 'ASC').paginate(page: params[:page], per_page: 10 || params[:per_page])
+  end
+
   # GET /shipments/1
   # GET /shipments/1.json
   def show

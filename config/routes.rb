@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   get 'company_active', to: 'companies#company_active', as: :company_active
   get 'company_PO', to: 'companies#company_PO', as: :company_PO
 
+  get 'shipment_search', to: 'shipments#search', as: :search_shipments
 
   # UJS - DEPRECATED ?
   scope :ujs, defaults: { format: :ujs } do
