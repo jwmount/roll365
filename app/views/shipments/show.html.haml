@@ -2,8 +2,11 @@
 
 .container-fluid
 
+  %h1
+    Show Shipment
   %h3
     
+    Tracking Identifier:
     = @shipment.tracking_id
   
   %p
@@ -16,52 +19,55 @@
         Settings
 
   %p
-  .row      
+  .row.data
     .col-sm-2
       Tracking Identifier
     .col-sm-10
       = @shipment.tracking_id
-  .row      
+  
+  .row.data
     .col-sm-2
       Ship From:
     .col-sm-10
       = @shipment.ship_from     
-  .row      
+  
+  .row.data
     .col-sm-2
       Ship To
     .col-sm-10
       = @shipment.ship_to
-  .row      
+
+  .row.data
     .col-sm-2
       Pickup 
     .col-sm-10
       = @shipment.pickup
 
-  .row      
+  .row.data
     .col-sm-2
       Deliver By
     .col-sm-10
       = @shipment.deadline
 
-  .row      
+  .row.data
     .col-sm-2
       Cargo
     .col-sm-10
       = @shipment.cargo
 
-  .row      
+  .row.data      
     .col-sm-2
       Utilization
     .col-sm-10
       = @shipment.utilization
 
-  .row      
+  .row.data      
     .col-sm-2
       Quote Basis
     .col-sm-10
       = @shipment.quote_basis
 
-  .row      
+  .row.data      
     .col-sm-2
       Quote Amount ($)
     .col-sm-10
@@ -69,11 +75,9 @@
 
   %p
   .row    
-    .col-sm-2
-
+    .col-sm-1
+ 
       = link_to 'Edit', edit_shipment_path(@shipment)
-      |
-      = link_to 'Back', shipment_index_path
+    .col-sm-1
+      = link_to_unless_current("Back", { action: "index" })
   
-  = link_to_unless_current("Home", { action: "index" })
-  = link_to_unless_current("Show", { action: "show" })

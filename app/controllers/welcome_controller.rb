@@ -25,7 +25,9 @@ class WelcomeController < ApplicationController
     end
   end
 
-
+  def edit
+  end
+  
   # What we do
   def about
     begin

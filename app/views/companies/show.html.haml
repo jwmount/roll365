@@ -114,7 +114,10 @@
       = link_to "edit", root_path      
   %p
   %nbsp
-  %nbsp
-  = link_to_unless_current("Home", { action: "index" })
-  = link_to_unless_current("Show", { action: "show" })
-
+  
+  .row    
+    .col-sm-1
+ 
+      = link_to 'Edit', edit_company_path(@company)
+    .col-sm-1
+      = link_to 'Back', companies_path

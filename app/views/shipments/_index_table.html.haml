@@ -43,5 +43,5 @@
              
           %td= link_to 'Show', shipment
           %td= link_to 'Update', edit_shipment_path(shipment)
-          %td= link_to 'Close', shipment, method: :delete, data: { confirm: "Are you sure you want to close out this skhipment?#{shipment.tracking_id}?" } 
+          %td= link_to 'Close', shipment, method: :delete, data: { confirm: "Are you sure you want to close out shipment #{shipment.tracking_id}?" } 
   %br

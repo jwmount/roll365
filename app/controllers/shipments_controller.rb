@@ -47,13 +47,6 @@ class ShipmentsController < ApplicationController
 
   # PATCH/PUT /shipments/1
   # PATCH/PUT /shipments/1.json
-
-
-=begin
-  Event.create!(:name => 'Ironman Lanzarote 2011')
-rescue ActiveRecord::RecordNotUnique => e
-  # handle duplicate entry 
-=end
   def update
      @shipment = Shipment.find(params[:id])
      respond_to do |format|
