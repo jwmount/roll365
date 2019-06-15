@@ -74,4 +74,6 @@
       = link_to 'Edit', edit_shipment_path(@shipment)
       |
       = link_to 'Back', shipment_index_path
-
+  
+  = link_to_unless_current("Home", { action: "index" })
+  = link_to_unless_current("Show", { action: "show" })

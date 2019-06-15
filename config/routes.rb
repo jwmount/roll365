@@ -80,8 +80,5 @@ Rails.application.routes.draw do
   
   resources :comments, :conditions, :materials, :equipment, :shipments, :tips
             
-            #:dockets, :projects, :engagements, :jobs, :people_schedules,
-            #:permits, :projects, :quotes, :requirements, :reservations, :schedules, :solutions,
-            #:solution_tips
   
 end #routes
