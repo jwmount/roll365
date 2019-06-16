@@ -29,14 +29,8 @@
     .col-sm-2
       Status
     .col-sm-10
-      -if @shipment.status == 1
-        Open 
-      -if @shipment.status == 2
-        Closed
-      -if @shipment.status == 3
-        Suspended
-
-
+      =  @shipment.status_list(@shipment.status)
+         
   .row.data
     .col-sm-2
       Date Created

@@ -22,5 +22,12 @@ class Shipment < ApplicationRecord
     end
   end
 
+
+
+  def status_list(s)
+    status_list = [['Open', 0], ['Closed', 1],['Suspended - Cannot be changed', 2]]
+    return status_list[s][0]
+  end
+
 end
 
