@@ -27,6 +27,31 @@
   
   .row.data
     .col-sm-2
+      Status
+    .col-sm-10
+      -if @shipment.status == 1
+        Open 
+      -if @shipment.status == 2
+        Closed
+      -if @shipment.status == 3
+        Suspended
+
+
+  .row.data
+    .col-sm-2
+      Date Created
+    .col-sm-10
+      = @shipment.created_at.strftime("%d %b, %Y")
+
+  .row.data
+    .col-sm-2
+      Date Last Updated
+    .col-sm-10
+      = @shipment.updated_at.strftime("%d %b, %Y")
+
+
+  .row.data
+    .col-sm-2
       Ship From:
     .col-sm-10
       = @shipment.ship_from     

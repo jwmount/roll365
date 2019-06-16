@@ -1,11 +1,18 @@
 class ShipmentsController < ApplicationController
-  before_action :set_shipment, only: [:show, :edit, :update, :destroy]
+  before_action :set_shipment, only: [:close, :show, :edit, :update, :destroy]
 
   # GET /shipments
   # GET /shipments.json
   #def index
   #  @shipments = Shipment.all
   #end
+
+  # works with route defined in routes.rb, not used so far
+  def close
+    @shipment.status == 'Closed'
+    @shipment.save
+    redirect_to @shipment
+  end
 
   def index
     @q = Shipment.ransack(params[:q])
@@ -68,12 +75,13 @@ class ShipmentsController < ApplicationController
     end
   end
 
+
   # DELETE /shipments/1
   # DELETE /shipments/1.json
   def destroy
-    @shipment.destroy
+    # @shipment.destroy
     respond_to do |format|
-      format.html { redirect_to shipments_url, notice: 'Shipment was successfully destroyed.' }
+      format.html { redirect_to shipments_url, notice: "Shipment is closed and cannot be modified." }
       format.json { head :no_content }
     end
   end
@@ -86,6 +94,7 @@ class ShipmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shipment_params
-      params.require(:shipment).permit(:tracking_id, :ship_from, :ship_to, :pickup, :deadline, :cargo, :utilization, :quote_basis, :quote_complete)
+      params.require(:shipment).permit(:tracking_id, :ship_from, :ship_to, :pickup, :deadline, :cargo, :utilization, :quote_basis, 
+               :quote_complete, :status )
     end
 end

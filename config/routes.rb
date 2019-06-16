@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   get 'company_PO', to: 'companies#company_PO', as: :company_PO
 
   get 'shipment_search', to: 'shipments#search', as: :search_shipments
+   
 
   # UJS - DEPRECATED ?
   scope :ujs, defaults: { format: :ujs } do
@@ -79,7 +80,13 @@ Rails.application.routes.draw do
   resources :identifiers
  
   
-  resources :comments, :conditions, :materials, :equipment, :shipments, :tips
+  resources :shipments do
+    member do 
+      get 'close'
+    end
+  end
+  
+  resources :comments, :conditions, :materials, :equipment, :tips
             
   
 end #routes

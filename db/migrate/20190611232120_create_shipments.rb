@@ -1,6 +1,7 @@
 class CreateShipments < ActiveRecord::Migration[5.2]
   def change
     create_table :shipments do |t|
+      t.string :tracking_id
       t.string :ship_from
       t.string :ship_to
       t.string :pickup
@@ -9,7 +10,7 @@ class CreateShipments < ActiveRecord::Migration[5.2]
       t.string :utilization
       t.text   :quote_basis
       t.decimal :quote_complete
-      t.string :tracking_id
+      t.integer :status
 
       t.timestamps
     end

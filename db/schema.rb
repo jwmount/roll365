@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(version: 2019_06_11_232136) do
   end
 
   create_table "shipments", force: :cascade do |t|
+    t.string "tracking_id"
     t.string "ship_from"
     t.string "ship_to"
     t.string "pickup"
@@ -115,7 +116,7 @@ ActiveRecord::Schema.define(version: 2019_06_11_232136) do
     t.string "utilization"
     t.text "quote_basis"
     t.decimal "quote_complete"
-    t.string "tracking_id"
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ship_from"], name: "index_shipments_on_ship_from"

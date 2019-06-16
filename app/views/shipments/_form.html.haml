@@ -11,6 +11,10 @@
     .col-md-8
       = form.text_field :tracking_id, class: "form_control"
 
+    = form.label :status, "Status", class: "col-md-4 control-label"
+    .col-md-8
+      = form.select(:status, [['Open', 1], ['Closed',2], ['Suspended', 3]])
+
   .form-group
     = form.label :ship_from, class: "col-md-4 control-label" 
     .col-md-8
