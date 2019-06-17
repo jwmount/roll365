@@ -8,7 +8,7 @@ class ShipmentsController < ApplicationController
   #end
 
   # works with route defined in routes.rb, not used so far
-  def close
+  def closeXX
     @shipment.status == 'Closed'
     @shipment.save
     redirect_to @shipment
@@ -19,6 +19,20 @@ class ShipmentsController < ApplicationController
     @shipments = @q.result.order(tracking_id: 'ASC').paginate(page: params[:page], per_page: 10 || params[:per_page])
   end
 
+  def publish
+    flash[:publsih] = "Shipment event published.  params: #{params}"
+    redirect_to :shipments
+  end
+
+  def subscribe
+    flash[:subscribe] = "Shipment subscription created. params: #{params}"
+    redirect_to :shipments
+  end
+
+  def listen
+    flash[:listen] = "Shipment listen service started. params: #{params}"
+    redirect_to :shipments
+  end
   #
   # Same as Index except has _seaerch_panel
   #

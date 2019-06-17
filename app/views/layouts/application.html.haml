@@ -12,11 +12,13 @@
 -#
 -# Bootstrap grid for all containers
 -#  
-.container-fluid
 
+.container
+  
   - unless self.controller_name == 'welcome'
     = render '/shared/header'
- 
+  
   = yield
 
+  
   = render '/shared/footer'

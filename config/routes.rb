@@ -83,6 +83,8 @@ Rails.application.routes.draw do
   resources :shipments do
     member do 
       get 'close'
+      get 'publish'
+      get 'subscribe'
     end
   end
   
