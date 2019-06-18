@@ -15,10 +15,9 @@
 
 .container
   
-  - unless self.controller_name == 'welcome'
-    = render '/shared/header'
+
+  = render '/shared/header'
   
   = yield
-
   
   = render '/shared/footer'

@@ -1,14 +1,14 @@
+      
+%center
+  #{controller_name}##{action_name}
 
-.row
-  .col
-    %h6
-      #{controller_name}##{action_name}
+.container
 
-.row
+  .row
   
-  .col-sm-8
+    .col-sm-8
     
-    - flash.each do |name, msg|
-      .row.tbg
-        = content_tag :div, msg, class: name
-  %hr
+      - flash.each do |name, msg|
+        .row.tbg
+          = content_tag :div, msg, class: name
+    %hr

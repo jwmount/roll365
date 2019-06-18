@@ -82,6 +82,7 @@ class AddressesController  < ApplicationController # < InheritedResources::Base
   # DELETE /companies/1
   # DELETE /companies/1.json
   def destroy
+    byebug
     @address = Address.find(params[:id])
     @address.destroy
     respond_to do |format|
