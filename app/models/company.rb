@@ -72,7 +72,7 @@ class Company < ApplicationRecord
        self.line_of_business   ||= '(Please edit.)'
        self.name               ||= '(Please edit.)'
        self.PO_required        ||= true
-       self.url                ||= '(Please edit).'
+       self.url                ||= '(Please edit.)'
    
      end
   end

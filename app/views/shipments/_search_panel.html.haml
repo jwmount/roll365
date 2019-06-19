@@ -27,6 +27,8 @@
     = f.text_field :status
 
     = f.submit class: 'btn btn-primary'
+    
+    
     .btn
       = link_to "Clear", request_path, class: "btn btn-secondary"
   .row
@@ -37,3 +39,8 @@
     
     %p
 
+%p
+  Search icon on a button:
+  %button.btn.btn-default{:type => "button"}
+    %span.glyphicon.glyphicon-search
+    Search
