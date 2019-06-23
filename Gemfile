@@ -18,7 +18,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'haml-rails'
 
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier', '>= 4.0.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
@@ -66,15 +66,6 @@ group :test do
   # gem 'chromedriver-helper'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-#gem 'activeadmin'
-# Plus integrations with:
-#gem 'devise'
-#gem 'cancancan'
-#gem 'draper'
-
 
 gem 'foreman'
 
@@ -94,10 +85,7 @@ gem 'jquery-rails'
 gem 'webpacker', '~>3.0'
 
 
-
-
 gem "rails-hyperstack", "~> 1.0.alpha1.0"
 
 group :development do
-  gem 'foreman'
 end
