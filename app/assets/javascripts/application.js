@@ -13,6 +13,7 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require hyperstack-loader
 //= require_tree .
 
 // Following lines are related to asset compile fails on push to heroku.  WOrks fine with them

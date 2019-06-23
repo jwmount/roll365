@@ -95,3 +95,9 @@ gem 'webpacker', '~>3.0'
 
 
 
+
+gem "rails-hyperstack", "~> 1.0.alpha1.0"
+
+group :development do
+  gem 'foreman'
+end

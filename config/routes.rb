@@ -1,8 +1,13 @@
 # Resources should never be nested more than 1 level deep. -- https://guides.rubyonrails.org/routing.html#controller-namespaces-and-routing
 Rails.application.routes.draw do
 
+  mount Hyperstack::Engine => '/hyperstack'  # this route should be first in the routes file so it always matches
+  
+  
+
   resources :comments
   resources :shipments
+
 # rake routes > routes.txt  for inspection in editor
 # rake routes -c 'get'      to see verbs
 # rake routes -g '<path>'.  to see paths and prfixes
@@ -17,8 +22,8 @@ Rails.application.routes.draw do
 # ActiveAdmin.routes(self)
 
   # use rails g controller welcome to direct root references to welcome index and the get is what to do there
-  get 'welcome/landing'
-  root 'welcome#landing'  
+  get 'welcome/landing', to: 'hyperstack#welcome'
+  root 'welcome#landing'
   
   #
   # Generate paths for footer.  These paths rely on methods defined in the WelcomeController.
@@ -83,8 +88,6 @@ Rails.application.routes.draw do
   resources :shipments do
     member do 
       get 'close'
-      get 'publish'
-      get 'subscribe'
     end
   end
   

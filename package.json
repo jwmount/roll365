@@ -2,7 +2,13 @@
   "name": "roll365",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "3.5"
+    "@rails/webpacker": "3.5",
+    "jquery": "^3.4.1",
+    "react": "16",
+    "react-dom": "16",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0",
+    "react_ujs": "^2.5.0"
   },
   "devDependencies": {
     "webpack-dev-server": "2.11.2"
