@@ -1,9 +1,6 @@
 # Resources should never be nested more than 1 level deep. -- https://guides.rubyonrails.org/routing.html#controller-namespaces-and-routing
 Rails.application.routes.draw do
 
-  mount Hyperstack::Engine => '/hyperstack'  # this route should be first in the routes file so it always matches
-  
-  
 
   resources :comments
   resources :shipments
@@ -93,5 +90,8 @@ Rails.application.routes.draw do
   
   resources :comments, :conditions, :materials, :equipment, :tips
             
+  mount Hyperstack::Engine => '/hyperstack'  # this route should be first in the routes file so it always matches
+  
+  get '/(*others)', to: 'hyperstack#shipment'  
   
 end #routes
