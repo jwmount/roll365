@@ -1,3 +1,7 @@
+Hyperstack.configuration do |config|
+	config.import 'hyperstack/hotloader',
+	client_only: true if Rails.env.development?
+end
 Hyperstack.cancel_import 'react/react-source-browser' # bring your own React and ReactRouter via Yarn/Webpacker
 Hyperstack.import 'hyperstack/hotloader', client_only: true if Rails.env.development?
 # set the component base class

@@ -1,4 +1,4 @@
-class Shipment < HyperComponent
+class Dashboard < HyperComponent
 
   # param :my_param
   # param param_with_default: "default value"
@@ -42,7 +42,7 @@ class Shipment < HyperComponent
 
   render do
     DIV do
-      'Shipment Hyperstack Layout'
+      'Dashboard'
     end
   end
 end
