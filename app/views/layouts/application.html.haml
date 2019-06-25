@@ -16,8 +16,28 @@
 .container-fluid
   
 
-  = render '/shared/header'
-  
+  - if controller_name == 'hyperstack'
+    
+    = mount_component 'header_hs'
+
+  - else
+
+    = render '/shared/header'
+
+
   = yield
   
-  = render '/shared/footer'
+
+  - if controller_name == 'hyperstack'
+
+    = mount_component 'Footer'
+
+  - else
+
+    = render '/shared/footer'
+
+
+-# HS layout suggestion from Catmandu
+-#    = mount_component 'Header', controller_name: controller_name, action_name: action_name, flash: flash.as_json
+
+-#  = yield

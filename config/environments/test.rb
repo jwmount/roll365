@@ -46,4 +46,5 @@ Rails.application.configure do
 
   # added by hyperstack installer
   config.assets.paths << Rails.root.join('public', 'packs-test', 'js').to_s
+
 end

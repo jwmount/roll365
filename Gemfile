@@ -82,8 +82,8 @@ gem 'will_paginate-bootstrap4'
 
 gem 'sprockets-rails'
 gem 'jquery-rails'
-gem 'webpacker', '~>3.0'
-
+gem 'webpacker', '~> 4.x'
+ 
 
 gem "rails-hyperstack", "~> 1.0.alpha1.0"
 
