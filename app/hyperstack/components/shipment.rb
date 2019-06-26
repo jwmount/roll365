@@ -40,10 +40,15 @@ class Shipment < HyperComponent
     # automatically
   end
 
-  render do
+  @shipments = Shipment.find.all
+  render(UL) do
     DIV do
-      'Shipment Hyperstack Layout'
+      @shipments.each do |tno|
+        LI { "Tracking No. #{tno.name}" }.on(:click) {display tno}
+      end
     end
   end
+
 end
+
 

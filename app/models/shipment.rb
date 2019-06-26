@@ -1,4 +1,4 @@
-class XXXShipment < ApplicationRecord
+class Shipment < ApplicationRecord
 
 #
 # Validations
