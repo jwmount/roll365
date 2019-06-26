@@ -1,7 +1,8 @@
 # Resources should never be nested more than 1 level deep. -- https://guides.rubyonrails.org/routing.html#controller-namespaces-and-routing
 Rails.application.routes.draw do
 
-mount Hyperstack::Engine => '/hyperstack'  # this route should be first in the routes file so it always matches
+  mount Hyperstack::Engine => '/hyperstack'  # this route should be first in the routes file so it always matches
+
 
 # rake routes > routes.txt  for inspection in editor
 # rake routes -c 'get'      to see verbs

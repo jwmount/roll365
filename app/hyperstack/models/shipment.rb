@@ -1,3 +1,4 @@
+
 class Shipment < ApplicationRecord
 
 #
@@ -30,4 +31,3 @@ class Shipment < ApplicationRecord
   end
 
 end
-
