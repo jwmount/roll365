@@ -30,7 +30,7 @@ mount Hyperstack::Engine => '/hyperstack'  # this route should be first in the r
   get 'about', to: :show, controller: 'welcome'
   get 'advertise', to: :show, controller: 'welcome'
   get 'contact', to: :show, controller: 'welcome'
-  get 'dashboard', to: :show, controller: 'welcome'
+ 
   get 'faq', to: :show, controller: 'welcome'
   get 'license', to: :show, controller: 'welcome'
   get 'privacy', to: :show, controller: 'welcome'

@@ -1,5 +1,5 @@
-  _hyperstack.html.haml
-  
-    = mount_component 'Header', controller_name: controller_name, action_name: action_name, flash: flash.as_json
+    -#= mount_component 'Header', controller_name: controller_name, action_name: action_name, flash: flash.as_json
 
+    = mount_component 'Header', controller_name: 'controller_name', action_name: 'action_name', flash: 'flash.as_json'
+    
     = yield

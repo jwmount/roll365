@@ -1,0 +1,39 @@
+class Header < HyperComponent
+
+  param :controller_name
+
+  param :action_name
+
+  param :flash
+
+  render(DIV) do
+
+  DIV { "#{controller_name}##{action_name}"}
+
+    DIV(class: :container) do
+
+     DIV(class: :row) do
+
+      DIV(class: 'col-sm-8') do
+
+       flash.each do |name, msg|
+
+         DIV(class: [:row, :tbg]) do
+
+           DIV(class: name) { msg }
+
+      end
+
+     end
+
+    end
+
+   end
+
+  end
+
+  HR()
+
+ end
+
+end
