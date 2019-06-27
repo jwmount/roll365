@@ -1,4 +1,6 @@
-class ShipmentIndex < HyperComponent
+# app/hyperstack/components/shipment_item.rb
+class ShipmentItem < HyperComponent
+
   # param :my_param
   # param param_with_default: "default value"
   # param :param_with_default2, default: "default value" # alternative syntax
@@ -41,22 +43,27 @@ class ShipmentIndex < HyperComponent
 
 
 
-# app/hyperstack/components/shipment_index.rb
-#. remove XXX class ShipmentIndex < HyperComponent
+  param :shipment
 
-  render(UL) do
-    DIV do
-      Shipment.each do |shipment|
-        LI do
-         # remove the simple text string and instead
-         # mount a component here that
-          ShipmentItem(shipment: shipment)
-          ShipmentItem(shipment: shipment)
-        end
-      end
-    end
-  end
+  render do
+    UL do
+      
+      if @expanded
+        DIV do
+          DIV { "I am the expanded version of the div "}
+          DIV { "tracking no: #{shipment.tracking_id}" }
+          UL do
+            LI { "from: #{shipment.ship_from}" }
+            LI { "to: #{shipment.ship_to}" }
+          end #UL
+        end #DIV
+      else
+        DIV { "tracking no: #{shipment.tracking_id} (expand)" }
+      end #if
 
-
+    end #UL
+    .on(:click) { toggle(:expanded) }
+  end #render
 
 end
+
