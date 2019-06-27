@@ -91,8 +91,8 @@ Rails.application.routes.draw do
   
   resources :comments, :conditions, :materials, :equipment, :tips
             
- 
-  get '/shipment', to: 'hyperstack#shipment'  
+  get '/shipment', to: 'hyperstack#shipment_index'  
+  
   get '/dashboard', to: 'hyperstack#dashboard'
   
   

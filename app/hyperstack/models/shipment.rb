@@ -1,5 +1,4 @@
-
-class XXXShipment < ApplicationRecord
+class Shipment < ApplicationRecord
 
 #
 # Validations
@@ -12,6 +11,7 @@ class XXXShipment < ApplicationRecord
   after_initialize :defaults
   def defaults
      unless persisted?
+       self.tracking_id      ||= 'not assigned'
        self.ship_from        ||= 'open'
        self.ship_to          ||= 'open'
        self.pickup           ||= 'open'
@@ -31,3 +31,4 @@ class XXXShipment < ApplicationRecord
   end
 
 end
+

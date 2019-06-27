@@ -1,5 +1,4 @@
-class Shipment < HyperComponent
-
+class ShipmentIndex < HyperComponent
   # param :my_param
   # param param_with_default: "default value"
   # param :param_with_default2, default: "default value" # alternative syntax
@@ -40,13 +39,19 @@ class Shipment < HyperComponent
     # automatically
   end
 
-  @shipments = Shipment.find.all
+
   render(UL) do
+
     DIV do
-      @shipments.each do |tno|
-        LI { "Tracking No. #{tno.name}" }.on(:click) {display tno}
+
+      Shipment.each do |shipment|
+
+        LI { "Tracking No. #{shipment.tracking_id}" } #.on(:click) {display shipment}
+
       end
+
     end
+
   end
 
 end
