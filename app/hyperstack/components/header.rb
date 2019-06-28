@@ -41,9 +41,10 @@ class Header < HyperComponent
   end
 
   render do
-    DIV do
-      'Header'
-    end
+    DIV(class: [:footer, :tbg]) { 
+      "Dashboard"
+    }
   end
+  
 end
 

@@ -31,7 +31,6 @@ Rails.application.routes.draw do
   get 'about', to: :show, controller: 'welcome'
   get 'advertise', to: :show, controller: 'welcome'
   get 'contact', to: :show, controller: 'welcome'
- 
   get 'faq', to: :show, controller: 'welcome'
   get 'license', to: :show, controller: 'welcome'
   get 'privacy', to: :show, controller: 'welcome'
@@ -91,8 +90,7 @@ Rails.application.routes.draw do
   
   resources :comments, :conditions, :materials, :equipment, :tips
             
-  get '/shipment', to: 'hyperstack#shipment_index'  
-  
+  get '/shipment', to: 'hyperstack#shipment_index'
   get '/dashboard', to: 'hyperstack#dashboard'
   
   

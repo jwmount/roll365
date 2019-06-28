@@ -40,9 +40,25 @@ class Dashboard < HyperComponent
     # automatically
   end
 
+=begin
   render do
     DIV do
-      'Dashboard'
+     'ship_index, but how do we invoke it?'
+    end
+  end
+=end
+
+  render(UL) do
+    DIV(class: :Header)
+    DIV do
+      Shipment.each do |shipment|
+        LI do
+         # remove the simple text string and instead
+         # mount a component here that
+          ShipmentItem(shipment: shipment)
+        end
+      end
+    
     end
   end
 end

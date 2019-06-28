@@ -45,15 +45,16 @@ class ShipmentIndex < HyperComponent
 #. remove XXX class ShipmentIndex < HyperComponent
 
   render(UL) do
+    DIV(class: :Header)
     DIV do
       Shipment.each do |shipment|
         LI do
          # remove the simple text string and instead
          # mount a component here that
           ShipmentItem(shipment: shipment)
-          ShipmentItem(shipment: shipment)
         end
       end
+    
     end
   end
 
