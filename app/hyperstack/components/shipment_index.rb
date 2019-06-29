@@ -44,6 +44,19 @@ class ShipmentIndex < HyperComponent
 # app/hyperstack/components/shipment_index.rb
 #. remove XXX class ShipmentIndex < HyperComponent
 
+  SEARCHABLE_COLUMNS = %i[tracking_id ship_from ship_to]
+
+  scope :search_for, (
+    lambda do |search_string, order = 'ASC', page = nil, per_page = 10|
+      # ransack may not be what you want for a general search anywhere function
+      # but here is an example
+      q = {:"#{SEARCHABLE_COLUMNS.join("_or_")}_cont" => search_string}
+      r = ransack(q).result.order(tracking_id: order)
+      r = r.paginate(page: page, per_page: per_page) if page
+      r
+    end
+  )
+
   render(UL) do
     DIV(class: :Header)
     DIV do
@@ -53,8 +66,7 @@ class ShipmentIndex < HyperComponent
          # mount a component here that
           ShipmentItem(shipment: shipment)
         end
-      end
-    
+      end 
     end
   end
 

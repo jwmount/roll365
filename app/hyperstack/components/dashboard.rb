@@ -40,13 +40,41 @@ class Dashboard < HyperComponent
     # automatically
   end
 
-=begin
-  render do
-    DIV do
-     'ship_index, but how do we invoke it?'
+
+
+# code from Catmando 28 June, 2019
+
+  render(UL) do
+    
+  
+    DIV(class: :Header) do
+      INPUT(type: :text, value: @search_string, placeholder: 'search for ...')
+      .on(:change) { |e| mutate @search_string = e.target.value }
     end
+
+    DIV do
+      # note this is very simplistic and will overload your server in a real app
+      # with multiple users all searching at the same time
+      # normally we would add some throttling so that we only update the search
+      # after say 0.2 seconds, and only if the results of the previous search
+      # have updated.  Easy enough with Hyperstack, but lets not complicate things
+      # now.
+      Shipment.search_for(@search_string.strip).each do |shipment|
+        LI { ShipmentItem(shipment: shipment) }
+      end
+    end
+      DIV(class: [:footer, :tbg]) {  
+        "Roll365.com does not employ, recommend or endorse any agent, broker, carrier or shipper nor are we 
+        responsible for the conduct of any agent, broker, carrier or shipper. Roll365.com provides information 
+        and tools to help agents, brokers, carriers and shippers make informed decisions.   
+        Where appropriate such services are built upon the Fr8.Network protocol including smart contracts and 
+        transactions, if any, rely on the Ethereum blockchain.  As of now no smart contact services are implemented."
+      }
   end
-=end
+end
+
+
+=begin
 
   render(UL) do
     DIV(class: :Header)
@@ -56,10 +84,12 @@ class Dashboard < HyperComponent
          # remove the simple text string and instead
          # mount a component here that
           ShipmentItem(shipment: shipment)
-        end
-      end
-    
-    end
-  end
-end
+        end #do
+      end  #do 
+    end #DIV
+  end #render
+
+=end
+
+
 
