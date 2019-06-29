@@ -23,6 +23,7 @@ class Dashboard < HyperComponent
   before_mount do
     # any initialization particularly of state variables goes here.
     # this will execute on server (prerendering) and client.
+    @search_string = ""
   end
 
   after_mount do
@@ -46,7 +47,6 @@ class Dashboard < HyperComponent
 
   render(UL) do
     
-  
     DIV(class: :Header) do
       INPUT(type: :text, value: @search_string, placeholder: 'search for ...')
       .on(:change) { |e| mutate @search_string = e.target.value }
@@ -63,33 +63,10 @@ class Dashboard < HyperComponent
         LI { ShipmentItem(shipment: shipment) }
       end
     end
-      DIV(class: [:footer, :tbg]) {  
-        "Roll365.com does not employ, recommend or endorse any agent, broker, carrier or shipper nor are we 
-        responsible for the conduct of any agent, broker, carrier or shipper. Roll365.com provides information 
-        and tools to help agents, brokers, carriers and shippers make informed decisions.   
-        Where appropriate such services are built upon the Fr8.Network protocol including smart contracts and 
-        transactions, if any, rely on the Ethereum blockchain.  As of now no smart contact services are implemented."
-      }
+
   end
 end
 
-
-=begin
-
-  render(UL) do
-    DIV(class: :Header)
-    DIV do
-      Shipment.each do |shipment|
-        LI do
-         # remove the simple text string and instead
-         # mount a component here that
-          ShipmentItem(shipment: shipment)
-        end #do
-      end  #do 
-    end #DIV
-  end #render
-
-=end
 
 
 
