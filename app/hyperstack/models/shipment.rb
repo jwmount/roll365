@@ -34,6 +34,10 @@ class Shipment < ApplicationRecord
       r
     end
   )
+  scope :completed, -> { where(completed: true) }
+  scope :delayed, -> { where(delayed: true) }
+  scope :ontime, -> { where(ontime: true) }
+
 
   def status_list(s)
     status_list = [['Open', 0], ['Closed', 1],['Suspended - Cannot be changed', 2]]

@@ -30,7 +30,7 @@
     .col-sm-2
       Status
     .col-sm-10
-      =  @shipment.status_list(@shipment.status)
+      =  @shipment.status
          
   .row.data
     .col-sm-2
@@ -38,6 +38,23 @@
     .col-sm-10
       = @shipment.created_at.strftime("%d %b, %Y")
 
+  .row.data
+    .col-sm-2
+      On Time
+    .col-sm-10
+      = @shipment.ontime ? 'True' : 'False'
+
+  .row.data
+    .col-sm-2
+      Delayed
+    .col-sm-10
+      = @shipment.delayed ? 'True' : 'False'
+
+  .row.data
+    .col-sm-2
+      Completed
+    .col-sm-10
+      = @shipment.completed ? 'True' : 'False'
   .row.data
     .col-sm-2
       Date Last Updated

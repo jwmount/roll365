@@ -6,6 +6,9 @@ class CreateShipments < ActiveRecord::Migration[5.2]
       t.string :ship_to
       t.string :pickup
       t.string :deadline
+      t.boolean :ontime
+      t.boolean :completed
+      t.boolean :delayed
       t.text   :cargo
       t.string :utilization
       t.text   :quote_basis

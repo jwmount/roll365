@@ -90,8 +90,10 @@ Rails.application.routes.draw do
   
   resources :comments, :conditions, :materials, :equipment, :tips
             
-  get '/shipment', to: 'hyperstack#shipment_index'
+# H Y P E R S T A C K.  H Y P E R S T A C K.  H Y P E R S T A C K.  H Y P E R S T A C K
+
   get '/dashboard', to: 'hyperstack#dashboard'
-  
+  get '/(*other)', to: 'hyperstack#app'
+ 
   
 end #routes

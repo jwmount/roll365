@@ -40,10 +40,9 @@ class Header < HyperComponent
     # automatically
   end
 
-  render do
-    DIV(class: [:footer, :tbg]) { 
-      "Dashboard"
-    }
+  
+  render  do
+    H3 { 'Manage Shipments'}
   end
   
 end

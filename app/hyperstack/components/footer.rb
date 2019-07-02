@@ -1,5 +1,5 @@
 class Footer < HyperComponent
-
+  include Hyperstack::Router::Helpers
   # param :my_param
   # param param_with_default: "default value"
   # param :param_with_default2, default: "default value" # alternative syntax
@@ -40,9 +40,26 @@ class Footer < HyperComponent
     # automatically
   end
 
-  render do
+  def link_item(path)
+    LI { NavLink("/#{path}", active_class: :selected) { path.camelize } }
+  end
+  render(DIV, class: :footer) do
+    SPAN(class: 'todo-count') do
+      "#{pluralize(Shipment.ontime.count, 'item')} left"
+    end
+    UL(class: :filters) do
+      link_item(:ontime)
+      link_item(:delayed)
+      link_item(:completed)
+    end
+  end
+  'xx'
+end
+
+
+=begin  render do
   
-      DIV(class: [:footer, :tbg]) {  
+      DIV(class: [:footer]) {  
         "Roll365.com does not employ, recommend or endorse any agent, broker, carrier or shipper nor are we 
         responsible for the conduct of any agent, broker, carrier or shipper. Roll365.com provides information 
         and tools to help agents, brokers, carriers and shippers make informed decisions.   
@@ -51,7 +68,4 @@ class Footer < HyperComponent
       }
     
   end
-
-
-end
-
+=end

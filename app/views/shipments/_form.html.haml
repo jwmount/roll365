@@ -36,6 +36,21 @@
       = form.text_field :deadline, class: "form-control"
 
   .form-group
+    = form.label :ontime, "On Time", class: "col-md-4 control-label" 
+    .col-md-8
+      = form.radio_button :ontime, class: "form-control"
+
+  .form-group
+    = form.label :completed, "Completed", class: "col-md-4 control-label" 
+    .col-md-8
+      = form.radio_button :completed, class: "form-control"
+
+  .form-group
+    = form.label :delayed, "Delayed", class: "col-md-4 control-label" 
+    .col-md-8
+      = form.radio_button :delayed , class: "form-control"
+
+  .form-group
     = form.label :cargo, "Cargo", class: "col-md-4 control-label" 
     .col-md-8
       = form.text_area :cargo, class: "form-control"
