@@ -1,5 +1,3 @@
-
-
 # app/hyperstack/models/application_record.rb
 
 class ApplicationRecord < ActiveRecord::Base

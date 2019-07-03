@@ -1,5 +1,5 @@
 class Shipment < ApplicationRecord
-
+  
 #
 # Validations
 #
@@ -18,6 +18,9 @@ class Shipment < ApplicationRecord
        self.deadline         ||= 'open'
        self.cargo            ||= 'what is in the shipment'
        self.utilization      ||= 'FL, Full Load, 100%'
+       self.ontime           ||= true
+       self.completed        ||= false
+       self.delayed          ||= false
        self.quote_basis      ||= 'open'
        self.quote_complete   ||= 'open'
     end
@@ -34,15 +37,15 @@ class Shipment < ApplicationRecord
       r
     end
   )
-  scope :completed, -> { where(completed: true) }
-  scope :delayed, -> { where(delayed: true) }
-  scope :ontime, -> { where(ontime: true) }
-
-
+  
   def status_list(s)
     status_list = [['Open', 0], ['Closed', 1],['Suspended - Cannot be changed', 2]]
     return status_list[s][0]
   end
+
+  scope :ontime, -> { where(ontime: true) }
+  scope :completed, -> { where(completed: false) }
+  scope :delayed, -> { where(delayed: false)}
 
 end
 

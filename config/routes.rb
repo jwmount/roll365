@@ -92,7 +92,7 @@ Rails.application.routes.draw do
             
 # H Y P E R S T A C K.  H Y P E R S T A C K.  H Y P E R S T A C K.  H Y P E R S T A C K
 
-  get '/dashboard', to: 'hyperstack#dashboard'
+  get '/dashboard', to: 'hyperstack#app'
   get '/(*other)', to: 'hyperstack#app'
  
   
