@@ -3,9 +3,10 @@ class Footer < HyperComponent
 
   def link_item(path)
     LI do
-      NavLink("/#{path}", active_class: :selected) do
-        path.camelize
-      end
+      DIV { path.camelize + ' Na Na NavLink()' }
+      #NavLink("/#{path}", active_class: :selected) do
+      #  path.camelize
+      #end
     end
   end
 

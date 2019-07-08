@@ -55,6 +55,7 @@ class ShipmentItem < HyperComponent
           UL do
             LI { "from: #{shipment.ship_from}" }
             LI { "to: #{shipment.ship_to}" }
+            LI { "pending: #{shipment.pending}" }
           end #UL
         end #DIV
       else

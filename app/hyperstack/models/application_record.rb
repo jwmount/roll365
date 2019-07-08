@@ -2,7 +2,9 @@
 
 class ApplicationRecord < ActiveRecord::Base
 
-  regulate_scope :all
+# removed to reflect HS-Todo-demo
+#  regulate_scope :all
+
 
   self.abstract_class = true
 

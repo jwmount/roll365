@@ -10,6 +10,7 @@ class CreateShipments < ActiveRecord::Migration[5.2]
       t.boolean :completed
       t.boolean :delayed
       t.text   :cargo
+      t.text   :pending
       t.string :utilization
       t.text   :quote_basis
       t.decimal :quote_complete
