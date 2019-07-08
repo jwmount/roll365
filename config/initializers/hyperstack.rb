@@ -26,6 +26,7 @@ Hyperstack.transport = :action_cable # or :none, :pusher,  :simple_poller
 # change definition of on_error to control how errors such as validation
 # exceptions are reported on the server
 module Hyperstack
+  byebug
   def self.on_error(operation, err, params, formatted_error_message)
     ::Rails.logger.debug(
       "#{formatted_error_message}\n\n" +

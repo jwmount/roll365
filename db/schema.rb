@@ -116,7 +116,6 @@ ActiveRecord::Schema.define(version: 2019_06_11_232136) do
     t.boolean "completed"
     t.boolean "delayed"
     t.text "cargo"
-    t.text "pending"
     t.string "utilization"
     t.text "quote_basis"
     t.decimal "quote_complete"

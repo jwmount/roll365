@@ -17,7 +17,6 @@ class Shipment < ApplicationRecord
        self.pickup           ||= 'open'
        self.deadline         ||= 'open'
        self.cargo            ||= 'what is in the shipment'
-       self.pending          ||= 'No actions expected'
        self.utilization      ||= 'FL, Full Load, 100%'
        self.ontime           ||= true
        self.completed        ||= false
