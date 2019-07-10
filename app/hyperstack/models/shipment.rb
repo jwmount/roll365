@@ -21,6 +21,7 @@ class Shipment < ApplicationRecord
        self.ontime           ||= true
        self.completed        ||= false
        self.delayed          ||= false
+       self.status           ||= 0
        self.quote_basis      ||= 'open'
        self.quote_complete   ||= 'open'
     end
@@ -43,6 +44,7 @@ class Shipment < ApplicationRecord
     return status_list[s][0]
   end
 
+  
   scope :ontime, -> { where(ontime: true) }
   scope :completed, -> { where(completed: false) }
   scope :delayed, -> { where(delayed: false)}
