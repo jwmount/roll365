@@ -23,11 +23,38 @@ Alt-Q reformats the current paragraph.
 
 Enjoy!
 
-
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
+## Installation 
+
+### Prerequisites
+
+Clone the app from github:
+
+```$ git https://www.github.com/jwmount/roll365.git```
+ 
+Change into the directory you just created:
+ 
+```$ cd roll365```
+
+Create the postesql tables.
+
+```rails db:drop #Only needed if there were database tables for roll365 already```
+
+```rails db:create db:migrate```
+
+Postgresql needs to be running and if it isn't, start it.
+
+```? how```
+
+Start the app from your terminal window:
+
+```$ bundle exec foreman start```
+
+The roll365 app should start and give you the landing page.  Reqular Rails based models are listed and the hypertack features are in the Dashboard.
+
+## Things you may want to cover:
 
 * Ruby version
 
