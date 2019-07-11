@@ -42,7 +42,7 @@ class Header < HyperComponent
 
   
   render  do
-    H3 { 'Manage Shipments (Header.rb)'}
+    H3 { 'Dispatch Dashboard'}
   end
   
 end

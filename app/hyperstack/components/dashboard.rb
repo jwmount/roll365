@@ -42,14 +42,7 @@ class Dashboard < HyperComponent
   end
 
   def link_item(path)
-    LI do
-      # P R O B L E M  H E R E -- NavLink statement crashes
-      # Show paths and a placeholder
-      DIV(class: :footer) { path.camelize + ' Na Na NavLink()' }
-      NavLink("/#{path}", active_class: :selected) do
-        path.camelize
-      end
-    end
+    LI { NavLink("/#{path}", active_class: :selected) {path.camelize} }
   end
 
   render(UL) do
@@ -77,11 +70,9 @@ class Dashboard < HyperComponent
       end
     end
 
-    DIV do
-      DIV(class: :footer) {'Scope Menu On Time  Delayed   Completed'}
-    end
-
+    
     UL(class: :filters) do
+      link_item(:all)
       link_item(:ontime)
       link_item(:delayed)
       link_item(:completed)
