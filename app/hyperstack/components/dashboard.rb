@@ -1,5 +1,5 @@
 class Dashboard < HyperComponent
-
+  include Hyperstack::Router::Helpers
   # param :my_param
   # param param_with_default: "default value"
   # param :param_with_default2, default: "default value" # alternative syntax
@@ -46,9 +46,9 @@ class Dashboard < HyperComponent
       # P R O B L E M  H E R E -- NavLink statement crashes
       # Show paths and a placeholder
       DIV(class: :footer) { path.camelize + ' Na Na NavLink()' }
-      #NavLink("/#{path}", active_class: :selected) do
-      #  path.camelize
-      #end
+      NavLink("/#{path}", active_class: :selected) do
+        path.camelize
+      end
     end
   end
 
