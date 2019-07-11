@@ -41,28 +41,52 @@ class Dashboard < HyperComponent
     # automatically
   end
 
-
-
-# code from Catmando 28 June, 2019
+  def link_item(path)
+    LI do
+      # P R O B L E M  H E R E -- NavLink statement crashes
+      # Show paths and a placeholder
+      DIV(class: :footer) { path.camelize + ' Na Na NavLink()' }
+      #NavLink("/#{path}", active_class: :selected) do
+      #  path.camelize
+      #end
+    end
+  end
 
   render(UL) do
+    
+    DIV(class: 'roll365-count') do
+      "#{pluralize(Shipment.count, 'task')} remain"
+    end
     
     DIV(class: :Header) do
       INPUT(type: :text, value: @search_string, placeholder: 'search for ...')
       .on(:change) { |e| mutate @search_string = e.target.value }
     end
+    
 
     DIV do
-      # note this is very simplistic and will overload your server in a real app
+      # Catmando:  note this is very simplistic and will overload your server in a real app
       # with multiple users all searching at the same time
       # normally we would add some throttling so that we only update the search
       # after say 0.2 seconds, and only if the results of the previous search
       # have updated.  Easy enough with Hyperstack, but lets not complicate things
       # now.
+      DIV(class: :footer){'click to expand '}
       Shipment.search_for(@search_string.strip).each do |shipment|
         LI { ShipmentItem(shipment: shipment) }
       end
     end
+
+    DIV do
+      DIV(class: :footer) {'Scope Menu On Time  Delayed   Completed'}
+    end
+
+    UL(class: :filters) do
+      link_item(:ontime)
+      link_item(:delayed)
+      link_item(:completed)
+    end
+    
 
   end
 end
