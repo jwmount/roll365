@@ -65,7 +65,7 @@ class Dashboard < HyperComponent
       # have updated.  Easy enough with Hyperstack, but lets not complicate things
       # now.
       DIV(class: :footer){'click to expand '}
-      Shipment.search_for(@search_string.strip).each do |shipment|
+      Shipment.completed.search_for(@search_string.strip).each do |shipment|
         LI { ShipmentItem(shipment: shipment) }
       end
     end

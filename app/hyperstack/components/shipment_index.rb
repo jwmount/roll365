@@ -40,10 +40,6 @@ class ShipmentIndex < HyperComponent
   end
 
 
-
-# app/hyperstack/components/shipment_index.rb
-#. remove XXX class ShipmentIndex < HyperComponent
-
   render(UL) do
     #DIV(class: :Header)
     DIV do
