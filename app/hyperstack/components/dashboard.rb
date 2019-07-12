@@ -47,27 +47,28 @@ class Dashboard < HyperComponent
 
   render(UL) do
     
-    DIV(class: 'roll365-count') do
-      "#{pluralize(Shipment.count, 'task')} remain"
-    end
-    
-    DIV(class: :Header) do
+    H2 {'Search'}
+    DIV(class: :header) do
       INPUT(type: :text, value: @search_string, placeholder: 'search for ...')
       .on(:change) { |e| mutate @search_string = e.target.value }
     end
-    
+
 
     DIV do
+      DIV(class: :header){'Tracking Number'}
+
       # Catmando:  note this is very simplistic and will overload your server in a real app
       # with multiple users all searching at the same time
       # normally we would add some throttling so that we only update the search
       # after say 0.2 seconds, and only if the results of the previous search
       # have updated.  Easy enough with Hyperstack, but lets not complicate things
       # now.
-      DIV(class: :footer){'click to expand '}
+      H5(class: :header){'(click to expand) '}
+      
       Shipment.completed.search_for(@search_string.strip).each do |shipment|
         LI { ShipmentItem(shipment: shipment) }
       end
+
     end
 
     

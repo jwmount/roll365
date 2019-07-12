@@ -51,7 +51,7 @@ class ShipmentItem < HyperComponent
       if @expanded
         DIV do
           
-          DIV { "tracking no: #{shipment.tracking_id}" }
+          DIV { "#{shipment.tracking_id}" }
           DIV { "expanded:"}
           UL do
             LI { "from: #{shipment.ship_from}" }
@@ -60,7 +60,7 @@ class ShipmentItem < HyperComponent
           end #UL
         end #DIV
       else
-        DIV { "tracking no: #{shipment.tracking_id}" }
+        DIV { " #{shipment.tracking_id}" }
       end #if
 
     end #UL
