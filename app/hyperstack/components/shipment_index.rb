@@ -45,7 +45,7 @@ class ShipmentIndex < HyperComponent
 #. remove XXX class ShipmentIndex < HyperComponent
 
   render(UL) do
-    DIV(class: :Header)
+    #DIV(class: :Header)
     DIV do
       Shipment.each do |shipment|
         LI do

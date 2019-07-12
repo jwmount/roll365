@@ -40,10 +40,10 @@ class Header < HyperComponent
     # automatically
   end
 
-  
+
   render  do
     H3 { 'Dispatch Dashboard'}
   end
-  
+
 end
 
