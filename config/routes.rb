@@ -19,9 +19,9 @@ Rails.application.routes.draw do
 
   # use rails g controller welcome to direct root references to welcome index and the get is what to do there
  # get 'welcome/landing', to: 'welcome'
-  #root 'welcome#landing'
+  root 'welcome#landing'
   #root 'hyperstack#dashboard'  # works
-  root 'hyperstack#app'        
+  root 'hyperstack#app'         # works    
 #  get 'welcome/index'
 #  root 'welcome#index'  
 
@@ -94,7 +94,7 @@ Rails.application.routes.draw do
             
 # H Y P E R S T A C K.  H Y P E R S T A C K.  H Y P E R S T A C K.  H Y P E R S T A C K
 
-  get '/dashboard', to: 'hyperstack#dashboard'
+  get '/dashboard', to: 'hyperstack#app'   # app is the router for #dashboard
   get '/(*other)', to: 'hyperstack#app'
  
   
