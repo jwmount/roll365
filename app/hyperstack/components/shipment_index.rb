@@ -1,4 +1,5 @@
 class ShipmentIndex < HyperComponent
+  include Hyperstack::Router::Helpers
   # param :my_param
   # param param_with_default: "default value"
   # param :param_with_default2, default: "default value" # alternative syntax
@@ -39,9 +40,8 @@ class ShipmentIndex < HyperComponent
     # automatically
   end
 
-
   render(UL) do
-    #DIV(class: :Header)
+    DIV(class: :scope)
     DIV do
       Shipment.each do |shipment|
         LI do
@@ -52,7 +52,5 @@ class ShipmentIndex < HyperComponent
       end 
     end
   end
-
-
 
 end

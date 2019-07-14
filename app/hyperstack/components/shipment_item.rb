@@ -41,18 +41,22 @@ class ShipmentItem < HyperComponent
     # automatically
   end
 
-
-
+  
   param :shipment
 
   render do
     UL do
       
       if @expanded
+        @status = "On Time" if shipment.ontime?
+        @status = "Delayed" if shipment.delayed?
+        @status = "Canceled" if shipment.completed?
+
         DIV do
           
-          DIV { "#{shipment.tracking_id}" }
-          DIV { "expanded:"}
+          DIV { "#{shipment.tracking_id} -- #{@status}" }
+          
+          
           UL do
             LI { "from: #{shipment.ship_from}" }
             LI { "to: #{shipment.ship_to}" }
