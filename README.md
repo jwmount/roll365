@@ -1,34 +1,25 @@
 # README
 
 Roll365 README
-John W. Mount
+
 1. The Roll365 Project
-Roll365 is a work bench where we can test ways to handle real time logistics data. As such it makes a number of assumptions to simplify and isolate the bit of the puzzle involved in each model.
 
-2. A little history
-The project strives to clarify a design choice and examine the impact of alternative ways to implement them. While Bootstrap is the CSS framework the perfection of the UI is not important unless it obscures the technology issue at hand.
+Roll365 is a work bench.  Some of the lessons learned from earlier versions of the Think360 logistics software can be tried out and refined here.  
 
-3. Some lessons learned
-4. Implementation
+1.1  Some of the quesitons of interest are:
+* How difficult is it to limit association nesting to 1 level? (The original version went as deep as 5 levels which worked and was unmaintainable.)
+* How extensively can polymorphic associations be used and what is the best way to create them?
+* Can Show views be enriched to serve as dashboards for multiple data models?
+* Is it feasible to combine Rails 5 and Hyperstack create a hybrid app, in the form of a dashboard based on Hyperstack, to address some of the problems for use cases that involve real time information?  (The answer is yes, you can do this, see 'Dashboard'.  But it also appears to be an inferior solution if the whole application can be re-designed based on HyperStack.  )
+
+
+1.2. CSS issues are less important to answer some of the issues involved and since no direct production release is imagined or planned by and large the UI is not important unless it obscures or reveals something interesting or useful about the technology issue at hand.
+
+1.3. Installation
+
 Primary release levels rails-v5.2.3@ruby 2.6.2p47
-We assume:
-
-You can read
-
-Read the reference manual.
-
-Explore the upper-right toolbox menu to discover how Markdown works.
-
-Alt-Q reformats the current paragraph.
-
-Enjoy!
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
 ## Installation 
-
-### Prerequisites
 
 Clone the app from github:
 
@@ -44,6 +35,8 @@ Create the postesql tables.
 
 ```rails db:create db:migrate```
 
+```rails db:demo2```
+
 Postgresql needs to be running and if it isn't, start it.
 
 ```? how```
@@ -54,22 +47,5 @@ Start the app from your terminal window:
 
 The roll365 app should start and give you the landing page.  Reqular Rails based models are listed and the hypertack features are in the Dashboard.
 
-## Things you may want to cover:
 
-* Ruby version
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
