@@ -4,7 +4,7 @@ Roll365 README
 
 1. The Roll365 Project
 
-Roll365 is a work bench.  Some of the lessons learned from earlier versions of the Think360 logistics software can be tried out and refined here.  
+Roll365 is a work bench.  Some of the questions raised from earlier versions of the Think360 logistics software are tried out and refined here.  The size of the app is reduced from a total of 24 data models.
 
 1.1  Some of the quesitons of interest are:
 * How difficult is it to limit association nesting to 1 level? (The original version went as deep as 5 levels which worked and was unmaintainable.)
@@ -15,9 +15,16 @@ Roll365 is a work bench.  Some of the lessons learned from earlier versions of t
 
 1.2. CSS issues are less important to answer some of the issues involved and since no direct production release is imagined or planned by and large the UI is not important unless it obscures or reveals something interesting or useful about the technology issue at hand.
 
-1.3. Installation
+1.3. Configuration (see Gemfile for required versions of gems)
 
 Primary release levels rails-v5.2.3@ruby 2.6.2p47
+Hyperstack
+Action Cable
+WebPack
+Yarn
+postgresql (needed to host on Heroku)
+... incomplete, borrow from the Hyperstack Todo tutorial Installation and Setup (~> 1.0.alpha1.5)
+
 
 ## Installation 
 
