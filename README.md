@@ -17,7 +17,7 @@ Roll365 is a work bench.  Some of the questions raised from earlier versions of 
 
 1.3. Configuration (see Gemfile for required versions of gems)
 
-Primary release levels rails-v5.2.3@ruby 2.6.2p47
+Primary release levels are rails-v5.2.3@ruby 2.6.2p47
 hyperstack:install ()
 Hyperstack
 WebPack
@@ -28,11 +28,13 @@ postgresql (at least if Production is on Heroku)
 
 ## Installation 
 
-### Platform
-
 If you don't already have it, install Rails 5.2.3
 
 ```gem install rails```
+
+At this point you can do a full Hyperstck install:
+
+```bundle exec rails hyperstack:install```
 
 Clone the app from github:
 
@@ -40,7 +42,7 @@ Clone the app from github:
  
 Change into the directory you just created:
 
-``$ cd roll365```
+```$ cd roll365```
 
 Create the postesql tables.
 
@@ -48,18 +50,18 @@ Create the postesql tables.
 ```rails db:create db:migrate```
 ```rails db:demo2```
 
-cd into roll365 and install Procfile
+cd into roll365 and install Procfile which should look like this:
 
-```web:        bundle exec rails s -b 0.0.0.0
-```hot-loader: bundle exec hyperstack-hotloader -p 25222 -d app/hyperstack
+```web:        bundle exec rails s -b 0.0.0.0```
+```hot-loader: bundle exec hyperstack-hotloader -p 25222 -d app/hyperstack```
 
 Run bundler to make sure all the gems you need are in place
 
-```bundle update
+```bundle update```
 
 Start the app from a command line
 
-```bundle exec foreman start
+```bundle exec foreman start```
 
 
 
