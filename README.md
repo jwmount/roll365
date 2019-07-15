@@ -31,30 +31,35 @@ postgresql (at least if Production is on Heroku)
 ### Platform
 
 If you don't already have it, install Rails 5.2.3
+
 ```gem install rails```
 
 Clone the app from github:
+
 ```$ git https://www.github.com/jwmount/roll365.git```
  
 Change into the directory you just created:
+
 ``$ cd roll365```
 
 Create the postesql tables.
+
 ```rails db:drop #Only needed if there were database tables for roll365 already```
 ```rails db:create db:migrate```
 ```rails db:demo2```
 
-
 cd into roll365 and install Procfile
+
 ```web:        bundle exec rails s -b 0.0.0.0
-hot-loader: bundle exec hyperstack-hotloader -p 25222 -d app/hyperstack ```
+```hot-loader: bundle exec hyperstack-hotloader -p 25222 -d app/hyperstack
 
 Run bundler to make sure all the gems you need are in place
-```bundle update```
+
+```bundle update
 
 Start the app from a command line
 
-```bundle exec foreman start```
+```bundle exec foreman start
 
 
 
