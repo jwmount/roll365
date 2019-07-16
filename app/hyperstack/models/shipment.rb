@@ -46,8 +46,8 @@ class Shipment < ApplicationRecord
 
   
   scope :ontime, -> { where(ontime: true) }
-  scope :completed, -> { where(completed: false) }
-  scope :delayed, -> { where(delayed: false)}
+  scope :completed, -> { where(completed: true) }
+  scope :delayed, -> { where(delayed: true)}
 
 end
 

@@ -64,8 +64,8 @@ class Dashboard < HyperComponent
       # have updated.  Easy enough with Hyperstack, but lets not complicate things
       # now.
       H5(class: :header){'(click to expand) '}
-      
-      Shipment.completed.search_for(@search_string.strip).each do |shipment|
+
+      Shipment.send(match.params[:scope]).search_for(@search_string.strip).each do |shipment|
         LI { ShipmentItem(shipment: shipment) }
       end
 

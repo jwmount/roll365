@@ -52,7 +52,7 @@ Create the postesql tables.
 
 cd into roll365 and install Procfile which should look like this:
 
-```web:        bundle exec rails s -b 0.0.0.0```
+```web:        bundle exec rails s -b 0.0.0.0 ``` 
 ```hot-loader: bundle exec hyperstack-hotloader -p 25222 -d app/hyperstack```
 
 Run bundler to make sure all the gems you need are in place

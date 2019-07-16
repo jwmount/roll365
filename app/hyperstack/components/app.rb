@@ -7,7 +7,6 @@ class App < HyperComponent
     Route('/', exact: true) {Redirect('/all') }
     Route('/:scope', mounts: Dashboard)   # scopes are :ontime, :delayed, :completed  was Index
 
-
   end
 end
 
