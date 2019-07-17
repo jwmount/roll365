@@ -65,9 +65,9 @@ class Dashboard < HyperComponent
       # now.
       H5(class: :header){'(click to expand) '}
 
-      Shipment.send(match.params[:scope]).search_for(@search_string.strip).each do |shipment|
-        LI { ShipmentItem(shipment: shipment) }
-      end
+     Shipment.send(match.params[:scope]).search_for(@search_string.strip).each do |shipment|
+       LI { ShipmentItem(shipment: shipment) }
+     end
 
     end
 

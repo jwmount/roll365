@@ -45,6 +45,7 @@ class ShipmentItem < HyperComponent
   param :shipment
 
   render do
+
     UL do
       
       if @expanded
