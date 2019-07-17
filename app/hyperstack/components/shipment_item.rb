@@ -49,11 +49,6 @@ class ShipmentItem < HyperComponent
       
       if @expanded
 
-        #temporary status until scope is working
-        @status = "On Time" if shipment.ontime?
-        @status = "Delayed" if shipment.delayed?
-        @status = "Canceled" if shipment.completed?
-
         DIV do
           
           DIV { "#{shipment.tracking_id} -- #{@status}" }     

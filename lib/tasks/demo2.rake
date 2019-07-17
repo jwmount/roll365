@@ -3,7 +3,8 @@ desc "demo2 -- Run selected tasks db/seeds directory in specific sequence"
 
 @seed_files = [
 	
-	"sow_all", 
+	"sow_all",
+  "shipments", 
 	"seeds_summary"
 ]
 
