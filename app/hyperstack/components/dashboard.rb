@@ -42,7 +42,7 @@ class Dashboard < HyperComponent
   end
 
   def link_item(path)
-    LI { NavLink("/#{path}", active_class: :selected) {path.camelize} }
+    LI { NavLink("/dashboard/#{path}", active_class: :selected) {path.camelize} }
   end
 
   render(UL) do
