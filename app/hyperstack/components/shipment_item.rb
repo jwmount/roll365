@@ -52,12 +52,15 @@ class ShipmentItem < HyperComponent
 
         DIV do
           
-          DIV { "#{shipment.tracking_id} -- #{@status}" }     
+          DIV { "#{shipment.tracking_id}  " }     
   
           UL do
             LI { "from: #{shipment.ship_from}" }
             LI { "to: #{shipment.ship_to}" }
             LI { "cargo: #{shipment.cargo}" }
+            LI { "deadline: #{shipment.deadline}"}
+            LI { "On Time"} if shipment.ontime unless shipment.delayed
+            #P ( :tbg ) { "DELAYED (randomly assigned)"} if shipment.delayed   # ? :tbg doesn't seem to work
           end #UL
         end #DIV
       else

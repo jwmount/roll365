@@ -33,7 +33,6 @@
       - @shipments.each do |shipment|
         %tr.data 
           %td= shipment.tracking_id
-          %td= shipment.status
           %td= shipment.ship_from
           %td= shipment.ship_to
           %td= shipment.deadline

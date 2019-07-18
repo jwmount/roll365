@@ -1,19 +1,22 @@
 %h3 Search
 = search_form_for @q do |f|
   
-  .field
-    = f.label :street_address
-    = f.text_field :street_address_cont, class: 'form-control'
-    = f.label :city
-    = f.text_field :city_cont, class: 'form-control'
-    = f.label :state
-    = f.text_field :state_cont, class: 'form-control'
-    = f.label :post_code
-    = f.text_field :post_code_cont, class: 'form-control'
-    = f.submit class: 'btn btn-primary'
-    .btn
-      = link_to "Clear", request_path, class: "btn btn-secondary"      
-    %hr
+  
+  = f.label :street_address
+  = f.text_field :street_address_cont
+
+  = f.label :city
+  = f.text_field :city_cont
+
+  = f.label :state
+  = f.text_field :state_cont
+  
+  = f.label :post_code
+  = f.text_field :post_code_cont
+  
+  = f.submit
+
+  = link_to 'Back', addresses_path
 
 
 

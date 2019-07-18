@@ -1,46 +1,48 @@
 # shipments.rb
 # rake file to load some random set of Shipments
 # 
-=begin
- create_table "shipments", force: :cascade do |t|
-    t.string "tracking_id"
-    t.string "ship_from"
-    t.string "ship_to"
-    t.string "pickup"
-    t.string "deadline"
-    t.boolean "ontime"
-    t.boolean "completed"
-    t.boolean "delayed"
-    t.text "cargo"
-    t.string "utilization"
-    t.text "quote_basis"
-    t.decimal "quote_complete"
-    t.integer "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-=end
+# executes as part of rake db:demo2
+require 'pp'
 
+  @centers = ['Medford', 'Weed', 'Eugene', 'Portland', 'Seattle', 'Sacramento']
+  @cargos = ['Apples', 'Consumer goods', 'livestock', 'Clean soil', 'Automobiles', 'Agricultural chemicals']
+
+  
   def rstr
-  	(0...15).map { ('a'..'z').to_a[rand(26)] }.join
+  	(0...4).map { ('A'..'z').to_a[rand(52)] }.join
   end
 
-  def distro_ctr
-  end
-
-  def status
-    true
+  # make two strings and hyphenate them
+  def tid
+    rstr + '-' + rstr
   end
 
   puts 'Begin Shipments'
   
+
+  # Remove old ones
+  Shipment.delete_all
+  
+  
+
   20.times {
-    ship = Shipment.create!( tracking_id: rstr(),
-      ship_from: rstr, ship_to: rstr,
-      pickup: rstr, deadline: rstr,
-      ontime: true, completed: true, delayed: true,
-      status: 0 )
+    ship = Shipment.create!( tracking_id: tid,
+      ship_from: @centers[rand(6)], 
+      ship_to: @centers[rand(6)],
+
+      pickup: rand(7.days).seconds.from_now.beginning_of_hour,
+      deadline: rand(8.days).seconds.from_now.beginning_of_hour,
+
+      cargo: @cargos[rand(6)],
+
+      ontime: rand(2),          # random boolean
+      completed: rand(2), 
+      delayed: rand(2),
+
+      status: rand(2)
+      )
     ship.save
-    puts ship.tracking_id
+    pp ship #.tracking_id, ship.ontime, ship.delayed, ship.completed, ship.cargo
     }
   
   
