@@ -42,7 +42,7 @@ class Header < HyperComponent
 
 
   render  do
-    H3 { 'Dispatch Dashboard'}
+    H1 { 'Dispatch Dashboard'}
   end
 
 end
