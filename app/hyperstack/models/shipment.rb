@@ -4,7 +4,9 @@ class Shipment < ApplicationRecord
 # Validations
 #
   validates_presence_of :tracking_id
-  validates_uniqueness_of :tracking_id #, :scope => [:question_id]
+  # uniqueness is also defined in the database, see schema and or migrate
+  # duplicates with throw PG::UniqueViolation: ERROR:  duplicate key value violates unique constraint "index_shipments_on_tracking_id"
+  validates_uniqueness_of :tracking_id
 #
 # Initializations
 #

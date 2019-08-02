@@ -6,15 +6,15 @@ require 'pp'
 
   @centers = ['Medford', 'Weed', 'Eugene', 'Portland', 'Seattle', 'Sacramento']
   @cargos = ['Apples', 'Consumer goods', 'livestock', 'Clean soil', 'Automobiles', 'Agricultural chemicals']
-
+  @tid_frags = %w[ AAA AAB ABB BBB BBC BCC CCC]
   
   def rstr
-  	(0...4).map { ('A'..'z').to_a[rand(52)] }.join
+    (@tid_frags[rand(6)])
   end
 
   # make two strings and hyphenate them
   def tid
-    rstr + '-' + rstr
+    rstr + '-' + rstr + '-' + rstr
   end
 
   puts 'Begin Shipments'
@@ -24,13 +24,13 @@ require 'pp'
   Shipment.delete_all
   
   
-
+  # 200 works, 2000 crashes the browser or ?
   20.times {
     ship = Shipment.create!( tracking_id: tid,
       ship_from: @centers[rand(6)], 
       ship_to: @centers[rand(6)],
 
-      pickup: rand(7.days).seconds.from_now.beginning_of_hour,
+      pickup: rand(2.days).seconds.from_now.beginning_of_hour,
       deadline: rand(8.days).seconds.from_now.beginning_of_hour,
 
       cargo: @cargos[rand(6)],

@@ -47,8 +47,7 @@ class ShipmentIndex < HyperComponent
         LI do
          # remove the simple text string and instead
          # mount a component here that
-          ShipmentItem(shipment: shipment)
-          
+          ShipmentItem(shipment: shipment)  
         end
       end 
     end
