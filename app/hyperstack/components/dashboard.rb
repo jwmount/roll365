@@ -19,7 +19,7 @@ class Dashboard < HyperComponent
   # the following are the most common lifecycle call backs,
   # delete any that you are not using.
   # call backs may also reference an instance method i.e. before_mount :my_method
-
+  
   before_mount do
     # any initialization particularly of state variables goes here.
     # this will execute on server (prerendering) and client.
@@ -68,7 +68,8 @@ class Dashboard < HyperComponent
       Shipment.send(match.params[:scope]).search_for(@search_string.strip).each do |shipment|
         LI { ShipmentItem(shipment: shipment) }
       end
-      H4 { "#{pluralize(Shipment.count, 'task')} found" }
+      "#{pluralize(Shipment.count, 'task')} found"
+      #H4 { Shipment.send(match.params[:scope]).count }
     end
 
     UL(class: :filters) do
