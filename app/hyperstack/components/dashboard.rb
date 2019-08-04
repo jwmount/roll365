@@ -54,7 +54,7 @@ class Dashboard < HyperComponent
     end
 
 
-    DIV do
+    DIV(class: :body) do
       DIV(class: :header){'Tracking Number'}
 
       # Catmando:  note this is very simplistic and will overload your server in a real app
@@ -71,15 +71,12 @@ class Dashboard < HyperComponent
       H4 { "#{pluralize(Shipment.count, 'task')} found" }
     end
 
-    
     UL(class: :filters) do
       link_item(:all)
       link_item(:ontime)
       link_item(:delayed)
       link_item(:completed)
-    end
-    
-
+    end  
   end
 end
 

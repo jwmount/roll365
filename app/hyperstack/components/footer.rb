@@ -1,11 +1,14 @@
 class Footer < HyperComponent
 
   
-    render(DIV, class: :footer) do
-      SPAN(class: 'roll365-count') do
-        "#{pluralize(Shipment.count, 'task')} total"
+    render(DIV) do
+      DIV do
+      	"#{pluralize(Shipment.count, 'task')} total"
       end
-    end
-  
+        
+      DIV do
+        H4{'app links from a component'}
+      end
 
+    end
 end
