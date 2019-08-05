@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: roll365_production
-  username: roll365
+  username: 
   password: <%= ENV['ROLL365_DATABASE_PASSWORD'] %>
