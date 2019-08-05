@@ -10,8 +10,7 @@ gem 'rake', '~> 12.3.2'
 gem 'pg', '>= 0.18', '< 2.0'
 # Heroku needs bundler 2.1
 gem 'bundler', '~> 2.0.1'
-# Use Puma as the app server
-gem 'puma', '~> 3.11'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 
@@ -46,6 +45,11 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug' #, platforms: [:mri, :mingw, :x64_mingw]
+end
+
+group :production do
+  # Use Puma as the app server on Heroku
+  gem 'puma', '~> 3.4'
 end
 
 group :development do
