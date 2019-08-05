@@ -82,4 +82,4 @@ production:
   <<: *default
   database: roll365_production
   username: roll365
-  password:
+  password: <%= ENV['ROLL365_DATABASE_PASSWORD'] %>
