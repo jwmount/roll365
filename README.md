@@ -26,9 +26,13 @@ postgresql (at least if Production is on Heroku)
 ... incomplete, borrow from the Hyperstack Todo tutorial Installation and Setup (~> 1.0.alpha1.5)
 
 
-## Installation 
+# Installation 
 
-If you don't already have it, install Rails 5.2.3
+## Local or Development 
+
+If you don't already have it, install Rails 5.2.3 and ruby ruby 2.6.2p47 (use rvm for Ruby)
+
+**[TODO] REFER TO Hyperstack Installation Tutorial**
 
 ```gem install rails```
 
@@ -48,7 +52,9 @@ Create the postesql tables.
 
 ```rails db:drop #Only needed if there were database tables for roll365 already```
 ```rails db:create db:migrate```
+```rails db:seed```
 ```rails db:demo2```
+
 
 cd into roll365 and install Procfile which should look like this:
 
@@ -64,9 +70,10 @@ Start the app from a command line
 ```bundle exec foreman start```
 
 
-
-
 The roll365 app should start and give you the landing page.  Reqular Rails based models are listed and the hypertack features are in the Dashboard.
+
+## Heroku
+
 
 
 

@@ -46,8 +46,9 @@ class Dashboard < HyperComponent
   end
 
   render(UL) do
-    
+
     H2 {'Search'}
+
     DIV(class: :header) do
       INPUT(type: :text, value: @search_string, placeholder: 'search for ...')
       .on(:change) { |e| mutate @search_string = e.target.value }
@@ -70,14 +71,15 @@ class Dashboard < HyperComponent
       end
       "#{pluralize(Shipment.count, 'task')} found"
       #H4 { Shipment.send(match.params[:scope]).count }
-    end
 
-    UL(class: :filters) do
-      link_item(:all)
-      link_item(:ontime)
-      link_item(:delayed)
-      link_item(:completed)
-    end  
+      UL(class: :filters) do
+        link_item(:all)
+        link_item(:ontime)
+        link_item(:delayed)
+        link_item(:completed)
+      end  
+
+    end    
   end
 end
 
