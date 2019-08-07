@@ -72,14 +72,17 @@ class Dashboard < HyperComponent
       "#{pluralize(Shipment.count, 'task')} found"
       #H4 { Shipment.send(match.params[:scope]).count }
 
-      UL(class: :filters) do
-        link_item(:all)
-        link_item(:ontime)
-        link_item(:delayed)
-        link_item(:completed)
-      end  
 
     end    
+
+
+    UL(class: :filters) do
+      link_item(:all)
+      link_item(:ontime)
+      link_item(:delayed)
+      link_item(:completed)
+    end  
+
   end
 end
 
