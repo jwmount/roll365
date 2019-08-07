@@ -5,7 +5,8 @@ ruby '2.6.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
-gem 'rake', '~> 12.3.3'
+# fixes complaints about rake version, but possibly interferes with deployment to heroku?
+#gem 'rake', '~> 12.3.3'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Heroku needs bundler 2.1

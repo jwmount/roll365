@@ -1,123 +1,120 @@
 
-.container-fluid
-  .row
-    .col-sm
-      %h1
-        = @company.name
-        %p
-        %h3  
-          = @company.line_of_business
-        %p
+.row
+  .col-sm
+    %h1
+      = @company.name
+      %p
+      %h3  
+        = @company.line_of_business
+      %p
         
-          = @company.display_address
+        = @company.display_address
           
-          - if @company.addresses.nil?
-            = link_to 'new', new_company_address_path(@company)
-          - else
-            = link_to 'edit', company_addresses_path(@company)
+        - if @company.addresses.nil?
+          = link_to 'new', new_company_address_path(@company)
+        - else
+          = link_to 'edit', company_addresses_path(@company)
        
   
-  = render "shared/contacts_for"
+= render "shared/contacts_for"
 
-  &nbsp
+&nbsp
   
-  .row
-    .col-sm-2
-      %em
-        People & Associates
-        %hr
-    .col-sm-2
-      = link_to 'edit', company_people_path(@company)  
-      or
-      = link_to 'new', new_company_person_path(@company)
+.row
+  .col-sm-2
+    %em
+      People & Associates
       %hr
-      %p
-  .row     
-    .col-sm-12
-      = render "shared/people_for"
-  &nbsp
+  .col-sm-2
+    = link_to 'edit', company_people_path(@company)  
+    or
+    = link_to 'new', new_company_person_path(@company)
+    %hr
+    %p
+.row     
+  .col-sm-12
+    = render "shared/people_for"
+&nbsp
 
-  .row
-    .col_sm-2
-      %em
-        Company Characteristics
-        %hr
-    .col-sm-1
-    .col-sm-1
-      = link_to 'edit', edit_company_path(@company)
+.row
+  .col_sm-2
+    %em
+      Company Characteristics
       %hr
+  .col-sm-1
+  .col-sm-1
+    = link_to 'edit', edit_company_path(@company)
+    %hr
 
 
-  .row
-    .col-sm-2
-      %em
-        Attributes
-    .col-sm-2
-      %em
-        Settings
+.row
+  .col-sm-2
+    %em
+      Attributes
+  .col-sm-2
+    %em
+    Settings
         
-  %p
-  .row      
-    .col-sm-2.data
-      Credit terms:
-    .col-sm-2.data
-      = @company.credit_terms
-    .col-sm-2.data
-      = link_to 'explain', company_terms_path(@company)
+%p
+.row      
+  .col-sm-2.data
+    Credit terms:
+  .col-sm-2.data
+    = @company.credit_terms
+  .col-sm-2.data
+    = link_to 'explain', company_terms_path(@company)
       
-  .row      
-    .col-sm-2.data
-      Status:
-    .col-sm-2.data
-      = @company.active ? 'Active' : 'Inactive'
-    .col-sm-2.data
-      = link_to 'explain', company_active_path(@company)
+.row      
+  .col-sm-2.data
+    Status:
+  .col-sm-2.data
+    = @company.active ? 'Active' : 'Inactive'
+  .col-sm-2.data
+    = link_to 'explain', company_active_path(@company)
 
-  .row      
-    .col-sm-2.data
-      Purchase Order:
-    .col-sm-2.data
-      = @company.PO_required ? 'Required' : 'Not Required'
-    .col-sm-2.data
-      = link_to "explain", company_PO_path(@company)
+.row      
+  .col-sm-2.data
+    Purchase Order:
+  .col-sm-2.data
+    = @company.PO_required ? 'Required' : 'Not Required'
+  .col-sm-2.data
+    = link_to "explain", company_PO_path(@company)
+
+.row      
+  .col-sm-2.data
+    Bookkeeping Number:
+  .col-sm-2.data
+    = @company.bookkeeping_number
+  .col-sm-2.data
+    = link_to "edit", root_path
+
+.row      
+  .col-sm-2.data
+    Line of Business:
+  .col-sm-2.data
+    = @company.line_of_business
+  .col-sm-2.data
+    = link_to "edit", root_path
+.row      
+  .col-sm-2.data
+    URL (Web Site):
+  .col-sm-2.data
+    = link_to truncate(@company.url, :length => 120), "http://#{@company.url}", :target => 'blank'        
+  .col-sm-2.data
+    = link_to "edit", root_path
+.row      
+  .col-sm-2.data
+    License:
+  .col-sm-2.data
+    = @company.licensee ? 'Yes' : 'No'
+  .col-sm-2.data
+    = link_to "edit", root_path      
+%p
+%nbsp
   
-  .row      
-    .col-sm-2.data
-      Bookkeeping Number:
-    .col-sm-2.data
-      = @company.bookkeeping_number
-    .col-sm-2.data
-      = link_to "edit", root_path
-
-  .row      
-    .col-sm-2.data
-      Line of Business:
-    .col-sm-2.data
-      = @company.line_of_business
-    .col-sm-2.data
-      = link_to "edit", root_path
-
-  .row      
-    .col-sm-2.data
-      URL (Web Site):
-    .col-sm-2.data
-      = link_to truncate(@company.url, :length => 120), "http://#{@company.url}", :target => 'blank'        
-    .col-sm-2.data
-      = link_to "edit", root_path
-
-  .row      
-    .col-sm-2.data
-      License:
-    .col-sm-2.data
-      = @company.licensee ? 'Yes' : 'No'
-    .col-sm-2.data
-      = link_to "edit", root_path      
-  %p
-  %nbsp
-  
-  .row    
-    .col-sm-1
+.row    
+  .col-sm-1
  
-      = link_to 'Edit', edit_company_path(@company)
-    .col-sm-1
-      = link_to 'Back', companies_path
+    = link_to 'Edit', edit_company_path(@company)
+  .col-sm-1
+    = link_to 'Back', companies_path

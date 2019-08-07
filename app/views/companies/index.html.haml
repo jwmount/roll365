@@ -1,73 +1,63 @@
 
-.container-fluid
-
-  %h1 Finder
+%h1 Finder
   
+.row
 
-  .row
+  .col-2
 
-    .col-2
-
-      = render "search_panel", locals: {q: @q}
+    = render "search_panel", locals: {q: @q}
           
 
-    .col-6
-      %h3 Carriers
-      = @companies.count 
-      listed
-      = will_paginate  
+  .col-6
+    %h3 Carriers
+    = @companies.count 
+    listed
+    = will_paginate  
     
-      %table.table.table-striped
+    %table.table.table-striped
 
-        %thead
-          %tr
-            %th{align: 'left'} 
-              %em
-                Name
-            %th{align: 'left', valign: 'top'}
-              %em
-                Line of Business
-            %th{align: 'left', width: '32'}
-              %em 
-                City
-            %th 
-              %em
-                Web Site
-            %th
-              %em
-                Credit Terms
-        %tbody
-          - @companies.each do |company|
-            %tr.data 
-              %td= company.name
+      %thead
+        %tr
+          %th{align: 'left'} 
+            %em
+              Name
+          %th{align: 'left', valign: 'top'}
+            %em
+              Line of Business
+          %th{align: 'left', width: '32'}
+            %em 
+              City
+          %th 
+            %em
+              Web Site
+          %th
+            %em
+              Credit Terms
+      %tbody
+        - @companies.each do |company|
+          %tr.data 
+            %td= company.name
 
-              %td= company.line_of_business
+            %td= company.line_of_business
                  
-              - @addr = company.addresses.first
-              -if @addr.nil?
-                %td= link_to 'Please edit', edit_company_addresses_path(company, addr)
-              -else
-                %td= @addr.city
+            - @addr = company.addresses.first
+            -if @addr.nil?
+              %td= link_to 'Please edit', edit_company_addresses_path(company, addr)
+            -else
+              %td= @addr.city
               
-              %td= link_to truncate(company.url, :length => 120), "http://#{company.url}", :target => 'blank'
+            %td= link_to truncate(company.url, :length => 120), "http://#{company.url}", :target => 'blank'
               
-              %td= company.credit_terms
+            %td= company.credit_terms
 
-              %td= link_to 'Show', company
-              %td= link_to 'Edit', edit_company_path(company)
-              %td= link_to 'Delete', company, method: :delete, data: { confirm: "Are you sure you want to delete #{company.name}?" } 
-      %br
+            %td= link_to 'Show', company
+            %td= link_to 'Edit', edit_company_path(company)
+            %td= link_to 'Delete', company, method: :delete, data: { confirm: "Are you sure you want to delete #{company.name}?" } 
+    %br
 
-      = link_to new_company_path, class: 'btn btn-secondary' do
-        %i.glyphicon.glyphicon-plus
-          New Company
+    = link_to new_company_path, class: 'btn btn-secondary' do
+      %i.glyphicon.glyphicon-plus
+        New Company
 
-  .nbsp 
-  .nbsp
-  
-  
-      
-
-          
-
-
+.nbsp 
+.nbsp
