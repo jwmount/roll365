@@ -44,13 +44,12 @@ class Dashboard < HyperComponent
   def link_item(path)
     LI { NavLink("/dashboard/#{path}", active_class: :selected) {path.camelize} }
   end
-
+  
   render(UL) do
 
     H2 {'Search'}
 
     DIV(class: :header) do
-    #DIV(class: :body) do
       INPUT(type: :text, value: @search_string, placeholder: 'search for ...')
       .on(:change) { |e| mutate @search_string = e.target.value }
     end
@@ -82,7 +81,7 @@ class Dashboard < HyperComponent
       link_item(:delayed)
       link_item(:completed)
     end  
-
+ 
   end
 end
 
