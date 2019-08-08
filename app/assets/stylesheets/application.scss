@@ -177,6 +177,10 @@ button {
     opacity: 0;
 }
 
+.roll365-list li a:hover {
+    border-color: rgba(175, 47, 47, 0.1);
+}
+
 .roll365-list li .toggle + label {
     /*
         Firefox requires `#` to be escaped - https://bugzilla.mozilla.org/show_bug.cgi?id=922433
@@ -251,6 +255,8 @@ button {
 .footer {
     color: lite-grey;
 }
+
+/* filters -- buttons to filter on status of shipment */
 
 .filters {
     margin: 0;

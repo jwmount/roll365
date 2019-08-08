@@ -50,6 +50,7 @@ class Dashboard < HyperComponent
     H2 {'Search'}
 
     DIV(class: :header) do
+    #DIV(class: :body) do
       INPUT(type: :text, value: @search_string, placeholder: 'search for ...')
       .on(:change) { |e| mutate @search_string = e.target.value }
     end
@@ -58,7 +59,7 @@ class Dashboard < HyperComponent
     DIV(class: :body) do
       DIV(class: :header){'Tracking Number'}
 
-      # Catmando:  note this is very simplistic and will overload your server in a real app
+      # Mitchell:  note this is very simplistic and will overload your server in a real app
       # with multiple users all searching at the same time
       # normally we would add some throttling so that we only update the search
       # after say 0.2 seconds, and only if the results of the previous search
@@ -67,14 +68,13 @@ class Dashboard < HyperComponent
       H5(class: :header){'(click to expand) '}
 
       Shipment.send(match.params[:scope]).search_for(@search_string.strip).each do |shipment|
-        LI { ShipmentItem(shipment: shipment) }
+        LI(class: 'roll365-list'){ ShipmentItem(shipment: shipment) }
       end
       "#{pluralize(Shipment.count, 'task')} found"
       #H4 { Shipment.send(match.params[:scope]).count }
 
 
     end    
-
 
     UL(class: :filters) do
       link_item(:all)
