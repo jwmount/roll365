@@ -56,7 +56,6 @@ button {
     text-align: center;
     color: rgba(175, 47, 47, 0.45);
     -webkit-text-rendering: optimizeLegibility;
-    -moz-text-rendering: optimizeLegibility;
     text-rendering: optimizeLegibility;
 }
 
@@ -358,6 +357,10 @@ h3{ font-size: 24px
     font-size: 14px;
   }
 
+.footer {
+    font-size: 10px;
+    color: grey;
+}
 
 .tbg {
   background-color: lightblue
