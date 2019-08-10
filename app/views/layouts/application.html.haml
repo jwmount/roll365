@@ -10,7 +10,7 @@
   
 
 -#
--# Bootstrap grid for all containers
+-# Bootstrap grid for all containers, appears ONE TIME ONLY
 -#  
 
 .container-fluid
@@ -19,6 +19,8 @@
   - if controller_name == 'Hyperstack'
     
     = mount_component 'Header'
+    -#= mount_component 'Header', controller_name: 'controller_name', action_name: 'action_name', flash: 'flash.as_json'
+    -#= mount_component 'Header', controller_name: 'Hyperstasck', action_name: 'app', flash: 'flash.as_json'
 
   - else
 

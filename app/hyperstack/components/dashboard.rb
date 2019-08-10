@@ -81,7 +81,7 @@ class Dashboard < HyperComponent
       link_item(:delayed)
       link_item(:completed)
     end  
- 
+    
   end
 end
 
