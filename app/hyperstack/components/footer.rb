@@ -1,5 +1,4 @@
 class Footer < HyperComponent
-
   
     render(DIV) do
       DIV do
@@ -7,7 +6,7 @@ class Footer < HyperComponent
       end
         
       DIV do
-      	CommonLinks(class: :footer)
+      	CommonLinks()
       end
   end
 end
