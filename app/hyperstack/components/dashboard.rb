@@ -19,7 +19,7 @@ class Dashboard < HyperComponent
   # the following are the most common lifecycle call backs,
   # delete any that you are not using.
   # call backs may also reference an instance method i.e. before_mount :my_method
-  
+
   before_mount do
     # any initialization particularly of state variables goes here.
     # this will execute on server (prerendering) and client.
@@ -44,7 +44,7 @@ class Dashboard < HyperComponent
   def link_item(path)
     LI { NavLink("/dashboard/#{path}", active_class: :selected) {path.camelize} }
   end
-  
+
   render(UL) do
 
     H2 {'Search'}
@@ -71,20 +71,15 @@ class Dashboard < HyperComponent
       end
       "#{pluralize(Shipment.count, 'task')} found"
       #H4 { Shipment.send(match.params[:scope]).count }
+    end
 
-
-    end    
-
-    UL(class: :filters) do
-      link_item(:all)
-      link_item(:ontime)
-      link_item(:delayed)
-      link_item(:completed)
-    end  
-    
+    DIV(class: 'roll365-app') do
+      UL(class: :filters) do
+        link_item(:all)
+        link_item(:ontime)
+        link_item(:delayed)
+        link_item(:completed)
+      end
+    end
   end
 end
-
-
-
-

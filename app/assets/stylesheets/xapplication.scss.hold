@@ -30,20 +30,20 @@ body {
 
 
 
-//.roll365-app input::-webkit-input-placeholder {
+//.roll365_app input::-webkit-input-placeholder {
 //    font-style: italic;
 //    font-weight: 300;
 //    color: #e6e6e6;
 //}
 
-//.roll365-app input::-moz-placeholder {
+//.roll365_app input::-moz-placeholder {
 //    font-style: italic;
 //    font-weight: 300;
 //    color: #e6e6e6;
 //}
 
 
-//.roll365-app h1 {
+//.roll365_app h1 {
 //    position: absolute;
 //    top: -155px;
 //    width: 100%;
