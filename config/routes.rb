@@ -2,9 +2,8 @@
 Rails.application.routes.draw do
 
   mount Hyperstack::Engine => '/hyperstack'  # this route should be first in the routes file so it always matches
-
-
-# rake routes > routes.txt  for inspection in editor
+  
+# rake routes > routes.txt  for visual inspection in editor
 # rake routes -c 'get'      to see verbs
 # rake routes -g '<path>'.  to see paths and prfixes
 
@@ -19,8 +18,7 @@ Rails.application.routes.draw do
 
   # use rails g controller welcome to direct root references to welcome index and the get is what to do there
  # get 'welcome/landing', to: 'welcome'
-  root 'welcome#landing'
-  #root 'hyperstack#dashboard'  # works
+ # root 'welcome#landing'
   root 'hyperstack#app'         # works    
 #  get 'welcome/index'
 #  root 'welcome#index'  
