@@ -1,115 +1,94 @@
 %p#notice= notice
 
-.container-fluid
+%h1
+  Show Shipment
 
-  %h1
-    Show Shipment
-  %h3
-    
-    Tracking Identifier:
-    = @shipment.tracking_id
-  
-  %p
-  
-  .row
-    .col-sm-2
-      %em
-        Attributes
-    .col-sm-10
-      %em
-        Settings
+%h3
+  Tracking Identifier:
+  = @shipment.tracking_id
 
-  %p
-  .row.data
-    .col-sm-2
-      Tracking Identifier
-    .col-sm-10
-      = @shipment.tracking_id
-  
-         
-  .row.data
-    .col-sm-2
-      Date Created
-    .col-sm-10
-      = @shipment.created_at.strftime("%d %b, %Y")
+%h3
+  %em
+    Attributes & Settings
 
-  .row.data
-    .col-sm-2
-      On Time
-    .col-sm-10
-      = @shipment.ontime ? 'True' : 'False'
+%h3
+  Date Created:
+  = @shipment.created_at.strftime("%d %b, %Y")
 
-  .row.data
-    .col-sm-2
-      Delayed
-    .col-sm-10
-      = @shipment.delayed ? 'True' : 'False'
+%h3
+  On Time: 
+  = @shipment.ontime ? 'Yes' : 'No'
 
-  .row.data
-    .col-sm-2
-      Completed
-    .col-sm-10
-      = @shipment.completed ? 'True' : 'False'
-  .row.data
-    .col-sm-2
-      Date Last Updated
-    .col-sm-10
-      = @shipment.updated_at.strftime("%d %b, %Y")
+.row.data
+  .col-sm-2
+    Delayed
+  .col-sm-10
+    = @shipment.delayed ? 'True' : 'False'
+
+.row.data
+  .col-sm-2
+    Completed
+  .col-sm-10
+    = @shipment.completed ? 'True' : 'False'
+.row.data
+  .col-sm-2
+    Date Last Updated
+  .col-sm-10
+    = @shipment.updated_at.strftime("%d %b, %Y")
 
 
-  .row.data
-    .col-sm-2
-      Ship From:
-    .col-sm-10
-      = @shipment.ship_from     
-  
-  .row.data
-    .col-sm-2
-      Ship To
-    .col-sm-10
-      = @shipment.ship_to
+.row.data
+  .col-sm-2
+    Ship From:
+  .col-sm-10
+    = @shipment.ship_from
 
-  .row.data
-    .col-sm-2
-      Pickup 
-    .col-sm-10
-      = @shipment.pickup
+.row.data
+  .col-sm-2
+    Ship To
+  .col-sm-10
+    = @shipment.ship_to
 
-  .row.data
-    .col-sm-2
-      Deliver By
-    .col-sm-10
-      = @shipment.deadline
+.row.data
+  .col-sm-2
+    Pickup
+  .col-sm-10
+    = @shipment.pickup
 
-  .row.data
-    .col-sm-2
-      Cargo
-    .col-sm-10
-      = @shipment.cargo
+.row.data
+  .col-sm-2
+    Deliver By
+  .col-sm-10
+    = @shipment.deadline
 
-  .row.data      
-    .col-sm-2
-      Utilization
-    .col-sm-10
-      = @shipment.utilization
+.row.data
+  .col-sm-2
+    Cargo
+  .col-sm-10
+    = @shipment.cargo
 
-  .row.data      
-    .col-sm-2
-      Quote Basis
-    .col-sm-10
-      = @shipment.quote_basis
+.row.data
+  .col-sm-2
+    Utilization
+  .col-sm-10
+    = @shipment.utilization
 
-  .row.data      
-    .col-sm-2
-      Quote Amount ($)
-    .col-sm-10
-      = @shipment.quote_complete
+.row.data
+  .col-sm-2
+    Quote Basis
+  .col-sm-10
+    = @shipment.quote_basis
 
-  %p
-  .row    
-    .col-sm-1
- 
-      = link_to 'Edit', edit_shipment_path(@shipment)
-    .col-sm-1
-      = link_to_unless_current("Back", { action: "index" })
-  
+.row.data
+  .col-sm-2
+    Quote Amount ($)
+  .col-sm-10
+    = @shipment.quote_complete
+
+%p
+.row
+  .col-sm-1
+
+    = link_to 'Edit', edit_shipment_path(@shipment)
+  .col-sm-1
+    = link_to_unless_current("Back", { action: "index" })

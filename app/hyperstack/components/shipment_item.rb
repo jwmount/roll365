@@ -52,13 +52,12 @@ class ShipmentItem < HyperComponent
 
         DIV do
           
-          DIV { "#{shipment.tracking_id}  " }     
+          DIV(class: 'roll365-app') { "#{shipment.tracking_id}  " }     
   
-          UL do
-            LI { "from: #{shipment.ship_from}" }
-            LI { "to: #{shipment.ship_to}" }
-            LI { "cargo: #{shipment.cargo}" }
-            LI { "deadline: #{shipment.deadline}"}
+          UL(class: 'roll365-app') do
+            LI { "Segment: #{shipment.ship_from} to #{shipment.ship_to}" }
+            LI { "Carrying: #{shipment.cargo}" }
+            LI { "Departed: #{shipment.deadline}, ETOA: 04:00 today"}
             LI { "On Time"} if shipment.ontime unless shipment.delayed
             #P ( :tbg ) { "DELAYED (randomly assigned)"} if shipment.delayed   # ? :tbg doesn't seem to work
           end #UL

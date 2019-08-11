@@ -7,38 +7,38 @@
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  
+
 
 -#
 -# Bootstrap grid for all containers, appears ONE TIME ONLY
--#  
+-#
 
 .container-fluid
- 
+
 
   - if controller_name == 'Hyperstack'
-    
+
     = mount_component 'Header'
-    
+
   - else
 
     = render '/shared/header'
 
 
   = yield
-  
+
 
   - if controller_name == 'Hyperstack'
-  
+
     = mount_component 'Footer'
 
   - else
 
     = render '/shared/footer'
-    
 
 
--# HS layout suggestion from Catmandu
+
+-# HS layout suggestion from Catmando
 -#    = mount_component 'Header', controller_name: controller_name, action_name: action_name, flash: flash.as_json
 
 -#  = yield
