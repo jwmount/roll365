@@ -7,7 +7,7 @@ class App < HyperComponent
 #  render(SECTION, class: 'roll365-app' ) do
   render do
     Header()
-    Route('/', exact: true) mounts: Dashboard ) #{Redirect('dashboard/all') }
+    Route('/', exact: true, mounts: Dashboard ) #{Redirect('dashboard/all') }
   #  Route('/dashboard', exact: true) { Redirect('/dashboard/all') }
     Route('/dashboard', mounts: Dashboard)
     # Unclear if both of these next two are useful?
