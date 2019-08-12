@@ -1,5 +1,7 @@
 
 class App < HyperComponent
+  include Hyperstack::Component
+  include Hyperstack::Router::Helpers
   include Hyperstack::Router
 
 #  render(SECTION, class: 'roll365-app' ) do
