@@ -1,4 +1,5 @@
 class Dashboard < HyperComponent
+  include Hyperstack::Component
   include Hyperstack::Router::Helpers
   # param :my_param
   # param param_with_default: "default value"
@@ -45,7 +46,7 @@ class Dashboard < HyperComponent
     LI { NavLink("/dashboard/#{path}", active_class: :selected) {path.camelize} }
   end
 
-  render(UL) do
+  render(DIV) do
 
     H2 {'Search'}
 
@@ -65,24 +66,25 @@ class Dashboard < HyperComponent
       # have updated.  Easy enough with Hyperstack, but lets not complicate things
       # now.
       H5 { '(click to expand) ' }
-=begin
-#      Shipment.send(match.params[:scope]).search_for(@search_string.strip).each do |shipment|
-#        LI(class: 'roll365-list'){ ShipmentItem(shipment: shipment) }
-#      end #shipment
-=end
+
+      Shipment.send(match.params[:scope]).search_for(@search_string.strip).each do |shipment|
+        LI(class: 'roll365-list'){ ShipmentItem(shipment: shipment) }
+      end #shipment
+
 
       "#{pluralize(Shipment.count, 'task')} found"
       #H4 { Shipment.send(match.params[:scope]).count }
 
-    DIV(class: 'roll365-app') do
-      UL(class: :filters) do
-        link_item(:all)
-        link_item(:ontime)
-        link_item(:delayed)
-        link_item(:completed)
-      end #UL
-    end #DIV
+      DIV(class: 'roll365-app') do
+        UL(class: :filters) do
+          link_item(:all)
+          link_item(:ontime)
+          link_item(:delayed)
+          link_item(:completed)
+        end #UL
+      end #DIV
 
+    end
 
   end #DIV
 

@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   # use rails g controller welcome to direct root references to welcome index and the get is what to do there
  # get 'welcome/landing', to: 'welcome'
-#  root 'welcome#landing'
+  root 'welcome#landing'
 #  root 'hyperstack#app'         # works
 #  get 'welcome/index'
 #  root 'welcome#index'
