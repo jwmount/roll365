@@ -95,3 +95,7 @@ gem "rails-hyperstack", "~> 1.0.alpha1.0"
 
 group :development do
 end
+
+group :development do
+  gem 'foreman'
+end

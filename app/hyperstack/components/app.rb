@@ -1,17 +1,29 @@
 
 class App < HyperComponent
-  include Hyperstack::Component
+  #include Hyperstack::Component
+  #include Hyerstack::Router::Helpers  # gives us match, location, history,...
   include Hyperstack::Router
 
-#  render(SECTION, class: 'roll365-app' ) do
-  render do
+  history :browser
+
+  #render(SECTION, class: 'roll365-app' ) do
+  render(DIV) do
+    
     Header()
-    Route('/', exact: true ) {Redirect('dashboard/all') }
-    Route('/dashboard', exact: true) { Redirect('/dashboard/all') }
-  # Unclear if both of these next two are useful?
-    Route('/dashboard/:*...', mounts: Dashboard)
-    Route('/dashboard/:scope', mounts: Dashboard)   # scopes are :ontime, :delayed, :completed  was Index
+ 
+    Route('/', exact: true) {Redirect('dashboard/all') }
+    Route('/:scope', mounts: Dashboard)
+
+    Route( '/', mounts: Dashboard)   { Redirect('dashboard/all') }
+    Route( '/', exact: true )        { Redirect('dashboard/all') }
+    Route( '/dashboard', exact: true){ Redirect('dashboard/all') }
+
+    # Unclear if useful?
+    Route('/dashboard/*others', mounts: Dashboard)
+
 
     Footer()
+
   end
+
 end

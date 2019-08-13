@@ -68,6 +68,7 @@ class ShipmentItem < HyperComponent
 
     end #UL
     .on(:click) { toggle(:expanded) }
+
   end #render
 
 end
