@@ -75,14 +75,14 @@ class Dashboard < HyperComponent
       "#{pluralize(Shipment.count, 'task')} found"
       #H4 { Shipment.send(match.params[:scope]).count }
 
-      DIV(class: 'roll365-app') do
+#      DIV(class: 'roll365-app') do
         UL(class: :filters) do
           link_item(:all)
           link_item(:ontime)
           link_item(:delayed)
           link_item(:completed)
         end #UL
-      end #DIV
+#      end #DIV
 
     end
 
