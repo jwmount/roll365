@@ -8,40 +8,40 @@
     = javascript_pack_tag    'heroku_client_and_server'
     = javascript_pack_tag    'heroku_client_only'
 
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
 
 
--#
--# Bootstrap grid for all containers, appears ONE TIME ONLY
--#
-
-.container-fluid
-
-
-  - if controller_name == 'Hyperstack'
-
-    = mount_component 'Header'
-
-  - else
-
-    = render '/shared/header'
+  -#
+  -# Bootstrap grid for all containers, appears ONE TIME ONLY
+  -#
+  
+  .container-fluid
 
 
-  = yield
+    - if controller_name == 'hyperstack'
+
+      = mount_component 'Header'
+
+    - else
+
+      = render '/shared/header'
 
 
-  - if controller_name == 'Hyperstack'
-
-    = mount_component 'Footer'
-
-  - else
-
-    = render '/shared/footer'
+    = yield
 
 
+    - if controller_name == 'hyperstack'
 
--# HS layout suggestion from Catmando
--#    = mount_component 'Header', controller_name: controller_name, action_name: action_name, flash: flash.as_json
+      = mount_component 'Footer'
 
--#  = yield
+    - else
+
+      = render '/shared/footer'
+
+
+
+  -# HS layout suggestion from Catmando
+  -#    = mount_component 'Header', controller_name: controller_name, action_name: action_name, flash: flash.as_json
+
+  -#  = yield

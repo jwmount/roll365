@@ -12,8 +12,6 @@ class App < HyperComponent
 
   render(DIV) do
 
-    Header()
-
     # if we are mounting /dashboard without ANY scope then redirect to dashboard/all
     # i.e. /dashboard/all is the default
 
@@ -22,8 +20,6 @@ class App < HyperComponent
     # otherwise match the scope (it will be accessible via the `match` method)
 
     Route( '/dashboard/:scope', mounts: Dashboard)
-
-    Footer()
 
   end
 

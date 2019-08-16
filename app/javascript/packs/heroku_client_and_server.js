@@ -7,15 +7,3 @@ ReactRouterDOM = require('react-router-dom');  // react-router DOM interface
 ReactRailsUJS = require('react_ujs');          // interface to react-rails
 // to add additional NPM packages run `yarn add package-name@version`
 // then add the require here.
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-// // import ReactRouter from 'react-router';
-// // import ReactRouterDOM from 'react-router-dom';
-// import ReactRailsUJS from 'react_ujs';
-//  // for opal/hyperloop modules to find React and others they must explicitly be saved
-// // to the global space, otherwise webpack will encapsulate them locally here
-// global.React = React;
-// global.ReactDOM = ReactDOM;
-// // global.ReactRouter = ReactRouter;
-// // global.ReactRouterDOM = ReactRouterDOM;
-// global.ReactRailsUJS = ReactRailsUJS;
