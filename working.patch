@@ -1,0 +1,206 @@
+diff --git a/.ruby-version b/.ruby-version
+index 36d618e..4560fb9 100644
+--- a/.ruby-version
++++ b/.ruby-version
+@@ -1 +1 @@
+-ruby-2.6.2
+\ No newline at end of file
++ruby-2.6.3
+diff --git a/Gemfile b/Gemfile
+index caf6f5b..c4c5fe7 100644
+--- a/Gemfile
++++ b/Gemfile
+@@ -1,7 +1,7 @@
+ source 'https://rubygems.org'
+ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+ 
+-ruby '2.6.2'
++ruby '2.6.3'
+ 
+ # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+ gem 'rails', '~> 5.2.2'
+@@ -89,7 +89,7 @@ gem 'will_paginate-bootstrap4'
+ gem 'sprockets-rails'
+ gem 'jquery-rails'
+ gem 'webpacker', '~> 4.x'
+- 
++
+ 
+ gem "rails-hyperstack", "~> 1.0.alpha1.0"
+ 
+diff --git a/Gemfile.lock b/Gemfile.lock
+index 814d16b..6713e81 100644
+--- a/Gemfile.lock
++++ b/Gemfile.lock
+@@ -407,7 +407,7 @@ DEPENDENCIES
+   will_paginate-bootstrap4
+ 
+ RUBY VERSION
+-   ruby 2.6.2p47
++   ruby 2.6.3p62
+ 
+ BUNDLED WITH
+    2.0.2
+diff --git a/app/hyperstack/components/app.rb b/app/hyperstack/components/app.rb
+index da0638c..b00c0a9 100644
+--- a/app/hyperstack/components/app.rb
++++ b/app/hyperstack/components/app.rb
+@@ -1,34 +1,27 @@
+ 
+ class App < HyperComponent
+-  include Hyperstack::Component
++  #include Hyperstack::Component
+   #include Hyerstack::Router::Helpers  # gives us match, location, history,...
+   include Hyperstack::Router
+ 
+   history :browser
+ 
+-  #render(SECTION, class: 'roll365-app' ) do
++  # Note that the rails routes.rb file only mounts this component
++  # IF the route matches /dashboard/....
++  # ANYTHING else will go to the oldschool rails controllers and view logic
++
+   render(DIV) do
+ 
+     Header()
+ 
+-    Route( '/dasboard', mounts: Dashboard) do
+-      dashboard()
+-    end
+-    Route( '/dashboard/:scope', mounts: Dashboard ) do
+-      dashboard/:scope()
+-    end
+-
+-    #Route( '/dashboard', exact: true) {Redirect('dashboard/all') }
+-    # FAILS with '/:scope', OK with 'dashboard/:scope', ...
+-    #Route( '/dashboard/:scope', mounts: Dashboard)
++    # if we are mounting /dashboard without ANY scope then redirect to dashboard/all
++    # i.e. /dashboard/all is the default
+ 
++    Route( '/dashboard', exact: true) { Redirect('dashboard/all') }
+ 
+-#    Route( '/', mounts: Dashboard)   { Redirect('dashboard/all') }
+-#    Route( '/', exact: true )        { Redirect('dashboard/all') }
+-#    Route( '/dashboard', exact: true){ Redirect('dashboard/all') }
++    # otherwise match the scope (it will be accessible via the `match` method)
+ 
+-    # Unclear if useful?
+-#    Route('/dashboard/*others', mounts: Dashboard)
++    Route( '/dashboard/:scope', mounts: Dashboard)
+ 
+     Footer()
+ 
+diff --git a/app/hyperstack/components/dashboard.rb b/app/hyperstack/components/dashboard.rb
+index e25ebd2..941ee9b 100644
+--- a/app/hyperstack/components/dashboard.rb
++++ b/app/hyperstack/components/dashboard.rb
+@@ -54,8 +54,8 @@ class Dashboard < HyperComponent
+       INPUT(type: :text, value: @search_string, placeholder: 'search for ...')
+       .on(:change) { |e| mutate @search_string = e.target.value }
+     end
+-
+-
++#
++#
+     DIV(class: 'roll365-app') do
+       H3 { 'Tracking Number' }
+ 
+diff --git a/app/javascript/packs/client_and_server.js b/app/javascript/packs/heroku_client_and_server.js
+similarity index 51%
+rename from app/javascript/packs/client_and_server.js
+rename to app/javascript/packs/heroku_client_and_server.js
+index fd5b4dd..3c87a8c 100644
+--- a/app/javascript/packs/client_and_server.js
++++ b/app/javascript/packs/heroku_client_and_server.js
+@@ -7,3 +7,15 @@ ReactRouterDOM = require('react-router-dom');  // react-router DOM interface
+ ReactRailsUJS = require('react_ujs');          // interface to react-rails
+ // to add additional NPM packages run `yarn add package-name@version`
+ // then add the require here.
++// import React from 'react';
++// import ReactDOM from 'react-dom';
++// // import ReactRouter from 'react-router';
++// // import ReactRouterDOM from 'react-router-dom';
++// import ReactRailsUJS from 'react_ujs';
++//  // for opal/hyperloop modules to find React and others they must explicitly be saved
++// // to the global space, otherwise webpack will encapsulate them locally here
++// global.React = React;
++// global.ReactDOM = ReactDOM;
++// // global.ReactRouter = ReactRouter;
++// // global.ReactRouterDOM = ReactRouterDOM;
++// global.ReactRailsUJS = ReactRailsUJS;
+diff --git a/app/javascript/packs/client_only.js b/app/javascript/packs/heroku_client_only.js
+similarity index 100%
+rename from app/javascript/packs/client_only.js
+rename to app/javascript/packs/heroku_client_only.js
+diff --git a/app/views/layouts/application.html.haml b/app/views/layouts/application.html.haml
+index b7c76fc..355ae6b 100644
+--- a/app/views/layouts/application.html.haml
++++ b/app/views/layouts/application.html.haml
+@@ -5,6 +5,9 @@
+     %title Roll365 R&amp;D Beta
+     = csrf_meta_tags
+     = csp_meta_tag
++    = javascript_pack_tag    'heroku_client_and_server'
++    = javascript_pack_tag    'heroku_client_only'
++
+     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+ 
+diff --git a/config/environments/production.rb b/config/environments/production.rb
+index 296e62f..8f18c13 100644
+--- a/config/environments/production.rb
++++ b/config/environments/production.rb
+@@ -1,7 +1,7 @@
+ Rails.application.configure do
+ 
+-  
+-  
++
++
+   # Verifies that versions and hashed value of the package contents in the project's package.json
+   config.webpacker.check_yarn_integrity = false
+   # Settings specified here will take precedence over those in config/application.rb.
+@@ -29,9 +29,9 @@ Rails.application.configure do
+ 
+   # Added to make Heroku happy
+   config.assets.js_compressor = Uglifier.new(harmony: true)
+-  
++
+   # Compress JavaScripts and CSS.
+-  
++
+   # Do not fallback to assets pipeline if a precompiled asset is missed.
+   config.assets.compile = false
+ 
+diff --git a/config/initializers/assets.rb b/config/initializers/assets.rb
+index 15e68c8..13557ae 100644
+--- a/config/initializers/assets.rb
++++ b/config/initializers/assets.rb
+@@ -14,4 +14,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
+ # Rails.application.config.assets.precompile += %w( admin.js admin.css )
+ 
+ # felow assume webpack 4.x and Hyperstack assumes that but then it can't locate the .jpg file for landing page
+-Rails.application.config.assets.paths << Rails.root.join('public', 'packs', 'js').to_s
++#Rails.application.config.assets.paths << Rails.root.join('public', 'packs', 'js').to_s
+diff --git a/config/initializers/hyperstack.rb b/config/initializers/hyperstack.rb
+index 2ad13d0..bb57ebb 100644
+--- a/config/initializers/hyperstack.rb
++++ b/config/initializers/hyperstack.rb
+@@ -3,6 +3,8 @@ Hyperstack.configuration do |config|
+ 	client_only: true if Rails.env.development?
+ end
+ Hyperstack.cancel_import 'react/react-source-browser' # bring your own React and ReactRouter via Yarn/Webpacker
++Hyperstack.cancel_import 'hyperstack/router/react-router-source'
++Hyperstack.cancel_import 'react_ujs'
+ Hyperstack.import 'hyperstack/hotloader', client_only: true if Rails.env.development?
+ # set the component base class
+ 
+@@ -26,7 +28,7 @@ Hyperstack.transport = :action_cable # or :none, :pusher,  :simple_poller
+ # change definition of on_error to control how errors such as validation
+ # exceptions are reported on the server
+ module Hyperstack
+-  
++
+   def self.on_error(operation, err, params, formatted_error_message)
+     ::Rails.logger.debug(
+       "#{formatted_error_message}\n\n" +

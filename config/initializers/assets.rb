@@ -14,4 +14,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 
 # felow assume webpack 4.x and Hyperstack assumes that but then it can't locate the .jpg file for landing page
-Rails.application.config.assets.paths << Rails.root.join('public', 'packs', 'js').to_s
+#Rails.application.config.assets.paths << Rails.root.join('public', 'packs', 'js').to_s

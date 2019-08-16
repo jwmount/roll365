@@ -5,6 +5,9 @@
     %title Roll365 R&amp;D Beta
     = csrf_meta_tags
     = csp_meta_tag
+    = javascript_pack_tag    'heroku_client_and_server'
+    = javascript_pack_tag    'heroku_client_only'
+
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 

@@ -1,34 +1,27 @@
 
 class App < HyperComponent
-  include Hyperstack::Component
+  #include Hyperstack::Component
   #include Hyerstack::Router::Helpers  # gives us match, location, history,...
   include Hyperstack::Router
 
   history :browser
 
-  #render(SECTION, class: 'roll365-app' ) do
+  # Note that the rails routes.rb file only mounts this component
+  # IF the route matches /dashboard/....
+  # ANYTHING else will go to the oldschool rails controllers and view logic
+
   render(DIV) do
 
     Header()
 
-    Route( '/dasboard', mounts: Dashboard) do
-      dashboard()
-    end
-    Route( '/dashboard/:scope', mounts: Dashboard ) do
-      dashboard/:scope()
-    end
+    # if we are mounting /dashboard without ANY scope then redirect to dashboard/all
+    # i.e. /dashboard/all is the default
 
-    #Route( '/dashboard', exact: true) {Redirect('dashboard/all') }
-    # FAILS with '/:scope', OK with 'dashboard/:scope', ...
-    #Route( '/dashboard/:scope', mounts: Dashboard)
+    Route( '/dashboard', exact: true) { Redirect('dashboard/all') }
 
+    # otherwise match the scope (it will be accessible via the `match` method)
 
-#    Route( '/', mounts: Dashboard)   { Redirect('dashboard/all') }
-#    Route( '/', exact: true )        { Redirect('dashboard/all') }
-#    Route( '/dashboard', exact: true){ Redirect('dashboard/all') }
-
-    # Unclear if useful?
-#    Route('/dashboard/*others', mounts: Dashboard)
+    Route( '/dashboard/:scope', mounts: Dashboard)
 
     Footer()
 

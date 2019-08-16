@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.2'
+ruby '2.6.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
@@ -89,7 +89,7 @@ gem 'will_paginate-bootstrap4'
 gem 'sprockets-rails'
 gem 'jquery-rails'
 gem 'webpacker', '~> 4.x'
- 
+
 
 gem "rails-hyperstack", "~> 1.0.alpha1.0"
 
