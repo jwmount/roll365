@@ -3,6 +3,8 @@ Hyperstack.configuration do |config|
 	client_only: true if Rails.env.development?
 end
 Hyperstack.cancel_import 'react/react-source-browser' # bring your own React and ReactRouter via Yarn/Webpacker
+Hyperstack.cancel_import 'hyperstack/router/react-router-source'
+Hyperstack.cancel_import 'react_ujs'
 Hyperstack.import 'hyperstack/hotloader', client_only: true if Rails.env.development?
 # set the component base class
 
@@ -26,7 +28,7 @@ Hyperstack.transport = :action_cable # or :none, :pusher,  :simple_poller
 # change definition of on_error to control how errors such as validation
 # exceptions are reported on the server
 module Hyperstack
-  
+
   def self.on_error(operation, err, params, formatted_error_message)
     ::Rails.logger.debug(
       "#{formatted_error_message}\n\n" +

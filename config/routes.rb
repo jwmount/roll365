@@ -19,9 +19,6 @@ Rails.application.routes.draw do
   # use rails g controller welcome to direct root references to welcome index and the get is what to do there
  # get 'welcome/landing', to: 'welcome'
   root 'welcome#landing'
-#  root 'hyperstack#app'         # works
-#  get 'welcome/index'
-#  root 'welcome#index'
 
   #
   # Generate paths for footer.  These paths rely on methods defined in the WelcomeController.
@@ -92,8 +89,9 @@ Rails.application.routes.draw do
 
 # H Y P E R S T A C K.  H Y P E R S T A C K.  H Y P E R S T A C K.  H Y P E R S T A C K
 
-  get '/dashboard', to: 'hyperstack#app'
-  get '/(*other)', to: 'hyperstack#app'
+  get 'dashboard(/*other)', to: 'hyperstack#app'
+  get 'dashboard', to: 'hyperstack#app'  # this is needed so rails will generate a link_to for dashboard
+
 
 
 
