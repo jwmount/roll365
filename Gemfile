@@ -9,8 +9,9 @@ gem 'rails', '~> 5.2.2'
 #gem 'rake', '~> 12.3.3'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
-# Heroku needs bundler 2.1
-gem 'bundler', '~> 2.0.1'
+
+# Heroku needs bundler 2.1  or better?
+gem 'bundler', '~> 2.0.2'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -89,8 +90,4 @@ gem 'sprockets-rails'
 gem 'jquery-rails'
 gem 'webpacker', '~> 4.x'
 
-
 gem "rails-hyperstack", "~> 1.0.alpha1.0"
-
-group :development do
-end
