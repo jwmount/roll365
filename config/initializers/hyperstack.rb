@@ -11,7 +11,7 @@ Hyperstack.component_base_class = 'HyperComponent' # i.e. 'ApplicationComponent'
 # prerendering is default :off, you should wait until your
 # application is relatively well debugged before turning on.
 
-Hyperstack.prerendering = :off # or :on
+Hyperstack.prerendering = :on # or :off
 
 # transport controls how push (websocket) communications are
 # implemented.  The default is :action_cable.
@@ -26,7 +26,7 @@ Hyperstack.transport = :action_cable # or :none, :pusher,  :simple_poller
 # change definition of on_error to control how errors such as validation
 # exceptions are reported on the server
 module Hyperstack
-  
+
   def self.on_error(operation, err, params, formatted_error_message)
     ::Rails.logger.debug(
       "#{formatted_error_message}\n\n" +

@@ -15,3 +15,6 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
 # felow assume webpack 4.x and Hyperstack assumes that but then it can't locate the .jpg file for landing page
 Rails.application.config.assets.paths << Rails.root.join('public', 'packs', 'js').to_s
+
+# Allow precompile
+ Rails.application.config.assets.precompile += %w( hyperstack-prerender-loader.js )
