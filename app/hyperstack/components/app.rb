@@ -1,4 +1,3 @@
-
 class App < HyperComponent
   include Hyperstack::Router
   history :browser
@@ -13,6 +12,5 @@ class App < HyperComponent
      # otherwise match the scope (it will be accessible via the `match` method)
      Route( '/dashboard/:scope', mounts: Dashboard)
      # Note that you could mount other parts of the project here as well:  i.e. Route('/random'), mounts: Random) ...
-
   end
 end
