@@ -3,9 +3,12 @@ Hyperstack.configuration do |config|
 	client_only: true if Rails.env.development?
 end
 Hyperstack.cancel_import 'react/react-source-browser' # bring your own React and ReactRouter via Yarn/Webpacker
+Hyperstack.cancel_import 'hyperstack/router/react-router-source'
+Hyperstack.cancel_import 'react_ujs'
 Hyperstack.import 'hyperstack/hotloader', client_only: true if Rails.env.development?
-# set the component base class
 
+
+# set the component base class
 Hyperstack.component_base_class = 'HyperComponent' # i.e. 'ApplicationComponent'
 
 # prerendering is default :off, you should wait until your

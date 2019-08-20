@@ -83,7 +83,7 @@ gem 'foreman'
 gem 'faker'
 gem 'bootstrap', '~> 4.3.1'
 gem 'draper'
-gem 'ransack' #, github: 'activerecord-hackery/ransack'
+gem 'ransack'
 gem 'will_paginate-bootstrap4'
 
 gem 'sprockets-rails'
