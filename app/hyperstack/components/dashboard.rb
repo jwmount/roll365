@@ -65,7 +65,7 @@ class Dashboard < HyperComponent
       # after say 0.2 seconds, and only if the results of the previous search
       # have updated.  Easy enough with Hyperstack, but lets not complicate things
       # now.
-      H5 { '(click to expand) ' }
+      H5 { '(click to expand)' }
 
       Shipment.send(match.params[:scope]).search_for(@search_string.strip).each do |shipment|
         LI(class: 'roll365-list'){ ShipmentItem(shipment: shipment) }
