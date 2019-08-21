@@ -21,8 +21,8 @@ Hyperstack.prerendering = :on # or :off
 # Other possibilities are :pusher (see www.pusher.com) or
 # :simple_poller which is sometimes handy during system debug.
 
-# Hyperstack.transport = :action_cable # or :none, :pusher,  :simple_poller
-Hyperstack.transport = :simple_poller
+ Hyperstack.transport = :action_cable # or :none, :pusher,  :simple_poller
+#Hyperstack.transport = :simple_poller  didn't work on Heroku
 
 # add this line if you need jQuery AND ARE NOT USING WEBPACK
 # Hyperstack.import 'hyperstack/component/jquery', client_only: true
