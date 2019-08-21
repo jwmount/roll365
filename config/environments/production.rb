@@ -1,7 +1,7 @@
 Rails.application.configure do
 
-  
-  
+
+
   # Verifies that versions and hashed value of the package contents in the project's package.json
   config.webpacker.check_yarn_integrity = false
   # Settings specified here will take precedence over those in config/application.rb.
@@ -29,9 +29,9 @@ Rails.application.configure do
 
   # Added to make Heroku happy
   config.assets.js_compressor = Uglifier.new(harmony: true)
-  
+
   # Compress JavaScripts and CSS.
-  
+
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 
@@ -97,4 +97,8 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # added by Mitchell 
+  config.action_cable.allowed_request_origins = ['https://nameless-caverns-28225.herokuapp.com', 'http://action-cable-example.herokuapp.com']
+  config.web_socket_server_url = "wss://nameless-caverns-28225.herokuapp.com/"
 end
