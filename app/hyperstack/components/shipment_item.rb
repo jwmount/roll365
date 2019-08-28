@@ -41,26 +41,39 @@ class ShipmentItem < HyperComponent
     # automatically
   end
 
-  
+
   param :shipment
 
   render do
 
     UL do
-      
+
       if @expanded
 
         DIV do
-          
-          DIV(class: 'roll365-app') { "#{shipment.tracking_id}  " }     
-  
+
+          DIV(class: 'roll365-app') { "#{shipment.tracking_id}  " }
+
+          H3(class: 'body') { 'Status' }
           UL(class: 'roll365-app') do
             LI { "Segment: #{shipment.ship_from} to #{shipment.ship_to}" }
             LI { "Carrying: #{shipment.cargo}" }
             LI { "Departed: #{shipment.deadline}, ETOA: 04:00 today"}
             LI { "On Time"} if shipment.ontime unless shipment.delayed
-            #P ( :tbg ) { "DELAYED (randomly assigned)"} if shipment.delayed   # ? :tbg doesn't seem to work
+            LI { "Expiration Date" }
           end #UL
+          # These details are constants to enhance understanding of what we
+          # can do.
+          H3(class: 'body') { 'Details' }
+          UL(class: 'roll365-app') do
+            LI { "Lot Number: ZIQ01911396" }
+            LI { "Day Code:   19041523A03" }
+            LI { "Pack Date:  Q3/26/2019" }
+            LI { "Expiration Date:  03/26/2021" }
+            LI { "FDA Registration Number: 14142828444" }
+            LI { "Storage Temperature:  Hold, Store and Maintain Frozen (<-18C)"}
+          end #UL
+
         end #DIV
       else
         DIV { " #{shipment.tracking_id}" }
@@ -72,4 +85,3 @@ class ShipmentItem < HyperComponent
   end #render
 
 end
-

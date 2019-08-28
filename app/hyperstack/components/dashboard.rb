@@ -68,9 +68,10 @@ class Dashboard < HyperComponent
       H5 { '(click to expand)' }
 
       Shipment.send(match.params[:scope]).search_for(@search_string.strip).each do |shipment|
-        LI(class: 'roll365-list'){ ShipmentItem(shipment: shipment) }
+        LI(class: 'roll365-list') { ShipmentItem(shipment: shipment)}
       end #shipment
 
+      
 
       "#{pluralize(Shipment.count, 'task')} found"
       #H4 { Shipment.send(match.params[:scope]).count }
