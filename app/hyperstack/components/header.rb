@@ -41,7 +41,7 @@ class Header < HyperComponent
   end
 
   render  do
-    H1(class: :header) { 'Dispatch Dashboard'}
+    H1(class: :header) { 'Dashboards' }
   end
 
 end

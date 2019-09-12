@@ -48,10 +48,23 @@ class Dashboard < HyperComponent
 
   render(DIV) do
 
-    DIV do
+
+    DIV(class: 'roll365-app') do
       Driver('unknown')
     end
 
+    DIV(class: 'roll365-app') do
+      Shipper('unknown again')
+    end
+
+    DIV(class: 'roll365-app' ) do
+      Carrier('unknown carrier')
+    end
+
+    DIV(class: 'roll365-app' ) do
+      Dispatcher('guess who?')
+    end
+    
     H2 {'Search'}
 
     DIV(class: :header) do
