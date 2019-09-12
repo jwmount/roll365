@@ -40,7 +40,6 @@ class Header < HyperComponent
     # automatically
   end
 
-
   render  do
     H1(class: :header) { 'Dispatch Dashboard'}
   end

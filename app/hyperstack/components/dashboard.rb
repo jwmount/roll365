@@ -48,6 +48,10 @@ class Dashboard < HyperComponent
 
   render(DIV) do
 
+    DIV do
+      Driver('unknown')
+    end
+
     H2 {'Search'}
 
     DIV(class: :header) do
@@ -71,7 +75,7 @@ class Dashboard < HyperComponent
         LI(class: 'roll365-list') { ShipmentItem(shipment: shipment)}
       end #shipment
 
-      
+
 
       "#{pluralize(Shipment.count, 'task')} found"
       #H4 { Shipment.send(match.params[:scope]).count }

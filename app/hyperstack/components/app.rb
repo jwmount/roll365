@@ -7,10 +7,20 @@ class App < HyperComponent
   render(DIV) do
 
      # if we are mounting /dashboard without ANY scope then redirect to dashboard/all
+
      # i.e. /dashboard/all is the default
      Route( '/dashboard', exact: true) { Redirect('/dashboard/all') }
+     Route( '/dispatch/', exact: true) { Redirect('/dispatch') }
+     Route( '/driver/', exact: true) { Redirect('/driver') }
+     Route( '/marketing/', exact: true) { Redirect('/dashboard/all') }
+
      # otherwise match the scope (it will be accessible via the `match` method)
      Route( '/dashboard/:scope', mounts: Dashboard)
+
+
+
+
      # Note that you could mount other parts of the project here as well:  i.e. Route('/random'), mounts: Random) ...
+
   end
 end
