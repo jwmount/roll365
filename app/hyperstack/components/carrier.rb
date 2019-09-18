@@ -1,12 +1,28 @@
 class Carrier < HyperComponent
 
-  param carrier_name: "Trucks-r-Us", type: String
+# how these get set t.b.d
+  param company_name: "Wester Logistics", type: String
+  param contact_points: "541 999-1212", type: String
+  param tracking_id: "AAA-BBB-CCC"
 
   render (DIV) do
-    H2 { 'Carriers (show/hide)' }
-    H2 { "#{carrier_name} Carrier, (to be set by param)" }
-    H3 { '* Find or enter carrier name' }
-    H3 { '.... etc. '}
+
+    DIV(align: 'center') do
+      H2 { 'Carrier (show)' }
+    end
+
+      TABLE do
+        TH {'Company Name'}
+        TH {'Contact Points'}
+        TH {'Tracking ID'}
+        TR do
+          TD {"#{company_name}"}
+          TD {"#{contact_points}"}
+          TD {"#{tracking_id}"}
+        end
+
+      end
+    
   end
 
 end

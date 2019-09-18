@@ -1,13 +1,24 @@
 class Shipper < HyperComponent
 
-  param shipper_name: "Peas-n-pods", type: String
+# how these get set t.b.d
+  param pickup_time: "08:00am", type: String
+  param end_points: "Portland - Norristown", type: String
+  param deadline: "Noon", type: String
+  param where_at: "Redding, CA", type: String
+  param cargo: "Gravel", type: String
+  param tracking_id: "AAA-BBB-CCC"
+  param progress: "On Time"
+  param expected_arrival: "12:15pm"
+  param discrepancy: "none"
 
-  render DIV do
-    H2 { 'Shippers (show/hide)' }
-    H2 { "#{shipper_name} Shipper (to be set by param)" }
-    H2 { 'Shippers' }
-    H3 { '* Find or enter shipper name' }
-    H3 { '.... etc. '}
+  render (DIV) do
+
+    DIV(align: 'center') do
+      H2 { 'Shipper (show)' }
+    end
+
+    #Table here
+    
   end
 
 end

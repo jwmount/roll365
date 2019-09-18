@@ -1,5 +1,6 @@
 class Driver < HyperComponent
-
+  
+  # how these get set t.b.d
   param driver_name: "John x Miller", type: String
   param where_at: "Norristown", type: String
   param end_points: "Portland - Norristown", type: String
@@ -14,7 +15,7 @@ class Driver < HyperComponent
   render (DIV) do
 
     DIV(align: 'center') do
-      H2 { 'Drivers (show/hide)' }
+      H2 { 'Driver (hide)' }
     end
 
     DIV(class: 'roll365-app') do
@@ -37,10 +38,10 @@ class Driver < HyperComponent
           TD {"#{deadline}"}
           TD {"#{where_at}"}
           TD {"#{cargo}"}
-          TD {"#{'AAA-BBB-CCC'}"}
-          TD {'On Time'}
-          TD {'00:12pm'}
-          TD {'-12 min'}
+          TD {"#{tracking_id}"}
+          TD {"#{progress}"}
+          TD {"#{expected_arrival}"}
+          TD {"#{discrepancy}"}
         end
       end
     end

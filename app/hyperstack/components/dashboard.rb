@@ -50,7 +50,7 @@ class Dashboard < HyperComponent
 
 
     DIV(class: 'roll365-app') do
-      Driver('unknown')
+      Driver()
     end
 
     DIV(class: 'roll365-app') do
@@ -65,6 +65,7 @@ class Dashboard < HyperComponent
       Dispatcher('guess who?')
     end
     
+
     H2 {'Search'}
 
     DIV(class: :header) do
