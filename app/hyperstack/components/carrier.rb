@@ -8,7 +8,7 @@ class Carrier < HyperComponent
   render (DIV) do
 
     DIV(align: 'center') do
-      H2 { 'Carrier (show)' }
+      H2 { 'Carrier (hide)' }
     end
 
       TABLE do

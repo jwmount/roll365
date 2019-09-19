@@ -62,6 +62,10 @@ class Dashboard < HyperComponent
     end
 
     DIV(class: 'roll365-app' ) do
+      Receiver('unknown carrier')
+    end
+
+    DIV(class: 'roll365-app' ) do
       Dispatcher('guess who?')
     end
     
