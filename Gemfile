@@ -52,7 +52,7 @@ end
 
 group :production do
   # Use Puma as the app server on Heroku
-  gem 'puma', '~> 3.4'
+  gem 'puma', '~> 3.12'
 end
 
 group :development do
